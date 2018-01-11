@@ -1,0 +1,2871 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass UNCC-thesis
+\use_default_options false
+\maintain_unincluded_children false
+\language american
+\language_package none
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{roman}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fbmatterchapterformat
+\end_layout
+
+\begin_layout Plain Layout
+
+% Doctype should be either dissertation proposal, dissertation, or thesis.
+\end_layout
+
+\begin_layout Plain Layout
+
+% If you're getting a master's, specify "thesis" below.
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+% If you're getting a PhD, specify "dissertation" below.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+doctype{thesis}
+\end_layout
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%     IMPORTANT! IMPORTANT! IMPORTANT! %%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+% The rules below MUST be followed for the abstract page and chapter titles
+\end_layout
+
+\begin_layout Plain Layout
+
+% to be correctly formatted.
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+% 1.
+ Only the first letter of the entire title should be capitalized to allow
+ the 
+\end_layout
+
+\begin_layout Plain Layout
+
+%    title to appear as required by the graduate school on the Abstract
+ page.
+\end_layout
+
+\begin_layout Plain Layout
+
+% 2.
+ Write chapter titles in ALL CAPS.
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+title{Structure From Motion}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+author{Akash Chandra Shekar}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+degree{Master of Science}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+major{Computer Science}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+publicationyear{2018}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+advisor{Dr.
+ Andrew Willis}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% Add the full name and title of all your committee members,
+\end_layout
+
+\begin_layout Plain Layout
+
+% apart from your advisor, one by one.
+  The style file expects
+\end_layout
+
+\begin_layout Plain Layout
+
+% 3 to 5 committee members in addition to your advisor.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+committeeMember{Dr.
+ Min Shin}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+committeeMember{Dr.
+ Jianping Fan}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Generate the preliminary title page and copyright page.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitlepage
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+makecopyright
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+The Structure from motion involves two aspects, one is to track the camera
+ trajectory by solving nonlinear equation and other is to estimate the depth
+ by solving Stereo correspondence of sub-set of pixels.
+ The traditional Structure From Motion functions by finding the correspondence
+ between pair of images, by tracking the features like corner points, lines
+ etc.
+ However, these features do not necessarily provide all information regarding
+ the image.
+ The more accurate method is to use the pixel intensity itself to minimize
+ the Photometric and Geometric errors, by defining the robust error functions.
+ 
+\end_layout
+
+\begin_layout Acknowledgements
+If you decide to have a acknowledgements page, your acknowledgement text
+ would go here.
+\end_layout
+
+\begin_layout Acknowledgements
+The Acknowledgement page should be brief, simple, and free of sentimentality
+ or trivia.
+ It is customary to recognize the role of the advisor, the other members
+ of the advisory committee, and only those organizations or individuals
+ who actually aided in the project.
+ Further, you should acknowledge any outside source of financial assistance,
+ such as GASP grants, contracts, or fellowships.
+\end_layout
+
+\begin_layout Dedication
+If you decide to have a dedication page, your dedication text would go here.
+\end_layout
+
+\begin_layout Dedication
+The Dedication page, if used, pays a special tribute to a person(s) who
+ has given extraordinary encouragement or support to one's academic career.
+\end_layout
+
+\begin_layout Introduction
+If you decide to have an introduction page, your introduction text would
+ go here.
+ 
+\end_layout
+
+\begin_layout Introduction
+Depending on the discipline or the requirements of the student's advisory
+ committee, an Introduction may be included as a preliminary page.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList table
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+nomname}{LIST OF ABBREVIATIONS}
+\end_layout
+
+\begin_layout Plain Layout
+
+% uncomment line below to title your nomenclature list as LIST OF SYMBOLS
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\backslash
+renewcommand{
+\backslash
+nomname}{LIST OF SYMBOLS}
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+% NOTE: IF YOU USE A LIST OF ABBREVIATIONS / LIST OF SYMBOLS and are using
+ command-line LaTeX (not LyX) 
+\end_layout
+
+\begin_layout Plain Layout
+
+% YOU MUST COMPILE THE NOMENCLATURE INDEX
+\end_layout
+
+\begin_layout Plain Layout
+
+% example:
+\end_layout
+
+\begin_layout Plain Layout
+
+% bash$> pdflatex msthesis.tex
+\end_layout
+
+\begin_layout Plain Layout
+
+% bash$> makeindex msthesis.nlo -s nomencl.ist -o msthesis.nls
+\end_layout
+
+\begin_layout Plain Layout
+
+% bash$> pdflatex msthesis.tex
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{chapter}{
+\backslash
+nomname}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset nomencl_print
+LatexCommand printnomenclature
+set_width "auto"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "ECE"
+description "An acronym for Electrical and Computer Engineering."
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{page}{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{arabic}
+\end_layout
+
+\begin_layout Plain Layout
+
+% 2 inch top spacing for new chapters
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bodychapterformat
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+INTRODUCTION
+\end_layout
+
+\begin_layout Standard
+Structure from Motion(SfM) is a photogrammetric process of estimating the
+ three-dimensional structure of a scene from a set of two-dimensional images,
+ this is achieved by tracking the motion of the cameras corresponding to
+ these images.
+ SfM has many application in the field of Robotics, Augmented Reality and
+ Geoscience etc.
+ In Robotics , SfM is mainly applied to implement the Visual Odometry, the
+ process where the egomotion of an robot is estimated using only the inputs
+ of cameras attached to it.
+ In the field of Augmented Reality, SfM used to estimate the depth maps
+ of the scene, which are later used to implement basic physical interaction
+ with the environment.
+ The core of the SfM involves solving the trigonometry on set of images
+ from camera with unknown calibration to extract the depth of an object.The
+ main requirement to do this is to find a correspondence between pair of
+ images, traditionally this was done by feature extraction and matching
+\begin_inset CommandInset citation
+LatexCommand cite
+key "klein07parallel"
+
+\end_inset
+
+.
+ The feature extraction is the process of selecting the key points in the
+ image which are unique and distinguishable and represent them in a efficient
+ descriptor,which are later used for matching in the other image.
+ There are many possible choices for features and descriptors, like SIFT,
+ SURF, ORB etc.
+ However in more recent implementations
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Engel2014"
+
+\end_inset
+
+, instead of features, the image intensities are used directly for matching.
+ Once the correspondence are established , the Pose of the cameras are estimated
+ by imposing the Epipolar constraint, now with the estimated camera pose
+ the three-dimensional structure (depth) is computed.
+ 
+\end_layout
+
+\begin_layout Standard
+There mainly two variants of SFM, Incremental and Global SFM.Incremental
+ SFM
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Snavely:2006:PTE:1141911.1141964"
+
+\end_inset
+
+ begins by first estimating the 3D structure and camera poses of just two
+ cameras based on their relative pose.
+ Then additional cameras are added on incrementaly and 3D structure is refined
+ as new parts of the scene are observed.On the other hand Global SFM
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wilson2014"
+
+\end_inset
+
+ consider the entire problem at once,it tries to estimate the global camera
+ poses and 3D structureby removing outliers and by applying averaging scheme.
+ 
+\end_layout
+
+\begin_layout Standard
+Over the years many approaches have be suggested to tackle this problem,
+ one of them is the PTAM (parallel Tracking and Mapping)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "klein07parallel"
+
+\end_inset
+
+, it is a feature based system, here the tracking and mapping are split
+ into two separate tasks, processed in parallel threads on dual core computer.
+ The map is represented by a collection of point features located in a world
+ coordinate frame W.
+ These points feature represents a locally planar textured patch in the
+ world, each point has coordinates in world frame , an unit patch normal
+ and a reference to the patch source pixels.
+ The map also contains N keyframes, each keyframe has an associated camera-centr
+e coordinate frame and the transformation between the frames and also stores
+ a four level pyramid of grayscale 8bpp images.
+ The tracking is a two-stage process done from coarse-to-fine,when the new
+ image is acquired, an initial coarse search searches only for 50 map points
+ which appear at the highest levels of the current frame’s image pyramid,
+ and this search is performed (with subpixel refinement) over a large search
+ radius.
+ A new pose is then calculated from these measurements.
+ After this, up to 1000 of the remaining potentially visible image patches
+ are re-projected into the image, and now the patch search is performed
+ over a far tighter search region.
+ Subpixel refinement is performed only on a high-level subset of patches.
+ The final frame pose is calculated from both coarse and fine sets of image
+ measurements together.The pose update is computed iteratively by minimising
+ a robust objective function of the reprojection error:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mu^{\prime}=\underset{\mu}{argmin}\underset{j\in s}{\sum}Obj\left(\frac{\left\Vert e_{j}\right\Vert }{\sigma_{j}},\sigma_{T}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $e_{j}$
+\end_inset
+
+is the reprojection error vector:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+e_{j}=\left(\begin{array}{c}
+\hat{u_{j}}\\
+\hat{v_{j}}
+\end{array}\right)-CamProj(exp(\mu)E_{CWp_{j}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Obj(.,\sigma_{T})$
+\end_inset
+
+ is the Tukey biweight objective function and 
+\begin_inset Formula $\sigma_{T}$
+\end_inset
+
+ a robust (median-based) estimate of the distribution’s standard deviation
+ derived from all the residuals.
+\end_layout
+
+\begin_layout Standard
+Associated with the the keyframe in the map is a set 
+\begin_inset Formula $S_{i}$
+\end_inset
+
+ of image measurements..
+ For example, the 
+\begin_inset Formula $jth$
+\end_inset
+
+ map point measured in keyframe 
+\begin_inset Formula $i$
+\end_inset
+
+ would have been found at 
+\begin_inset Formula $(\hat{u}_{ji},\hat{v}_{ji})^{T}$
+\end_inset
+
+ with standard deviation of 
+\begin_inset Formula $\sigma_{ji}$
+\end_inset
+
+ pixels.
+ Writing the current state of the map as 
+\begin_inset Formula $\left\{ E_{k_{1}W}....E_{k_{N}w}\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $\left\{ p_{1}...p_{M}\right\} $
+\end_inset
+
+, each image measurement also has an associated reprojection error 
+\begin_inset Formula $e_{ji}$
+\end_inset
+
+ .
+ Bundle adjustment is applied to iteratively adjust the map so as to minimise
+ the robust objective function:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left\{ \left\{ \mu_{2..}\mu_{N}\right\} ,\left\{ p_{1}^{\prime}..p_{M}^{\prime}\right\} \right\} =\underset{\{\{\mu\},\{p\}\}}{argmin}\stackrel[i=1]{N}{\sum}\underset{j\in s}{\sum}Obj\left(\frac{\left\Vert e_{ji}\right\Vert }{\sigma_{ji}},\sigma_{T}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The drawback of PTAM is that it is a feature base method in which only the
+ information that conforms to the feature type can be used.
+ LSD SLAM 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Engel2014"
+
+\end_inset
+
+ circumvent this limitation by optimizing the geometry directly on the image
+ intensities, which enables using all information in the image.In addition
+ to higher accuracy and robustness in particular in environments with little
+ keypoints, this provides substantially more information about the geometry
+ of the environment.Images are aligned by Gauss -Newton minimization of the
+ photometric error.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+E(\xi)=\underset{i}{\sum}(I_{ref}(P_{i})-I(\omega(p_{i},D_{ref}(p_{i}),\xi)))^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $D_{ref}$
+\end_inset
+
+ is the estimated depth of reference frame,
+\begin_inset Formula $\xi\in se(3)$
+\end_inset
+
+ is Lie-algebra representation of rigid body motion and 
+\begin_inset Formula $\omega$
+\end_inset
+
+ is the affine wrap function.
+ The above error function gives the maximum-likelihood estimator for 
+\begin_inset Formula $\xi$
+\end_inset
+
+ assuming i.i.d.
+ Gaussian residuals.
+ 
+\begin_inset Formula $\delta\xi^{(n)}$
+\end_inset
+
+ is computed for each iteration by solving for the minimum of Gauss-Newton
+ second-order approximation of E:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta\xi^{(n)}=-(J^{T}J)^{-1}J^{T}r(\xi^{(n)})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+J=\frac{\partial r(\epsilon\circ\delta\xi^{(n)})}{\partial\epsilon}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The new estimate is then obtained by multiplication with the computed update
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\xi^{(n+1)}=\delta\xi^{(n)}\circ\xi^{(n)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The overall system is composed of three major components, tracking , depth
+ map estimation and map optimization.
+\end_layout
+
+\begin_layout Standard
+The tracking component continuously estimates the rigid body pose with respect
+ to the current keyframe, using the pose of the previous frame as initialization.
+LSD slam tracks new frame by minimizing the variance-normalized photometric
+ error
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+E_{p}(\xi_{ji})=\underset{p\in\Omega_{D_{i}}}{\sum}\left\Vert \frac{r_{p}^{2}(p,\xi_{ji})}{\sigma_{r_{p}(p,\xi_{ji})}^{2}}\right\Vert _{\delta}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with
+\begin_inset Formula 
+\[
+r_{p}(p,\xi_{ji})\coloneqq I_{i}(p)-I_{j}(\omega(p,D_{i}(p),\xi_{ji}))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\sigma_{r_{p}(p,\xi_{ji})}^{2}\coloneqq2\sigma_{I}^{2}+\left(\frac{\partial r_{p}(p,\xi_{ji})}{\partial D_{i}(p)}\right)^{2}V_{i}(p)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\left\Vert .\right\Vert $
+\end_inset
+
+ is the Huber norm
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left\Vert r^{2}\right\Vert _{\delta}\coloneqq\begin{cases}
+\frac{r^{2}}{2\delta}if\left\Vert r\right\Vert \leq\delta & ,\left\Vert r\right\Vert -\frac{\delta}{2}\end{cases}otherwise
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+applied to the normalized residual.
+ The depth map estimation component uses tracked frames to either refine
+ or replace the current keyframe.
+ Depth is refined by filtering over many per-pixel, small-baseline stereo
+ comparisons coupled with interleaved spatial regularization.
+ If the camera has moved too far, a new keyframe is initialized by projecting
+ points from existing, close-by keyframes into it.
+ Each keyframe is scaled such that its mean inverse depth is one, which
+ enables more small-baseline stereo comparisons.
+ For every new keyframe added, the possibility of loop clouse is checked
+ by performing the reciprocal tracking check.
+ The map optimization component is responsible for the updating depth map
+ into global map, it detect loop closure and scale drift by estimating similarit
+y transform (sim(3)) to close by existing keyframes.The global map is represented
+ as a pose graph consisting of keyframes as vertices with 3D similarity
+ transforms as edges, elegantly incorporating changing scale of the environment
+ and allowing to detect and correct accumulated drift.
+ Each keyframe consists of a camera image, an inverse depth map and variance
+ of the inverse depth.Edges between keyframes contain their relative alignment
+ as similarity transform , as well as corresponding covariance matrix.
+ The map, consisting of a set of keyframes and tracked sim(3)-constraints,
+ is continuously optimized in the background using pose graph optimization.
+ The error function that is minimized is defined by (W defining the world
+ frame) 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+E(\xi_{W1}....\xi_{Wn})\coloneqq\underset{(\xi_{ji},\Sigma_{ji})\in\varepsilon}{\sum}(\xi_{ji}\circ\xi_{Wi}^{-1}\circ\xi_{Wj})\Sigma_{ji}^{-1}(\xi_{ji}\circ\xi_{Wi}^{-1}\circ\xi_{Wj})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Methodology
+\end_layout
+
+\begin_layout Standard
+Structure from motions (SFM) is the process of triangulating the three-dimension
+al structure from two-dimensional images, along with estimating the motion
+ of camera (visual odometer), hence it is some time called as Visual SLAM.
+ 
+\end_layout
+
+\begin_layout Section
+Mathematical Model
+\end_layout
+
+\begin_layout Standard
+One of the goals of SFM it to estimate the Camera trajectory, which is a
+ rigid body motion.
+ We need an efficient model to represent and compute this rigid body motion.
+ The camera position is represented by a 3D Vector in an Euclidean Space,
+ this camera position is chosen to represent the world frame and specify
+ the translation and rotation of the scene relative to that frame.
+ The rigid body motion itself is composed of a rotation and translation.
+ 
+\end_layout
+
+\begin_layout Standard
+Traditionally, rotation is represented by a 
+\begin_inset Formula $3\times3$
+\end_inset
+
+ special orthogonal matrix called rotational matrix.
+ Special Orthogonal matrix SO(3) are the matrix which satisfy 
+\begin_inset Formula $R^{T}R=RR^{T}=I$
+\end_inset
+
+ and have a determinant of 
+\begin_inset Formula $+1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+SO(3)=\{R\in\mathbb{R}^{3\times3}\mid R^{T}R=I,det(R)=+1\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The rotation transformation of the coordinates 
+\begin_inset Formula $X_{c}$
+\end_inset
+
+of a point p relative to frame C to its coordinates 
+\begin_inset Formula $X_{w}$
+\end_inset
+
+ relative to frame W is 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X_{w}=R_{wc}X_{c}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Also, because the rotational matrix are orthogonal, we have
+\begin_inset Formula $R^{-1}=R^{T}$
+\end_inset
+
+, on this line the inverse transformation of coordinates are 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X_{c}=R_{wc}^{-1}X_{w}=R_{wc}^{T}X_{w}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The continuous rotation of a camera is described as a trajectory 
+\begin_inset Formula $R(t):t\rightarrow SO(3)$
+\end_inset
+
+ in the space 
+\begin_inset Formula $SO(3)$
+\end_inset
+
+.When the starting time is not t = 0, the relative motion between time 
+\begin_inset Formula $t_{2}$
+\end_inset
+
+ and time 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+ will be denoted as 
+\begin_inset Formula $R(t_{2},t_{1})$
+\end_inset
+
+ .
+ The composition law of the rotation group implies
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+R(t_{2,}t_{0})=R(t_{2,}t_{1})\times R(t_{1,}t_{0}),\vee t_{0}<t_{1}<t_{2}\in R
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+On the other hand the translation is represented by a 
+\begin_inset Formula $T\in R^{3}$
+\end_inset
+
+,
+\begin_inset Formula $1\times3$
+\end_inset
+
+ vector which adds the translation values in each dimension.With this, the
+ complete rigid body motion is represented by 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+X_{w}=R_{wc}X_{c}+T_{wc}\label{eq:1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+However, the above equation is not linear but affine.
+ We may convert this to linear by using homogeneous coordinates, where we
+ append 1 for 
+\begin_inset Formula $1\times3$
+\end_inset
+
+ vector and make it a 
+\begin_inset Formula $1\times4$
+\end_inset
+
+ vector ,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\bar{X}=\left[\begin{array}{c}
+X\\
+1
+\end{array}\right]=\left[\begin{array}{c}
+X_{1}\\
+X_{2}\\
+X_{3}\\
+1
+\end{array}\right]\in\mathbb{R}^{4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With this new notation for point, we can rewrite the transformation from
+ equation 6 as following
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{X}_{w}=\left[\begin{array}{c}
+X_{w}\\
+1
+\end{array}\right]=\left[\begin{array}{cc}
+R_{wc} & T_{wc}\\
+0 & 1
+\end{array}\right]\left[\begin{array}{c}
+X_{c}\\
+1
+\end{array}\right]=\bar{g}_{wc}\bar{X}_{c}\label{eq:2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where the 
+\begin_inset Formula $4\times4$
+\end_inset
+
+ matrix 
+\begin_inset Formula $\bar{g}_{wc}\in R^{4\times4}$
+\end_inset
+
+is called the homogeneous representation of the rigid-body motion.
+\end_layout
+
+\begin_layout Standard
+The set of all possible configurations of a rigid body can then be described
+ by the space of rigid-body motions or special Euclidean transformations
+ called SE(3)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+SE(3)=\{\bar{g}=\left[\begin{array}{cc}
+R & T\\
+0 & 1
+\end{array}\right]\mid R\in SO(3),T\in R^{3}\}\subset\mathbb{R}^{4\times4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Exponential Map
+\end_layout
+
+\begin_layout Standard
+The special orthogonal group in three dimensions can be represented by a
+ 
+\begin_inset Formula $3\times3$
+\end_inset
+
+ rotation matrix 
+\begin_inset Formula $R\in SO(3)$
+\end_inset
+
+, which must satisfy the constraint 
+\begin_inset Formula $R^{T}R=I$
+\end_inset
+
+, this implies that the 
+\begin_inset Formula $SO(3)$
+\end_inset
+
+ transformations leaves the quantity 
+\begin_inset Formula $x^{2}+y^{2}+z^{2}$
+\end_inset
+
+ invariant.
+ The group 
+\begin_inset Formula $SO(3)$
+\end_inset
+
+ has 9 parameters, but the invariance of the length produces six independent
+ conditions, leaving three free parameters, Hence, the dimension of the
+ space of rotation matrices 
+\begin_inset Formula $SO(3)$
+\end_inset
+
+ should be only three, and six parameters out of the nine are in fact redundant.W
+e can use this to have better representation of Rigid body motion.
+\end_layout
+
+\begin_layout Standard
+We know that the continuous rotational motion represented by 
+\begin_inset Formula $R(t):R\in SO(3)$
+\end_inset
+
+, must satisfy the following constraint
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+R(t)R^{T}(t)=I
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Differentiating the above equation with respect to time t gives
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{R}(t)R^{T}(t)+R(t)\dot{R}^{T}(t)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{R}(t)R^{T}(t)=-(\dot{R}(t)R^{T}(t))^{T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This shows that the matrix 
+\begin_inset Formula $\dot{R}(t)R^{T}(t)\in\mathbb{R}^{3\times3}$
+\end_inset
+
+is a skew-symmetric matrix.This implies that there must exist a vector, say
+ 
+\begin_inset Formula $\omega(t)\in\mathbb{R}^{3}$
+\end_inset
+
+,such that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{R}(t)R^{T}(t)=\hat{\omega}(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Multiplying both sides by 
+\begin_inset Formula $R(t)$
+\end_inset
+
+ on the right yields
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\dot{R}(t)=\hat{\omega}(t)R(t)\label{eq:3}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In above equation, if 
+\begin_inset Formula $R(t_{0})=I$
+\end_inset
+
+ for for 
+\begin_inset Formula $t=t_{0}$
+\end_inset
+
+, we have 
+\begin_inset Formula $\dot{R}(t_{0})=\hat{\omega}(t_{0})$
+\end_inset
+
+.
+ Hence, around the identity matrix I, a skew-symmetric matrix gives a first-
+ order approximation to a rotation matrix:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+R(t_{0}+dt)\thickapprox I+\hat{\omega}(t_{0})dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This space of all skew-symmetric matrix represents the tangent space of
+ the rotation group 
+\begin_inset Formula $SO(3)$
+\end_inset
+
+ and it is the lie algebra 
+\begin_inset Formula $so(3)$
+\end_inset
+
+ of the corresponding lie group.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+so(3)\doteq\left\{ \hat{\omega}\in\mathbb{R}^{3\times3}\mid\omega\in\mathbb{R}^{3}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is obvious that the solution for the 
+\begin_inset CommandInset label
+LatexCommand label
+name "3"
+
+\end_inset
+
+ is the matrix exponential 
+\begin_inset Formula $e^{\hat{\omega}t}$
+\end_inset
+
+, where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+e^{\hat{\omega}t}=I+\hat{\omega}t+\frac{(\hat{\omega}t)^{2}}{2!}+\cdots+\frac{(\hat{\omega}t)^{n}}{n!}+\cdots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hence ,we have 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+R(t)=e^{\hat{\omega}t}\label{eq:4}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The above equation represents a rotation around the axis 
+\begin_inset Formula $\omega\in\mathbb{R}^{3}$
+\end_inset
+
+by an angle of 
+\begin_inset Formula $t$
+\end_inset
+
+ radians.This map from the space 
+\begin_inset Formula $so(3)$
+\end_inset
+
+ to 
+\begin_inset Formula $SO(3)$
+\end_inset
+
+ is called the exponential map.
+\end_layout
+
+\begin_layout Standard
+We can extend this to full rigid body motion which invloves the translation
+ aswel along with the rotation.With equation () , the continious rigid body
+ trajectory on SE(3) is given by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+g(t)=\left[\begin{array}{cc}
+R(t) & T(t)\\
+0 & 1
+\end{array}\right]\in\mathbb{R}^{4\times4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With above representation , we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{g}(t)g^{-1}(t)=\left[\begin{array}{cc}
+\dot{R}(t)R^{T}(t) & \dot{T}(t)-\dot{R}(t)R^{T}(t)T(t)\\
+0 & 0
+\end{array}\right]\in\mathbb{R}^{4\times4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From equation ()
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{\xi(t)}=\left[\begin{array}{cc}
+\hat{\omega}(t) & \upsilon(t)\\
+0 & 0
+\end{array}\right]\in\mathbb{R}^{4\times4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\upsilon(t)=\dot{T}(t)-\hat{\omega}(t)T(t)\in\mathbb{R}^{3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+then we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{g}(t)=(\dot{g}(t)g^{-1}(t))g(t)=\hat{\xi(t)}g(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\hat{\xi}$
+\end_inset
+
+ is called the twist and can be used to approximate g(t) locally
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+g(t+dt)\approx g(t)+\hat{\xi(t)}g(t)d(t)=(I+\hat{\xi(t)}dt)g(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Also the twist represent the tangent space (or Lie algebra) of the matrix
+ group SE(3).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+se(3)\doteq\left\{ \hat{\xi}=\left[\begin{array}{cc}
+\hat{\omega} & \upsilon\\
+0 & 0
+\end{array}\right]\mid\hat{\omega}\in so(3),\upsilon\in\mathbb{R}^{3}\right\} \subset\mathbb{R}^{4\times4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Similar to equation ().
+ with the initial condition of 
+\begin_inset Formula $g(0)=1,$
+\end_inset
+
+we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+g(t)=e^{\hat{\xi}t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+e^{\hat{\xi}t}=I+\hat{\xi}t+\frac{(\hat{\xi}t)^{2}}{2!}+\cdots+\frac{(\hat{\xi}t)^{n}}{n!}+\cdots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and this defines the the exponential map from the space 
+\begin_inset Formula $se(3)$
+\end_inset
+
+ to 
+\begin_inset Formula $SE(3)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Section
+camera model
+\end_layout
+
+\begin_layout Standard
+The 2D image is formed by capturing the light energy (irradiance) for every
+ pixel, this process can be mathamticaly discribed by thin lens camera model,
+ which descibes the relationship between the three-dimensional coordiants
+ to its projection onto the image plane.
+ The thin lens model is represented by a optical axis and a perpendicular
+ plane called the focal plane.The thin lens itself is characterized by its
+ focal length and diameter, the focal length is the distance from optic
+ center to where all the ray intersect the optic axis , while the point
+ of intersection itself is called the focus of the lens.
+ One of the import property to consider is that the rays entering the lense
+ through optic center are undeflected while the rest of the rays are.
+\end_layout
+
+\begin_layout Standard
+Using similar triangles, from above figure, we obtain the following fundamental
+ equation of the thin lens
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{1}{Z}+\frac{1}{z}=\frac{1}{f}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If the aperture of a thin lens decrease to zero , all rays are forced to
+ go through the optical center o, and therefore they remain undeflected.Consequen
+tly, the aperture of the cone decreases to zero, and the only points that
+ contribute to the irradiance at the image point 
+\begin_inset Formula $x=\left[x,y\right]$
+\end_inset
+
+ are on a line through the center 0 of the lens.
+ If a point p has coordinates 
+\begin_inset Formula $X=\left[X,Y,Z\right]$
+\end_inset
+
+ relative to a reference frame centered at the optical center 0, with its
+ z-axis being the optical axis (of the lens), then it is immediate to see
+ from similar triangles in Figure 3.5 that the coordinates of p and its image
+ x are related by the so-called ideal perspective projection.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+x=-f\frac{X}{Z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+y=-f\frac{Y}{Z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This mapping of 3D point to 2D is called projection and is represented by
+ 
+\begin_inset Formula $\pi$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\pi:R^{3}\rightarrow R^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is also written as 
+\begin_inset Formula $x=\pi(X)$
+\end_inset
+
+.
+ This is imaging model is called an pinhole camera model.
+\end_layout
+
+\begin_layout Standard
+The negative sign on the equation 2 and 3 makes the object appear upside
+ down on the image plan, we can overcome this by moving the image plane
+ to front of optic center to 
+\begin_inset Formula $\{z=-f\}$
+\end_inset
+
+ this will make 
+\begin_inset Formula $(x,y)\rightarrow(-x,-y).$
+\end_inset
+
+There for the equation 2 and 3 changes to 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+x=f\frac{X}{Z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+y=f\frac{Y}{Z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This can be represented in matrix form as 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+x=\left[\begin{array}{c}
+x\\
+y
+\end{array}\right]=\frac{f}{Z}\left[\begin{array}{c}
+X\\
+Y
+\end{array}\right]
+\]
+
+\end_inset
+
+ In homogeneous coordinates, this relationship can be written as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Z\left[\begin{array}{c}
+x\\
+y\\
+1
+\end{array}\right]=\left[\begin{array}{cccc}
+f & 0 & 0 & 0\\
+0 & f & 0 & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]\left[\begin{array}{c}
+X\\
+Y\\
+Z\\
+1
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The above equation can be decomposed into
+\begin_inset Formula 
+\[
+\left[\begin{array}{cccc}
+f & 0 & 0 & 0\\
+0 & f & 0 & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]=\left[\begin{array}{ccc}
+f & 0 & 0\\
+0 & f & 0\\
+0 & 0 & 1
+\end{array}\right]\left[\begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+K_{f}=\left[\begin{array}{cccc}
+f & 0 & 0 & 0\\
+0 & f & 0 & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]\in R^{3\times3},\Pi_{0}=\left[\begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]\in\mathbb{R}{}^{3\times4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The matrix 
+\begin_inset Formula $\Pi_{0}$
+\end_inset
+
+is a standard projection matrix.
+\end_layout
+
+\begin_layout Standard
+With the rigid body tranformation from equation () , we can represent the
+ overall geometric model for an ideal camera as below
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lambda\left[\begin{array}{c}
+x^{\prime}\\
+y^{\prime}\\
+1
+\end{array}\right]=\left[\begin{array}{ccc}
+f & 0 & 0\\
+0 & f & 0\\
+0 & 0 & 1
+\end{array}\right]\left[\begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]\left[\begin{array}{cc}
+R & T\\
+0 & 1
+\end{array}\right]\left[\begin{array}{c}
+X_{0}\\
+Y_{0}\\
+Z_{0}\\
+1
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is the unknown scale factor.
+\end_layout
+
+\begin_layout Standard
+However, the above equation represents the ideal model where the retianl
+ frame centered at the optical center with one axis aligned with the optical
+ axis.But in practice, this does not happens and the origin of the image
+ coordinate frame typically in the upper-left corner of the image.we need
+ to address this relationship between the retinal plane coordinate frame
+ and the pixel array in our camera model.
+ This can be represented by a special matrix as following
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+K_{s}=\left[\begin{array}{ccc}
+s_{x} & s_{\theta} & o_{x}\\
+0 & s_{y} & o_{y}\\
+0 & 0 & 1
+\end{array}\right]\in\mathbb{R}^{3\times3}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with these new parameters the we can represent the internsic parameteres
+ of camera as following
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+K=K_{s}K_{f}=\left[\begin{array}{ccc}
+s_{x} & s_{\theta} & o_{x}\\
+0 & s_{y} & o_{y}\\
+0 & 0 & 1
+\end{array}\right]\left[\begin{array}{ccc}
+f & 0 & 0\\
+0 & f & 0\\
+0 & 0 & 1
+\end{array}\right]=\left[\begin{array}{ccc}
+fs_{x} & s_{\theta} & o_{x}\\
+0 & fs_{y} & o_{y}\\
+0 & 0 & 1
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $o_{x}$
+\end_inset
+
+: x-coordinate of the principal point in pixels, 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $o_{y}$
+\end_inset
+
+: y-coordinate of the principal point in pixels, 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $fs_{x}$
+\end_inset
+
+= 
+\begin_inset Formula $\alpha_{x}$
+\end_inset
+
+ : size of unit length in horizontal pixels, 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $fs_{y}$
+\end_inset
+
+= 
+\begin_inset Formula $\alpha_{y}$
+\end_inset
+
+ : size of unit length in vertical pixels, 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\frac{\alpha_{x}}{\alpha_{y}}$
+\end_inset
+
+: aspect ratio 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ , 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $fs_{\theta}$
+\end_inset
+
+: skew of the pixel, often close to zero.
+\end_layout
+
+\begin_layout Standard
+The equation () can also be updated as 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lambda\left[\begin{array}{c}
+x^{\prime}\\
+y^{\prime}\\
+1
+\end{array}\right]=\left[\begin{array}{ccc}
+s_{x} & s_{\theta} & o_{x}\\
+0 & s_{y} & o_{y}\\
+0 & 0 & 1
+\end{array}\right]\left[\begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]\left[\begin{array}{cc}
+R & T\\
+0 & 1
+\end{array}\right]\left[\begin{array}{c}
+X_{0}\\
+Y_{0}\\
+Z_{0}\\
+1
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the matrix notation ,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lambda x=K\Pi_{0}gX_{0}
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+To summerize , the equation () represenths the projection of three-dimesional
+ coordiante 
+\begin_inset Formula $X_{0}$
+\end_inset
+
+ by camera at oriantaion (extransic parameters)
+\begin_inset Formula $g$
+\end_inset
+
+ and intresic paramters K, onto two-dimesioanl coordiante 
+\begin_inset Formula $x$
+\end_inset
+
+ with known scale 
+\begin_inset Formula $\lambda$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In addition to above linear distortion, if a camera has a wide field of
+ view, there will be a significant distortion along radial directions.
+ Such a distrotion can be modeld by 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+x=x_{d}(1+a_{1}r^{2}+a_{2}r^{4})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+y=y_{d}(1+a_{1}r^{2}+a_{2}r^{4})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $(x_{d},y_{d})$
+\end_inset
+
+ are the cooridnates of the distored poitns, 
+\begin_inset Formula $a_{1},a_{2}$
+\end_inset
+
+are the coefficiantes of raidal distortion and 
+\begin_inset Formula $r$
+\end_inset
+
+ is the raidus of the raidal distortion.
+\end_layout
+
+\begin_layout Section
+Epipolar geometry
+\end_layout
+
+\begin_layout Standard
+Consider two images of the same point p from two camera position with realative
+ pose 
+\begin_inset Formula $(R,T)$
+\end_inset
+
+, where 
+\begin_inset Formula $R\in SO(3)$
+\end_inset
+
+ is the relative orientation and 
+\begin_inset Formula $T\in\mathbb{R}^{3}$
+\end_inset
+
+is the relataive position,then if 
+\begin_inset Formula $X_{1},X_{2}\in\mathbb{R}^{3}$
+\end_inset
+
+ are the 3-D coordinates of a point p relative to the two camera frames,
+ by the rigid-body transformation we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X_{2}=RX_{1}+T
+\]
+
+\end_inset
+
+Now,let 
+\begin_inset Formula $x_{1},x_{2}\in\mathbb{R}^{3}$
+\end_inset
+
+be the homogeneous coordinates of the projection of the same point p in
+ the two image planes.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lambda_{2}x_{2}=R\lambda_{1}x_{1}+T
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By mulitplying both the side by 
+\begin_inset Formula $\hat{T}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lambda_{2}\hat{T}x_{2}=\hat{T}R\lambda_{1}x_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By mulitplying both the side by 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+0=x_{2}^{T}\hat{T}R\lambda_{1}x_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is the epiploar constraint and the matrix 
+\begin_inset Formula $E=\hat{T}R$
+\end_inset
+
+ is called the essential matrix.It encodes the relative pose between the
+ two cameras.
+ Geometrically, it impose that the The vector connecting the first camera
+ center 
+\begin_inset Formula $o_{1}$
+\end_inset
+
+ and the point p, the vector connecting 
+\begin_inset Formula $o_{2}$
+\end_inset
+
+ and p, and the vector connecting the two optical centers 
+\begin_inset Formula $o_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $o_{2}$
+\end_inset
+
+ clearly form a triangle.
+ Therefore, the three vectors lie on the same plane.Hence the their triple
+ product which measures the voulme of the parallelepiped is zero.
+ 
+\end_layout
+
+\begin_layout Subsection
+The eight-point linear algorithm
+\end_layout
+
+\begin_layout Standard
+With this constrain between two images, we should be able to retive the
+ relative pose of the cameras.
+ The eight-point linear algorithm is a simple closed-form alogrithm,it consists
+ of two steps: First a matrix E is recovered from a number of epipolar constrain
+ts; then relative translation and orientation are extracted from E .
+\end_layout
+
+\begin_layout Standard
+The entries of E are denoted by 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+E=\left[\begin{array}{ccc}
+e_{11} & e_{12} & e_{13}\\
+e_{21} & e_{22} & e_{23}\\
+e_{31} & e_{32} & e_{33}
+\end{array}\right]\in\mathbb{R}^{3\times3}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The matrix E is reshaped into vector 
+\begin_inset Formula $E\in\mathbb{R}^{9}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+E=\left[e_{11},e_{21},e_{31},e_{12},e_{22},e_{32},e_{13},e_{23},e_{33}\right]^{T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and for 
+\begin_inset Formula $x_{1}=\left[x_{1,}y_{1},z_{1}\right]^{T}\in\mathbb{R}^{3}$
+\end_inset
+
+and 
+\begin_inset Formula $x_{2}=\left[x_{2,}y_{2},z_{2}\right]^{T}\in\mathbb{R}^{3}$
+\end_inset
+
+ define 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+a=[x_{1}x_{2},x_{1}y_{2},x_{1}z_{2},y_{1}x_{2},y_{1}y_{2},y_{1}z_{2},z_{1}x_{2},z_{1}y_{2},z_{1}z_{2}]\in\mathbb{R}^{9}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With these new notations, we can rewrite the equation () as below
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+a^{T}E=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+this representation emphasizes the linear dependence of the epipolar constraint
+ on the elements of the essential matrix.
+\end_layout
+
+\begin_layout Standard
+Now, set of corresponding image points 
+\begin_inset Formula $(x_{1}^{j},x_{2}^{j}),j=1,2,....,n$
+\end_inset
+
+ define a matrix 
+\begin_inset Formula $\chi\in\mathbb{R}^{n\times9}$
+\end_inset
+
+ associated with these measurements to be
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\chi=\left[a^{1},a^{2},...,a^{n}\right]^{T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the absence of noise, the vector E satisfies
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\chi E=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In order to obtain the unique solution, the rank of the matrix 
+\begin_inset Formula $\chi\in\mathbb{R}^{n\times9}$
+\end_inset
+
+ needs to be exactly eight.
+ This should be the case given 
+\begin_inset Formula $n\geq8$
+\end_inset
+
+ "ideal" corresponding points, hence the name The eight-point linear algorithm.
+\end_layout
+
+\begin_layout Standard
+Because of errors in correspondences, we try to find the E that minimizes
+ the least-squares error function 
+\begin_inset Formula $\left\Vert \chi E\right\Vert ^{2}$
+\end_inset
+
+.We do this by choosing eigenvector of 
+\begin_inset Formula $\chi^{T}\chi$
+\end_inset
+
+ that corresponds to its smallest eigenvalue.
+\end_layout
+
+\begin_layout Standard
+Once we have E , we need to extract the pose (
+\begin_inset Formula $R\in SO(3)$
+\end_inset
+
+ and 
+\begin_inset Formula $T\in\mathbb{R}^{3}$
+\end_inset
+
+) from E, we know that 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "41368"
+
+\end_inset
+
+a nonzero matrix 
+\begin_inset Formula $E\in\mathbb{R}^{3}$
+\end_inset
+
+ is an essential matrix if and only if E has a singular value decomposition
+ 
+\begin_inset Formula $(SVD)E=U\varSigma V^{T}$
+\end_inset
+
+with 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\varSigma=diag\left\{ \sigma,\sigma,0\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+for some 
+\begin_inset Formula $\sigma>0$
+\end_inset
+
+ and 
+\begin_inset Formula $U,V,\in SO(3)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This this we can obtain two relative pose
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+(\hat{T}_{1},R_{1})=(UR_{Z}(+\frac{\pi}{2})\Sigma U^{T},UR_{Z}^{T}(+\frac{\pi}{2})V^{T})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+(\hat{T}_{2},R_{2})=(UR_{Z}(-\frac{\pi}{2})\Sigma U^{T},UR_{Z}^{T}(-\frac{\pi}{2})V^{T})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Among these one with that gives the meaningfull (positive) depth are selected
+ as the valid pose.
+\end_layout
+
+\begin_layout Standard
+With 
+\begin_inset Formula $R_{Z}(\pm\frac{\pi}{2})=\left[\begin{array}{ccc}
+0 & \pm1 & 0\\
+\pm1 & 0 & 0\\
+0 & 0 & 1
+\end{array}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Structure Reconstruction
+\end_layout
+
+\begin_layout Standard
+One reamining to find is the position of points in 3D by recovering their
+ depths relative to each camera frame.With the estimated pose (Translation
+ is T is defined up to the scale 
+\begin_inset Formula $\gamma$
+\end_inset
+
+) and point correspondance , we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lambda_{2}^{j}x_{2}^{j}=\lambda_{1}^{j}Rx_{1}^{j}+\gamma T
+\]
+
+\end_inset
+
+ for 
+\begin_inset Formula $j=1,2,3...,n$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where, 
+\begin_inset Formula $\lambda_{1}$
+\end_inset
+
+and 
+\begin_inset Formula $\lambda_{2}$
+\end_inset
+
+are depths with respect to the first and second camera frames, respectively.
+ One of the depths is redundant, if 
+\begin_inset Formula $\lambda_{1}$
+\end_inset
+
+ is known, we can estimate 
+\begin_inset Formula $\lambda_{2}$
+\end_inset
+
+ as a function of 
+\begin_inset Formula $(R,T)$
+\end_inset
+
+.Hence we can eliminate, say, 
+\begin_inset Formula $\lambda_{2}$
+\end_inset
+
+ from the above equation by multiplying both sides by 
+\begin_inset Formula $\hat{x_{2}}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+0=\lambda_{1}^{j}x_{2}^{j}Rx_{1}^{j}+\gamma x_{2}^{j}T
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is represented as linear equations
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+M^{j}\bar{\lambda^{j}}=\left[\hat{x_{2}^{j}}Rx_{1}^{j},\hat{x_{2}^{j}}T\right]\left[\begin{array}{c}
+\lambda_{1}^{j}\\
+\gamma
+\end{array}\right]=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $M^{j}=\left[\hat{x_{2}^{j}}Rx_{1}^{j},\hat{x_{2}^{j}}T\right]\in\mathbb{R}^{3\times2}$
+\end_inset
+
+and 
+\begin_inset Formula $\bar{\lambda^{j}}=\left[\begin{array}{c}
+\lambda_{1}^{j}\\
+\gamma
+\end{array}\right]\in\mathbb{R}^{2}$
+\end_inset
+
+ for 
+\begin_inset Formula $j=1,2,3...,n$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+since all n equations above share the same 
+\begin_inset Formula $\gamma$
+\end_inset
+
+; we define a vector 
+\begin_inset Formula $\vec{\lambda}=\left[\lambda_{1}^{1},\lambda_{1}^{2},...,\lambda_{1}^{2},\gamma\right]$
+\end_inset
+
+ and a matrix 
+\begin_inset Formula $M\in\mathbb{R}^{3n\times(n+1)}$
+\end_inset
+
+as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+M=\left[\begin{array}{cccccc}
+\hat{x}_{2}^{1}Rx_{1}^{1} & 0 & 0 & 0 & 0 & \hat{x}_{2}^{1}T\\
+0 & \hat{x}_{2}^{2}Rx_{1}^{2} & 0 & 0 & 0 & \hat{x}_{2}^{2}T\\
+0 & 0 & \ddots & 0 & 0 & \vdots\\
+0 & 0 & 0 & \hat{x}_{2}^{n-1}Rx_{1}^{n-1} & 0 & \hat{x}_{2}^{n-1}T\\
+0 & 0 & 0 & 0 & \hat{x}_{2}^{n}Rx_{1}^{n} & \hat{x}_{2}^{n}T
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then the equation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+M\overrightarrow{\lambda}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+determines all the unknown depths up to a single universal scale.
+ The linear least-squares estimate of 
+\begin_inset Formula $\overrightarrow{\lambda}$
+\end_inset
+
+ is simply the eigenvector of 
+\begin_inset Formula $M^{T}M$
+\end_inset
+
+s that corresponds to its smallest eigenvalue.
+\end_layout
+
+\begin_layout Section
+Non linear Optimization
+\end_layout
+
+\begin_layout Standard
+In practice, because of the noise in image correspondence and other errors
+ we cannot measure the actual coordinates but only their noisy versions,
+ say
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\widetilde{x}_{1}^{j}=x_{1}^{j}+\omega_{1}^{j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\widetilde{x}_{2}^{j}=x_{2}^{j}+\omega_{2}^{j}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $x_{1}^{j}$
+\end_inset
+
+and 
+\begin_inset Formula $x_{2}^{j}$
+\end_inset
+
+are the ideal image coordinates and 
+\begin_inset Formula $\omega_{1}^{j}=\left[\omega_{11}^{j},\omega_{12}^{j},0\right]^{T}$
+\end_inset
+
+and 
+\begin_inset Formula $\omega_{2}^{j}=\left[\omega_{21}^{j},\omega_{22}^{j},0\right]^{T}$
+\end_inset
+
+are localization errors (called residuals) in the correspondence.Therefore,
+ in general, we seek optimize the parameters 
+\begin_inset Formula $(x,R,T)$
+\end_inset
+
+ that minimize this errors.
+\end_layout
+
+\begin_layout Standard
+One of the minimalisic approch to optimality is to minmize the squared 2-norm
+ of resdiuals, if we choose the first camera frame as the reference 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\phi(x,R,T,\lambda)=\stackrel[j=1]{n}{\sum}\left\Vert \omega_{1}^{j}\right\Vert +\left\Vert \omega_{2}^{j}\right\Vert ^{2}=\stackrel[j=1]{n}{\sum}\left\Vert \widetilde{x}_{1}^{j}-x_{1}^{j}\right\Vert ^{2}+\left\Vert \widetilde{x}_{2}^{j}-\pi(R\lambda_{1}^{j}x_{1}^{j}+T)\right\Vert ^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The above error is often called the 
+\begin_inset Quotes eld
+\end_inset
+
+reprojecton error
+\begin_inset Quotes erd
+\end_inset
+
+, since 
+\begin_inset Formula $x_{1}^{j}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{2}^{j}$
+\end_inset
+
+are the recovered 3-D points projected back onto the image planes.
+ This process of minimizing the above expression for the unknowns 
+\begin_inset Formula $(R,T,x_{1},\lambda)$
+\end_inset
+
+ is known as bundle adjument
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Triggs:1999:BAM:646271.685629"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+One of the many ways to minmize this expression is the Gauss-Newton method.
+ Gauss-Newton is a iterative method for finding the value of the variables
+ which minimizes the sum of squares,it starts with the intial guess and
+ this method does not need the second derivatives (Hessian matrix) of the
+ of function, which is often expensive and sometimes not possible to compute,
+ instead the Hessian is approximated with the Jacobian matrix of the function.
+ 
+\end_layout
+
+\begin_layout Standard
+For the least-sqaure fucntion of form
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\underset{x}{min}\underset{i}{\sum}r_{i}(x)^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Gauss-Newton method itreativly solves 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+x_{t+1}=x_{t}-H^{-1}g
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with gradient g
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+g_{j}=2\underset{i}{\sum}r_{i}\frac{\partial r_{i}}{\partial x_{i}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and the Hessian H
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+H_{jk}=2\underset{i}{\sum}r_{i}(\frac{\partial r_{i}}{\partial x_{j}}\frac{\partial r_{i}}{\partial x_{k}}+r_{i}\frac{\partial^{2}r_{i}}{\partial x_{i}\partial x_{k}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+droping the second order term leads to the approximation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+H_{jk}=2\underset{i}{\sum}J_{ij}J_{ik}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with
+\begin_inset Formula 
+\[
+J_{ij}=\frac{\partial r_{i}}{\partial x_{j}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The modification to Gauss-Newton method is The Levenberg-Marquadth algorithm,
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+x_{t+1}=x_{t}-(H+\lambda I)^{-1}g
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+this modification is a hybrid between the Newton method 
+\begin_inset Formula $(\lambda=0)$
+\end_inset
+
+ and a grediant descent step size 
+\begin_inset Formula $1/\lambda(for$
+\end_inset
+
+
+\begin_inset Formula $\lambda\shortrightarrow\infty)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "references_db"
+options "ieeetr"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

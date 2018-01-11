@@ -1,0 +1,100 @@
+% Encoding: UTF-8
+
+@Article{Engel2014,
+  author    = {Engel, Jakob and Sch{\"o}ps, Thomas and Cremers, Daniel},
+  title     = {LSD-SLAM: Large-Scale Direct Monocular SLAM},
+  year      = {2014},
+  pages     = {834--849},
+  abstract  = {We propose a direct (feature-less) monocular SLAM algorithm which, in contrast to current state-of-the-art regarding direct methods, allows to build large-scale, consistent maps of the environment. Along with highly accurate pose estimation based on direct image alignment, the 3D environment is reconstructed in real-time as pose-graph of keyframes with associated semi-dense depth maps. These are obtained by filtering over a large number of pixelwise small-baseline stereo comparisons. The explicitly scale-drift aware formulation allows the approach to operate on challenging sequences including large variations in scene scale. Major enablers are two key novelties: (1) a novel direct tracking method which operates on                                                                           {\$}{\backslash}mathfrak{\{}sim{\}}(3){\$}                , thereby explicitly detecting scale-drift, and (2) an elegant probabilistic solution to include the effect of noisy depth values into tracking. The resulting direct monocular SLAM system runs in real-time on a CPU.},
+  address   = {Cham},
+  booktitle = {Computer Vision -- ECCV 2014: 13th European Conference, Zurich, Switzerland, September 6-12, 2014, Proceedings, Part II},
+  doi       = {10.1007/978-3-319-10605-2_54},
+  editor    = {Fleet, David and Pajdla, Tomas and Schiele, Bernt and Tuytelaars, Tinne},
+  isbn      = {978-3-319-10605-2},
+  publisher = {Springer International Publishing},
+  url       = {https://doi.org/10.1007/978-3-319-10605-2_54},
+}
+
+@Article{theia-manual,
+  author       = {Chris Sweeney},
+  title        = {Theia Multiview Geometry Library: Tutorial \& Reference},
+  howpublished = {\url{http://theia-sfm.org}},
+}
+
+@InProceedings{klein07parallel,
+  author    = {Georg Klein and David Murray},
+  title     = {Parallel Tracking and Mapping for Small {AR} Workspaces},
+  booktitle = {Proc. Sixth {IEEE} and {ACM} International Symposium on Mixed and Augmented Reality {(ISMAR'07)}},
+  year      = {2007},
+  address   = {Nara, Japan},
+  month     = {November},
+}
+
+@InProceedings{Triggs:1999:BAM:646271.685629,
+  author    = {Triggs, Bill and McLauchlan, Philip F. and Hartley, Richard I. and Fitzgibbon, Andrew W.},
+  title     = {Bundle Adjustment - A Modern Synthesis},
+  booktitle = {Proceedings of the International Workshop on Vision Algorithms: Theory and Practice},
+  year      = {2000},
+  series    = {ICCV '99},
+  pages     = {298--372},
+  address   = {London, UK, UK},
+  publisher = {Springer-Verlag},
+  acmid     = {685629},
+  isbn      = {3-540-67973-1},
+  numpages  = {75},
+  url       = {http://dl.acm.org/citation.cfm?id=646271.685629},
+}
+
+@Article{Snavely:2006:PTE:1141911.1141964,
+  author     = {Snavely, Noah and Seitz, Steven M. and Szeliski, Richard},
+  title      = {Photo Tourism: Exploring Photo Collections in 3D},
+  journal    = {ACM Trans. Graph.},
+  year       = {2006},
+  volume     = {25},
+  number     = {3},
+  pages      = {835--846},
+  month      = jul,
+  issn       = {0730-0301},
+  acmid      = {1141964},
+  address    = {New York, NY, USA},
+  doi        = {10.1145/1141911.1141964},
+  issue_date = {July 2006},
+  keywords   = {image-based modeling, image-based rendering, photo browsing, structure from motion},
+  numpages   = {12},
+  publisher  = {ACM},
+  url        = {http://doi.acm.org/10.1145/1141911.1141964},
+}
+
+@InBook{Wilson2014,
+  pages     = {61--75},
+  title     = {Robust Global Translations with 1DSfM},
+  publisher = {Springer International Publishing},
+  year      = {2014},
+  author    = {Wilson, Kyle and Snavely, Noah},
+  editor    = {Fleet, David and Pajdla, Tomas and Schiele, Bernt and Tuytelaars, Tinne},
+  address   = {Cham},
+  isbn      = {978-3-319-10578-9},
+  abstract  = {We present a simple, effective method for solving structure from motion problems by averaging epipolar geometries. Based on recent successes in solving for global camera rotations using averaging schemes, we focus on the problem of solving for 3D camera translations given a network of noisy pairwise camera translation directions (or 3D point observations). To do this well, we have two main insights. First, we propose a method for removing outliers from problem instances by solving simpler low-dimensional subproblems, which we refer to as 1DSfM problems. Second, we present a simple, principled averaging scheme. We demonstrate this new method in the wild on Internet photo collections.},
+  booktitle = {Computer Vision -- ECCV 2014: 13th European Conference, Zurich, Switzerland, September 6-12, 2014, Proceedings, Part III},
+  doi       = {10.1007/978-3-319-10578-9_5},
+  url       = {https://doi.org/10.1007/978-3-319-10578-9_5},
+}
+
+@Article{41368,
+  author   = {T. S. Huang and O. D. Faugeras},
+  title    = {Some properties of the E matrix in two-view motion estimation},
+  journal  = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  year     = {1989},
+  volume   = {11},
+  number   = {12},
+  pages    = {1310-1312},
+  month    = {Dec},
+  issn     = {0162-8828},
+  doi      = {10.1109/34.41368},
+  keywords = {matrix algebra;pattern recognition;picture processing;3D motion determination;E matrix;eight-point linear algorithm;necessary and sufficient condition;pattern recognition;picture processing;rotation matrix;skew-symmetrical matrix;structure determination;translation components;two-view motion estimation;Matrix decomposition;Motion analysis;Motion estimation;Robustness;Sufficient conditions;Symmetric matrices},
+}
+
+@Book{,
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}

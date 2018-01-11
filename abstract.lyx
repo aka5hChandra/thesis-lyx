@@ -1,0 +1,942 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass UNCC-thesis
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{roman}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fbmatterchapterformat
+\end_layout
+
+\begin_layout Plain Layout
+
+% Doctype should be either dissertation proposal, dissertation, or thesis.
+\end_layout
+
+\begin_layout Plain Layout
+
+% If you're getting a master's, specify "thesis" below.
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+% If you're getting a PhD, specify "dissertation" below.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+doctype{thesis}
+\end_layout
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%%%%%%%     IMPORTANT! IMPORTANT! IMPORTANT! %%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Plain Layout
+
+% The rules below MUST be followed for the abstract page and chapter titles
+\end_layout
+
+\begin_layout Plain Layout
+
+% to be correctly formatted.
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+% 1.
+ Only the first letter of the entire title should be capitalized to allow
+ the 
+\end_layout
+
+\begin_layout Plain Layout
+
+%    title to appear as required by the graduate school on the Abstract
+ page.
+\end_layout
+
+\begin_layout Plain Layout
+
+% 2.
+ Write chapter titles in ALL CAPS.
+\end_layout
+
+\begin_layout Plain Layout
+
+%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+title{Structure From Motion}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+author{Akash Chandra Shekar}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+degree{Master of Science}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+major{Computer Science}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+publicationyear{2018}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+advisor{Dr.
+ Andrew Willis}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+% Add the full name and title of all your committee members,
+\end_layout
+
+\begin_layout Plain Layout
+
+% apart from your advisor, one by one.
+  The style file expects
+\end_layout
+
+\begin_layout Plain Layout
+
+% 3 to 5 committee members in addition to your advisor.
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+committeeMember{Dr.
+ Min Shin}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+committeeMember{Dr.
+ Jianping Fan}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Generate the preliminary title page and copyright page.
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitlepage
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+makecopyright
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+The Structure from motion involves two aspects, one is to track the camera
+ trajectory by solving nonlinear equation and other is to estimate the depth
+ by solving Stereo correspondence of sub-set of pixels.
+ The traditional Structure From Motion functions by finding the correspondence
+ between pair of images, by tracking the features like corner points, lines
+ etc.
+ However, these features do not necessarily provide all information regarding
+ the image.
+ The more accurate method is to use the pixel intensity itself to minimize
+ the Photometric and Geometric errors, by defining the robust error functions.
+ 
+\end_layout
+
+\begin_layout Introduction
+Structure from Motion (SFM) is a process of estimating 3D structure from
+ 2D images and at a same time it also tracks a camera motion (odometry)
+ , hence it is some time called as Visual SLAM.
+ When a image is captured , we lose a dimensionality in the direction of
+ z, as consequence we lose the scale factor of the scene.
+ Since the image projection into 2D space is non-linear , estimating the
+ depth is not trivial.
+ We impose photometric function between pair of image and solve this by
+ Maximum Likelihood estimate with appropriate prior and suitable error distribut
+ion model like Gaussian.
+ Errors are estimated by finding the stereo correspondence between the image
+ pairs , and we can narrow down the search for correspondence by taking
+ advantage of the Epipolar constraints between images.
+ Another goal of SFM is to find the camera trajectory, a Rigid body motion,
+ which can be represented by a 3 × 3 Rotation matrix and a 3 × 1 Translation
+ vector ,because of the constraints imposed by Rigid body motion this presentati
+on contains redundant entries, one way to handle this is to locally linearize
+ the representation , we do this by applying the Lie Algebra and Lie Group.
+ 
+\end_layout
+
+\begin_layout Section*
+Related Work
+\end_layout
+
+\begin_layout Quote
+The semi dense depth filtering approach to real-time visual odometry was
+ proposed by [1].
+ This method estimates inverse depth map for a key frame, the method is
+ semi-dense i.e inverse depths are not estimated for whole image, instead
+ they are computed only for pixels with non-negligible gradient.
+ The inverse depth map is modeled at valid pixels by a Gaussian probability
+ distribution, these inverse depth are propagated over the frames, and refined
+ by adaptive stereo comparisons.
+ The estimated inverse depth maps are used to determine the camera pose
+ for next frame.This process involves finding the epipolar line in the reference
+ frame and looking for the best match of disparity along the corresponding
+ epipolar line.
+ Finally, the inverse depth is computed from the disparity .
+ The geometric and photometric errors are considered to determine disparity
+ and inverse depth.
+ This approaches is very efficient and runs in real-time on a CPU, however
+ it only locally track the motion of the camera and do not build a consistent,
+ global map of the environment including loop-closures.
+\end_layout
+
+\begin_layout Quote
+The fast method to estimate the camera motion from RGB-D images was proposed
+ by [2].
+ In this method camera motion was estimated by non-linear minimization of
+ photometric error in combination with a coarse-to-fine scheme.
+ This is again a Direct method of motion estimation with probabilistic formulati
+on on a temporal prior, where the Rigid motion of camera is estimated by
+ aligning two consecutive intensity images with corresponding depth depth
+ maps obtained from RGB-D camera.
+ To achieve this a wrap function between pair of images is constructed in
+ Lie algebra for efficient computation and solved with Maximum a Posteriori
+ estimation with a suitable choice of a prior distribution over camera motion.
+ Lie algebra and Lie group representation of function helps linearize the
+ problem which is solved by Gauss- Newton method iteratively.
+\end_layout
+
+\begin_layout Quote
+[3] proposes a efficient graph representation to solve the least square
+ optimization of error functions, which is the crux of problems like SLAM
+ and SFM.
+ Here , a problem is represented as a directed graph , with a parameter
+ block represented by a node and ordered constraint between parameter block
+ is denoted by a edge.
+ Like [2] this method also solves Nonlinear problem different spaces like
+ Lie algebra in order to linearize the problem locally.
+ This method takes the advantage of sparse connectivity of the graph and
+ special structures of the graph that often occur in the nonlinear minimization
+ problem .
+ This implementation enables us to define the large problem efficiently
+ and solve them easily.
+\end_layout
+
+\begin_layout Quote
+[4] put together all the above implementations and sloves the odometer and
+ depth estimation simultaneously.
+ This method uses direct image alignment coupled with filtering-based estimation
+ of semi-dense depth maps as originally proposed in [1].
+ The global map is represented as a pose graph as proposed in [3] consisting
+ of keyframes as vertices with 3D similarity transforms as edges, elegantly
+ incorporating changing scale of the environment and allowing to detect
+ and correct accumulated drift.
+ 
+\end_layout
+
+\begin_layout Chapter
+Rigid Body Motion
+\end_layout
+
+\begin_layout Section
+Mathamatical Model
+\end_layout
+
+\begin_layout Standard
+One of the goals of SFM it to find the Camera trajectory, which is rigid
+ body motion.
+ We need an efficient model to represent and compute this Rigid body motion.
+ The camera position is represented by a 3D Vector in an Euclidean Space
+ and the we choose the world frame to be attached to the camera and specify
+ the translation and rotation of the scene relative to that frame.
+ The rigid body motion itself is composed of a rotation and translation.
+ 
+\end_layout
+
+\begin_layout Standard
+Traditionally, rotation is represented by a 
+\begin_inset Formula $3\times3$
+\end_inset
+
+ special orthogonal matrix called rotational matrix, any matrix which satisfy
+ 
+\begin_inset Formula $R^{T}R=RR^{T}=I$
+\end_inset
+
+ and have a determinant of +1 belong to Special Orthogonal matrix group
+ called SO(3).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+SO(3)=\{R\in R^{3\times3}\mid R^{T}R=I,det(R)=+1\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The rotation transformation of the coordinates 
+\begin_inset Formula $X_{c}$
+\end_inset
+
+of a point p relative to frame C to its coordinates 
+\begin_inset Formula $X_{w}$
+\end_inset
+
+ relative to frame W is 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X_{w}=R_{wc}X_{c}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Also, because the rotational matrix are orthogonal, we have
+\begin_inset Formula $R^{-1}=R^{T}$
+\end_inset
+
+, on this line the inverse transformation of coordinates are 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X_{c}=R_{wc}^{-1}X_{w}=R_{wc}^{T}X_{w}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The continuous rotation of a camera is described as a trajectory 
+\begin_inset Formula $R(t):t\rightarrow SO(3)$
+\end_inset
+
+ in the space 
+\begin_inset Formula $SO(3)$
+\end_inset
+
+.When the starting time is not t = 0, the relative motion between time 
+\begin_inset Formula $t_{2}$
+\end_inset
+
+ and time 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+ will be denoted as 
+\begin_inset Formula $R(t_{2},t_{1})$
+\end_inset
+
+ .
+ The composition law of the rotation group implies
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+R(t_{2,}t_{0})=R(t_{2,}t_{1})\times R(t_{1,}t_{0}),\vee t_{0}<t_{1}<t_{2}\in R
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The translation is represented by a 
+\begin_inset Formula $T\in R^{3}$
+\end_inset
+
+,
+\begin_inset Formula $1\times3$
+\end_inset
+
+ vector which adds the translation values in each dimension.
+ The complete rigid body motion is represented by 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X_{w}=R_{wc}X_{c}+T_{wc}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+However, the above equation is not linear but affine.
+ We may convert this to linear by using homogeneous coordinates, where we
+ append 1 for 
+\begin_inset Formula $1\times3$
+\end_inset
+
+ vector and make it a 
+\begin_inset Formula $1\times4$
+\end_inset
+
+ vector ,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\bar{X}=\left[\begin{array}{c}
+X\\
+1
+\end{array}\right]=\left[\begin{array}{c}
+X_{1}\\
+X_{2}\\
+X_{3}\\
+1
+\end{array}\right]\in R^{4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With this new notation for point, we can rewrite the transformation from
+ equation 6 as following
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\bar{X}_{w}=\left[\begin{array}{c}
+X_{w}\\
+1
+\end{array}\right]=\left[\begin{array}{cc}
+R_{wc} & T_{wc}\\
+0 & 1
+\end{array}\right]\left[\begin{array}{c}
+X_{c}\\
+1
+\end{array}\right]=\bar{g}_{wc}\bar{X}_{c}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where the 
+\begin_inset Formula $4\times4$
+\end_inset
+
+ matrix 
+\begin_inset Formula $\bar{g}_{wc}\in R^{4\times4}$
+\end_inset
+
+is called the homogeneous representation of the rigid-body motion.
+\end_layout
+
+\begin_layout Standard
+The set of all possible configurations of a rigid body can then be described
+ by the space of rigid-body motions or special Euclidean transformations
+ called SE(3)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+SE(3)=\{\bar{g}=\left[\begin{array}{cc}
+R & T\\
+0 & 1
+\end{array}\right]\mid R\in SO(3),T\in R^{3}\}\subset R^{4\times4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Exponential Map
+\end_layout
+
+\begin_layout Section
+Lie Algebra and Lie Group
+\end_layout
+
+\begin_layout Chapter
+Camera Projection
+\end_layout
+
+\begin_layout Section
+Pinhole Camera
+\end_layout
+
+\begin_layout Standard
+The 2D image is formed by capturing the light energy (irradiance) for every
+ pixel, this light capturing is controlled by the use of a thin lens.The
+ thin lens model is represented by a optical axis and a perpendicular plane
+ called the focal plane.The thin lens is characterized by its focal length
+ and diameter, the focal length is the distance from optic center to where
+ all the ray intersect the optic axis , while the point of intersection
+ itself is called the focus of the lens.
+ One of the import property to consider is that the rays entering the lense
+ through optic center are undeflected while the rest of the rays are.
+\end_layout
+
+\begin_layout Standard
+Using similar triangles, from above figure, we obtain the following fundamental
+ equation of the thin lens
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{1}{Z}+\frac{1}{z}=\frac{1}{f}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If the aperture of a thin lens decrease to zero , all rays are forced to
+ go through the optical center o, and therefore they remain undeflected.Consequen
+tly, the aperture of the cone decreases to zero, and the only points that
+ contribute to the irradiance at the image point 
+\begin_inset Formula $x=\left[x,y\right]$
+\end_inset
+
+ are on a line through the center 0 of the lens.
+ If a point p has coordinates 
+\begin_inset Formula $X=\left[X,Y,Z\right]$
+\end_inset
+
+ relative to a reference frame centered at the optical center 0, with its
+ z-axis being the optical axis (of the lens), then it is immediate to see
+ from similar triangles in Figure 3.5 that the coordinates of p and its image
+ x are related by the so-called ideal perspective projection.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+x=-f\frac{X}{Z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+y=-f\frac{Y}{Z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This mapping of 3D point to 2D is called projection and is represented by
+ 
+\begin_inset Formula $\pi$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\pi:R^{3}\rightarrow R^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is also written as 
+\begin_inset Formula $x=\pi(X)$
+\end_inset
+
+.
+ This is imaging model is called an pinhole camera model.
+\end_layout
+
+\begin_layout Standard
+The negative sign on the equation 2 and 3 makes the object appear upside
+ down on the image plan, we can overcome this by moving the image plane
+ to front of optic center to 
+\begin_inset Formula $\{z=-f\}$
+\end_inset
+
+ this will make 
+\begin_inset Formula $(x,y)\rightarrow(-x,-y).$
+\end_inset
+
+There for the equation 2 and 3 changes to 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+x=f\frac{X}{Z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+y=f\frac{Y}{Z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This can be represented in matrix form as 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+x=\left[\begin{array}{c}
+x\\
+y
+\end{array}\right]=\frac{f}{Z}\left[\begin{array}{c}
+X\\
+Y
+\end{array}\right]
+\]
+
+\end_inset
+
+ In homogeneous coordinates, this relationship can be written as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+Z\left[\begin{array}{c}
+x\\
+y\\
+1
+\end{array}\right]=\left[\begin{array}{cccc}
+f & 0 & 0 & 0\\
+0 & f & 0 & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]\left[\begin{array}{c}
+X\\
+Y\\
+Z\\
+1
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The above equation can be decomposed into
+\begin_inset Formula 
+\[
+\left[\begin{array}{cccc}
+f & 0 & 0 & 0\\
+0 & f & 0 & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]=\left[\begin{array}{ccc}
+f & 0 & 0\\
+0 & f & 0\\
+0 & 0 & 1
+\end{array}\right]\left[\begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+K_{f}=\left[\begin{array}{cccc}
+f & 0 & 0 & 0\\
+0 & f & 0 & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]\in R^{3\times3},\Pi_{0}=\left[\begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]\in R^{3\times4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The matrix 
+\begin_inset Formula $\Pi_{0}$
+\end_inset
+
+is a standard projection matrix.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Chapter
+Stearo Corespondence and Desparity
+\end_layout
+
+\begin_layout Section
+Stearo Corespondence
+\end_layout
+
+\begin_layout Section
+Epipolar Geometry
+\end_layout
+
+\begin_layout Chapter
+Non Linear Optimization
+\end_layout
+
+\begin_layout Chapter
+Graph (G20)
+\end_layout
+
+\begin_layout Quote
+Refereances
+\end_layout
+
+\begin_layout Quote
+1.Engel, J., Sturm, J., Cremers, D.: Semi-dense visual odometry for a monocular
+ camera.
+ In: Intl.
+ Conf.
+ on Computer Vision (ICCV) (2013)
+\end_layout
+
+\begin_layout Quote
+2.C.
+ Kerl, J.
+ Sturm, and D.
+ Cremers.
+ Robust odometry estima- tion for RGB-D cameras.
+ In ICRA, 2013.
+\end_layout
+
+\begin_layout Quote
+3.Kümmerle, R., Grisetti, G., Strasdat, H., Konolige, K., Burgard, W.: g2o: A
+ general framework for graph optimization.
+ In: Intl.
+ Conf.
+ on Robotics and Automation (ICRA) (2011)
+\end_layout
+
+\begin_layout Quote
+4.LSD-SLAM: Large-Scale Direct Monocular SLAM, J.
+ Engel, T.
+ Schöps, D.
+ Cremers, ECCV '14
+\end_layout
+
+\begin_layout Standard
+ 
+\end_layout
+
+\end_body
+\end_document

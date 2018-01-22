@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass UNCC-thesis
 \use_default_options false
 \maintain_unincluded_children false
@@ -9,16 +11,16 @@
 \language_package none
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -60,11 +62,13 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author 215191885 "Akash"
+\author 1699939148 "arwillis"
 \end_header
 
 \begin_body
@@ -284,16 +288,161 @@ makecopyright
 \end_layout
 
 \begin_layout Abstract
-The Structure from motion involves two aspects, one is to track the camera
- trajectory by solving nonlinear equation and other is to estimate the depth
- by solving Stereo correspondence of sub-set of pixels.
- The traditional Structure From Motion functions by finding the correspondence
- between pair of images, by tracking the features like corner points, lines
- etc.
- However, these features do not necessarily provide all information regarding
- the image.
- The more accurate method is to use the pixel intensity itself to minimize
- the Photometric and Geometric errors, by defining the robust error functions.
+The Structure from 
+\change_deleted 1699939148 1515786609
+m
+\change_unchanged
+Motion (SfM) systems use knowledge of a camera's image formation model and
+ a time-sequence of images from the camera to estimate camera motion and
+ 3D scene structure.
+\change_deleted 1699939148 1515786717
+involves two aspects, one is to track the camera
+\change_unchanged
+ Formulations of this problem decompose the problem into two sub-problems:
+ 
+\change_deleted 1699939148 1515786757
+trajectory by 
+\change_unchanged
+ (1) solving for
+\change_deleted 1699939148 1515786772
+ing
+\change_inserted 1699939148 1515786773
+e
+\change_unchanged
+ 
+\change_deleted 1699939148 1515786851
+nonlinear
+\change_unchanged
+the camera trajectory
+\change_deleted 215191885 1516118794
+ 
+\change_deleted 1699939148 1515786856
+ equation
+\change_unchanged
+ and 
+\change_deleted 1699939148 1515786861
+other is to
+\change_unchanged
+solving for
+\change_deleted 215191885 1516118794
+ 
+\change_deleted 1699939148 1515786868
+ estimate
+\change_unchanged
+ the depth of 3D scene points observed by the camera in multiple images.
+ Solutions are provided by 
+\change_deleted 1699939148 1515786913
+by solving
+\change_unchanged
+ finding 
+\change_deleted 1699939148 1515786917
+Stereo 
+\change_unchanged
+correspondences between 
+\change_deleted 1699939148 1515786923
+of sub-set of 
+\change_unchanged
+
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ locations
+\change_deleted 1699939148 1515787163
+pixels
+\change_unchanged
+ in images take from different poses taken at distinct times in the camera
+ trajectory.
+ 
+\change_deleted 1699939148 1515786976
+The t
+\change_unchanged
+Traditional SfM
+\change_deleted 1699939148 1515786982
+Structure From Motion
+\change_unchanged
+ 
+\change_deleted 1699939148 1515786986
+functions by 
+\change_unchanged
+find
+\change_deleted 1699939148 1515786988
+ing
+\change_unchanged
+ these correspondence
+\change_inserted 1699939148 1515786991
+s
+\change_unchanged
+ 
+\change_deleted 1699939148 1515786994
+between pair of images,
+\change_unchanged
+ by extracting and tracking 
+\change_deleted 1699939148 1515786999
+the 
+\change_unchanged
+features
+\change_deleted 1699939148 1515787197
+ like
+\change_unchanged
+, e.g., corner points, 
+\change_deleted 1699939148 1515787229
+lines etc
+\change_unchanged
+match local regions within images.
+ However, these 
+\change_deleted 1699939148 1515787268
+features
+\change_unchanged
+approaches 
+\change_deleted 1699939148 1515787017
+do not necessarily 
+\change_unchanged
+provide very sparse geometric descriptions of the scene structure and omit
+ much of
+\change_deleted 1699939148 1515787046
+all
+\change_unchanged
+ the geometric information 
+\change_deleted 1699939148 1515787052
+regarding
+\change_unchanged
+in the image.
+ 
+\change_deleted 1699939148 1515787057
+The 
+\change_unchanged
+Other 
+\change_deleted 1699939148 1515787062
+more accurate method
+\change_unchanged
+, semi-dense, approaches 
+\change_deleted 1699939148 1515787072
+is to 
+\change_unchanged
+attempt to find large collections of correspondences by solving for pixel-level
+\change_deleted 1699939148 1515787101
+use the pixel intensity itself
+\change_unchanged
+ correspondences which provide more geometric information about the scene.
+ Unfortunately, unlike features, pixel values may are susceptible to viewpoint,
+ illumination, and other image formation phenomena which requires semi-dense
+ approaches to
+\change_deleted 1699939148 1515787356
+to minimize
+\change_unchanged
+ consider 
+\change_deleted 1699939148 1515787363
+the P
+\change_unchanged
+photometric 
+\change_deleted 1699939148 1515787370
+and
+\change_unchanged
+correction 
+\change_deleted 1699939148 1515787380
+Geometric errors, by defining the robust error functions.
+\change_unchanged
+in order to robustly determine correspondences.
  
 \end_layout
 
@@ -511,22 +660,140 @@ INTRODUCTION
 \end_layout
 
 \begin_layout Standard
-Structure from Motion(SfM) is a photogrammetric process of estimating the
- three-dimensional structure of a scene from a set of two-dimensional images,
- this is achieved by tracking the motion of the cameras corresponding to
- these images.
- SfM has many application in the field of robotics, augmented reality and
- geoscience etc.
- In Robotics, SfM is mainly applied to implement the visual odometry, the
- process where the egomotion of an robot is estimated using only the inputs
- of cameras attached to it.
- In the field of augmented reality, SfM used to estimate the depth maps
- of the scene, which are later used to implement basic physical interaction
- with the environment.
- The core of the SfM involves solving the trigonometry on set of images
- from camera with unknown calibration to extract the depth of an object.
+Structure from Motion (SfM) is 
+\change_deleted 1699939148 1515787416
+a
+\change_unchanged
+the photogrammetric process of estimating the three-dimensional structure
+ of a scene from a set of two-dimensional images, this is achieved by tracking
+ the motion of the camera
+\change_deleted 1699939148 1515787425
+s
+\change_unchanged
+ 
+\change_deleted 1699939148 1515787428
+corresponding
+\change_unchanged
+generating 
+\change_deleted 1699939148 1515787431
+to 
+\change_unchanged
+these images and correlating information within the time-sequence of images.
+ SfM has many applications in the field of robotics including augmented
+ reality
+\change_deleted 1699939148 1515787468
+ and
+\change_unchanged
+, geoscience 
+\change_deleted 1699939148 1515787471
+etc
+\change_inserted 1699939148 1515787478
+and 
+\series bold
+\emph on
+[put more here]
+\change_unchanged
+
+\series default
+\emph default
+.
+ In 
+\change_deleted 1699939148 1515787485
+R
+\change_unchanged
+robotics, SfM is 
+\change_deleted 1699939148 1515787489
+mainly 
+\change_unchanged
+applied 
+\change_deleted 1699939148 1515787498
+to
+\change_unchanged
+as one approach for
+\change_deleted 1699939148 1515787504
+ implement the
+\change_unchanged
+ visual odometry, the process of estimating 
+\change_deleted 1699939148 1515787514
+where 
+\change_unchanged
+the egomotion of an robot 
+\change_deleted 1699939148 1515787571
+is estimated 
+\change_unchanged
+using only the inputs of cameras attached to it
+\change_inserted 215191885 1516122714
+, this is used highly in self driving car and unmanned aerial vehicle
+\change_unchanged
+.
+ In the field of augmented reality, SfM used to estimate the 
+\change_inserted 215191885 1516122744
+lost 
+\change_unchanged
+depth
+\change_inserted 215191885 1516122769
+s of the environment from images
+\change_deleted 215191885 1516122760
+ maps of the scene
+\change_unchanged
+, 
+\change_inserted 215191885 1516122917
+this depth information enables to augment the virtual objects into the real
+ world and even allows to interact with augmented objects.
+ 
+\change_deleted 215191885 1516122822
+which are later used to implement basic physical interaction with the environmen
+t
+\change_inserted 1699939148 1515787624
+ [depth map not defined, basic physical interaction vague]
+\change_unchanged
+.
+ 
+\change_inserted 1699939148 1515787662
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516604377
+The point in 3D can be estimated by triangulation of 2D projections from
+ two or more images, i.e with the known camera orientation, we can back-project
+ 2D points from images onto 3D environment and try to determine their intersecti
+on.
+ In order to achieve that we need find a set of points in one image which
+ can be identified as the same points in another image, this is called as
+ image correspondence.
+ 
+\change_inserted 1699939148 1515787680
+
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 1699939148 1515787697
+Maybe explain 3D reconstruction via triangulation
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_deleted 215191885 1516127400
+The core of the SfM involves solving the trigonometry [??? unclear what
+ trig?] on set of images from camera with unknown calibration to extract
+ the depth of an object [3d reconstruction explanation perhaps].
  The main requirement to do this is to find a correspondence between pair
- of images, traditionally this was done by feature extraction and matching
+ of images,
+\change_unchanged
+ 
+\change_inserted 215191885 1516127426
+T
+\change_deleted 215191885 1516127425
+t
+\change_unchanged
+raditionally this was done by feature extraction and matching
 \begin_inset CommandInset citation
 LatexCommand cite
 key "klein07parallel"
@@ -547,15 +814,157 @@ key "Engel2014"
 \end_inset
 
 , instead of features, the image intensities are used directly for matching.
- Once the correspondence are established, the Pose of the cameras are estimated
- by imposing the Epipolar constraint, now with the estimated camera pose
- the three-dimensional structure (depth) is computed.
+ Once the correspondence are established,
+\change_inserted 215191885 1516131443
+ the intersection between back-projected 3D points is estimated by minimize
+ the re-projection error, which is done by imposing the epipolar constraint,
+ which states that the image points and 3D points should be in a same plane.
+ In order to address the noise in estimating the correspondence, a Gaussian
+ model is assumed with zero mean, hence minimizing the re-projection error
+ gives the maximum likelihood estimate of 3D point.
+ 
+\change_deleted 215191885 1516128263
+ the Pose of the cameras are estimated by imposing the Epipolar constraint,
+ now with the estimated camera pose the three-dimensional structure (depth)
+ is computed.
+ 
+\change_inserted 215191885 1516165356
+On the other hand, with the known image correspondence and their 3D points,
+ we can estimate the camera pose and orientation with the similar procedure.
+ Where we try to solve for relative camera ordination which minimizes the
+ re-projection error between known 3D and 2D point.
  
 \end_layout
 
 \begin_layout Standard
-There mainly two variants of SfM, Incremental and Global SfM.Incremental
+
+\change_inserted 215191885 1516174146
+However, SfM is a chicken and egg problem with both depth and camera orientation
+ unknown.This again tries to minimize the re-projection error between the
+ observed 2D image points and predicted (re-projected) 2D image point,which
+ is expressed as the sum of squares of a large number of nonlinear, real-valued
+ functions.
+ Thus, the minimization is achieved using nonlinear least-squares algorithms
+ like Guass-Newton or Levenberg–Marquardt.
+ This process is also called as Bundle adjustment, as it is analogous to
+ the process of optimally adjusting bundles of light rays originating from
+ each 3D feature and converging them on each camera's optical center.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516173258
+Over the years many real time approaches have be suggested to tackle this
+ problem, and these approaches are broadly classified as Direct vs.
+ Indirect, Dense vs.
+ Sparse and Incremental vs.
+ Global methods.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516602673
+Direct vs.
+ Indirect: All the SfM approaches have a underlaying probabilistic model
+ in order to address the noise in measurements and camera representation,
+ which uses the Maximum Likelihood approach to maximize the probability
+ of obtaining the actual measurements, this differentiation of SfM is based
+ on how the probabilistic models are defined.
+ The direct method as the name specifies, directly uses the sensor values
+ (pixel values) – light received from a certain direction over a certain
+ time period – as as input for probabilistic model, hence this method tries
+ to minimize the photometric error.
+ This is analogous to the process of image alignment, whose goal is to minimize
+ the sum of squared error between two images, the template T and the image
+ I warped back onto the coordinate frame of the template.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516602980
+\begin_inset Formula 
+\begin{equation}
+\underset{x}{\sum}\left[I(\omega(x,p)-T(x)\right]^{2}\label{wraping function}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516603171
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "wraping function"
+
+\end_inset
+
+ is minimized with respect p, which in case of SFM are the camera orientation,
+ this minimization is a process of non linear optimization.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516640089
+On the other hand, the indirect method uses the intermediate representation
+ of sensor measurements as input for probabilistic model, the sensor values
+ can be either represented as sparse set feature key-points, this need a
+ efficient feature detectors like Scale Invariant Feature Transform (SIFT)
+ to find the valid the correspondence between images, and the methods like
+ Random Sample Consensus algorithm (RANSAC) are applied in order to avoid
+ the outliers.
+ An alternative to using key features, is to find the dense regularized
+ optical flow, which tries to match the selected points from one image to
+ another, assuming that both images are part of a sequence and relatively
+ close to one another.
+ Both this representation tries to minimize the geometric errors.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516640094
+Dense vs.
+ Sparse: As the name suggests the sparse methods uses only selected set
+ of independent points, where as dense methods attempt to use and reconstruct
+ all pixels in the 2D image domain.
+ On the same line there is a intermediate approaches (semi-dense) tries
+ to use the largely connected and well-constrained subset of points if not
+ all of them.
+ The choice of this method affects the addition of geometry prior, in the
+ sparse formulation, since there is no notion of neighborhood, and geometry
+ parameters (key-point positions) are conditionally independent.
+ Dense (or semi-dense) approaches on the other hand exploit the connectedness
+ of the used image region to formulate a geometry prior, typically favoring
+ smoothness.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516181853
+Incremental vs.
+ Global:
+\change_deleted 215191885 1516181838
+There mainly two variants of SfM, 
+\change_deleted 1699939148 1515787706
+I
+\change_deleted 215191885 1516181838
+incremental and 
+\change_deleted 1699939148 1515787709
+G
+\change_deleted 215191885 1516181838
+global
+\change_deleted 1699939148 1515787713
  SfM
+\change_deleted 215191885 1516181838
+.
+ 
+\change_unchanged
+Incremental SfM
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Snavely:2006:PTE:1141911.1141964"
@@ -565,20 +974,50 @@ key "Snavely:2006:PTE:1141911.1141964"
  begins by first estimating the 3D structure and camera poses of just two
  cameras based on their relative pose.
  Then additional cameras are added on incrementally and 3D structure is
- refined as new parts of the scene are observed.On the other hand Global
- SfM
+ refined as new parts of the scene are observed.
+
+\change_inserted 1699939148 1515787726
+ 
+\change_unchanged
+On the other hand 
+\change_deleted 1699939148 1515787728
+G
+\change_unchanged
+global SfM
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Wilson2014"
 
 \end_inset
 
- consider the entire problem at once,it tries to estimate the global camera
- poses and 3D structure by removing outliers and by applying averaging scheme.
+ considers the entire problem at once
+\change_deleted 1699939148 1515787735
+,
+\change_unchanged
+.
+ Here the objective is 
+\change_deleted 1699939148 1515787745
+it tries 
+\change_unchanged
+to estimate the global camera poses and 3D structure by removing outliers
+ and by applying an averaging scheme
+\change_inserted 1699939148 1515787760
+ [cite ???]
+\change_unchanged
+.
+
+\change_inserted 1699939148 1515787787
+ [why is this discussed? are their results different? is one of interest
+ to you?]
+\change_unchanged
  
+\change_inserted 215191885 1516640098
+[cited eariler][isn't the LSD a incremental method]
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516599029
 Over the years many approaches have be suggested to tackle this problem,
  one of them is the Parallel Tracking and Mapping (PTAM)
 \begin_inset CommandInset citation
@@ -588,15 +1027,33 @@ key "klein07parallel"
 \end_inset
 
 , it is a feature based system, here the tracking and mapping are split
- into two separate tasks, processed in parallel threads on dual core computer.
+ into two separate tasks, processed in parallel threads on dual core computer
+ [global or local?].
  The map is represented by a collection of point features located in a world
- coordinate frame W.
+ coordinate frame 
+\change_deleted 1699939148 1515787826
+W
+\change_deleted 215191885 1516599029
+
+\begin_inset Formula $W$
+\end_inset
+
+.
  These points feature represents a locally planar textured patch in the
  world, each point has coordinates in world frame, an unit patch normal
  and a reference to the patch source pixels.
- The map also contains N key frames, each key frame has an associated camera-cen
-ter coordinate frame and the transformation between the frames and also
- stores a four level pyramid of gray-scale 8bpp images.
+ The map also contains 
+\change_deleted 1699939148 1515787809
+N
+\change_deleted 215191885 1516599029
+
+\begin_inset Formula $N$
+\end_inset
+
+ [use math font for variables] key frames, each key frame has an associated
+ camera-center coordinate frame and the transformation between the frames
+ and also stores a four level pyramid of gray-scale 8bpp (bits-per-pixel)
+ images.
  The tracking is a two-stage process done from coarse-to-fine,when the new
  image is acquired, an initial coarse search searches only for 50 map points
  which appear at the highest levels of the current frame’s image pyramid,
@@ -613,6 +1070,8 @@ ter coordinate frame and the transformation between the frames and also
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516599029
 \begin_inset Formula 
 \[
 \mu^{\prime}=\underset{\mu}{argmin}\underset{j\in s}{\sum}Obj\left(\frac{\left\Vert e_{j}\right\Vert }{\sigma_{j}},\sigma_{T}\right)
@@ -624,6 +1083,8 @@ ter coordinate frame and the transformation between the frames and also
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516599029
 Where 
 \begin_inset Formula $e_{j}$
 \end_inset
@@ -632,6 +1093,8 @@ is the re-projection error vector:
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516599029
 \begin_inset Formula 
 \[
 e_{j}=\left(\begin{array}{c}
@@ -646,6 +1109,8 @@ e_{j}=\left(\begin{array}{c}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516599029
 \begin_inset Formula $Obj(.,\sigma_{T})$
 \end_inset
 
@@ -655,9 +1120,13 @@ e_{j}=\left(\begin{array}{c}
 
  a robust (median-based) estimate of the distribution’s standard deviation
  derived from all the residuals.
+ [why are you talking about PTAM? is it related to your thesis? what is
+ your research here?]
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516599029
 Associated with the the key-frame in the map is a set 
 \begin_inset Formula $S_{i}$
 \end_inset
@@ -698,6 +1167,8 @@ Associated with the the key-frame in the map is a set
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516599029
 \begin_inset Formula 
 \[
 \left\{ \left\{ \mu_{2..}\mu_{N}\right\} ,\left\{ p_{1}^{\prime}..p_{M}^{\prime}\right\} \right\} =\underset{\{\{\mu\},\{p\}\}}{argmin}\stackrel[i=1]{N}{\sum}\underset{j\in s}{\sum}Obj\left(\frac{\left\Vert e_{ji}\right\Vert }{\sigma_{ji}},\sigma_{T}\right)
@@ -705,6 +1176,8 @@ Associated with the the key-frame in the map is a set
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -716,15 +1189,36 @@ key "Engel2014"
 
 \end_inset
 
- on the other hand is the direct method, this circumvent the drawback of
- PTAM, which is a feature base method and only the information that conforms
- to the feature type can be used.
- LSD LSD SLAM on the other hand optimizes the geometry directly on the image
- intensities, which enables using all information in the image.In addition
- to higher accuracy and robustness in particular in environments with little
- key-points, this provides substantially more information about the geometry
- of the environment.Images are aligned by Gauss -Newton minimization of the
- photometric error.
+
+\change_deleted 215191885 1516608635
+ on the other hand
+\change_unchanged
+ is 
+\change_deleted 215191885 1516599097
+the
+\change_unchanged
+ 
+\change_inserted 215191885 1516599196
+a semi-dense, 
+\change_unchanged
+direct method
+\change_inserted 1699939148 1515788014
+ [you have not defined sparse methods, dense methods, direct methods, or
+ indirect methods do this in a review of approaches above – similar to that
+ from Direct Sparse Odometry article (https://arxiv.org/pdf/1607.02565.pdf)
+ from TUM]
+\change_inserted 215191885 1516608663
+ [have done changes]
+\change_deleted 215191885 1516599158
+, this circumvent the drawback of PTAM, which is a feature base method and
+ only the information that conforms to the feature type can be used.
+ LSD LSD SLAM on the other hand
+\change_unchanged
+ optimizes the geometry directly on the image intensities, which enables
+ using all information in the image.In addition to higher accuracy and robustness
+ in particular in environments with little key-points, this provides substantial
+ly more information about the geometry of the environment.Images are aligned
+ by Gauss -Newton minimization of the photometric error.
 \end_layout
 
 \begin_layout Standard
@@ -763,7 +1257,23 @@ Where
 \end_inset
 
  is computed for each iteration by solving for the minimum of Gauss-Newton
- second-order approximation of E:
+ second-order approximation of 
+\change_deleted 1699939148 1515788038
+E
+\change_inserted 1699939148 1515788038
+
+\begin_inset Formula $E$
+\end_inset
+
+
+\change_unchanged
+:
+\change_inserted 1699939148 1515788112
+ [no description of image warping needed here, briefly discuss image warping
+ for direct methods as a methods for image pixel matching see Baker2004
+ http://www.ncorr.com/download/publications/bakerunify.pdf]
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -814,9 +1324,14 @@ The overall system is composed of three major components, tracking, depth
 
 \begin_layout Standard
 The tracking component continuously estimates the rigid body pose with respect
- to the current keyframe, using the pose of the previous frame as initialization.
-LSD slam tracks new frame by minimizing the variance-normalized photometric
- error
+ to the current 
+\change_deleted 215191885 1516608687
+keyframe
+\change_inserted 215191885 1516608687
+key-frame
+\change_unchanged
+, using the pose of the previous frame as initialization.LSD slam tracks
+ new frame by minimizing the variance-normalized photometric error
 \end_layout
 
 \begin_layout Standard
@@ -930,8 +1445,11 @@ Rigid Body Motion
 One of the goals of SfM it to estimate the Camera trajectory, which is a
  rigid body motion.
  We need an efficient model to represent and compute this rigid body motion.
- The camera position is represented by a 3D Vector in an Euclidean Space,
- this camera position is chosen to represent the world frame and specify
+ The camera position is represented by a 3D Vector in an Euclidean 
+\change_deleted 1699939148 1515788126
+S
+\change_unchanged
+space, this camera position is chosen to represent the world frame and specify
  the translation and rotation of the scene relative to that frame.
  The rigid body motion itself is composed of a rotation and translation.
  
@@ -1155,6 +1673,38 @@ R & T\\
 \end_inset
 
 
+\change_inserted 215191885 1516636715
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516638341
+Finally, one other dimension we could consider is the scale, this can represente
+d by a Similarity transformation 
+\begin_inset Formula $Sim(3)$
+\end_inset
+
+, which is the composition of a rotation, translation and a uniform rescaling,
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516637515
+\begin_inset Formula 
+\[
+Sim(3)=\{\bar{g}=\left[\begin{array}{cc}
+R & T\\
+0 & s^{-1}
+\end{array}\right]\mid R\in SO(3),T\in R^{3},s\in R\}\subset\mathbb{R}^{4\times4}
+\]
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -1196,9 +1746,237 @@ The special orthogonal group in three dimensions can be represented by a
 
  should be only three, and six parameters out of the nine are in fact redundant.W
 e can use this to have better representation of Rigid body motion.
+\change_inserted 215191885 1516614036
+
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 215191885 1516618836
+The 
+\begin_inset Formula $SO(3)$
+\end_inset
+
+, 
+\begin_inset Formula $SE(3)$
+\end_inset
+
+ and 
+\begin_inset Formula $SIM(3)$
+\end_inset
+
+are categorized under the special group called the Lie group, which represents
+ the smooth differentiable manifolds.
+ Every Lie group has a tangent space at identity called the Lie algebra,
+ which is a vector space used to study the infinitesimal transformations.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516618136
+For rotation group 
+\begin_inset Formula $SO(3)$
+\end_inset
+
+ its lie algebra 
+\begin_inset Formula $so(3)$
+\end_inset
+
+ is represented by
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516619360
+\begin_inset Formula 
+\[
+so(3)\doteq\left\{ \hat{\omega}\in\mathbb{R}^{3\times3}\mid\omega\in\mathbb{R}^{3}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516619394
+where 
+\begin_inset Formula $\hat{\omega}$
+\end_inset
+
+is a skew symmetric matrix for the vector 
+\begin_inset Formula $\omega$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516618683
+The map from the space 
+\begin_inset Formula $so(3)$
+\end_inset
+
+ to 
+\begin_inset Formula $SO(3)$
+\end_inset
+
+ is called the exponential map.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516618685
+\begin_inset Formula 
+\[
+exp:so(3)\rightarrow SO(3);\hat{\omega}\mapsto e^{\hat{\omega}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516618599
+\begin_inset Formula 
+\begin{equation}
+R(t)=e^{\hat{\omega}t}\label{exp map for so(3)}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516619295
+The equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exp map for so(3)"
+
+\end_inset
+
+ represents a rotation around the axis 
+\begin_inset Formula $\omega\in\mathbb{R}^{3}$
+\end_inset
+
+ by an angle of 
+\begin_inset Formula $t$
+\end_inset
+
+ radians.
+ And the inverse mapping is obtained by logarithm of SO(3)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516618286
+\begin_inset Formula 
+\[
+log:SO(3)\rightarrow so(3);log(R)\mapsto\hat{\omega}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516618390
+We can extend this to full rigid body motion which also involves the translation
+ along with the rotation, for rotation group 
+\begin_inset Formula $SE(3)$
+\end_inset
+
+ its lie algebra 
+\begin_inset Formula $se(3)$
+\end_inset
+
+ is represented by .
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516618391
+\begin_inset Formula 
+\[
+se(3)\doteq\left\{ \hat{\xi}=\left[\begin{array}{cc}
+\hat{\omega} & \upsilon\\
+0 & 0
+\end{array}\right]\mid\hat{\omega}\in so(3),\upsilon\in\mathbb{R}^{3}\right\} \subset\mathbb{R}^{4\times4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516618477
+with 
+\begin_inset Formula $\upsilon(t)=\dot{T}(t)-\hat{\omega}(t)T(t)\in\mathbb{R}^{3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516618546
+Similarly, the exponential map from the space 
+\begin_inset Formula $se(3)$
+\end_inset
+
+ to 
+\begin_inset Formula $SE(3)$
+\end_inset
+
+is given by
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516618478
+\begin_inset Formula 
+\[
+exp:se(3)\rightarrow SE(3);\hat{\xi}\mapsto e^{\hat{\xi}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516618478
+and as before inverse to the exponential map is defined by logarithm 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1516639609
+\begin_inset Formula 
+\[
+log:SE(3)\rightarrow se(3);log(g)\mapsto\hat{\xi}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 215191885 1516618781
 We know that the continuous rotational motion represented by 
 \begin_inset Formula $R(t):R\in SO(3)$
 \end_inset
@@ -1207,6 +1985,8 @@ We know that the continuous rotational motion represented by
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618781
 \begin_inset Formula 
 \[
 R(t)R^{T}(t)=I
@@ -1218,10 +1998,14 @@ R(t)R^{T}(t)=I
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618781
 Differentiating the above equation with respect to time t gives
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618781
 \begin_inset Formula 
 \[
 \dot{R}(t)R^{T}(t)+R(t)\dot{R}^{T}(t)=0
@@ -1233,6 +2017,8 @@ Differentiating the above equation with respect to time t gives
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618781
 \begin_inset Formula 
 \[
 \dot{R}(t)R^{T}(t)=-(\dot{R}(t)R^{T}(t))^{T}
@@ -1244,6 +2030,8 @@ Differentiating the above equation with respect to time t gives
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618781
 This shows that the matrix 
 \begin_inset Formula $\dot{R}(t)R^{T}(t)\in\mathbb{R}^{3\times3}$
 \end_inset
@@ -1257,6 +2045,8 @@ is a skew-symmetric matrix.This implies that there must exist a vector, say
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618781
 \begin_inset Formula 
 \begin{equation}
 \dot{R}(t)R^{T}(t)=\hat{\omega}(t)\label{eq:3-1}
@@ -1268,6 +2058,8 @@ is a skew-symmetric matrix.This implies that there must exist a vector, say
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618781
 Multiplying both sides by 
 \begin_inset Formula $R(t)$
 \end_inset
@@ -1276,6 +2068,8 @@ Multiplying both sides by
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618781
 \begin_inset Formula 
 \begin{equation}
 \dot{R}(t)=\hat{\omega}(t)R(t)\label{eq:3}
@@ -1287,6 +2081,8 @@ Multiplying both sides by
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618781
 In above equation, if 
 \begin_inset Formula $R(t_{0})=I$
 \end_inset
@@ -1305,6 +2101,8 @@ In above equation, if
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618781
 \begin_inset Formula 
 \[
 R(t_{0}+dt)\thickapprox I+\hat{\omega}(t_{0})dt
@@ -1316,6 +2114,8 @@ R(t_{0}+dt)\thickapprox I+\hat{\omega}(t_{0})dt
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618781
 This space of all skew-symmetric matrix represents the tangent space of
  the rotation group 
 \begin_inset Formula $SO(3)$
@@ -1329,6 +2129,8 @@ This space of all skew-symmetric matrix represents the tangent space of
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618781
 \begin_inset Formula 
 \[
 so(3)\doteq\left\{ \hat{\omega}\in\mathbb{R}^{3\times3}\mid\omega\in\mathbb{R}^{3}\right\} 
@@ -1340,8 +2142,14 @@ so(3)\doteq\left\{ \hat{\omega}\in\mathbb{R}^{3\times3}\mid\omega\in\mathbb{R}^{
 \end_layout
 
 \begin_layout Standard
-Once we have so(3), we need a way to map SO(3) to so(3),It is obvious that
- the solution for 
+
+\change_deleted 215191885 1516618781
+Once we have so(3), we need a way to map SO(3) to so(3).
+ 
+\change_deleted 1699939148 1515788165
+,
+\change_deleted 215191885 1516618781
+It is obvious that the solution for 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:3"
@@ -1353,9 +2161,26 @@ reference "eq:3"
 \end_inset
 
 , where
+\change_inserted 1699939148 1515788319
+ [THIS IS TOO SIMILAR to source work elsewhere, bordering on plagiarism
+ – REMOVE!, you should not be going into this much detail for the differential
+ properties of rotations as this is not something you are comfortable with,
+ write down the most important relationships, i.e., the differential of the
+ rotation and why you need it for SfM, you will want to define sim3 transforms
+ and how they are distinct from se3 transforms then leave this topic]
+\change_inserted 215191885 1516640005
+ [I wrote this, because I had done some study on exponential map between
+ lie group and lie algebra and vis versa, I was hoping to keep this, but
+ let me know your thoughts ] [exponential map of SIM(3) is way too complicated
+ and I am working on it, I will incorporate it going forward.
+ ]
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 \begin_inset Formula 
 \[
 e^{\hat{\omega}t}=I+\hat{\omega}t+\frac{(\hat{\omega}t)^{2}}{2!}+\cdots+\frac{(\hat{\omega}t)^{n}}{n!}+\cdots
@@ -1367,10 +2192,14 @@ e^{\hat{\omega}t}=I+\hat{\omega}t+\frac{(\hat{\omega}t)^{2}}{2!}+\cdots+\frac{(\
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 Hence, we have 
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 \begin_inset Formula 
 \begin{equation}
 R(t)=e^{\hat{\omega}t}\label{eq:4}
@@ -1382,6 +2211,8 @@ R(t)=e^{\hat{\omega}t}\label{eq:4}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 The above equation represents a rotation around the axis 
 \begin_inset Formula $\omega\in\mathbb{R}^{3}$
 \end_inset
@@ -1402,6 +2233,8 @@ The above equation represents a rotation around the axis
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 \begin_inset Formula 
 \[
 exp:so(3)\rightarrow SO(3);\hat{\omega}\mapsto e^{\hat{\omega}}
@@ -1413,10 +2246,14 @@ exp:so(3)\rightarrow SO(3);\hat{\omega}\mapsto e^{\hat{\omega}}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 And the inverse mapping is obtained by logarithm of SO(3)
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 \begin_inset Formula 
 \[
 log:SO(3)\rightarrow so(3);log(R)\mapsto\hat{\omega}
@@ -1428,6 +2265,8 @@ log:SO(3)\rightarrow so(3);log(R)\mapsto\hat{\omega}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 We can extend this to full rigid body motion which also involves the translation
  along with the rotation.From 
 \begin_inset CommandInset ref
@@ -1440,6 +2279,8 @@ reference "eq:2"
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 \begin_inset Formula 
 \[
 g(t)=\left[\begin{array}{cc}
@@ -1454,10 +2295,14 @@ R(t) & T(t)\\
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 With above representation, we have
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 \begin_inset Formula 
 \[
 \dot{g}(t)g^{-1}(t)=\left[\begin{array}{cc}
@@ -1472,6 +2317,8 @@ With above representation, we have
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 with 
 \begin_inset Formula $\upsilon(t)=\dot{T}(t)-\hat{\omega}(t)T(t)\in\mathbb{R}^{3}$
 \end_inset
@@ -1487,6 +2334,8 @@ reference "eq:3-1"
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 \begin_inset Formula 
 \begin{equation}
 \hat{\xi(t)}=\left[\begin{array}{cc}
@@ -1501,10 +2350,14 @@ reference "eq:3-1"
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 then we have
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 \begin_inset Formula 
 \[
 \dot{g}(t)=(\dot{g}(t)g^{-1}(t))g(t)=\hat{\xi(t)}g(t)
@@ -1516,6 +2369,8 @@ then we have
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 where 
 \begin_inset Formula $\hat{\xi}$
 \end_inset
@@ -1524,6 +2379,8 @@ where
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 \begin_inset Formula 
 \[
 g(t+dt)\approx g(t)+\hat{\xi(t)}g(t)d(t)=(I+\hat{\xi(t)}dt)g(t)
@@ -1535,11 +2392,15 @@ g(t+dt)\approx g(t)+\hat{\xi(t)}g(t)d(t)=(I+\hat{\xi(t)}dt)g(t)
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 Also the twist represent the tangent space (or Lie algebra) of the matrix
  group SE(3).
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 \begin_inset Formula 
 \[
 se(3)\doteq\left\{ \hat{\xi}=\left[\begin{array}{cc}
@@ -1554,6 +2415,8 @@ se(3)\doteq\left\{ \hat{\xi}=\left[\begin{array}{cc}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 Similar 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1570,6 +2433,8 @@ we have
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 \begin_inset Formula 
 \[
 g(t)=e^{\hat{\xi}t}
@@ -1581,10 +2446,14 @@ g(t)=e^{\hat{\xi}t}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 where
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 \begin_inset Formula 
 \[
 e^{\hat{\xi}t}=I+\hat{\xi}t+\frac{(\hat{\xi}t)^{2}}{2!}+\cdots+\frac{(\hat{\xi}t)^{n}}{n!}+\cdots
@@ -1596,6 +2465,8 @@ e^{\hat{\xi}t}=I+\hat{\xi}t+\frac{(\hat{\xi}t)^{2}}{2!}+\cdots+\frac{(\hat{\xi}t
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 This defines the the exponential map from the space 
 \begin_inset Formula $se(3)$
 \end_inset
@@ -1608,6 +2479,8 @@ This defines the the exponential map from the space
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 \begin_inset Formula 
 \[
 exp:se(3)\rightarrow SE(3);\hat{\xi}\mapsto e^{\hat{\xi}}
@@ -1619,10 +2492,14 @@ exp:se(3)\rightarrow SE(3);\hat{\xi}\mapsto e^{\hat{\xi}}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 and as before inverse to the exponential map is defined by logarithm 
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1516618794
 \begin_inset Formula 
 \[
 log:SE(3)\rightarrow se(3);log(g)\mapsto\hat{\xi}
@@ -1630,6 +2507,8 @@ log:SE(3)\rightarrow se(3);log(g)\mapsto\hat{\xi}
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -1656,6 +2535,8 @@ d by the geometry of the lens.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 1699939148 1515788341
 \begin_inset Graphics
 	filename images/thin_lens_Cam.png
 	width 8cm
@@ -1663,6 +2544,58 @@ d by the geometry of the lens.
 
 \end_inset
 
+
+\change_inserted 1699939148 1515788341
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 1699939148 1515788341
+\begin_inset Graphics
+	filename images/thin_lens_Cam.png
+	lyxscale 25
+	width 8cm
+	height 6cm
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 1699939148 1515788341
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1516609076
+Thin lens camera model 
+\change_deleted 215191885 1516609014
+Put caption here explain variables and what I'm looking at
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -1704,6 +2637,8 @@ For the simplification of calculation, we consider a Ideal camera model
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 1699939148 1515788385
 \begin_inset Graphics
 	filename images/pinhole_cam.png
 	width 8cm
@@ -1711,6 +2646,57 @@ For the simplification of calculation, we consider a Ideal camera model
 
 \end_inset
 
+
+\change_inserted 1699939148 1515788385
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 1699939148 1515788385
+\begin_inset Graphics
+	filename images/pinhole_cam.png
+	width 8cm
+	height 6cm
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 1699939148 1515788385
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1516609093
+Pin-hole camera model 
+\change_deleted 215191885 1516609091
+Caption here
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -1737,6 +2723,12 @@ y=-f\frac{Y}{Z}\label{eq:pinhole camera y}
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 1699939148 1515788416
+[write projection as a matrix transform similar to ROS]
+\change_inserted 215191885 1516611116
+[have it represented below]
+\change_unchanged
 This mapping of 3D point to 2D is called projection and is represented by
  
 \begin_inset Formula $\pi$
@@ -2304,6 +3296,16 @@ By multiplying both the side by
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 215191885 1516609203
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1516609303
 \begin_inset Graphics
 	filename images/epipolar_geo.png
 	width 8cm
@@ -2311,6 +3313,47 @@ By multiplying both the side by
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1516609203
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1516609245
+Epipolar geometry
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\change_deleted 215191885 1516609323
+
+\begin_inset Graphics
+	filename images/epipolar_geo.png
+	width 8cm
+	height 6cm
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 

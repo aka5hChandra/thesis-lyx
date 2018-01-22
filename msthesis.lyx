@@ -3230,7 +3230,11 @@ X_{2}=RX_{1}+T
 
 \end_inset
 
-Now,let 
+Now,
+\change_inserted 1699939148 1516645619
+ 
+\change_unchanged
+let 
 \begin_inset Formula $x_{1},x_{2}\in\mathbb{R}^{3}$
 \end_inset
 

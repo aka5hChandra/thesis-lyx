@@ -657,6 +657,35 @@ bodychapterformat
 
 \begin_layout Chapter
 INTRODUCTION
+\change_inserted 215191885 1517257438
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1517282111
+The RGB-D camera captures depth information along with the RGB color information
+ for every pixel.
+ These cameras have the projector to projects and sensors to capture the
+ infrared light.
+ The depth informations can be obtained mainly by two different approaches,
+ one is by projecting the known pattern of infrared light speckles and analyzing
+ the deformation of light reflected back by the object, this method is called
+ the structured light method and in another approach the depths are calculated
+ by measuring the time taken by the infrared ray to reflect back to the
+ sensors, this is called the Time-of-Flight technology.
+ In both the case the infrared rays are play a crucial role, however the
+ limitations of RGB-D camera it that it fails to work outdoor because of
+ whitewash of infrared rays from sun, even indoor the RGB-D fails around
+ the transparent and specular objects with high reflective index.
+ We propose a method to take advantage of the Structure from Motion(SfM)
+ to estimate depth of scene whenever the RGB-D fails to provide the required
+ depth.
+ The partial depths provided by the RGB-D camera can be used as a ground
+ truth to jump-start the SfM, also these ground truth depths helps estimate
+ the scale of the environment which is otherwise not possible with the SFM
+ alone.
+ The synergy of RGB-D and SfM provide better depth estimation.
 \end_layout
 
 \begin_layout Standard
@@ -731,8 +760,8 @@ using only the inputs of cameras attached to it
 lost 
 \change_unchanged
 depth
-\change_inserted 215191885 1516122769
-s of the environment from images
+\change_inserted 215191885 1517275359
+s of the objects from images
 \change_deleted 215191885 1516122760
  maps of the scene
 \change_unchanged
@@ -1435,9 +1464,19 @@ Structure from motions (SfM) is the process of triangulating the three-dimension
 al structure from two-dimensional images, along with estimating the motion
  of camera (visual odometer), hence it is some time called as Visual SLAM.
  
+\change_inserted 215191885 1517228302
+
 \end_layout
 
 \begin_layout Section
+
+\change_inserted 215191885 1517228310
+Tracking
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
 Rigid Body Motion
 \end_layout
 
@@ -1707,7 +1746,7 @@ R & T\\
 
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Exponential Map
 \end_layout
 
@@ -2508,11 +2547,66 @@ log:SE(3)\rightarrow se(3);log(g)\mapsto\hat{\xi}
 \end_inset
 
 
-\change_unchanged
+\change_inserted 215191885 1517225203
 
 \end_layout
 
+\begin_layout Subsection
+
+\change_inserted 215191885 1517225217
+Visual Odometry
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1517226120
+The trajectory of camera is determined by the process of direct image alignment,
+ i.e as mentioned earlier the direct method tries to minimize the photometric
+ error between image pixels directly to to find the relative pose 
+\begin_inset Formula $\xi\in SIM(3)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1517226623
+\begin_inset Formula 
+\begin{equation}
+E(\xi)=\sum I_{ref}(p)-I(\pi(\xi\pi^{-1}(p,D_{ref}(p)))^{2}\label{eq:Direct image alignment}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1517231831
+This is a iterative process of finding the pose 
+\begin_inset Formula $\xi$
+\end_inset
+
+ by solving the above non-linear equation by using either Guass-Newton or
+ Levenberg-Marquardt algorithm.
+ The algorithm needs the reference depth to un-project the 2d image points
+ to 3d points (i.e to construct the point cloud), these depth are estimated
+ by the processes of mapping.
+ The constructed point cloud is aligned to current estimate of the pose
+ and reprojected back to reference image to find the photometric error,
+ this process is repeated until the error converges.
+\end_layout
+
 \begin_layout Section
+
+\change_inserted 215191885 1517228347
+Depth Mapping
+\end_layout
+
+\begin_layout Subsection
 Camera model
 \end_layout
 
@@ -3194,9 +3288,11 @@ are the coefficients of radial distortion and
 \end_inset
 
  is the radius of the radial distortion.
+\change_inserted 215191885 1517237472
+
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Epipolar geometry
 \end_layout
 
@@ -3230,11 +3326,7 @@ X_{2}=RX_{1}+T
 
 \end_inset
 
-Now,
-\change_inserted 1699939148 1516645619
- 
-\change_unchanged
-let 
+Now,let 
 \begin_inset Formula $x_{1},x_{2}\in\mathbb{R}^{3}$
 \end_inset
 
@@ -3650,7 +3742,7 @@ With
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection
 Structure Reconstruction
 \end_layout
 
@@ -4055,6 +4147,8 @@ this modification is a hybrid between the Newton method
 \begin_inset Formula $\lambda\longrightarrow\infty$
 \end_inset
 
+
+\change_inserted 215191885 1517139592
 
 \end_layout
 

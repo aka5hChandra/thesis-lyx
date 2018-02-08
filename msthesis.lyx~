@@ -663,23 +663,21 @@ INTRODUCTION
 
 \begin_layout Standard
 
-\change_inserted 215191885 1518047239
+\change_inserted 215191885 1518044516
 The RGB-D camera captures depth information along with the RGB color information
  for every pixel.
  These cameras capture depth by using infrared rays, they have the projector
  to projects and sensors to capture the infrared light.
- The depth informations can be obtained mainly by two different approaches:
- The first approach is called the structured light method where we project
- the known pattern of infrared light speckles and analyze the deformation
- of light reflected back by the object.
- In the second approach, the depths are calculated by measuring the time
- taken by the infrared ray to reflect back to the sensors, and is called
- the Time-of-Flight technology.
- In both the cases, the infrared rays play a crucial role.
- However the one of the limitations of RGB-D camera is that it fails to
- work outdoors because of flooding of infrared rays from sun.
- Additionally, when it comes to transparent and specular objects with high
- reflective index, the RGB-D camera fails indoors as well.
+ The depth informations can be obtained mainly by two different approaches,
+ one is by projecting the known pattern of infrared light speckles and analyzing
+ the deformation of light reflected back by the object, this method is called
+ the structured light method and in another approach the depths are calculated
+ by measuring the time taken by the infrared ray to reflect back to the
+ sensors, this is called the Time-of-Flight technology.
+ In both the case the infrared rays are play a crucial role, however the
+ limitations of RGB-D camera it that it fails to work outdoor because of
+ whitewash of infrared rays from sun, even indoor the RGB-D fails around
+ the transparent and specular objects with high reflective index.
  We propose a method to take advantage of the Structure from Motion(SfM)
  to estimate depth of scene whenever the RGB-D fails to provide the required
  depth.

@@ -162,7 +162,13 @@ doctype{thesis}
 
 
 \backslash
-title{Structure From Motion}
+title{
+\change_deleted 215191885 1521733925
+Structure From Motion
+\change_inserted 215191885 1521733925
+Structure-From-Motion and RGBD Depth Fusion
+\change_unchanged
+}
 \end_layout
 
 \begin_layout Plain Layout
@@ -208,6 +214,12 @@ status open
 \backslash
 advisor{Dr.
  Andrew Willis}
+\change_inserted 215191885 1521524005
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -232,14 +244,20 @@ advisor{Dr.
 
 \begin_layout Plain Layout
 
+\change_inserted 215191885 1521524112
+
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 215191885 1521524116
 
 
 \backslash
 committeeMember{Dr.
  Min Shin}
+\change_unchanged
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -247,7 +265,27 @@ committeeMember{Dr.
 
 \backslash
 committeeMember{Dr.
- Jianping Fan}
+ 
+\change_deleted 215191885 1521523590
+Min Shin
+\change_inserted 215191885 1521523595
+Srinivas Akella
+\change_unchanged
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+committeeMember{Dr.
+ 
+\change_deleted 215191885 1521523646
+Jianping Fan
+\change_inserted 215191885 1521523647
+Hamed Tabkhi
+\change_unchanged
+}
 \end_layout
 
 \begin_layout Plain Layout
@@ -288,60 +326,56 @@ makecopyright
 \end_layout
 
 \begin_layout Abstract
+
+\change_deleted 215191885 1521734264
 The Structure from 
 \change_deleted 1699939148 1515786609
 m
-\change_unchanged
+\change_deleted 215191885 1521734264
 Motion (SfM) systems use knowledge of a camera's image formation model and
  a time-sequence of images from the camera to estimate camera motion and
  3D scene structure.
 \change_deleted 1699939148 1515786717
 involves two aspects, one is to track the camera
-\change_unchanged
+\change_deleted 215191885 1521734264
  Formulations of this problem decompose the problem into two sub-problems:
  
 \change_deleted 1699939148 1515786757
 trajectory by 
-\change_unchanged
+\change_deleted 215191885 1521734264
  (1) solving for
 \change_deleted 1699939148 1515786772
 ing
-\change_inserted 1699939148 1515786773
-e
-\change_unchanged
- 
+\change_deleted 215191885 1521734264
+e 
 \change_deleted 1699939148 1515786851
 nonlinear
-\change_unchanged
-the camera trajectory
-\change_deleted 215191885 1516118794
- 
+\change_deleted 215191885 1521734264
+the camera trajectory 
 \change_deleted 1699939148 1515786856
  equation
-\change_unchanged
+\change_deleted 215191885 1521734264
  and 
 \change_deleted 1699939148 1515786861
 other is to
-\change_unchanged
-solving for
-\change_deleted 215191885 1516118794
- 
+\change_deleted 215191885 1521734264
+solving for 
 \change_deleted 1699939148 1515786868
  estimate
-\change_unchanged
+\change_deleted 215191885 1521734264
  the depth of 3D scene points observed by the camera in multiple images.
  Solutions are provided by 
 \change_deleted 1699939148 1515786913
 by solving
-\change_unchanged
+\change_deleted 215191885 1521734264
  finding 
 \change_deleted 1699939148 1515786917
 Stereo 
-\change_unchanged
+\change_deleted 215191885 1521734264
 correspondences between 
 \change_deleted 1699939148 1515786923
 of sub-set of 
-\change_unchanged
+\change_deleted 215191885 1521734264
 
 \begin_inset Formula $(x,y)$
 \end_inset
@@ -349,101 +383,123 @@ of sub-set of
  locations
 \change_deleted 1699939148 1515787163
 pixels
-\change_unchanged
+\change_deleted 215191885 1521734264
  in images take from different poses taken at distinct times in the camera
  trajectory.
  
 \change_deleted 1699939148 1515786976
 The t
-\change_unchanged
+\change_deleted 215191885 1521734264
 Traditional SfM
 \change_deleted 1699939148 1515786982
 Structure From Motion
-\change_unchanged
+\change_deleted 215191885 1521734264
  
 \change_deleted 1699939148 1515786986
 functions by 
-\change_unchanged
+\change_deleted 215191885 1521734264
 find
 \change_deleted 1699939148 1515786988
 ing
-\change_unchanged
- these correspondence
-\change_inserted 1699939148 1515786991
-s
-\change_unchanged
- 
+\change_deleted 215191885 1521734264
+ these correspondences 
 \change_deleted 1699939148 1515786994
 between pair of images,
-\change_unchanged
+\change_deleted 215191885 1521734264
  by extracting and tracking 
 \change_deleted 1699939148 1515786999
 the 
-\change_unchanged
+\change_deleted 215191885 1521734264
 features
 \change_deleted 1699939148 1515787197
  like
-\change_unchanged
+\change_deleted 215191885 1521734264
 , e.g., corner points, 
 \change_deleted 1699939148 1515787229
 lines etc
-\change_unchanged
+\change_deleted 215191885 1521734264
 match local regions within images.
  However, these 
 \change_deleted 1699939148 1515787268
 features
-\change_unchanged
+\change_deleted 215191885 1521734264
 approaches 
 \change_deleted 1699939148 1515787017
 do not necessarily 
-\change_unchanged
+\change_deleted 215191885 1521734264
 provide very sparse geometric descriptions of the scene structure and omit
  much of
 \change_deleted 1699939148 1515787046
 all
-\change_unchanged
+\change_deleted 215191885 1521734264
  the geometric information 
 \change_deleted 1699939148 1515787052
 regarding
-\change_unchanged
+\change_deleted 215191885 1521734264
 in the image.
  
 \change_deleted 1699939148 1515787057
 The 
-\change_unchanged
+\change_deleted 215191885 1521734264
 Other 
 \change_deleted 1699939148 1515787062
 more accurate method
-\change_unchanged
+\change_deleted 215191885 1521734264
 , semi-dense, approaches 
 \change_deleted 1699939148 1515787072
 is to 
-\change_unchanged
+\change_deleted 215191885 1521734264
 attempt to find large collections of correspondences by solving for pixel-level
 \change_deleted 1699939148 1515787101
 use the pixel intensity itself
-\change_unchanged
+\change_deleted 215191885 1521734264
  correspondences which provide more geometric information about the scene.
  Unfortunately, unlike features, pixel values may are susceptible to viewpoint,
  illumination, and other image formation phenomena which requires semi-dense
  approaches to
 \change_deleted 1699939148 1515787356
 to minimize
-\change_unchanged
+\change_deleted 215191885 1521734264
  consider 
 \change_deleted 1699939148 1515787363
 the P
-\change_unchanged
+\change_deleted 215191885 1521734264
 photometric 
 \change_deleted 1699939148 1515787370
 and
-\change_unchanged
+\change_deleted 215191885 1521734264
 correction 
 \change_deleted 1699939148 1515787380
 Geometric errors, by defining the robust error functions.
-\change_unchanged
+\change_deleted 215191885 1521734264
 in order to robustly determine correspondences.
  
+\change_inserted 215191885 1521734267
+
+\end_layout
+
+\begin_layout Abstract
+
+\change_inserted 215191885 1521734449
+This article describes a technique to augment a typical RGBD sensor by integrati
+ng depth estimates obtained via Structure-from-Motion (SfM) with depth measureme
+nts from an RGBD sensor.
+ Limitations in the RGBD depth sensing technology prevent capturing depth
+ measurements in four important contexts: (1) distant surfaces (>5m), (2)
+ dark surfaces, (3) brightly lit indoor scenes and (4) sunlit outdoor scenes.
+ SfM technology computes depth via multi-view reconstruction from the RGB
+ image sequence alone.
+ As such, SfM depth estimates do not suffer the same limitations and may
+ be computed in all four of the previously listed circumstances.
+ This work describes a novel fusion of RGBD depth data and SfM-estimated
+ depths to generate an improved depth stream that may be processed by one
+ of many important downstream applications such as robot localization, robot
+ mapping, robot navigation, object tracking, pose estimation, and object
+ recognition.This approach is demonstrated on sequences of images that transition
+ from indoor scenes, where the RGBD depth sensor can function, to outdoor
+ scenes, where the RGBD depth sensor fails.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Acknowledgements
@@ -657,144 +713,524 @@ bodychapterformat
 
 \begin_layout Chapter
 INTRODUCTION
-\change_inserted 215191885 1517257438
+\change_inserted 215191885 1521736201
 
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 215191885 1518044516
-The RGB-D camera captures depth information along with the RGB color information
- for every pixel.
- These cameras capture depth by using infrared rays, they have the projector
- to projects and sensors to capture the infrared light.
- The depth informations can be obtained mainly by two different approaches,
- one is by projecting the known pattern of infrared light speckles and analyzing
- the deformation of light reflected back by the object, this method is called
- the structured light method and in another approach the depths are calculated
- by measuring the time taken by the infrared ray to reflect back to the
- sensors, this is called the Time-of-Flight technology.
- In both the case the infrared rays are play a crucial role, however the
- limitations of RGB-D camera it that it fails to work outdoor because of
- whitewash of infrared rays from sun, even indoor the RGB-D fails around
- the transparent and specular objects with high reflective index.
- We propose a method to take advantage of the Structure from Motion(SfM)
- to estimate depth of scene whenever the RGB-D fails to provide the required
- depth.
- The partial depths provided by the RGB-D camera can be used as a ground
- truth to jump-start the SfM, also these ground truth depths helps estimate
- the scale of the environment which is otherwise not possible with the SFM
- alone.
- The synergy of RGB-D and SfM provide better depth estimation.
+\change_inserted 215191885 1521736202
+RGBD sensors are a relatively new class of image sensors.
+ Their key novel feature is the ability to simultaneously capture color
+ 
+\begin_inset Quotes eld
+\end_inset
+
+RGB
+\begin_inset Quotes erd
+\end_inset
+
+ images of the scene and depth 
+\begin_inset Quotes eld
+\end_inset
+
+D
+\begin_inset Quotes erd
+\end_inset
+
+ images of scene; hence the term 
+\begin_inset Quotes eld
+\end_inset
+
+RGBD.
+\begin_inset Quotes erd
+\end_inset
+
+ RGB images are capture using a conventional visible light camera that incorpora
+tes a lens that focuses light rays from scene locations onto distinct light-sens
+itive pixels of image sensor.
+ RGBD integrate the three devices: (1) an IR projector, (2) and IR camera
+ and (3) a RGB camera in a rigid relative geometry to create a single sensor
+ that captures color-attributed 
+\begin_inset Formula $(X,Y,Z)$
+\end_inset
+
+ surface data at ranges up to ~6m with frame rates up to 30 Hz.
+ RGBD sensors have a wide range of applications which include mapping, localizat
+ion, pose estimation, and object recognition.
+ They have become popular for their ease-of-use and low cost in comparison
+ with the other visual sensor technologies such as LIDAR, and have been
+ incorporated into consumer products like mobile phones, gaming consoles,
+ and automobiles 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "litomisky2012consumer"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 215191885 1521736202
+RGBD Sensing Technology and Limitations
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 215191885 1521736202
+Depth image formation is accomplished using structured light technology
+ to measure the geometric position of viewed surfaces.
+ This is accomplished by illuminating scene surfaces with an infrared (IR)
+ projector having a known pattern and then using an IR camera to capture
+ the projected pattern 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zhang:2012:MKS:2225053.2225203"
+
+\end_inset
+
+.
+ Deformation of the projected pattern over scene object is analyzed and
+ used to triangulate the depth of scene surfaces with respect to the camera's
+ optical axis.
+ The IR projector operates outside the visible light frequencies and, as
+ such, does not interfere with the captured RGB stream pixel values.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521736202
+Despite the popularity of RGBD sensors, their utility for generic depth
+ measurement is limited in several ways due to shortcomings associated with
+ structured light depth estimation.
+ One significant shortcoming is that RGBD sensors often fail to provide
+ meaningful depth values in sunlit outdoor scenes.
+ Here the IR radiation from sunlight interferes with the projected pattern
+ causing the depth estimation process to fail.
+ This phenomenon also occurs in sunlit indoor scenes.
+ RGBD sensors also fail to collect measurements from surfaces having specific
+ reflectance properties.
+ This includes the following three reflectance contexts: (1) 
+\begin_inset Quotes eld
+\end_inset
+
+dark
+\begin_inset Quotes erd
+\end_inset
+
+ surfaces, i.e., surfaces having a low reflectance, (2) specular, i.e., mirror-like,
+ surfaces and (3) transparent surfaces
+\series bold
+ 
+\series default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "8211432"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kadambi2014"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 215191885 1521736202
+The Structure from Motion 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521736202
+The Structure from Motion (SfM) algorithm leverages ideas originally drawn
+ from photogrammetry to estimate the three-dimensional structure of a scene
+ from a time series of RGB images from a moving single camera.
+ This is achieved by calibrating the camera 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zhang:2000:FNT:357014.357025"
+
+\end_inset
+
+ to develop a highly-accurate model to describe how 3D positions are projected
+ into camera images.
+ Using this image formation model, the SfM algorithm matches together pixels
+ in separate images that correspond to projections of the same 3D location
+ as the camera moves in the scene.
+ Using the camera projection model and the assumption that matched pixels
+ are measurements of the same 3D world coordinates, the SfM algorithm solves
+ for both the pose of the camera within the global coordinate system and
+ the set of 3D surface positions provided by matched image pixels 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "6751290"
+
+\end_inset
+
+.
+ The SfM problem is non-linear in the unknowns and is typically solved in
+ a two-stage sequence.
+ Stage 1 solves for the relative pose of the cameras at the instant the
+ images were recorded.
+ Stage 2 conditions on the estimated camera pose values and solves for the
+ 3D scene structure.
+ Both stages use correspondences between pixels from different images to
+ solve the non-linear equations in the unknown variables.
+ The camera pose tracking problem of Stage 1 is often solved by finding
+ a map that transforms pixels from the original 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ coordinate field to new coordinate positions 
+\begin_inset Formula $(x',y')$
+\end_inset
+
+ such that both locations correspond to images of the same 3D scene point.
+ The multi-view 3D surface reconstruction of Stage 2 is often solved using
+ the bundle adjustment algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Triggs:1999:BAM:646271.685629"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521737049
+While scene reconstruction via SfM produces depth images in contexts where
+ depth cameras fail, this modality for depth estimation also has several
+ shortcomings.
+ Specifically, the theoretical formulation of the SfM problem shows that
+ the scale of the estimated 3D structure cannot be known without prior or
+ outside information.
+ This complicates both the mathematical and computational SfM solutions.
+ SfM also presumes that viewed surfaces are static, i.e., they do not move,
+ and when this assumption is violated reconstructed surfaces are highly
+ inaccurate.
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 215191885 1521757796
+Contribution
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521757798
+\begin_inset Float figure
+wide true
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521757798
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521757798
+\begin_inset Graphics
+	filename /home/akash/southeastcon/2018_SeCon_RGBDSfM_Fusion/images/teaser_rgb.png
+	lyxscale 10
+	height 1.3in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521757798
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521757798
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521757798
+\begin_inset Graphics
+	filename /home/akash/southeastcon/2018_SeCon_RGBDSfM_Fusion/images/teaser_rgbd.png
+	lyxscale 10
+	height 1.3in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521757798
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521757798
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521757798
+\begin_inset Graphics
+	filename /home/akash/southeastcon/2018_SeCon_RGBDSfM_Fusion/images/teaser_sfm.png
+	lyxscale 10
+	height 1.3in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521757798
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521757798
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521757798
+\begin_inset Graphics
+	filename /home/akash/southeastcon/2018_SeCon_RGBDSfM_Fusion/images/teaser_fused.png
+	lyxscale 10
+	height 1.3in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521757798
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521757798
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521757798
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:gussian fussion"
+
+\end_inset
+
+An overview of the proposed RGBD and SfM fusion algorithm (a) shows a grayscale
+ image of the scene (b) shows the sensed RGBD depth image (c) shows the
+ SfM-estimated depth image and (d) shows the fused image.
+ The fused image has been color-coded as follows: (white) denotes depth
+ locations sensed only by the RGBD sensor, (yellow) denotes depth locations
+ only sensed via SfM, (red) denotes fused (RGBD+SfM) depth locations and
+ (black) denotes depth locations without RGBD or SfM measurements.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521737050
+This article seeks to leverage the strengths of RGBD-derived and SfM-derived
+ depth measurements by fusing these measurements into an improved depth
+ image that provides depth measurements in contexts where at least one of
+ the two depth estimation approaches succeeds.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:gussian fussion"
+
+\end_inset
+
+ shows an RGBD-SfM fusion result for an indoor scene and how the fusion
+ result (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:gussian fussion"
+
+\end_inset
+
+(c,d)) captures more scene geometry than either approach independently.
+ Our proposed method to fuse RGBD and SfM depth imagery includes consideration
+ of the RGBD sensor depth image noise model, the SfM algorithm depth noise
+ model and also copes with the inherent unknown scale and scale-drift problems
+ intrinsic to SfM.
+ To our knowledge these technical issues have not been discussed elsewhere
+ in the literature.
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 215191885 1521736635
 Structure from Motion (SfM) is 
 \change_deleted 1699939148 1515787416
 a
-\change_unchanged
+\change_deleted 215191885 1521736635
 the photogrammetric process of estimating the three-dimensional structure
  of a scene from a set of two-dimensional images, this is achieved by tracking
  the motion of the camera
 \change_deleted 1699939148 1515787425
 s
-\change_unchanged
+\change_deleted 215191885 1521736635
  
 \change_deleted 1699939148 1515787428
 corresponding
-\change_unchanged
+\change_deleted 215191885 1521736635
 generating 
 \change_deleted 1699939148 1515787431
 to 
-\change_unchanged
+\change_deleted 215191885 1521736635
 these images and correlating information within the time-sequence of images.
  SfM has many applications in the field of robotics including augmented
  reality
 \change_deleted 1699939148 1515787468
  and
-\change_unchanged
+\change_deleted 215191885 1521736635
 , geoscience 
 \change_deleted 1699939148 1515787471
 etc
-\change_inserted 1699939148 1515787478
+\change_deleted 215191885 1521736635
 and 
 \series bold
 \emph on
 [put more here]
-\change_unchanged
-
 \series default
 \emph default
 .
  In 
 \change_deleted 1699939148 1515787485
 R
-\change_unchanged
+\change_deleted 215191885 1521736635
 robotics, SfM is 
 \change_deleted 1699939148 1515787489
 mainly 
-\change_unchanged
+\change_deleted 215191885 1521736635
 applied 
 \change_deleted 1699939148 1515787498
 to
-\change_unchanged
+\change_deleted 215191885 1521736635
 as one approach for
 \change_deleted 1699939148 1515787504
  implement the
-\change_unchanged
+\change_deleted 215191885 1521736635
  visual odometry, the process of estimating 
 \change_deleted 1699939148 1515787514
 where 
-\change_unchanged
+\change_deleted 215191885 1521736635
 the egomotion of an robot 
 \change_deleted 1699939148 1515787571
 is estimated 
-\change_unchanged
-using only the inputs of cameras attached to it
-\change_inserted 215191885 1516122714
-, this is used highly in self driving car and unmanned aerial vehicle
-\change_unchanged
-.
- In the field of augmented reality, SfM used to estimate the 
-\change_inserted 215191885 1516122744
-lost 
-\change_unchanged
-depth
-\change_inserted 215191885 1517275359
-s of the objects from images
-\change_deleted 215191885 1516122760
- maps of the scene
-\change_unchanged
-, 
-\change_inserted 215191885 1516122917
-this depth information enables to augment the virtual objects into the real
- world and even allows to interact with augmented objects.
+\change_deleted 215191885 1521736635
+using only the inputs of cameras attached to it.
+ In the field of augmented reality, SfM used to estimate the depth maps
+ of the scene, which are later used to implement basic physical interaction
+ with the environment [depth map not defined, basic physical interaction
+ vague].
  
-\change_deleted 215191885 1516122822
-which are later used to implement basic physical interaction with the environmen
-t
-\change_inserted 1699939148 1515787624
- [depth map not defined, basic physical interaction vague]
-\change_unchanged
-.
- 
-\change_inserted 1699939148 1515787662
-
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 215191885 1516604377
-The point in 3D can be estimated by triangulation of 2D projections from
- two or more images, i.e with the known camera orientation, we can back-project
- 2D points from images onto 3D environment and try to determine their intersecti
-on.
- In order to achieve that we need find a set of points in one image which
- can be identified as the same points in another image, this is called as
- image correspondence.
- 
-\change_inserted 1699939148 1515787680
-
+\change_deleted 215191885 1521736635
 \begin_inset Note Comment
 status open
 
@@ -808,21 +1244,11 @@ Maybe explain 3D reconstruction via triangulation
 
 \end_inset
 
-
-\change_deleted 215191885 1516127400
 The core of the SfM involves solving the trigonometry [??? unclear what
  trig?] on set of images from camera with unknown calibration to extract
  the depth of an object [3d reconstruction explanation perhaps].
  The main requirement to do this is to find a correspondence between pair
- of images,
-\change_unchanged
- 
-\change_inserted 215191885 1516127426
-T
-\change_deleted 215191885 1516127425
-t
-\change_unchanged
-raditionally this was done by feature extraction and matching
+ of images, traditionally this was done by feature extraction and matching
 \begin_inset CommandInset citation
 LatexCommand cite
 key "klein07parallel"
@@ -843,142 +1269,10 @@ key "Engel2014"
 \end_inset
 
 , instead of features, the image intensities are used directly for matching.
- Once the correspondence are established,
-\change_inserted 215191885 1516131443
- the intersection between back-projected 3D points is estimated by minimize
- the re-projection error, which is done by imposing the epipolar constraint,
- which states that the image points and 3D points should be in a same plane.
- In order to address the noise in estimating the correspondence, a Gaussian
- model is assumed with zero mean, hence minimizing the re-projection error
- gives the maximum likelihood estimate of 3D point.
- 
-\change_deleted 215191885 1516128263
- the Pose of the cameras are estimated by imposing the Epipolar constraint,
- now with the estimated camera pose the three-dimensional structure (depth)
- is computed.
- 
-\change_inserted 215191885 1516165356
-On the other hand, with the known image correspondence and their 3D points,
- we can estimate the camera pose and orientation with the similar procedure.
- Where we try to solve for relative camera ordination which minimizes the
- re-projection error between known 3D and 2D point.
- 
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1516174146
-However, SfM is a chicken and egg problem with both depth and camera orientation
- unknown.This again tries to minimize the re-projection error between the
- observed 2D image points and predicted (re-projected) 2D image point,which
- is expressed as the sum of squares of a large number of nonlinear, real-valued
- functions.
- Thus, the minimization is achieved using nonlinear least-squares algorithms
- like Guass-Newton or Levenberg–Marquardt.
- This process is also called as Bundle adjustment, as it is analogous to
- the process of optimally adjusting bundles of light rays originating from
- each 3D feature and converging them on each camera's optical center.
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1516173258
-Over the years many real time approaches have be suggested to tackle this
- problem, and these approaches are broadly classified as Direct vs.
- Indirect, Dense vs.
- Sparse and Incremental vs.
- Global methods.
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1516602673
-Direct vs.
- Indirect: All the SfM approaches have a underlaying probabilistic model
- in order to address the noise in measurements and camera representation,
- which uses the Maximum Likelihood approach to maximize the probability
- of obtaining the actual measurements, this differentiation of SfM is based
- on how the probabilistic models are defined.
- The direct method as the name specifies, directly uses the sensor values
- (pixel values) – light received from a certain direction over a certain
- time period – as as input for probabilistic model, hence this method tries
- to minimize the photometric error.
- This is analogous to the process of image alignment, whose goal is to minimize
- the sum of squared error between two images, the template T and the image
- I warped back onto the coordinate frame of the template.
- 
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1516602980
-\begin_inset Formula 
-\begin{equation}
-\underset{x}{\sum}\left[I(\omega(x,p)-T(x)\right]^{2}\label{wraping function}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1516603171
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "wraping function"
-
-\end_inset
-
- is minimized with respect p, which in case of SFM are the camera orientation,
- this minimization is a process of non linear optimization.
- 
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1516640089
-On the other hand, the indirect method uses the intermediate representation
- of sensor measurements as input for probabilistic model, the sensor values
- can be either represented as sparse set feature key-points, this need a
- efficient feature detectors like Scale Invariant Feature Transform (SIFT)
- to find the valid the correspondence between images, and the methods like
- Random Sample Consensus algorithm (RANSAC) are applied in order to avoid
- the outliers.
- An alternative to using key features, is to find the dense regularized
- optical flow, which tries to match the selected points from one image to
- another, assuming that both images are part of a sequence and relatively
- close to one another.
- Both this representation tries to minimize the geometric errors.
- 
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1516640094
-Dense vs.
- Sparse: As the name suggests the sparse methods uses only selected set
- of independent points, where as dense methods attempt to use and reconstruct
- all pixels in the 2D image domain.
- On the same line there is a intermediate approaches (semi-dense) tries
- to use the largely connected and well-constrained subset of points if not
- all of them.
- The choice of this method affects the addition of geometry prior, in the
- sparse formulation, since there is no notion of neighborhood, and geometry
- parameters (key-point positions) are conditionally independent.
- Dense (or semi-dense) approaches on the other hand exploit the connectedness
- of the used image region to formulate a geometry prior, typically favoring
- smoothness.
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1516181853
-Incremental vs.
- Global:
-\change_deleted 215191885 1516181838
-There mainly two variants of SfM, 
+ Once the correspondence are established, the Pose of the cameras are estimated
+ by imposing the Epipolar constraint, now with the estimated camera pose
+ the three-dimensional structure (depth) is computed.
+ There mainly two variants of SfM, 
 \change_deleted 1699939148 1515787706
 I
 \change_deleted 215191885 1516181838
@@ -989,11 +1283,9 @@ G
 global
 \change_deleted 1699939148 1515787713
  SfM
-\change_deleted 215191885 1516181838
+\change_deleted 215191885 1521736635
 .
- 
-\change_unchanged
-Incremental SfM
+ Incremental SfM
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Snavely:2006:PTE:1141911.1141964"
@@ -1004,14 +1296,10 @@ key "Snavely:2006:PTE:1141911.1141964"
  cameras based on their relative pose.
  Then additional cameras are added on incrementally and 3D structure is
  refined as new parts of the scene are observed.
-
-\change_inserted 1699939148 1515787726
- 
-\change_unchanged
-On the other hand 
+ On the other hand 
 \change_deleted 1699939148 1515787728
 G
-\change_unchanged
+\change_deleted 215191885 1521736635
 global SfM
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1022,33 +1310,17 @@ key "Wilson2014"
  considers the entire problem at once
 \change_deleted 1699939148 1515787735
 ,
-\change_unchanged
+\change_deleted 215191885 1521736635
 .
  Here the objective is 
 \change_deleted 1699939148 1515787745
 it tries 
-\change_unchanged
+\change_deleted 215191885 1521736635
 to estimate the global camera poses and 3D structure by removing outliers
- and by applying an averaging scheme
-\change_inserted 1699939148 1515787760
- [cite ???]
-\change_unchanged
-.
-
-\change_inserted 1699939148 1515787787
+ and by applying an averaging scheme [cite ???].
  [why is this discussed? are their results different? is one of interest
- to you?]
-\change_unchanged
- 
-\change_inserted 215191885 1516640098
-[cited eariler][isn't the LSD a incremental method]
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 215191885 1516599029
-Over the years many approaches have be suggested to tackle this problem,
- one of them is the Parallel Tracking and Mapping (PTAM)
+ to you?] Over the years many approaches have be suggested to tackle this
+ problem, one of them is the Parallel Tracking and Mapping (PTAM)
 \begin_inset CommandInset citation
 LatexCommand cite
 key "klein07parallel"
@@ -1197,7 +1469,7 @@ Associated with the the key-frame in the map is a set
 
 \begin_layout Standard
 
-\change_deleted 215191885 1516599029
+\change_deleted 215191885 1521736635
 \begin_inset Formula 
 \[
 \left\{ \left\{ \mu_{2..}\mu_{N}\right\} ,\left\{ p_{1}^{\prime}..p_{M}^{\prime}\right\} \right\} =\underset{\{\{\mu\},\{p\}\}}{argmin}\stackrel[i=1]{N}{\sum}\underset{j\in s}{\sum}Obj\left(\frac{\left\Vert e_{ji}\right\Vert }{\sigma_{ji}},\sigma_{T}\right)
@@ -1206,11 +1478,11 @@ Associated with the the key-frame in the map is a set
 \end_inset
 
 
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1521736635
 LSD SLAM 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1218,39 +1490,23 @@ key "Engel2014"
 
 \end_inset
 
-
-\change_deleted 215191885 1516608635
- on the other hand
-\change_unchanged
- is 
-\change_deleted 215191885 1516599097
-the
-\change_unchanged
- 
-\change_inserted 215191885 1516599196
-a semi-dense, 
-\change_unchanged
-direct method
-\change_inserted 1699939148 1515788014
- [you have not defined sparse methods, dense methods, direct methods, or
- indirect methods do this in a review of approaches above – similar to that
- from Direct Sparse Odometry article (https://arxiv.org/pdf/1607.02565.pdf)
- from TUM]
-\change_inserted 215191885 1516608663
- [have done changes]
-\change_deleted 215191885 1516599158
-, this circumvent the drawback of PTAM, which is a feature base method and
- only the information that conforms to the feature type can be used.
- LSD LSD SLAM on the other hand
-\change_unchanged
- optimizes the geometry directly on the image intensities, which enables
- using all information in the image.In addition to higher accuracy and robustness
- in particular in environments with little key-points, this provides substantial
-ly more information about the geometry of the environment.Images are aligned
- by Gauss -Newton minimization of the photometric error.
+ on the other hand is the direct method [you have not defined sparse methods,
+ dense methods, direct methods, or indirect methods do this in a review
+ of approaches above – similar to that from Direct Sparse Odometry article
+ (https://arxiv.org/pdf/1607.02565.pdf) from TUM], this circumvent the drawback
+ of PTAM, which is a feature base method and only the information that conforms
+ to the feature type can be used.
+ LSD LSD SLAM on the other hand optimizes the geometry directly on the image
+ intensities, which enables using all information in the image.In addition
+ to higher accuracy and robustness in particular in environments with little
+ key-points, this provides substantially more information about the geometry
+ of the environment.Images are aligned by Gauss -Newton minimization of the
+ photometric error.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1521736635
 \begin_inset Formula 
 \[
 E(\xi)=\underset{i}{\sum}(I_{ref}(P_{i})-I(\omega(p_{i},D_{ref}(p_{i}),\xi)))^{2}
@@ -1262,6 +1518,8 @@ E(\xi)=\underset{i}{\sum}(I_{ref}(P_{i})-I(\omega(p_{i},D_{ref}(p_{i}),\xi)))^{2
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1521736635
 Where 
 \begin_inset Formula $D_{ref}$
 \end_inset
@@ -1289,23 +1547,19 @@ Where
  second-order approximation of 
 \change_deleted 1699939148 1515788038
 E
-\change_inserted 1699939148 1515788038
+\change_deleted 215191885 1521736635
 
 \begin_inset Formula $E$
 \end_inset
 
-
-\change_unchanged
-:
-\change_inserted 1699939148 1515788112
- [no description of image warping needed here, briefly discuss image warping
+: [no description of image warping needed here, briefly discuss image warping
  for direct methods as a methods for image pixel matching see Baker2004
  http://www.ncorr.com/download/publications/bakerunify.pdf]
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1521736635
 \begin_inset Formula 
 \[
 \delta\xi^{(n)}=-(J^{T}J)^{-1}J^{T}r(\xi^{(n)})
@@ -1317,10 +1571,14 @@ E
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1521736635
 with 
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1521736635
 \begin_inset Formula 
 \[
 J=\frac{\partial r(\epsilon\circ\delta\xi^{(n)})}{\partial\epsilon}
@@ -1332,10 +1590,14 @@ J=\frac{\partial r(\epsilon\circ\delta\xi^{(n)})}{\partial\epsilon}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1521736635
 The new estimate is then obtained by multiplication with the computed update
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1521736635
 \begin_inset Formula 
 \[
 \xi^{(n+1)}=\delta\xi^{(n)}\circ\xi^{(n)}
@@ -1347,23 +1609,24 @@ The new estimate is then obtained by multiplication with the computed update
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1521736635
 The overall system is composed of three major components, tracking, depth
  map estimation and map optimization.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1521736635
 The tracking component continuously estimates the rigid body pose with respect
- to the current 
-\change_deleted 215191885 1516608687
-keyframe
-\change_inserted 215191885 1516608687
-key-frame
-\change_unchanged
-, using the pose of the previous frame as initialization.LSD slam tracks
- new frame by minimizing the variance-normalized photometric error
+ to the current keyframe, using the pose of the previous frame as initialization.
+LSD slam tracks new frame by minimizing the variance-normalized photometric
+ error
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1521736635
 \begin_inset Formula 
 \[
 E_{p}(\xi_{ji})=\underset{p\in\Omega_{D_{i}}}{\sum}\left\Vert \frac{r_{p}^{2}(p,\xi_{ji})}{\sigma_{r_{p}(p,\xi_{ji})}^{2}}\right\Vert _{\delta}
@@ -1375,6 +1638,8 @@ E_{p}(\xi_{ji})=\underset{p\in\Omega_{D_{i}}}{\sum}\left\Vert \frac{r_{p}^{2}(p,
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1521736635
 with
 \begin_inset Formula 
 \[
@@ -1387,6 +1652,8 @@ r_{p}(p,\xi_{ji})\coloneqq I_{i}(p)-I_{j}(\omega(p,D_{i}(p),\xi_{ji}))
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1521736635
 \begin_inset Formula 
 \[
 \sigma_{r_{p}(p,\xi_{ji})}^{2}\coloneqq2\sigma_{I}^{2}+\left(\frac{\partial r_{p}(p,\xi_{ji})}{\partial D_{i}(p)}\right)^{2}V_{i}(p)
@@ -1398,6 +1665,8 @@ r_{p}(p,\xi_{ji})\coloneqq I_{i}(p)-I_{j}(\omega(p,D_{i}(p),\xi_{ji}))
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1521736635
 where 
 \begin_inset Formula $\left\Vert .\right\Vert $
 \end_inset
@@ -1406,6 +1675,8 @@ where
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1521736635
 \begin_inset Formula 
 \[
 \left\Vert r^{2}\right\Vert _{\delta}\coloneqq\begin{cases}
@@ -1418,6 +1689,8 @@ where
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1521736635
 applied to the normalized residual.
  The depth map estimation component uses tracked frames to either refine
  or replace the current key-frame.
@@ -1445,6 +1718,8 @@ d as a pose graph consisting of key-frames as vertices's with 3D similarity
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1521736635
 \begin_inset Formula 
 \[
 E(\xi_{W1}....\xi_{Wn})\coloneqq\underset{(\xi_{ji},\Sigma_{ji})\in\varepsilon}{\sum}(\xi_{ji}\circ\xi_{Wi}^{-1}\circ\xi_{Wj})\Sigma_{ji}^{-1}(\xi_{ji}\circ\xi_{Wi}^{-1}\circ\xi_{Wj})
@@ -1453,43 +1728,622 @@ E(\xi_{W1}....\xi_{Wn})\coloneqq\underset{(\xi_{ji},\Sigma_{ji})\in\varepsilon}{
 \end_inset
 
 
+\change_inserted 215191885 1521031169
+
 \end_layout
 
 \begin_layout Chapter
-Methodology
+
+\change_inserted 215191885 1521031399
+RELATED WORK AND BACKGROUND INFORMATION
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 215191885 1521031399
+This article proposes fusion of SfM-estimated depths with depths captured
+ from an RGBD image sensor.
+ This section is dedicated to discussing the relevant aspects of the SfM
+ algorithm and the sensed RGBD measurements necessary to explain the proposed
+ fusion method.
+ Specifically, this section reviews the theoretical details of the SfM algorithm
+, methods for processing depth images including computing depth images for
+ arbitrary camera poses, and details existing knowledge regarding the sensor
+ measurement noise for RGBD depth measurements
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 215191885 1521031758
+Methodology
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 215191885 1521031840
 Structure from motions (SfM) is the process of triangulating the three-dimension
 al structure from two-dimensional images, along with estimating the motion
  of camera (visual odometer), hence it is some time called as Visual SLAM.
+
+\change_unchanged
  
-\change_inserted 215191885 1517228302
+\change_inserted 215191885 1521995641
 
 \end_layout
 
 \begin_layout Section
 
-\change_inserted 215191885 1517228310
-Tracking
+\change_inserted 215191885 1522008547
+Camera Calibration
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Camera-Calibration"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1522000457
+The SfM is a photogrammetric process and it relies on the camera parameters,
+ these parameters are called intrinsic parameter since they are unique to
+ each camera and are not influenced by any external factors.
+ These intrinsic properties are composed of the focal lengths 
+\begin_inset Formula $(fx,fy)$
+\end_inset
+
+ and principal point offset 
+\begin_inset Formula $(x_{0},y_{0})$
+\end_inset
+
+ of camera is both vertical and horizontal direction along with the skew
+ factor 
+\begin_inset Formula $s$
+\end_inset
+
+.
+ These properties are usually represented in a self-contained matrix 
+\begin_inset Formula $k$
+\end_inset
+
+ called the intrinsic matrix.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1522001989
+\begin_inset Formula 
+\begin{equation}
+k=\left[\begin{array}{ccc}
+fx & s & x_{0}\\
+0 & fy & y_{0}\\
+0 & 0 & 1
+\end{array}\right]\label{eq:intrensic matrix}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1522002046
+The image generated by a typical camera usually have a distortions, and
+ since the estimation of intrinsic parameters relies on these images, those
+ distortions should be fixed.
+ There are mainly of two types of distortions called the radial distortion
+ and tangential distortion.
+ The radial distortion effects image by curving the string lines, Its effect
+ is more as we move away from the center of image.
+ This distortion can be corrected by Brown's distortion model
+\begin_inset CommandInset citation
+LatexCommand cite
+key "s16060807"
+
+\end_inset
+
+ as following.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521999851
+\begin_inset Formula 
+\[
+x_{corrected}=x(1+k_{1}r^{2}+k_{2}r^{4}+k_{3}r^{6})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521999915
+\begin_inset Formula 
+\[
+y_{corrected}=y(1+k_{1}r^{2}+k_{2}r^{4}+k_{3}r^{6})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1522001273
+where 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ are distorted image intensities and 
+\begin_inset Formula $(x_{corrected},y_{corrected})$
+\end_inset
+
+ are corrected image intensities, with 
+\begin_inset Formula $k_{x}$
+\end_inset
+
+is the distortion coefficient of the camera to be determined and r is the
+ distance of pixel from the principal point.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1522001472
+Tangential distortion are due to misalignment of lens with imaging plane,
+ as a consequence some areas in image may look nearer than expected.
+ This distortion can be corrected by The Brown–Conrady model as following
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1522001383
+\begin_inset Formula 
+\[
+x_{corrected}=x+[2p_{1}xy+p_{2}(r^{2}+2x^{2})]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1522001478
+\begin_inset Formula 
+\[
+y_{corrected}=y+[p_{1}(r^{2}+2y^{2})+2p_{2}xy]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1522001570
+In total there are 5 parameters, known as distortion coefficients given
+ by:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1522001576
+\begin_inset Formula 
+\begin{equation}
+D_{coff}=(k_{1},k_{2},p_{1},p_{2},k_{3})\label{eq:distortion coeff}
+\end{equation}
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1522008604
+All the essential parameters of camera from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:intrensic matrix"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:distortion coeff"
+
+\end_inset
+
+ are determined for a given camera by traditional method 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zhang2014,Zhang:2000:FNT:357014.357025"
+
+\end_inset
+
+ using the checkerboard pattern.
+ There are many standard library implementations of this method and we are
+ using the OpenCV library 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "5534797"
+
+\end_inset
+
+ to do this.
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 215191885 1521044107
+Image alignment
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Image-alignment"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521917682
+The image alignment is the process of transforming (wraping) one image with
+ respect to another image, with a goal to minimizing the total difference
+ between the intensities 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Baker:2004:LYU:964568.964604"
+
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{equation}
+\underset{x}{\sum}\left[I(\omega(x))-T(x)\right]^{2}\label{eq:image alignment}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521917709
+In eq 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:image alignment"
+
+\end_inset
+
+ the wrap function 
+\begin_inset Formula $\omega$
+\end_inset
+
+ deforms image I along the image T in an attempt to minimize the difference
+ between them.
+ The wrap function which achieve this goal is estimated incremental by performin
+g gradient descent.In order to achieve this, we need to find the correspondence
+ between images.
 \change_unchanged
 
 \end_layout
 
 \begin_layout Subsection
-Rigid Body Motion
+
+\change_inserted 215191885 1521651161
+Solving for Image Pixel Correspondences
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Solving-for-Image"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-One of the goals of SfM it to estimate the Camera trajectory, which is a
- rigid body motion.
+
+\change_inserted 215191885 1521039811
+There are generically two different approaches for finding corresponding
+ observations of the same 3D surface location in multiple images referred
+ to as 
+\emph on
+direct 
+\emph default
+and 
+\emph on
+indirect 
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "7898369"
+
+\end_inset
+
+
+\emph on
+.
+ 
+\emph default
+In this discussion, we refer to the correspondence problem as a source-to-target
+ matching problem.
+ Let 
+\begin_inset Formula $\mathbf{I}_{t}(x,y)$
+\end_inset
+
+ denote an image recorded at time 
+\begin_inset Formula $t$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{I}_{t+\Delta t}(x,y)$
+\end_inset
+
+ denote a subsequent image measured at time 
+\begin_inset Formula $t+\Delta t$
+\end_inset
+
+.
+ The correspondence problem seeks to find a map that transforms pixels from
+ the original 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ coordinate field of 
+\begin_inset Formula $\mathbf{I}_{t}$
+\end_inset
+
+ to new coordinate positions 
+\begin_inset Formula $(x',y')$
+\end_inset
+
+ in 
+\begin_inset Formula $\mathbf{I}_{t+\Delta t}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\mathbf{I}_{t}(x,y)$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{I}_{t+\Delta t}(x',y')$
+\end_inset
+
+ correspond to images of the same 3D scene point.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+
+\change_inserted 215191885 1521039811
+Indirect Methods
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521039811
+Indirect methods compute this mapping by detecting special 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ locations referred to as features locations with a purpose-built feature
+ detection algorithm, e.g., the Harris corner detector 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Harris88acombined"
+
+\end_inset
+
+.
+ A description of the image patch in the vicinity of each detected 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ location is computed using some feature descriptor algorithm, e.g., Lowe's
+ SIFT descriptor 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lowe2004"
+
+\end_inset
+
+.
+ Feature descriptors seek to provide a vector of values from the image patch
+ data that is invariant to the image variations that occur during camera
+ motion.
+ These include but are not limited to the following effects: illumination
+ variation, affine and/or projective invariance, photometric invariance
+ (brightness constancy), and scale invariance.
+ Popular feature descriptors often prioritize scale and affine invariance
+ as their strengths.
+ The invariance property allows for correspondences to be computed by finding
+ the mapping from the feature descriptor set calculated from image 
+\begin_inset Formula $\mathbf{I}_{t}(x,y)$
+\end_inset
+
+ to the feature descriptor set calculated from image 
+\begin_inset Formula $\mathbf{I}_{t+\Delta t}(x,y)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection*
+
+\change_inserted 215191885 1521039811
+Direct Methods
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521043355
+Direct methods on the other hand typically iteratively solve for a set of
+ transformation parameters that best align a pair of images by the minimization
+ of pixel-wise errors.
+ An image warping function, 
+\begin_inset Formula $\omega(\mathbf{x})$
+\end_inset
+
+, maps a pixel location, 
+\begin_inset Formula $\mathbf{x}=[x,y]^{t}$
+\end_inset
+
+, in the original coordinate field to new coordinate positions, 
+\begin_inset Formula $\mathbf{x}'$
+\end_inset
+
+, such that both locations correspond to images.
+ A classical solution to this problem is given by the Lucas-Kanade-Tomassi
+ (LKT) camera tracking algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Baker:2004:LYU:964568.964604"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 215191885 1521738907
+SfM Depth Reconstruction
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1522008579
+The SfM algorithm uses a time sequence of images from a moving camera to
+ recover the 3D geometry of objects viewed by the camera.
+ While this problem can be solved without a calibrated camera, reconstruction
+ accuracy will adversely affected.
+ This work assumes that the camera calibration 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Camera-Calibration"
+
+\end_inset
+
+ parameters are known.
+ The SfM algorithm can be broken down into two key steps:
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 215191885 1521040943
+estimation of the camera pose, i.e., position and orientation, at the time
+ each image was recorded,
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 215191885 1521040943
+estimation of the 3D structure of the scene.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521040943
+As previously mentioned, typical SfM systems solve (1) by computing a map
+ that associates pixels from the original 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ coordinate field to new coordinate positions 
+\begin_inset Formula $(x',y')$
+\end_inset
+
+ such that both locations correspond to images of the same 3D scene point
+ and (2) via multi-view 3D surface reconstruction algorithm, e.g., bundle
+ adjustment 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Triggs:1999:BAM:646271.685629"
+
+\end_inset
+
+.
+ In the following sections we provide an overview of aspects of the SfM
+ algorithm necessary for the development of the proposed RGBD-SfM depth
+ fusion algorithm.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 215191885 1521739070
+Estimation of the Camera Trajectory
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsubsection*
+Rigid Body Motion
+\change_inserted 215191885 1521044093
+
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Rigid-Body-Motion"
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 215191885 1521032805
+One of the goals of SfM it to estimate the
+\change_inserted 215191885 1521032806
+The
+\change_unchanged
+ Camera trajectory
+\change_inserted 215191885 1521847011
+ 
+\change_deleted 215191885 1521032811
+, which 
+\change_unchanged
+is a rigid body motion.
  We need an efficient model to represent and compute this rigid body motion.
  The camera position is represented by a 3D Vector in an Euclidean 
 \change_deleted 1699939148 1515788126
 S
 \change_unchanged
-space, this camera position is chosen to represent the world frame and specify
- the translation and rotation of the scene relative to that frame.
+space, this camera position is chosen to represent 
+\change_inserted 215191885 1521032965
+origin of 
+\change_unchanged
+the world frame and specify the translation and rotation of the scene relative
+ to 
+\change_deleted 215191885 1521032976
+that
+\change_inserted 215191885 1521032976
+this
+\change_unchanged
+ frame.
  The rigid body motion itself is composed of a rotation and translation.
  
 \end_layout
@@ -1702,12 +2556,12 @@ The set of all possible configurations of a rigid body can then be described
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
+\begin{equation}
 SE(3)=\{\bar{g}=\left[\begin{array}{cc}
 R & T\\
 0 & 1
-\end{array}\right]\mid R\in SO(3),T\in R^{3}\}\subset\mathbb{R}^{4\times4}
-\]
+\end{array}\right]\mid R\in SO(3),T\in R^{3}\}\subset\mathbb{R}^{4\times4}\label{eq:se3}
+\end{equation}
 
 \end_inset
 
@@ -1718,26 +2572,26 @@ R & T\\
 
 \begin_layout Standard
 
-\change_inserted 215191885 1516638341
+\change_inserted 215191885 1521824363
 Finally, one other dimension we could consider is the scale, this can represente
 d by a Similarity transformation 
 \begin_inset Formula $Sim(3)$
 \end_inset
 
 , which is the composition of a rotation, translation and a uniform rescaling,
- 
+ and hence this representation has 7 degree of freedom, 
 \end_layout
 
 \begin_layout Standard
 
 \change_inserted 215191885 1516637515
 \begin_inset Formula 
-\[
+\begin{equation}
 Sim(3)=\{\bar{g}=\left[\begin{array}{cc}
 R & T\\
 0 & s^{-1}
-\end{array}\right]\mid R\in SO(3),T\in R^{3},s\in R\}\subset\mathbb{R}^{4\times4}
-\]
+\end{array}\right]\mid R\in SO(3),T\in R^{3},s\in R\}\subset\mathbb{R}^{4\times4}\label{eq:sim3}
+\end{equation}
 
 \end_inset
 
@@ -1746,7 +2600,7 @@ R & T\\
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection*
 Exponential Map
 \end_layout
 
@@ -1783,8 +2637,14 @@ The special orthogonal group in three dimensions can be represented by a
 \begin_inset Formula $SO(3)$
 \end_inset
 
- should be only three, and six parameters out of the nine are in fact redundant.W
-e can use this to have better representation of Rigid body motion.
+ 
+\change_deleted 215191885 1521848714
+should
+\change_inserted 215191885 1521848714
+can
+\change_unchanged
+ be only three, and six parameters out of the nine are in fact redundant.We
+ can use this to have better representation of Rigid body motion.
 \change_inserted 215191885 1516614036
 
 \end_layout
@@ -1917,9 +2777,9 @@ reference "exp map for so(3)"
 
 \change_inserted 215191885 1516618286
 \begin_inset Formula 
-\[
-log:SO(3)\rightarrow so(3);log(R)\mapsto\hat{\omega}
-\]
+\begin{equation}
+log:SO(3)\rightarrow so(3);log(R)\mapsto\hat{\omega}\label{eq:inv_SO}
+\end{equation}
 
 \end_inset
 
@@ -1996,8 +2856,15 @@ exp:se(3)\rightarrow SE(3);\hat{\xi}\mapsto e^{\hat{\xi}}
 
 \begin_layout Standard
 
-\change_inserted 215191885 1516618478
-and as before inverse to the exponential map is defined by logarithm 
+\change_inserted 215191885 1521849596
+and on the same lines of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:inv_SO"
+
+\end_inset
+
+ inverse to the exponential map is defined by logarithm 
 \end_layout
 
 \begin_layout Standard
@@ -2201,18 +3068,14 @@ reference "eq:3"
 
 , where
 \change_inserted 1699939148 1515788319
- [THIS IS TOO SIMILAR to source work elsewhere, bordering on plagiarism
- – REMOVE!, you should not be going into this much detail for the differential
+ 
+\change_deleted 215191885 1521776300
+[THIS IS TOO SIMILAR to source work elsewhere, bordering on plagiarism –
+ REMOVE!, you should not be going into this much detail for the differential
  properties of rotations as this is not something you are comfortable with,
  write down the most important relationships, i.e., the differential of the
  rotation and why you need it for SfM, you will want to define sim3 transforms
  and how they are distinct from se3 transforms then leave this topic]
-\change_inserted 215191885 1516640005
- [I wrote this, because I had done some study on exponential map between
- lie group and lie algebra and vis versa, I was hoping to keep this, but
- let me know your thoughts ] [exponential map of SIM(3) is way too complicated
- and I am working on it, I will incorporate it going forward.
- ]
 \change_unchanged
 
 \end_layout
@@ -2551,31 +3414,43 @@ log:SE(3)\rightarrow se(3);log(g)\mapsto\hat{\xi}
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection*
 
-\change_inserted 215191885 1517225217
-Visual Odometry
+\change_inserted 215191885 1521739083
+Visual Odometer
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 215191885 1517226120
-The trajectory of camera is determined by the process of direct image alignment,
- i.e as mentioned earlier the direct method tries to minimize the photometric
- error between image pixels directly to to find the relative pose 
+\change_inserted 215191885 1521739096
+With this efficient representation for rigid body transformation eq 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sim3"
+
+\end_inset
+
+,the trajectory of camera is determined by the process of direct image alignment
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Image-alignment"
+
+\end_inset
+
+, i.e we can incrementally find the relative pose 
 \begin_inset Formula $\xi\in SIM(3)$
 \end_inset
 
-.
- 
+that minimize the photometric error between image pixels.
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 215191885 1517226623
+\change_inserted 215191885 1521045043
 \begin_inset Formula 
 \begin{equation}
-E(\xi)=\sum I_{ref}(p)-I(\pi(\xi\pi^{-1}(p,D_{ref}(p)))^{2}\label{eq:Direct image alignment}
+\widehat{\xi}=\min_{\xi}\underset{\mathbf{x}}{\sum}\left(\mathbf{I}(\omega(\mathbf{x},\xi))-\mathbf{T}(\mathbf{x})\right)^{2}\label{eq:Direct image alignment}
 \end{equation}
 
 \end_inset
@@ -2585,28 +3460,61 @@ E(\xi)=\sum I_{ref}(p)-I(\pi(\xi\pi^{-1}(p,D_{ref}(p)))^{2}\label{eq:Direct imag
 
 \begin_layout Standard
 
-\change_inserted 215191885 1517231831
-This is a iterative process of finding the pose 
+\change_inserted 215191885 1521045080
+In equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Direct image alignment"
+
+\end_inset
+
+), the warp function, 
+\begin_inset Formula $\omega(\mathbf{x},\xi)$
+\end_inset
+
+, maps pixel locations, 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+, in the template to pixel locations in the image 
+\begin_inset Formula $\mathbf{I}(\mathbf{x})$
+\end_inset
+
+ using the warp transformation parameters 
 \begin_inset Formula $\xi$
 \end_inset
 
- by solving the above non-linear equation by using either Guass-Newton or
- Levenberg-Marquardt algorithm.
- The algorithm needs the reference depth to un-project the 2d image points
- to 3d points (i.e to construct the point cloud), these depth are estimated
- by the processes of mapping.
- The constructed point cloud is aligned to current estimate of the pose
- and reprojected back to reference image to find the photometric error,
- this process is repeated until the error converges.
-\end_layout
+.
+ For direct correspondence estimation, 
+\begin_inset Formula $\xi$
+\end_inset
 
-\begin_layout Section
+ is a pose transformation of the viewing camera represented as a unknown
+ 6x1 vector.
+ We then seek the camera pose transformation parameters, 
+\begin_inset Formula $\widehat{\xi}$
+\end_inset
 
-\change_inserted 215191885 1517228347
-Depth Mapping
+, that minimize equation which provides the camera pose change that best
+ explain the differences in these two of the same scene.
+ Given two images and the camera pose change between them, one can take
+ the information in one image, and through the warp function and map these
+ values into the viewpoint of the other image establishing a correspondence.
+ In this case the theoretical difference between expected and observed values
+ for the image pair is zero if the camera pose change is known exactly and
+ sensor noise and other outside influences are ignored.
+ 
 \end_layout
 
 \begin_layout Subsection
+
+\change_inserted 215191885 1521739054
+Estimation of the 3D structure
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsubsection*
 Camera model
 \end_layout
 
@@ -2746,7 +3654,7 @@ For the simplification of calculation, we consider a Ideal camera model
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -2818,10 +3726,8 @@ y=-f\frac{Y}{Z}\label{eq:pinhole camera y}
 
 \begin_layout Standard
 
-\change_inserted 1699939148 1515788416
+\change_deleted 215191885 1521852700
 [write projection as a matrix transform similar to ROS]
-\change_inserted 215191885 1516611116
-[have it represented below]
 \change_unchanged
 This mapping of 3D point to 2D is called projection and is represented by
  
@@ -3292,8 +4198,19 @@ are the coefficients of radial distortion and
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection*
 Epipolar geometry
+\change_inserted 215191885 1521650966
+
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Epipolar-geometry"
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -3389,19 +4306,23 @@ By multiplying both the side by
 \end_inset
 
 
+\change_inserted 215191885 1521916612
+
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 215191885 1516609203
+\change_inserted 215191885 1521916613
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
+\noindent
+\align center
 
-\change_inserted 215191885 1516609303
+\change_inserted 215191885 1521916613
 \begin_inset Graphics
 	filename images/epipolar_geo.png
 	width 8cm
@@ -3414,14 +4335,17 @@ status open
 
 \begin_layout Plain Layout
 
-\change_inserted 215191885 1516609203
+\change_inserted 215191885 1521916613
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
 
-\change_inserted 215191885 1516609245
+\change_inserted 215191885 1521916622
 Epipolar geometry
-\change_unchanged
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -3432,15 +4356,9 @@ Epipolar geometry
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
+\begin_layout Standard
 
 \change_deleted 215191885 1516609323
-
 \begin_inset Graphics
 	filename images/epipolar_geo.png
 	width 8cm
@@ -3481,19 +4399,340 @@ This is the epipolar constraint and the matrix
  Therefore, the three vectors lie on the same plane.Hence the their triple
  product which measures the volume of the parallelepiped is zero.
  
+\change_inserted 215191885 1521739288
+
+\end_layout
+
+\begin_layout Subsubsection*
+
+\change_inserted 215191885 1521739289
+Stereo correspondence and Disparity Estimation
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521739289
+We can estimate the depth of object from a pair of images captured by the
+ same camera with a small transnational change but the same orientation.
+ The amount of distance that the object have shifted from first image to
+ second is called the disparity
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Schmidt2002DenseDM"
+
+\end_inset
+
+ and this information is useful in computing the depth of the object itself.
+ With the epiplore constraint 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Epipolar-geometry"
+
+\end_inset
+
+ and known translation between the pair of images, we can efficiently compute
+ disparity of image, this approach is called the fixed baseline disparity
+ mapping since the baseline between pair of image are known and they are
+ fixed .
+ This process starts with finding the correspondence between images.
+ Stereo correspondence is the problem of finding which part of one image
+ correspond to which parts of another image, where the difference are due
+ to the movement of the camera.
+ As discussed in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Solving-for-Image"
+
+\end_inset
+
+ the correspondence can be either dense or sparse.
+ In dense correspondence image intensities are used, where as in sparse
+ only image feature are used.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521916660
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521916660
+\begin_inset Graphics
+	filename images/disparity_2.png
+	width 8cm
+	height 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521916660
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521916731
+Disparity Computation
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Disparity-Computation"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521739289
+Let 
+\begin_inset Formula $x_{L}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{R}$
+\end_inset
+
+ be the one of the established correspondences in the image pair 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Disparity-Computation"
+
+\end_inset
+
+ and 
+\begin_inset Formula $P=(x_{p},y_{p},z_{p})$
+\end_inset
+
+ be the 3D location of object, from the epiploar constraint we know that
+ these corresponding image points and 3D position of the object forms a
+ triangle as depicted in the image 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Disparity-Computation"
+
+\end_inset
+
+ Since the focal length 
+\begin_inset Formula $f$
+\end_inset
+
+ of the camera and baseline 
+\begin_inset Formula $B=2l$
+\end_inset
+
+ are known, we can compute the disparity 
+\begin_inset Formula $d$
+\end_inset
+
+ and consequently the depth of object 
+\begin_inset Formula $z_{p}$
+\end_inset
+
+ with properties of similarity triangles as fallowing.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521739289
+\begin_inset Formula 
+\[
+d=x_{L}-x_{R}=f\left(\frac{x_{p}+l}{z_{p}}-\frac{x_{p}-l}{z_{p}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521739289
+\begin_inset Formula 
+\[
+d=\frac{2fl}{z_{p}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521739289
+\begin_inset Formula 
+\[
+z_{p}=\frac{fB}{d}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521741278
+However, the problem with the fixed baseline disparity computation is that
+ the error grows quadratically with depth, as a result the nearer depths
+ have better accuracy but not the further depths.This can addressed efficiently
+ by using variable baseline/resolution instead of fixed baseline
+\begin_inset CommandInset citation
+LatexCommand cite
+key "4587671"
+
+\end_inset
+
+, where the baselines and focal length are selected with proportion to the
+ depth, which helps us archive the constant accuracy over all the depths.
+ Further performance and accuracy improvements could be achieved by using
+ probabilistic approach of adaptive baseline
+\begin_inset CommandInset citation
+LatexCommand cite
+key "6751290"
+
+\end_inset
+
+ which explicitly takes advantage of the fact that in a video, small- baseline
+ frames are available before large-baseline frames.
+ In this case, for each pixel a suitable frame is selected for disparity
+ search.
 \end_layout
 
 \begin_layout Subsection
+
+\change_inserted 215191885 1521741278
+Solving for Scene Geometry
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521741278
+There are generically two different approaches for 3D reconstruction referred
+ to as 
+\emph on
+sparse
+\emph default
+ and 
+\emph on
+dense
+\emph default
+.
+ Sparse methods reconstruct the 3D scene geometry only for a select subset
+ of the entire image data 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "klein07parallel"
+
+\end_inset
+
+.
+ This subset is often corner locations or locations marked by some type
+ of feature extraction, e.g., SIFT or SURF.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lowe2004,Bay:2008:SRF:1370312.1370556"
+
+\end_inset
+
+ This results in a sparse description of the 3D scene in terms of a point
+ cloud.
+ In contrast, dense methods 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "6696650"
+
+\end_inset
+
+ reconstruct as many 3D geometric locations as possible and seek to provide
+ a complete description of the 3D scene.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521741278
+Sparse reconstructions often benefit from having a lower computational cost
+ but provide few 3D measurements.
+ Dense reconstructions have higher computational cost but provide a much
+ more complete description of the 3D scene.
+ Dense reconstruction techniques have seen much recent interest, although
+ a highly accurate, dense, and real-time SfM approach has remained elusive.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521741278
+A third class of algorithms, referred to as 
+\emph on
+semi-dense
+\emph default
+ algorithms 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "6751290"
+
+\end_inset
+
+, seeks to strike a compromise between the sparse and dense methods.
+ The reconstruction techniques used are most similar to dense methods, however,
+ only a subset of all image pixels are reconstructed.
+ These approaches leverage the high accuracy of dense reconstruction techniques,
+ but are sparse enough to allow for real-time operation.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521741278
+Here, reconstruction is limited to those pixels which possess high intensity
+ gradient values.
+ These regions often correspond to scene geometries such as edges, corners,
+ and curves and to other areas of the scene that are highly textured.
+ The thought here is that regions of the image that possess large changes
+ in intensity convey more information than regions that possess less, thus
+ semi-dense reconstructions provide a compressed version of the total scene
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsubsection
 The eight-point linear algorithm
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 215191885 1521741584
+One of the simple closed-form algorithm which estimates camera trajectory
+ and 3D depths from pair of images is The eight-point algorithm, 
+\change_deleted 215191885 1521741600
 With epipolar constrain between two images, we should be able to retrieve
  the relative pose of the cameras.
- The eight-point linear algorithm is a simple closed-form algorithm, it
- consists of two steps: First a matrix E is recovered from a number of epipolar
- constraints; then relative translation and orientation are extracted from
- E.
+ The eight-point linear algorithm is a simple closed-form algorithm
+\change_unchanged
+, it consists of two steps: First a matrix E is recovered from a number
+ of epipolar constraints; then relative translation and orientation are
+ extracted from E.
 \end_layout
 
 \begin_layout Standard
@@ -3742,7 +4981,7 @@ With
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Paragraph
 Structure Reconstruction
 \end_layout
 
@@ -3911,6 +5150,108 @@ determines all the unknown depths up to a single universal scale.
 \end_inset
 
 s that corresponds to its smallest eigenvalue.
+\change_inserted 215191885 1521047989
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 215191885 1521070857
+RGBD Measurement Noise
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:RGBD_Measurement-Noise"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521070857
+The proposed fusion algorithm relies on experimental studies of accuracy
+ and noise for RGBD sensor measurement, e.g., the Kinect sensor.
+ Research in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "7925286"
+
+\end_inset
+
+ shows that a Gaussian noise model provides a good fit to observed measurement
+ errors on planar targets where the distribution parameters are mean 
+\begin_inset Formula $0$
+\end_inset
+
+ and standard deviation
+\begin_inset Formula $\sigma_{Z}=\frac{m}{2f_{x}b}Z^{2}$
+\end_inset
+
+ for depth measurements where 
+\begin_inset Formula $\frac{m}{f_{x}b}=-2.85e^{-3}$
+\end_inset
+
+ is the linearized slope for the normalized disparity empirically found
+ in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "7925286"
+
+\end_inset
+
+.
+ Since 3D the coordinates for 
+\begin_inset Formula $(X,Y)$
+\end_inset
+
+ are a function of both the pixel location and the depth, their distributions
+ are also known as shown below:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521070857
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{ccc}
+\sigma_{X} & = & \frac{x_{im}-c_{x}+\delta_{x}}{f_{x}}\sigma_{Z}=\frac{x_{im}-c_{x}+\delta_{x}}{f_{x}}(1.425e^{-3})Z^{2}\\
+\sigma_{Y} & = & \frac{y_{im}-c_{y}+\delta_{y}}{f_{y}}\sigma_{Z}=\frac{y_{im}-c_{y}+\delta_{y}}{f_{y}}(1.425e^{-3})Z^{2}\\
+\sigma_{Z} & = & \frac{m}{f_{x}b}Z^{2}\sigma_{d'}=(1.425e^{-3})Z^{2}
+\end{array}\label{eq:noise_models}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521070857
+These equations indicate that 3D coordinate measurement uncertainty increases
+ as a quadratic function of the depth for all three coordinate values.
+ However, the quadratic coefficient for the 
+\begin_inset Formula $(X,Y)$
+\end_inset
+
+ coordinate standard deviation is at most half that in the depth direction,
+ i.e., 
+\begin_inset Formula $(\sigma_{X},\sigma_{Y})\approx0.5\sigma_{Z}$
+\end_inset
+
+ at the image periphery where 
+\begin_inset Formula $\frac{x-c_{x}}{f}\approx0.5$
+\end_inset
+
+, and this value is significantly smaller for pixels close to the optical
+ axis.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -4017,16 +5358,86 @@ key "Triggs:1999:BAM:646271.685629"
 \end_inset
 
 .
+\change_inserted 215191885 1521909532
+
 \end_layout
 
 \begin_layout Standard
-One of the many ways to minimize this squared error is the Gauss-Newton
- method.
+
+\change_inserted 215191885 1521910863
+One of the simplest ways to minimize this squared error is the gradient
+ descent method.
+ It is a first-order optimization method which aims to determine a local
+ minimum of a non-convex cost function by iteratively stepping in the direction
+ in which the energy decreases most.
+ Hence this method is also called as the steepest descent method.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521910909
+\begin_inset Formula 
+\[
+x_{t+1}=x_{t}-\alpha g
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521910964
+with step size 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and gradient g
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521910909
+\begin_inset Formula 
+\[
+g_{j}=2\underset{i}{\sum}r_{i}\frac{\partial r_{i}}{\partial x_{i}}
+\]
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 215191885 1521909550
+One of the many ways to minimize this squared error is the
+\change_inserted 215191885 1521913152
+The problem with the gradient descent is that it is only first order approximati
+on we can achieve a better results with second order approximation and it
+ is done by an efficient approach called the
+\change_unchanged
+ Gauss-Newton method.
  Gauss-Newton is a iterative method for finding the value of the variables
- which minimizes the sum of squares,it starts with the initial guess and
- this method does not need the second derivatives (Hessian matrix) of the
- of function, which is often expensive and sometimes not possible to compute,
- instead the Hessian is approximated with the Jacobian matrix of the function.
+ which minimizes the sum of squares
+\change_inserted 215191885 1521911027
+, this method achieves this by assuming that the least squares function
+ is locally quadratic and tries to find the the minimum of the quadratic.
+\change_deleted 215191885 1521909702
+,
+\change_inserted 215191885 1521909725
+ I
+\change_deleted 215191885 1521909725
+i
+\change_unchanged
+t starts with the initial guess and this method does not need the second
+ derivatives (Hessian matrix) of the of function, which is often expensive
+ and sometimes not possible to compute, instead the Hessian is approximated
+ with the Jacobian matrix of the function.
  
 \end_layout
 
@@ -4119,8 +5530,30 @@ J_{ij}=\frac{\partial r_{i}}{\partial x_{j}}
 \end_layout
 
 \begin_layout Standard
-The modification to Gauss-Newton method is The Levenberg-Marquardt algorithm,
+
+\change_inserted 215191885 1521913214
+Finaly, t
+\change_deleted 215191885 1521913213
+T
+\change_unchanged
+he modification to Gauss-Newton method is 
+\change_inserted 215191885 1521907843
+t
+\change_deleted 215191885 1521907843
+T
+\change_unchanged
+he Levenberg-Marquardt 
+\change_inserted 215191885 1521913445
+(LVM)
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gavin2013TheLM"
+
+\end_inset
+
  
+\change_unchanged
+algorithm, 
 \end_layout
 
 \begin_layout Standard
@@ -4135,7 +5568,11 @@ x_{t+1}=x_{t}-(H+\lambda I)^{-1}g
 \end_layout
 
 \begin_layout Standard
-this modification is a hybrid between the Newton method 
+this modification is a hybrid between the 
+\change_inserted 215191885 1521912344
+Gauss-
+\change_unchanged
+Newton method 
 \begin_inset Formula $(\lambda=0)$
 \end_inset
 
@@ -4148,8 +5585,3145 @@ this modification is a hybrid between the Newton method
 \end_inset
 
 
-\change_inserted 215191885 1517139592
+\change_inserted 215191885 1521913240
+.
+ i.e LVM efficiently minimizes the squared error by updating the parameters
+ in the steepest-descent direction when the initial guess are far way from
+ the solution, and switchs to Gauss-Newton method when small updates are
+ required for approximation.
+\end_layout
 
+\begin_layout Section
+
+\change_inserted 215191885 1521822765
+Graph Optimization
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521839416
+SfM is a non-linear least square optimization problem which tries to estimate
+ the set of parameters that accurately represents the trajectory of the
+ camera and observed 3D points of the object, the complexity of this problem
+ increases quickly since we are dealing with multiple features from many
+ pairs of images and each pose estimation has a 7 degree of freedom 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sim3"
+
+\end_inset
+
+.
+ One efficient way to handle such a large scale non-linear optimization
+ problem is to represent them in a graph
+\begin_inset CommandInset citation
+LatexCommand cite
+key "5979949"
+
+\end_inset
+
+.
+ There are two many advantages to this approach, Firstly, the graph representati
+on helps with the modular representation of the problem, where each nodes
+ is reference image and edge between the nodes are relative pose estimated.
+ And more importantly, graph representation helps handle other important
+ problems like global optimization and loop closures.
+\end_layout
+
+\begin_layout Chapter
+
+\change_inserted 215191885 1521048998
+LSD SLAM
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521048998
+We are using LSD-SLAM 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Engel2014"
+
+\end_inset
+
+ as our SfM implementation, it is  a 
+\emph on
+semi-dense
+\emph default
+, 
+\emph on
+direct
+\emph default
+ method which optimizes the geometry directly on the image intensities.
+ LSD-SLAM provides as output a reconstruction of the observed 3D environment
+ as a pose-graph of specially designated RGB image keyframes with associated
+ semi-dense depth images.
+ Direct correspondences are found between every RGB frame and each RGB keyframe
+ to estimate the keyframe-to-RGB-frame relative camera pose.
+ This is achieved by Levenberg-Marquardt optimization of the photometric
+ error between the RGB image pair.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521048998
+\begin_inset Formula 
+\begin{equation}
+E(\xi)=\underset{i}{\sum}(I_{ref}(P_{i})-I(\omega(p_{i},D_{ref}(p_{i}),\xi)))^{2}\label{eq:Photomatric Error}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521074363
+Equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Photomatric Error"
+
+\end_inset
+
+) shows the specific image alignment object function and formalizes the
+ form for equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Image-alignment"
+
+\end_inset
+
+).
+ Here, the warp function relies on the current estimate of depth 
+\begin_inset Formula $D_{ref}$
+\end_inset
+
+ to determine the relative pose 
+\begin_inset Formula $\xi\in sim(3)$
+\end_inset
+
+.
+ The reference depth 
+\begin_inset Formula $D_{ref}$
+\end_inset
+
+ is the depth associated with current key frame, these depth values could
+ be initialized either with random values or with the depth measurements
+ from a RGBD sensor to initiate the process.
+ For every new frame tracked, the depths associated with the keyframe are
+ continuously refined by performing the adaptive baseline stereo 3D reconstructi
+on 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "6751290"
+
+\end_inset
+
+ between new tracked frames and the stack of previously tracked frames.
+ When there is drastic pose change between the tracked frame and keyframe,
+ the current tracked frame is promoted as a keyframe and depth map from
+ previous keyframe is propagated to the new keyframe and regularized.
+ Concurrently, all the keyframes are added as a nodes to a pose graph that
+ stores the relative pose between the keyframes as edges/constraints 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "5979949"
+
+\end_inset
+
+.
+ The pose graph stores the global trajectory of the camera in the 3D scene
+ and an optimization algorithm processes the pose graph to improve the camera
+ pose estimates as new image correspondences are found by image matching
+ and loop closures.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521917616
+The depth computation process involves finding the epiploar lines between
+ new tracking frame and reference frames, along which the disparity for
+ the pixel is determined.
+ This process have two error sources, the error on disparity itself called
+ the geometric disparity error and the error which encodes intensity difference
+ called the photometric disparity error, The former error accounts for the
+ magnitude of the image gradient along the epipolar line , while the later
+ one on the angle between the image gradient and the epipolar line.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521759399
+\begin_inset Float figure
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521759399
+\begin_inset Graphics
+	filename /home/akash/backup/2018_SeCon_RGBDSfM_Fusion/images/LSD SLAM.png
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521759399
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521917601
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:LSDSLAM-Overview"
+
+\end_inset
+
+ An overview of the LSD SLAM algorithm.
+ Each incoming frame is tracked against the current keyframe.
+ If it does not satisfy the criteria for new keyframe creation, it is used
+ along with previous tracked frames for refinement of the estimated depth
+ values of the keyframe.
+ Otherwise, the frame is considered a new keyframe and depth estimates from
+ the previous keyframe are propagated and used for initialization of the
+ new depth estimates.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 215191885 1521070779
+Point Cloud Reconstruction
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Point-Cloud-Reconstruction"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521070779
+Measured 3D 
+\begin_inset Formula $(X,Y,Z)$
+\end_inset
+
+ positions of sensed surfaces can be directly computed from the intrinsic
+ camera parameters and depth image values.
+ Here, the 
+\begin_inset Formula $Z$
+\end_inset
+
+ coordinate is directly taken as the depth value and the 3D 
+\begin_inset Formula $(X,Y)$
+\end_inset
+
+ coordinates are computed using the pinhole camera model.
+ In a typical pinhole camera model 3D 
+\begin_inset Formula $(X,Y,Z)$
+\end_inset
+
+ points are projected to 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ image locations 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ma:2003:IVI:971144"
+
+\end_inset
+
+, e.g., for the image columns the 
+\begin_inset Formula $x$
+\end_inset
+
+ image coordinate is 
+\begin_inset Formula $x=f_{x}\frac{X}{Z}+c_{x}-\delta_{x}$
+\end_inset
+
+.
+ However, for a depth image, this equation is re-organized to 
+\begin_inset Quotes eld
+\end_inset
+
+back-project
+\begin_inset Quotes erd
+\end_inset
+
+ the depth into the 3D scene and recover the 3D 
+\begin_inset Formula $(X,Y)$
+\end_inset
+
+ coordinates as shown by equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:RGBD_reconstruction"
+
+\end_inset
+
+) 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521070779
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{ccc}
+X & = & (x+\delta_{x}-c_{x})Z/f_{x}\\
+Y & = & (y+\delta_{y}-c_{y})Z/f_{y}\\
+Z & = & Z
+\end{array}\label{eq:RGBD_reconstruction}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $Z$
+\end_inset
+
+ denotes the sensed depth at image position 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+, 
+\begin_inset Formula $(f_{x},f_{y})$
+\end_inset
+
+ denotes the camera focal length (in pixels), 
+\begin_inset Formula $(c_{x},c_{x})$
+\end_inset
+
+ denotes the pixel coordinate of the image center, i.e., the principal point,
+ and 
+\begin_inset Formula $(\delta_{x},\delta_{y})$
+\end_inset
+
+ denote adjustments of the projected pixel coordinate to correct for camera
+ lens distortion.
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 215191885 1521070779
+Point Cloud Re-Projection
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Point-Cloud-Re-Projection"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521070779
+Depth images can be simulated for camera sensor in arbitrary poses by 
+\begin_inset Quotes eld
+\end_inset
+
+re-projection.
+\begin_inset Quotes erd
+\end_inset
+
+ For discussion, assume that depth image 
+\begin_inset Formula $\mathbf{d}(x,y)$
+\end_inset
+
+ has been recorded in the 
+\begin_inset Quotes eld
+\end_inset
+
+standard
+\begin_inset Quotes erd
+\end_inset
+
+ camera/optical coordinate system where the origin corresponds to the camera
+ focal point, the 
+\begin_inset Formula $z$
+\end_inset
+
+-axis corresponds to the depth/optical axis extending out into the viewed
+ scene, the 
+\begin_inset Formula $x$
+\end_inset
+
+-axis points towards the right and spans the image columns and the 
+\begin_inset Formula $y$
+\end_inset
+
+-axis points downward and spans the image rows.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521070779
+Let 
+\begin_inset Formula $\mathbf{R}$
+\end_inset
+
+ denote the 3D rotation that rotates the coordinate axes of the standard
+ coordinate system to align with the same axes of a second camera having
+ arbitrary pose.
+ Similarly, Let 
+\begin_inset Formula $\mathbf{t}$
+\end_inset
+
+ denote the 3D translation vector describing the position of the focal point
+ of a second camera having arbitrary pose.
+ Using this notation, the re-projection algorithm consists of the following
+ three steps:
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 215191885 1521070779
+Back-project 
+\begin_inset Formula $\mathbf{d}(x,y)$
+\end_inset
+
+ to create an 
+\begin_inset Formula $(X,Y,Z)$
+\end_inset
+
+ point cloud (as described in 
+\begin_inset Formula $\S$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Point-Cloud-Reconstruction"
+
+\end_inset
+
+), 
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 215191885 1521070779
+Transform, i.e., rotate and translate, each point 
+\begin_inset Formula $\mathbf{p}_{i}=[X,Y,Z]^{t}$
+\end_inset
+
+ in the point cloud to generate a new point 
+\begin_inset Formula $\mathbf{p}_{i}^{'}=[X^{'},Y^{'},Z^{'}]^{t}$
+\end_inset
+
+ that lies in a standard optical coordinate system centered on the second
+ camera's focal point and having orientation that aligns with corresponding
+ 
+\begin_inset Formula $x,y,z$
+\end_inset
+
+-axes using equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:coordinate_system_change"
+
+\end_inset
+
+),
+\begin_inset Formula 
+\begin{equation}
+\mathbf{p}_{i}^{'}=\mathbf{R}(\mathbf{p}_{i}-\mathbf{t})\label{eq:coordinate_system_change}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 215191885 1521070779
+Re-project the 
+\begin_inset Formula $(X,Y,Z)$
+\end_inset
+
+ point cloud using the pinhole camera equations to compute the new depth
+ image 
+\begin_inset Formula $\mathbf{d}^{'}(x,y)=Z$
+\end_inset
+
+ using equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:re_projection"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521070779
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{ccc}
+x & = & f_{x}(\frac{X^{'}}{Z^{'}})-\delta_{x}+c_{x}\\
+y & = & f_{y}(\frac{Y^{'}}{Z^{'}})-\delta_{y}+c_{y}\\
+Z & = & Z^{'}
+\end{array}\label{eq:re_projection}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521070779
+Typically, the re-projected point cloud measurements fall at non-integer
+ locations in the new depth image and the values of 
+\begin_inset Formula $\mathbf{d}^{'}(x,y)$
+\end_inset
+
+ must then be interpolated via bilinear interpolation or some other interpolatio
+n scheme (nearest neighbor).
+ 
+\end_layout
+
+\begin_layout Chapter
+
+\change_inserted 215191885 1521071426
+Methodology
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521071427
+\begin_inset Float figure
+wide true
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521071427
+\begin_inset Graphics
+	filename /home/akash/southeastcon/2018_SeCon_RGBDSfM_Fusion/images/overview_coloum_span.png
+	lyxscale 20
+	width 7in
+	height 2.5in
+	keepAspectRatio
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521071427
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:The-complete-process"
+
+\end_inset
+
+An overview of the proposed depth fusion algorithm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The proposed fusion approach applies the semi-dense monocular reconstruction
+ approach referred to as Large Scale Direct (LSD) SLAM 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Engel2014"
+
+\end_inset
+
+.
+ The LSD-SLAM algorithm solves the SfM problem using a 
+\emph on
+direct
+\emph default
+ method to compute pixel correspondences and a 
+\emph on
+semi-dense
+\emph default
+ method for 3D reconstruction.
+ We select this approach as it does not require or impose any prior knowledge
+ about the scene structure as required by 
+\emph on
+dense 
+\emph default
+reconstruction methods and it gives more 3D estimates than 
+\emph on
+sparse
+\emph default
+ approaches while having similar computational cost.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521071427
+The LSD-SLAM SfM algorithm consists of the following three components:
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 215191885 1521071427
+A tracking component that estimates the pose of the camera
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 215191885 1521071427
+A depth map estimation component that estimates semi-dense depth images
+ for keyframes
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 215191885 1521071427
+A map optimization component that seeks to create a 3D map of the environment
+ that is self-consistent.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521994424
+This work utilizes the first two components to explore fusion of RGBD depth
+ images with SfM depth images.
+ For this work, the map optimization component (3) is not used.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:The-complete-process"
+
+\end_inset
+
+ depicts an overview of the proposed depth fusion algorithm.
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 215191885 1521071427
+Time and Spatial Sampling Issues
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Time-and-Spatial"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521071427
+As mentioned previously, RGBD sensors measure depth at a rate of 30 frames
+ per second (fps) and LSD-SLAM computes depth images only for 
+\emph on
+keyframes 
+\emph default
+which is a sparse subset of the measured RGB frames.
+ Further, keyframes are not generated uniformly in time but created when
+ the SfM algorithm detects criteria required to create a new keyframe.
+ This condition is triggered when the current camera pose is too far from
+ the most recent keyframe camera pose and when the current frame tracking
+ result is 
+\begin_inset Quotes eld
+\end_inset
+
+good
+\begin_inset Quotes erd
+\end_inset
+
+ in the sense that the image warping correspondence objective function suggests
+ an accurate or low-error result.
+ As a result, SfM-estimated depths exist only for those RGB images designated
+ as keyframes.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521071427
+Further, the spatial distribution of SfM-estimated depths within SfM keyframes
+ are localized to only those pixels having 
+\begin_inset Quotes eld
+\end_inset
+
+good
+\begin_inset Quotes erd
+\end_inset
+
+ 3D reconstruction characteristics.
+ In this sense, the quality of the depth estimate depends on accurately
+ matching pixels along epipolar lines inscribed in the image.
+ The matching performance here is best when there is a significant change
+ in the image intensities along the epipolar line.
+ Hence, 3D depth reconstruction is limited to those pixels that lie at sharp
+ intensity changes, i.e., 
+\begin_inset Quotes eld
+\end_inset
+
+edge
+\begin_inset Quotes erd
+\end_inset
+
+ pixels, and further limited to those 
+\begin_inset Quotes eld
+\end_inset
+
+edge
+\begin_inset Quotes erd
+\end_inset
+
+ pixels that lie on edges that are roughly perpendicular to the direction
+ of the epipolar line (see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "6751290"
+
+\end_inset
+
+ for details).
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521071427
+The LSD-SLAM algorithm estimates depth at 
+\begin_inset Quotes eld
+\end_inset
+
+good
+\begin_inset Quotes erd
+\end_inset
+
+ pixel positions as a 1-dimensional Gaussian distribution specified as a
+ mean image 
+\begin_inset Formula $\mu_{SfM}(x,y)$
+\end_inset
+
+, i.e., the estimated depth image, and a variance image 
+\begin_inset Formula $\sigma_{SfM}^{2}(x,y)$
+\end_inset
+
+ such that the RGB keyframe pixel at location 
+\begin_inset Formula $\mathbf{I}(x,y)$
+\end_inset
+
+ is estimated to have depth 
+\begin_inset Formula $\mu_{SfM}(x,y)$
+\end_inset
+
+ with uncertainties given by 
+\begin_inset Formula $\sigma_{SfM}^{2}(x,y)$
+\end_inset
+
+.
+ In this sense, the keyframe image 
+\begin_inset Formula $\mathbf{I}(x,y)$
+\end_inset
+
+ augmented with the estimated depth image 
+\begin_inset Formula $\mu_{SfM}(x,y)$
+\end_inset
+
+ is analogous in format to sensed RGBD image data.
+ Yet, the uncertainties for the image 
+\begin_inset Formula $\mu_{SfM}(x,y)$
+\end_inset
+
+ are given by the image 
+\begin_inset Formula $\sigma_{SfM}^{2}(x,y)$
+\end_inset
+
+ rather than the experimentally validated uncertainties discussed in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521071427
+
+
+\backslash
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:RGBD_Measurement-Noise"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 215191885 1521071427
+Image Registration Issues
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521071427
+Fusing depth measurements requires knowledge of the correspondence between
+ the depth measurements generated from the RGBD sensor and the SfM algorithm.
+ For SfM keyframes this correspondence is trivial due to the fact that RGBD
+ sensors support hardware registration.
+ Hardware registration co-locates the RGBD depth image measurements, 
+\begin_inset Formula $\mathbf{d}_{rgbd}(x,y)$
+\end_inset
+
+, and RGB appearance values, 
+\begin_inset Formula $\mathbf{I}(x,y)$
+\end_inset
+
+.
+ Hence, for hardware-registered RGBD depth images, 
+\begin_inset Formula $\mathbf{d}_{rgbd}(x,y)$
+\end_inset
+
+ is the measured depth of the surface having RGB pixel 
+\begin_inset Formula $\mathbf{I}(x,y)$
+\end_inset
+
+.
+ Similarly, SfM-estimated depths for an RGB keyframe, 
+\begin_inset Formula $\mu d_{SfM}(x,y)$
+\end_inset
+
+, are the depths for the surface having RGB pixel 
+\begin_inset Formula $\mathbf{I}(x,y)$
+\end_inset
+
+.
+ Hence fusion is accomplished by fusing the measurements at corresponding
+ 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ locations in the RGBD depth image, 
+\begin_inset Formula $\mathbf{d}_{rgbd}(x,y)$
+\end_inset
+
+, and the SfM depth image, 
+\begin_inset Formula $\mu\mathbf{d}_{SfM}(x,y)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521479929
+Depth correspondences for RGB images that are not SfM keyframes must be
+ computed from one or more SfM keyframe depth images.
+ This article uses the most recent, i.e., closest-in-time, keyframe to generate
+ co-registered SfM depth images for arbitrary RGB images.
+ To do so, the depth image from the most recent keyframe, 
+\begin_inset Formula $\mathbf{d}_{SfM}(x,y)$
+\end_inset
+
+, is 
+\begin_inset Quotes eld
+\end_inset
+
+back-projected
+\begin_inset Quotes erd
+\end_inset
+
+ to create a 3D point cloud of SfM measurements.
+ Using the estimated keyframe-to-camera pose change, the 3D measurements
+ are then re-projected into the RGB camera image plane using the 3D projection
+ equations for the camera provided via camera calibration.
+ The resulting depth image, 
+\begin_inset Formula $\widetilde{\mathbf{d}}_{SfM}(x,y)$
+\end_inset
+
+ is then co-registered with the RGBD depth image 
+\begin_inset Formula $\mathbf{d}_{rgbd}(x,y)$
+\end_inset
+
+ and RGB image 
+\begin_inset Formula $\mathbf{I}(x,y)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521917849
+However, due to the noise in depth computation and consequent trajectory
+ estimation, the depth registration is not always correct, this should be
+ addressed as early as possible to avoid the drift in their computations.
+ We try to achieve better depth registration by estimating the transformation
+ error between the point clouds of sensor depth measurements and LSD depth
+ estimation.
+ Since the LSD estimations are not to the scale, we also need to estimate
+ the scale for better registration of depths.
+ The Umeyama's Least-Square estimation 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Umeyama:1991:LET:105514.105525"
+
+\end_inset
+
+ shows us how to estimate these 
+\begin_inset Formula $Sim(3)$
+\end_inset
+
+ transformation parameters efficiently.
+ In his work, Umeyama shows how to estimates the rotation, translation and
+ scale between two point clouds with known correspondence.
+ In order to avoid errors, we use only the valid depths in both the point
+ cloud for estimation.By using 
+\begin_inset Formula $\mathbf{pc}_{rgbd}$
+\end_inset
+
+and 
+\begin_inset Formula $\mathbf{pc}_{SfM}$
+\end_inset
+
+to represent the valid point clouds of sensor measurements and LSD estimation
+ respectively, we compute the mean, variances and covariance of both them
+ as following.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521484409
+\begin_inset Formula 
+\[
+\mu_{rgbd}=\frac{\sum\mathbf{pc}_{rgbd}}{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521484766
+\begin_inset Formula 
+\[
+\mu_{SfM}=\frac{\sum\boldsymbol{pc}_{SfM}}{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521484766
+\begin_inset Formula 
+\[
+\sigma_{rgbd}^{2}=\frac{\sum\left\Vert \boldsymbol{pc}_{rgbd}-\mu_{rgbd}\right\Vert ^{2}}{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521484795
+\begin_inset Formula 
+\[
+\sigma_{SfM}^{2}=\frac{\sum\left\Vert \boldsymbol{pc}_{SfM}-\mu_{SfM}\right\Vert ^{2}}{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521501433
+\begin_inset Formula 
+\[
+\Sigma_{SfM,rgbd}=\frac{\sum(\boldsymbol{pc}_{rgbd}-\mu_{rgbd})(\boldsymbol{pc}_{SfM}-\mu_{SfM})^{T}}{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521501595
+With singular value decomposition of 
+\begin_inset Formula $\Sigma_{SfM,rgbd}$
+\end_inset
+
+ as 
+\begin_inset Formula $UDV^{T},$
+\end_inset
+
+the optimum rotation matrix 
+\begin_inset Formula $R$
+\end_inset
+
+ which achieves the minimum error between point clouds is given by
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521501637
+\begin_inset Formula 
+\[
+R=USV^{T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521507419
+\begin_inset Formula 
+\[
+S=I\begin{cases}
+I & det(\Sigma_{SfM,rgbd})\geq0\\
+diag(1,1,-1) & det(\Sigma_{SfM,rgbd})<0
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521507451
+The scale adjustment 
+\begin_inset Formula $c$
+\end_inset
+
+ is computed by
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521507699
+\begin_inset Formula 
+\[
+c=\frac{1}{\sigma_{SfM}^{2}}trace(DS)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521507819
+With scale and rotation established, the translation parameters are determined
+ as 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521508665
+\begin_inset Formula 
+\[
+t=\mu_{rgbd}-cR\mu_{SfM}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521917864
+with the 
+\begin_inset Formula $Sim(3)$
+\end_inset
+
+ parameters we transform LSD point clouds before projecting them to find
+ 
+\begin_inset Formula $\widetilde{\mathbf{d}}_{SfM}(x,y)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521514011
+\begin_inset Formula 
+\[
+\tilde{\boldsymbol{pc_{SfM}}}=cR\boldsymbol{pc}_{SfM}+t
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521818294
+Using these techniques co-registered SfM depth images can be computed for
+ a general RGBD image.
+ When RGBD images correspond to SfM keyframes the registration is 
+\begin_inset Quotes eld
+\end_inset
+
+automatic,
+\begin_inset Quotes erd
+\end_inset
+
+ i.e., no computation is necessary.
+ In all other cases, a co-registered SfM depth image must be computed by
+ reconstructing a 3D point cloud from a keyframe and then projecting the
+ point cloud into the target RGB camera image using the estimated camera
+ calibration and keyframe-to-camera-frame relative pose parameters.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521818294
+\begin_inset Float figure
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521818294
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521818294
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "1in"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521818294
+\begin_inset Graphics
+	filename images/lsd_rgbd_pc_before_reg.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521818294
+\begin_inset Graphics
+	filename images/lsd_rgbd_pc_before_reg_2.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521818294
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521818294
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521818294
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "1in"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521818294
+\begin_inset Graphics
+	filename images/lsd_rgbd_pc_after_reg.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521818294
+\begin_inset Graphics
+	filename images/lsd_rgbd_pc_after_reg_2.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521818294
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521818294
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521818294
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521818564
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:depth registartion"
+
+\end_inset
+
+ (a)Shows the two different views of the point clouds before depth registration
+ (b)Shows the different views of the point clouds after depth registration.
+ The green represents the point cloud from LSD SLAM and purple represents
+ the point clouds from RGBD sensors
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 215191885 1521853647
+Noise removal
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521917875
+Noise in non linear optimization leads to erroneous depth computation, these
+ depths values should be detected and removed in-order to avoid the to drift
+ in pose estimation and consequent accretion of the error in depth estimations.
+ Fortunately, these noisy depths have a particular pattern as shown in the
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:vailing error"
+
+\end_inset
+
+ (a), i.e.
+ if we consider the optic center as the origin, the noisy depth form a veiling
+ pattern along the line from origin to furthest depth value.
+ Also we know that the furthest depth is the valid depth , we can find this
+ valid depth and eliminate all other noisy depth by tracing the line to
+ origin.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521854479
+\begin_inset Float figure
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521854805
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521854479
+\begin_inset Graphics
+	filename images/depth_filter_5.jpg
+	lyxscale 10
+	height 1.3in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521854479
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521854479
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521854479
+\begin_inset Graphics
+	filename images/depth_filter_7.jpg
+	lyxscale 10
+	height 1.3in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521854479
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521854479
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521854805
+\begin_inset Graphics
+	filename images/depth_filter_6.jpg
+	lyxscale 10
+	height 1.3in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521854805
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521854805
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521917885
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:vailing error"
+
+\end_inset
+
+ (a) LSD depths with veiling errors (b) Veiling errors detected (represented
+ in black) (c) LSD depths with veiling errors removed 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 215191885 1521071427
+Resolving the Unknown SfM Scale
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521071427
+The methods described in previous sections detail how co-registered SfM
+ depth measurements are computed for every sensed RGBD frame.
+ However, as discussed in previously, SfM depth images intrinsically have
+ an unknown scale, 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, which reflects the fact that the solution for the scene structure is not
+ geometrically unique, i.e., the same scene structure can be observed at a
+ infinite number of distinct scales.
+ Therefore fusion requires the scale of the SfM depth image to fit the scale
+ of the real-world scene measured by the RGBD camera.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521071427
+Given that the depth measurements for the RGBD depth image are co-registered
+ with the SfM estimated depth image the scale parameter can be directly
+ estimated by minimizing the sum of the squared depth errors 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bishop:2006:PRM:1162264"
+
+\end_inset
+
+ between the SfM depth image and the RGBD depth image.
+ Let 
+\begin_inset Formula $V$
+\end_inset
+
+ denote the set of 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ positions that have valid depth measurements for 
+\begin_inset Quotes eld
+\end_inset
+
+standard
+\begin_inset Quotes erd
+\end_inset
+
+ fusion as described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Fusing-RGBD-Depths"
+
+\end_inset
+
+.
+ Equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:scale error"
+
+\end_inset
+
+) shows the error function used to compute the unknown scale value and equation
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:depth_scale_solution"
+
+\end_inset
+
+) shows the solution 
+\begin_inset Formula $\widehat{\alpha}$
+\end_inset
+
+ that minimizes this error.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521071427
+\begin_inset Formula 
+\begin{equation}
+e(\alpha)=\sum_{(x,y)\epsilon V}\left\Vert \mathbf{d}_{rgbd}(x,y)-\alpha\mathbf{d}_{SfM}(x,y)\right\Vert ^{2}\label{eq:scale error}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521071427
+\begin_inset Formula 
+\begin{equation}
+\widehat{\alpha}=\sum_{(x,y)\epsilon V}\frac{\mathbf{d}{}_{rgbd}(x,y)}{\mathbf{d}_{SfM}(x,y)}\label{eq:depth_scale_solution}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 215191885 1521071427
+RGBD and SfM Depth Fusion
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Fusing-RGBD-Depths"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521071427
+For fusing measurements we consider the structured-light measurement of
+ the RGBD sensor to generate a distribution for the unknown true depth of
+ the scene surfaces at each RGBD 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ pixel in the depth image.
+ These measurements are considered to be independent and identically distributed
+ to the measurements of the true unknown depth of the scene surfaces from
+ the registered SfM estimated depths.
+ With these assumptions, solving the depth fusion problem is equivalent
+ to estimating the posterior distribution of the true scene depth at each
+ 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ position given the distributions for the RGBD and SfM depth values.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521071427
+Fortunately, previous sections show that Gaussian models are appropriate
+ distributions for both the RGBD and SfM depth values and the parameters
+ of these models are either known (see 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521071427
+
+
+\backslash
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:RGBD_Measurement-Noise"
+
+\end_inset
+
+) or estimated continuously (see 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521071427
+
+
+\backslash
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Time-and-Spatial"
+
+\end_inset
+
+).
+ When both distributions are Gaussian, the posterior distribution can be
+ found analytically and is a well-known result used in pattern recognition
+ and other prediction frameworks, e.g., the Kalman filter as discussed in
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Maybeck79stochasticsmodels"
+
+\end_inset
+
+.
+ Specifically, let the Gaussian noise for RGBD depth at position 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ be represented as 
+\begin_inset Formula $\mathcal{N}(\mathbf{d}_{rgbd},\sigma_{rgbd}^{2})$
+\end_inset
+
+ and the Gaussian noise for the co-registered SfM depth image at position
+ 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ be 
+\begin_inset Formula $\mathcal{N}(\mu_{SfM},\sigma_{SfM}^{2})$
+\end_inset
+
+.
+ The posterior distribution on the unknown true depth at position 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ is also Gaussian and let 
+\begin_inset Formula $\mathcal{N}(\mu_{fused},\sigma_{fused}^{2})$
+\end_inset
+
+ denote the mean and variance parameters of this distribution.
+ Equations (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:fused_mean"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:fused_variance"
+
+\end_inset
+
+) provide optimal estimates of the mean and variance of the fused depth
+ at position 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+.
+ The best estimate of the fused depth is given by the highest probability
+ value in the posterior distribution which is the mean fused image, 
+\begin_inset Formula $\mu_{fused}(x,y)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521071427
+\begin_inset Formula 
+\begin{equation}
+\mu_{fused}=\frac{\mathbf{d}_{rgbd}\sigma_{SfM}^{2}+\mu_{SfM}\sigma_{rgbd}^{2}}{\sigma_{SfM}^{2}+\sigma_{rgbd}^{2}}\label{eq:fused_mean}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521514889
+\begin_inset Formula 
+\begin{equation}
+\sigma_{fused}^{2}=\frac{\sigma_{rgbd}^{2}\sigma_{SfM}^{2}}{\sigma_{rgbd}^{2}+\sigma_{SfM}^{2}}\label{eq:fused_variance}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+
+\change_inserted 215191885 1521515010
+Results
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521515011
+\begin_inset Float figure
+wide true
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521515011
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521515011
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "1in"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521515011
+\begin_inset Graphics
+	filename images/exp1/intensity_image.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521515011
+\begin_inset Graphics
+	filename images/exp2/intensity.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521516923
+\begin_inset Graphics
+	filename images/exp3/intenstiy.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521516923
+\begin_inset Graphics
+	filename images/in_to_out_with_transformation_error/intensity.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521516923
+\begin_inset Graphics
+	filename images/indoor_good_scale_and_transform/intensity.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521515011
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521515011
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521515011
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "1in"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521515011
+\begin_inset Graphics
+	filename images/exp1/sensor_measurments.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521515011
+\begin_inset Graphics
+	filename images/exp2/sensor_measurments.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521516546
+\begin_inset Graphics
+	filename images/exp3/sensor_depth.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521516754
+\begin_inset Graphics
+	filename images/in_to_out_with_transformation_error/sensor_measurment.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521516754
+\begin_inset Graphics
+	filename images/indoor_good_scale_and_transform/sensor_depth.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521515011
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521515011
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521515011
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "1in"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521515011
+\begin_inset Graphics
+	filename images/exp1/scaled_lsd_depth.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521515011
+\begin_inset Graphics
+	filename images/exp2/scaled_lsd.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521516530
+\begin_inset Graphics
+	filename images/exp3/scaled_Depth.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521516757
+\begin_inset Graphics
+	filename images/in_to_out_with_transformation_error/scaled_lsd_depth.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521516757
+\begin_inset Graphics
+	filename images/indoor_good_scale_and_transform/scaled_lsd.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521515011
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521515011
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521515011
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "1in"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521515011
+\begin_inset Graphics
+	filename images/exp1/fused_depth_sets.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521515011
+\begin_inset Graphics
+	filename images/exp2/depth_Fusion_set.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521516534
+\begin_inset Graphics
+	filename images/exp3/sensor_depth_set.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521516764
+\begin_inset Graphics
+	filename images/in_to_out_with_transformation_error/fused_set.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521516764
+\begin_inset Graphics
+	filename images/indoor_good_scale_and_transform/fused_set.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521515011
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521515011
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521515011
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "1in"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521515011
+\begin_inset Graphics
+	filename images/exp1/std_deviation_colormap.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521515011
+\begin_inset Graphics
+	filename images/exp2/std_deviation_colormap.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521516538
+\begin_inset Graphics
+	filename images/exp3/std_deviation_colmap.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521516771
+\begin_inset Graphics
+	filename images/in_to_out_with_transformation_error/std_dev_colMap.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521516771
+\begin_inset Graphics
+	filename images/indoor_good_scale_and_transform/std_deviation_colormap.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521515011
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521515011
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521515011
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521515011
+Results for three experiments are shown.
+ Images shown are organized into separate columns.
+ Column (a) shows a grayscale image of the scene (b) shows the sensed RGBD
+ depth image (c) shows the SfM-estimated depth image (d) shows the fused
+ image and (e) shows the standard deviation for fused depths (in 
+\begin_inset Formula $m.$
+\end_inset
+
+).
+ The fused image has been color-coded as follows: (white) denotes depth
+ locations sensed only by the RGBD sensor, (yellow) denotes depth locations
+ only sensed via SfM, (red) denotes fused (RGBD+SfM) depth locations and
+ (black) denotes depth locations without RGBD or SfM measurements.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521514993
+We conducted experiments with different setups to test and analyze the depth
+ fusion algorithm.
+ Experiments recorded RGBD image sequenced from ORBBEC Astra RGBD sensors
+ and applied LSD-SLAM to their image streams using their factory-provided
+ intrinsic camera calibration parameters.
+ Each experiment included approximately 60 seconds of RGBD image data at
+ the rate of 30 fps.
+ Experimentally recorded RGB images were processed offline by the LSD-SLAM
+ algorithm to generate SfM depth images.
+ Experiments initialize the LSD-SLAM algorithm with the first recorded depth
+ image from the RGBD sensor to facilitate the initial scale approximation.
+ The output from the LSD-SLAM algorithm consisting of the relative pose
+ for every tracked frame and the depth map for each keyframe was then captured
+ to disk.
+ The fusion algorithm was then run offline on the recorded RGBD image stream
+ and LSD-SLAM output files to generate the results shown in this section.
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1521514993
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521514993
+
+\size footnotesize
+Experiment
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521514993
+
+\size footnotesize
+RGBD-only depths
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521514993
+
+\size footnotesize
+SfM-only depths
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521514993
+
+\size footnotesize
+Fused depths
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521514993
+
+\size footnotesize
+(%)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521514993
+
+\size footnotesize
+(%)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521514993
+
+\size footnotesize
+(%) 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521514993
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521514993
+67.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521514993
+6.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521514993
+25.5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521514993
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521514993
+55.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521514993
+10.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521514993
+34.3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521514993
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521514993
+68.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521514993
+15.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521514993
+16.6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521522076
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521522089
+51.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521522116
+25.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521522139
+23.1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521522077
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521522195
+68.3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521522214
+8.8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521522249
+22.8
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521514993
+
+\size footnotesize
+Average
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521522298
+62.12
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521522330
+13.26
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521522369
+24.46
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521514993
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1521514993
+Ratios of depth measurements to total depths
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Ratios-of-depth"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521514993
+Experiment 1 depicts a indoor office scene at the university.
+ This scene includes specular and dark surface structures at close range
+ that are not measured by the RGBD sensor.
+ Yet, the SfM algorithm estimates depths at a number of locations (on the
+ podium) where ther are significant intensity changes.
+ These additional depths are evident in the fused results, which includes
+ SfM-only depth measurements in regions in the vicinity of image edges.
+ The experiment demonstrates that depth fusion can improve depth images
+ by obtaining depths from surfaces not measurable by the RGBD sensor.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521519752
+Experiment 2 depicts a hallway in the UNCC EPIC building that includes both
+ specular surfaces and high intensity illumination from overhead lights.
+ The experiment is a second example showing that depth fusion bolsters over
+ all depth measurement performance by providing the depths when RGBD sensors
+ fail.
+ The SfM takes advantage of the patterns on the surface and estimates the
+ depths irrespective of the nature of its reflectance properties and color.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521518425
+Experiment 3 depicts the UNCC faculty conference hall.
+ Here a number of scene structures lie beyond the measurement range of the
+ RGBD sensor.
+ Yet, the SfM algorithm is able to estimate the depth of these scene structures
+ (albeit at high variance) providing depths that would otherwise not be
+ possible.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521521717
+Experiment 4 depicts indoor to outdoor transition.
+ By initializing the LSD SLAM indoor, we get the scale estimated.
+ We can see that in outdoor, when the sensor measurements fails because
+ of the infrared ray flooding, depth estimates from LSD SLAM are used.
+ Often because of IR flooding the sensor measurements gets corrupted, in
+ those scenarios we can consider replacing entire corrupted depth sensor
+ measurements by LSD depth estimation instead of fusion for better results.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521521903
+Experiment 5 depicts indoor with well lit conditions, even though the sensors
+ are supposed work completely fine in this scenario, there are rare chances
+ of the them failing at steep surfaces.
+ During such failures, depth fusion comes handy.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521596751
+Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Ratios-of-depth"
+
+\end_inset
+
+ quantifies the amount of additional depth information provided via RGBD-SfM
+ depth image fusion.
+ When we average over the five experiments discussed approximately 62% of
+ the fused depths originate from the RGBD sensor alone, approximately 13%
+ original from the SfM algorithm alone, and approximately 24% of the fused
+ depths results from RGBD-SfM fusion.
+ The addition of 13% of novel depth data is a significant contribution.
+ Further, fused depths account for roughly 24% of depth image data and the
+ measurement error for all of these measurements will be reduced by the
+ fusion.
+ Variance reduction will be greatest for low-variance SfM depth estimates
+ which are typically in textured scene locations close to the camera.
+ Yet, we note that by inspection of equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:fused_variance"
+
+\end_inset
+
+), it is theoretically impossible for the variance of any fusion result
+ to increase.
+ Another obvious observation from the Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Ratios-of-depth"
+
+\end_inset
+
+ is that the SfM has a largest contribution in Experiment 4 (outdoor scenario)
+ since sensor fails outdoors and it has least contribution in Experiment
+ 5 (well lit indoor) where sensor is at its best.
+\end_layout
+
+\begin_layout Chapter
+
+\change_inserted 215191885 1521596763
+Conclusion and Futher work
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521596763
+The SfM depth estimation complements the RGBD sensor measurements and can
+ provide depths when RGBD sensors fail.
+ The depth fusion algorithm provides the effective way to augment the RGBD
+ depth stream and results in improved depth images.
+ The experiments conducted shows these improvements in the experimental
+ results for a number of scenarios where RGBD sensors fail including successfull
+y capturing depth for out-of-range RGBD depth locations and successfully
+ capturing depth measurements from specular and dark objects.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521605145
+As future work, the proposed depth fusion can be generalized to address
+ depth image locations the include measurements having non-Gaussian noise
+ distributions, especially for the outdoor scenario the error noise are
+ not necessarily Gaussian.
+ Also, the depth image gets corrupted by random speckles because of infrared
+ ray flooding, these speckles could be wrongly treated as depth value, since
+ there values are in valid depth range.
+ Fortunately, it is observed that these speckles have particular pattern
+ and a prepossessing logic could be implemented to get rid of them.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1521605101
+Also, experimental results show that the scale and trajectory estimation
+ of SfM depths are not always accurate.
+ Back-propagation of RGBD-SfM fused depth imagery into the SfM algorithm
+ can be exploited to improve the camera pose estimation in the camera pose
+ graph.
+ We know that the fused depths have measurements where SfM fails and also
+ they have lower variance than SfM's, propagating them to SfM leads to improveme
+nt in estimated depth values, which leads to better trajectory computation
+ for future frames.
+ 
 \end_layout
 
 \begin_layout Standard

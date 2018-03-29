@@ -3960,9 +3960,13 @@ Where
 However, the above equation represents the ideal model where the retinal
  frame centered at the optical center with one axis aligned with the optical
  axis.But in practice, this does not true and the origin of the image coordinate
- frame typically in the upper-left corner of the image.we need to address
- this relationship between the retinal plane coordinate frame and the pixel
- array in our camera model.
+ frame typically in the upper-left corner of the image.
+
+\change_inserted 215191885 1522010690
+ 
+\change_unchanged
+we need to address this relationship between the retinal plane coordinate
+ frame and the pixel array in our camera model.
  This can be represented by a special matrix as following
 \end_layout
 

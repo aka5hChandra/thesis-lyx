@@ -952,7 +952,7 @@ status open
 
 \change_inserted 215191885 1521757798
 \begin_inset Graphics
-	filename /home/akash/southeastcon/2018_SeCon_RGBDSfM_Fusion/images/teaser_rgb.png
+	filename images/teaser_rgb.png
 	lyxscale 10
 	height 1.3in
 
@@ -991,7 +991,7 @@ status open
 
 \change_inserted 215191885 1521757798
 \begin_inset Graphics
-	filename /home/akash/southeastcon/2018_SeCon_RGBDSfM_Fusion/images/teaser_rgbd.png
+	filename images/teaser_rgbd.png
 	lyxscale 10
 	height 1.3in
 
@@ -1030,7 +1030,7 @@ status open
 
 \change_inserted 215191885 1521757798
 \begin_inset Graphics
-	filename /home/akash/southeastcon/2018_SeCon_RGBDSfM_Fusion/images/teaser_sfm.png
+	filename images/teaser_sfm.png
 	lyxscale 10
 	height 1.3in
 
@@ -1069,7 +1069,7 @@ status open
 
 \change_inserted 215191885 1521757798
 \begin_inset Graphics
-	filename /home/akash/southeastcon/2018_SeCon_RGBDSfM_Fusion/images/teaser_fused.png
+	filename images/teaser_fused.png
 	lyxscale 10
 	height 1.3in
 
@@ -5772,7 +5772,7 @@ status open
 
 \change_inserted 215191885 1521759399
 \begin_inset Graphics
-	filename /home/akash/backup/2018_SeCon_RGBDSfM_Fusion/images/LSD SLAM.png
+	filename images/LSD SLAM.png
 	width 15cm
 
 \end_inset
@@ -6142,11 +6142,10 @@ status collapsed
 
 \change_inserted 215191885 1521071427
 \begin_inset Graphics
-	filename /home/akash/southeastcon/2018_SeCon_RGBDSfM_Fusion/images/overview_coloum_span.png
+	filename images/overview_coloum_span.png
 	lyxscale 20
 	width 7in
 	height 2.5in
-	keepAspectRatio
 
 \end_inset
 
@@ -7003,7 +7002,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -7042,7 +7041,7 @@ status collapsed
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -7081,7 +7080,7 @@ status collapsed
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -7447,7 +7446,7 @@ Results
 \begin_inset Float figure
 wide true
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent

@@ -1896,11 +1896,17 @@ is the distortion coefficient of the camera to be determined and r is the
 
 \begin_layout Standard
 
-\change_inserted 215191885 1522001472
+\change_inserted 215191885 1522985008
 Tangential distortion are due to misalignment of lens with imaging plane,
  as a consequence some areas in image may look nearer than expected.
- This distortion can be corrected by The Brown–Conrady model as following
- 
+ This distortion can be corrected by The Brown–Conrady
+\begin_inset CommandInset citation
+LatexCommand cite
+key "s16060807"
+
+\end_inset
+
+ model as following 
 \end_layout
 
 \begin_layout Standard
@@ -5745,13 +5751,13 @@ key "5979949"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521917616
-The depth computation process involves finding the epiploar lines between
+\change_inserted 215191885 1522607573
+The depth computation process involves finding the epipolar lines between
  new tracking frame and reference frames, along which the disparity for
  the pixel is determined.
  This process have two error sources, the error on disparity itself called
  the geometric disparity error and the error which encodes intensity difference
- called the photometric disparity error, The former error accounts for the
+ called the photometric disparity error, the former error accounts for the
  magnitude of the image gradient along the epipolar line , while the later
  one on the angle between the image gradient and the epipolar line.
 \end_layout
@@ -6035,8 +6041,8 @@ reference "sub:Point-Cloud-Reconstruction"
 
 \begin_layout Enumerate
 
-\change_inserted 215191885 1521070779
-Transform, i.e., rotate and translate, each point 
+\change_inserted 215191885 1522689207
+Transform, i.e., rotate, translate and scale, each point 
 \begin_inset Formula $\mathbf{p}_{i}=[X,Y,Z]^{t}$
 \end_inset
 
@@ -6060,7 +6066,7 @@ reference "eq:coordinate_system_change"
 ),
 \begin_inset Formula 
 \begin{equation}
-\mathbf{p}_{i}^{'}=\mathbf{R}(\mathbf{p}_{i}-\mathbf{t})\label{eq:coordinate_system_change}
+\mathbf{p}_{i}^{'}=\mathbf{R}*s*(\mathbf{p}_{i}-\mathbf{t})\label{eq:coordinate_system_change}
 \end{equation}
 
 \end_inset

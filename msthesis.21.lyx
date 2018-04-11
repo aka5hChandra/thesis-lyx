@@ -26,7 +26,16 @@
 \index_command default
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize default
 \use_geometry false
 \use_package amsmath 1
@@ -1767,13 +1776,1072 @@ al structure from two-dimensional images, along with estimating the motion
 
 \change_unchanged
  
-\change_inserted 215191885 1521995641
+\change_inserted 215191885 1523294985
 
 \end_layout
 
 \begin_layout Section
 
-\change_inserted 215191885 1522008547
+\change_inserted 215191885 1523295046
+RGBD Camera
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523403223
+RGBD cameras are the class of sensors that capture both intensity values
+ (RGB values) and depth values for every pixel in the frame.
+ The RGB values are measured by a traditional camera with the thin lens
+ model section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Camera-model"
+
+\end_inset
+
+.
+ And depths are measured with the help of infrared ray (IR) projectors and
+ IR sensors.
+ There are two different approaches of using the IR rays to measure the
+ depth.
+ The first approach relies on the principles of the structured light
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zanuttigh2016_1"
+
+\end_inset
+
+, where the known pattern of infrared light is projected onto the environment,
+ and the deformed pattern from the environment interactions are observed
+ and triangulated for the depth measurement.
+ The second approach uses the concept of Time of Flight (TOF) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zanuttigh2016"
+
+\end_inset
+
+, where the IR rays are continuously emitted into the environment, and the
+ time taken for the IR rays to hit the object and travel back, along with
+ the change in its phase, are measured to estimate depths.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523402985
+For this study, the ORBBEC Astra Pro RGBD sensor was used, and it has following
+ features.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 215191885 1523300050
+It has a field of view of 60° horiz x 49.5° vert.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 215191885 1523403776
+It captures RGB images of dimension 640 * 480 @ 30FPS.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 215191885 1523403777
+It captures depth images of dimension 640 * 480 @ 30FPS.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 215191885 1523403819
+It has a range of 0.6 - 8 m.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523299834
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1523299834
+\begin_inset Graphics
+	filename images/rgbd_sensor.png
+	lyxscale 25
+	width 12cm
+	height 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1523299834
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1523299857
+ORBBEC Astra RGBD sensor
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+
+\change_inserted 215191885 1523335650
+RGBD Measurement Noise
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:RGBD_Measurement-Noise"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523335650
+The proposed fusion algorithm relies on experimental studies of accuracy
+ and noise for RGBD sensor measurement, e.g., the Kinect sensor.
+ Research in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "7925286"
+
+\end_inset
+
+ shows that a Gaussian noise model provides a good fit to observed measurement
+ errors on planar targets where the distribution parameters are mean 
+\begin_inset Formula $0$
+\end_inset
+
+ and standard deviation
+\begin_inset Formula $\sigma_{Z}=\frac{m}{2f_{x}b}Z^{2}$
+\end_inset
+
+ for depth measurements where 
+\begin_inset Formula $\frac{m}{f_{x}b}=-2.85e^{-3}$
+\end_inset
+
+ is the linearized slope for the normalized disparity empirically found
+ in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "7925286"
+
+\end_inset
+
+.
+ Since 3D the coordinates for 
+\begin_inset Formula $(X,Y)$
+\end_inset
+
+ are a function of both the pixel location and the depth, their distributions
+ are also known as shown below:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523335650
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{ccc}
+\sigma_{X} & = & \frac{x_{im}-c_{x}+\delta_{x}}{f_{x}}\sigma_{Z}=\frac{x_{im}-c_{x}+\delta_{x}}{f_{x}}(1.425e^{-3})Z^{2}\\
+\sigma_{Y} & = & \frac{y_{im}-c_{y}+\delta_{y}}{f_{y}}\sigma_{Z}=\frac{y_{im}-c_{y}+\delta_{y}}{f_{y}}(1.425e^{-3})Z^{2}\\
+\sigma_{Z} & = & \frac{m}{f_{x}b}Z^{2}\sigma_{d'}=(1.425e^{-3})Z^{2}
+\end{array}\label{eq:noise_models}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523335650
+These equations indicate that 3D coordinate measurement uncertainty increases
+ as a quadratic function of the depth for all three coordinate values.
+ However, the quadratic coefficient for the 
+\begin_inset Formula $(X,Y)$
+\end_inset
+
+ coordinate standard deviation is at most half that in the depth direction,
+ i.e., 
+\begin_inset Formula $(\sigma_{X},\sigma_{Y})\approx0.5\sigma_{Z}$
+\end_inset
+
+ at the image periphery where 
+\begin_inset Formula $\frac{x-c_{x}}{f}\approx0.5$
+\end_inset
+
+, and this value is significantly smaller for pixels close to the optical
+ axis.
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 215191885 1521738907
+SfM Depth Reconstruction
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1522008579
+The SfM algorithm uses a time sequence of images from a moving camera to
+ recover the 3D geometry of objects viewed by the camera.
+ While this problem can be solved without a calibrated camera, reconstruction
+ accuracy will adversely affected.
+ This work assumes that the camera calibration 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Camera-Calibration"
+
+\end_inset
+
+ parameters are known.
+ The SfM algorithm can be broken down into two key steps:
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 215191885 1521040943
+estimation of the camera pose, i.e., position and orientation, at the time
+ each image was recorded,
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 215191885 1521040943
+estimation of the 3D structure of the scene.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523368693
+As previously mentioned, typical SfM systems solve (1) by computing a map
+ that associates pixels from the original 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ coordinate field to new coordinate positions 
+\begin_inset Formula $(x',y')$
+\end_inset
+
+ such that both locations correspond to images of the same 3D scene point
+ and (2) via multi-view 3D surface reconstruction algorithm, e.g., bundle
+ adjustment 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Triggs:1999:BAM:646271.685629"
+
+\end_inset
+
+.
+ In the following sections we provide an overview of aspects of the SfM
+ algorithm necessary for the development of the proposed RGBD-SfM depth
+ fusion algorithm.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 215191885 1523368747
+Camera and Calibration
+\end_layout
+
+\begin_layout Subsubsection*
+
+\change_inserted 215191885 1523338315
+Camera model
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Camera-model"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523408440
+The SfM operates on two-dimensional images, and it is important to understand
+ how these images are generated.
+ An image is formed by capturing the light energy (irradiance) for every
+ pixel.
+ This process can be mathematically represented by the thin lens camera
+ model, which describes the relationship between the three-dimensional coordinat
+es and its projection onto the two-dimensional image plane.
+ In this model, the center of the lens is called an optic center, and the
+ line passing through the optic center is called an optic axis.
+ The plane perpendicular to the optic axis is called the focal plane.
+ The thin lens itself is characterized by its focal length and diameter.
+ The focal length is the distance from the optic center,  where all the
+ ray intersects the optic axis.
+ The point of the intersection itself is called the focus of the lens.
+ One of the important properties to consider is that the rays entering the
+ lens through the optic center are undeflected, while the rays entering
+ the lens in all the other places are refracted.
+ With this model, the irradiance at each pixel is computed as an integration
+ of all the energy emitted from a region of an environment, which is determined
+ by all the rays converged at that pixel.
+  
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1523338315
+\begin_inset Graphics
+	filename images/thin_lens_Cam.png
+	lyxscale 25
+	width 8cm
+	height 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1523338315
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1523405733
+Thin lens camera model
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Thin-lens-camera"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523405829
+The fundamental equation of the thin lens is obtained using similar triangles
+ from figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Thin-lens-camera"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+\begin_inset Formula 
+\[
+\frac{1}{Z}+\frac{1}{z}=\frac{1}{f}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523409018
+For the simplification of calculation, we consider an ideal camera model
+ called the pinhole camera model.
+ In this case, the aperture of a thin lens is assumed to be zero, all rays
+ are forced to go through the optical center o; therefore they remain undeflecte
+d.
+ Consequently, as the aperture decreases to zero, the only points that contribut
+e to the irradiance at the image pixel 
+\begin_inset Formula $x=\left[x,y\right]$
+\end_inset
+
+ are on a line through the center o (optic center) of the lens.
+ If a point p has coordinates 
+\begin_inset Formula $X=\left[X,Y,Z\right]$
+\end_inset
+
+ relative to a reference frame centered at the optical center 0, with its
+ z-axis being the optical axis (of the lens), then it is immediate from
+ the similar triangles in the figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Pin-hole-camera-model-1"
+
+\end_inset
+
+ that the coordinates of p and its image x are related by the so-called
+ ideal perspective projection.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1523338315
+\begin_inset Graphics
+	filename images/pinhole_cam.png
+	width 8cm
+	height 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1523338315
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1523338315
+Pin-hole camera model 
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Pin-hole-camera-model-1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+\begin_inset Formula 
+\begin{equation}
+x=-f\frac{X}{Z}\label{eq:pinhole camera x-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+\begin_inset Formula 
+\begin{equation}
+y=-f\frac{Y}{Z}\label{eq:pinhole camera y-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+This mapping of 3D point to 2D is called projection and is represented by
+ 
+\begin_inset Formula $\pi$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+\begin_inset Formula 
+\[
+\pi:R^{3}\rightarrow R^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+This is also written as 
+\begin_inset Formula $x=\pi(X)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523406281
+The negative sign in the eq 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:pinhole camera x-1"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:pinhole camera y-1"
+
+\end_inset
+
+ makes the object appear upside down on the image plane.
+ Since we are working with digital camera, we can handle this by moving
+ the image plane to front of the optic center to 
+\begin_inset Formula $\{z=-f\}$
+\end_inset
+
+, which will make 
+\begin_inset Formula $(x,y)\rightarrow(-x,-y).$
+\end_inset
+
+ There for the equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:pinhole camera x-1"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:pinhole camera y-1"
+
+\end_inset
+
+ changes to 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+\begin_inset Formula 
+\[
+x=f\frac{X}{Z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+\begin_inset Formula 
+\[
+y=f\frac{Y}{Z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+This can be represented in matrix form as 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+\begin_inset Formula 
+\[
+x=\left[\begin{array}{c}
+x\\
+y
+\end{array}\right]=\frac{f}{Z}\left[\begin{array}{c}
+X\\
+Y
+\end{array}\right]
+\]
+
+\end_inset
+
+ In homogeneous coordinates, this relationship can be modified as
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+\begin_inset Formula 
+\begin{equation}
+Z\left[\begin{array}{c}
+x\\
+y\\
+1
+\end{array}\right]=\left[\begin{array}{cccc}
+f & 0 & 0 & 0\\
+0 & f & 0 & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]\left[\begin{array}{c}
+X\\
+Y\\
+Z\\
+1
+\end{array}\right]\label{eq:homogennous}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523409115
+The equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:homogennous"
+
+\end_inset
+
+ can be decomposed into
+\begin_inset Formula 
+\[
+\left[\begin{array}{cccc}
+f & 0 & 0 & 0\\
+0 & f & 0 & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]=\left[\begin{array}{ccc}
+f & 0 & 0\\
+0 & f & 0\\
+0 & 0 & 1
+\end{array}\right]\left[\begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+with
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+\begin_inset Formula 
+\[
+K_{f}=\left[\begin{array}{cccc}
+f & 0 & 0 & 0\\
+0 & f & 0 & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]\in R^{3\times3},\Pi_{0}=\left[\begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]\in\mathbb{R}{}^{3\times4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+The matrix 
+\begin_inset Formula $\Pi_{0}$
+\end_inset
+
+is a standard projection matrix.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523409145
+With the rigid body representation for camera from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:2"
+
+\end_inset
+
+, we can represent the overall geometric model for an ideal camera as:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+\begin_inset Formula 
+\begin{equation}
+\lambda\left[\begin{array}{c}
+x^{\prime}\\
+y^{\prime}\\
+1
+\end{array}\right]=\left[\begin{array}{ccc}
+f & 0 & 0\\
+0 & f & 0\\
+0 & 0 & 1
+\end{array}\right]\left[\begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]\left[\begin{array}{cc}
+R & T\\
+0 & 1
+\end{array}\right]\left[\begin{array}{c}
+X_{0}\\
+Y_{0}\\
+Z_{0}\\
+1
+\end{array}\right]\label{eq:ideal camera model-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+Where 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is the unknown scale factor.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523409345
+The equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ideal camera model-1"
+
+\end_inset
+
+ represents the ideal camera model, where the retinal frame is centered
+ at the optical center, and its axis aligned with the optical axis.
+ But in practice, this does not true and the origin of the image coordinate
+ frame typically in the upper-left corner of the image.
+ we need to address this relationship between the retinal plane coordinate
+ frame and the pixel array in our camera model.
+ This can be represented by a special matrix :
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+\begin_inset Formula 
+\begin{equation}
+K_{s}=\left[\begin{array}{ccc}
+s_{x} & s_{\theta} & o_{x}\\
+0 & s_{y} & o_{y}\\
+0 & 0 & 1
+\end{array}\right]\in\mathbb{R}^{3\times3}\label{eq:intrensic matrix-1-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+\begin_inset Formula 
+\begin{equation}
+K=K_{s}K_{f}=\left[\begin{array}{ccc}
+s_{x} & s_{\theta} & o_{x}\\
+0 & s_{y} & o_{y}\\
+0 & 0 & 1
+\end{array}\right]\left[\begin{array}{ccc}
+f & 0 & 0\\
+0 & f & 0\\
+0 & 0 & 1
+\end{array}\right]=\left[\begin{array}{ccc}
+fs_{x} & s_{\theta} & o_{x}\\
+0 & fs_{y} & o_{y}\\
+0 & 0 & 1
+\end{array}\right]\label{eq:intresic matrix-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+where
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 215191885 1523338315
+\begin_inset Formula $o_{x}$
+\end_inset
+
+: x-coordinate of the principal point in pixels, 
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 215191885 1523338315
+\begin_inset Formula $o_{y}$
+\end_inset
+
+: y-coordinate of the principal point in pixels, 
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 215191885 1523338315
+\begin_inset Formula $fs_{x}$
+\end_inset
+
+= 
+\begin_inset Formula $\alpha_{x}$
+\end_inset
+
+ : size of unit length in horizontal pixels also called as focal length
+ in x axis, 
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 215191885 1523338315
+\begin_inset Formula $fs_{y}$
+\end_inset
+
+= 
+\begin_inset Formula $\alpha_{y}$
+\end_inset
+
+ : size of unit length in vertical pixels also called as focal length in
+ y axis, 
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 215191885 1523338315
+\begin_inset Formula $\frac{\alpha_{x}}{\alpha_{y}}$
+\end_inset
+
+: aspect ratio 
+\begin_inset Formula $\sigma$
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 215191885 1523338315
+\begin_inset Formula $fs_{\theta}$
+\end_inset
+
+: skew of the pixel, often close to zero.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523409429
+Since the parameters in matrix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:intresic matrix-1"
+
+\end_inset
+
+ are unique to every camera and are not influenced by any external factors,
+ they are called an intrinsic parameter, they, and the matrix itself is
+ called an intrinsic matrix 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ With matrix 
+\begin_inset Formula $k$
+\end_inset
+
+ the ideal camera model 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ideal camera model-1"
+
+\end_inset
+
+can be updated as 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+\begin_inset Formula 
+\begin{equation}
+\lambda\left[\begin{array}{c}
+x^{\prime}\\
+y^{\prime}\\
+1
+\end{array}\right]=\left[\begin{array}{ccc}
+s_{x} & s_{\theta} & o_{x}\\
+0 & s_{y} & o_{y}\\
+0 & 0 & 1
+\end{array}\right]\left[\begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]\left[\begin{array}{cc}
+R & T\\
+0 & 1
+\end{array}\right]\left[\begin{array}{c}
+X_{0}\\
+Y_{0}\\
+Z_{0}\\
+1
+\end{array}\right]\label{eq:camera model with internsic parameter-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+In the matrix notation,
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+\begin_inset Formula 
+\begin{equation}
+\lambda x=K\Pi_{0}gX_{0}\label{eq:camera model with internsic parameter matrix rep-1}
+\end{equation}
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+To summarize, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:camera model with internsic parameter matrix rep-1"
+
+\end_inset
+
+ represents the projection of three-dimensional coordinates 
+\begin_inset Formula $X_{0}$
+\end_inset
+
+ by camera with orientation (extrinsic parameters)
+\begin_inset Formula $g$
+\end_inset
+
+ and intrinsic parameters K, onto two-dimensional coordinate 
+\begin_inset Formula $x$
+\end_inset
+
+ with known scale 
+\begin_inset Formula $\lambda$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523338315
+
+\end_layout
+
+\begin_layout Subsubsection*
+
+\change_inserted 215191885 1523338315
 Camera Calibration
 \begin_inset CommandInset label
 LatexCommand label
@@ -1786,57 +2854,16 @@ name "sec:Camera-Calibration"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1522000457
-The SfM is a photogrammetric process and it relies on the camera parameters,
- these parameters are called intrinsic parameter since they are unique to
- each camera and are not influenced by any external factors.
- These intrinsic properties are composed of the focal lengths 
-\begin_inset Formula $(fx,fy)$
-\end_inset
-
- and principal point offset 
-\begin_inset Formula $(x_{0},y_{0})$
-\end_inset
-
- of camera is both vertical and horizontal direction along with the skew
- factor 
-\begin_inset Formula $s$
-\end_inset
-
-.
- These properties are usually represented in a self-contained matrix 
-\begin_inset Formula $k$
-\end_inset
-
- called the intrinsic matrix.
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1522001989
-\begin_inset Formula 
-\begin{equation}
-k=\left[\begin{array}{ccc}
-fx & s & x_{0}\\
-0 & fy & y_{0}\\
-0 & 0 & 1
-\end{array}\right]\label{eq:intrensic matrix}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1522002046
-The image generated by a typical camera usually have a distortions, and
- since the estimation of intrinsic parameters relies on these images, those
- distortions should be fixed.
- There are mainly of two types of distortions called the radial distortion
- and tangential distortion.
- The radial distortion effects image by curving the string lines, Its effect
+\change_inserted 215191885 1523411844
+The camera calibration is the process of determining all intrinsic parameters
+ of the camera.
+ The images generated by a typical camera usually have a distortions.
+ Since, these images are used for the estimation of intrinsic parameters,
+ the distortions should be fixed, in order to prevent errors in camera calibrati
+on.
+ There are mainly of two types of distortions, the radial distortion and
+ tangential distortion.
+ The radial distortion effects image by curving the string lines, its effect
  is more as we move away from the center of image.
  This distortion can be corrected by Brown's distortion model
 \begin_inset CommandInset citation
@@ -1850,7 +2877,7 @@ key "s16060807"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521999851
+\change_inserted 215191885 1523338315
 \begin_inset Formula 
 \[
 x_{corrected}=x(1+k_{1}r^{2}+k_{2}r^{4}+k_{3}r^{6})
@@ -1863,7 +2890,7 @@ x_{corrected}=x(1+k_{1}r^{2}+k_{2}r^{4}+k_{3}r^{6})
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521999915
+\change_inserted 215191885 1523338315
 \begin_inset Formula 
 \[
 y_{corrected}=y(1+k_{1}r^{2}+k_{2}r^{4}+k_{3}r^{6})
@@ -1876,7 +2903,7 @@ y_{corrected}=y(1+k_{1}r^{2}+k_{2}r^{4}+k_{3}r^{6})
 
 \begin_layout Standard
 
-\change_inserted 215191885 1522001273
+\change_inserted 215191885 1523411885
 where 
 \begin_inset Formula $(x,y)$
 \end_inset
@@ -1889,16 +2916,16 @@ where
 \begin_inset Formula $k_{x}$
 \end_inset
 
-is the distortion coefficient of the camera to be determined and r is the
+is the distortion coefficient of the camera to be determined, and r is the
  distance of pixel from the principal point.
  
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 215191885 1522985008
-Tangential distortion are due to misalignment of lens with imaging plane,
- as a consequence some areas in image may look nearer than expected.
+\change_inserted 215191885 1523411897
+Tangential distortion are due to misalignment of lens with imaging plane.
+ As a consequence some areas in image may look nearer than expected.
  This distortion can be corrected by The Brown–Conrady
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1911,7 +2938,7 @@ key "s16060807"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1522001383
+\change_inserted 215191885 1523338315
 \begin_inset Formula 
 \[
 x_{corrected}=x+[2p_{1}xy+p_{2}(r^{2}+2x^{2})]
@@ -1924,7 +2951,7 @@ x_{corrected}=x+[2p_{1}xy+p_{2}(r^{2}+2x^{2})]
 
 \begin_layout Standard
 
-\change_inserted 215191885 1522001478
+\change_inserted 215191885 1523338315
 \begin_inset Formula 
 \[
 y_{corrected}=y+[p_{1}(r^{2}+2y^{2})+2p_{2}xy]
@@ -1937,14 +2964,14 @@ y_{corrected}=y+[p_{1}(r^{2}+2y^{2})+2p_{2}xy]
 
 \begin_layout Standard
 
-\change_inserted 215191885 1522001570
+\change_inserted 215191885 1523338315
 In total there are 5 parameters, known as distortion coefficients given
  by:
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 215191885 1522001576
+\change_inserted 215191885 1523338315
 \begin_inset Formula 
 \begin{equation}
 D_{coff}=(k_{1},k_{2},p_{1},p_{2},k_{3})\label{eq:distortion coeff}
@@ -1953,17 +2980,15 @@ D_{coff}=(k_{1},k_{2},p_{1},p_{2},k_{3})\label{eq:distortion coeff}
 \end_inset
 
 
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 215191885 1522008604
-All the essential parameters of camera from 
+\change_inserted 215191885 1523412089
+For any given camera, all the essential parameters from 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:intrensic matrix"
+reference "eq:intresic matrix-1"
 
 \end_inset
 
@@ -1974,28 +2999,83 @@ reference "eq:distortion coeff"
 
 \end_inset
 
- are determined for a given camera by traditional method 
+ are determined by measuring the difference between the position of key
+ features in captured image and their supposed true position.
+ For this process, images of known pattern are captured from different orientati
+ons.
+ Since the estimation of corners are convenient and less prone to error,
+ the two dimensional checkerboard pattern are often used for camera calibration
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Zhang2014,Zhang:2000:FNT:357014.357025"
 
 \end_inset
 
- using the checkerboard pattern.
- There are many standard library implementations of this method and we are
- using the OpenCV library 
+.
+ There are many standard library implementations of this process and one
+ in OpenCV library
 \begin_inset CommandInset citation
 LatexCommand cite
 key "5534797"
 
 \end_inset
 
- to do this.
+ is used.
 \end_layout
 
-\begin_layout Section
+\begin_layout Standard
 
-\change_inserted 215191885 1521044107
+\change_inserted 215191885 1523338315
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1523338315
+\begin_inset Graphics
+	filename images/checker_board.png
+	width 8cm
+	height 6cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1523338315
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1523338315
+Checkerboard for Camera Calibration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 215191885 1523375610
+Estimation of the Camera pose
+\end_layout
+
+\begin_layout Subsubsection*
+
+\change_inserted 215191885 1523375611
 Image alignment
 \begin_inset CommandInset label
 LatexCommand label
@@ -2008,7 +3088,7 @@ name "sec:Image-alignment"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521917682
+\change_inserted 215191885 1523375611
 The image alignment is the process of transforming (wraping) one image with
  respect to another image, with a goal to minimizing the total difference
  between the intensities 
@@ -2031,7 +3111,7 @@ key "Baker:2004:LYU:964568.964604"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521917709
+\change_inserted 215191885 1523412904
 In eq 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2045,16 +3125,19 @@ reference "eq:image alignment"
 
  deforms image I along the image T in an attempt to minimize the difference
  between them.
- The wrap function which achieve this goal is estimated incremental by performin
-g gradient descent.In order to achieve this, we need to find the correspondence
- between images.
-\change_unchanged
+ The wrap function which achieve this goal can be estimated incremental
+ by non linear optimization.
+ To preform an image alignment, the correspondence between images should
+ be established, and the wrap function 
+\begin_inset Formula $\omega$
+\end_inset
 
+ should be defined.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection*
 
-\change_inserted 215191885 1521651161
+\change_inserted 215191885 1523375611
 Solving for Image Pixel Correspondences
 \begin_inset CommandInset label
 LatexCommand label
@@ -2067,7 +3150,7 @@ name "sub:Solving-for-Image"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521039811
+\change_inserted 215191885 1523375611
 There are generically two different approaches for finding corresponding
  observations of the same 3D surface location in multiple images referred
  to as 
@@ -2138,15 +3221,15 @@ In this discussion, we refer to the correspondence problem as a source-to-target
  
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Paragraph*
 
-\change_inserted 215191885 1521039811
+\change_inserted 215191885 1523375611
 Indirect Methods
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521039811
+\change_inserted 215191885 1523375611
 Indirect methods compute this mapping by detecting special 
 \begin_inset Formula $(x,y)$
 \end_inset
@@ -2193,15 +3276,15 @@ key "Lowe2004"
 .
 \end_layout
 
-\begin_layout Subsubsection*
+\begin_layout Paragraph*
 
-\change_inserted 215191885 1521039811
+\change_inserted 215191885 1523375611
 Direct Methods
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521043355
+\change_inserted 215191885 1523375611
 Direct methods on the other hand typically iteratively solve for a set of
  transformation parameters that best align a pair of images by the minimization
  of pixel-wise errors.
@@ -2228,76 +3311,6 @@ key "Baker:2004:LYU:964568.964604"
 
 .
  
-\end_layout
-
-\begin_layout Section
-
-\change_inserted 215191885 1521738907
-SfM Depth Reconstruction
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1522008579
-The SfM algorithm uses a time sequence of images from a moving camera to
- recover the 3D geometry of objects viewed by the camera.
- While this problem can be solved without a calibrated camera, reconstruction
- accuracy will adversely affected.
- This work assumes that the camera calibration 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Camera-Calibration"
-
-\end_inset
-
- parameters are known.
- The SfM algorithm can be broken down into two key steps:
-\end_layout
-
-\begin_layout Enumerate
-
-\change_inserted 215191885 1521040943
-estimation of the camera pose, i.e., position and orientation, at the time
- each image was recorded,
-\end_layout
-
-\begin_layout Enumerate
-
-\change_inserted 215191885 1521040943
-estimation of the 3D structure of the scene.
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1521040943
-As previously mentioned, typical SfM systems solve (1) by computing a map
- that associates pixels from the original 
-\begin_inset Formula $(x,y)$
-\end_inset
-
- coordinate field to new coordinate positions 
-\begin_inset Formula $(x',y')$
-\end_inset
-
- such that both locations correspond to images of the same 3D scene point
- and (2) via multi-view 3D surface reconstruction algorithm, e.g., bundle
- adjustment 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Triggs:1999:BAM:646271.685629"
-
-\end_inset
-
-.
- In the following sections we provide an overview of aspects of the SfM
- algorithm necessary for the development of the proposed RGBD-SfM depth
- fusion algorithm.
-\end_layout
-
-\begin_layout Subsection
-
-\change_inserted 215191885 1521739070
-Estimation of the Camera Trajectory
 \change_unchanged
 
 \end_layout
@@ -2324,31 +3337,88 @@ One of the goals of SfM it to estimate the
 \change_inserted 215191885 1521032806
 The
 \change_unchanged
- Camera trajectory
-\change_inserted 215191885 1521847011
+ 
+\change_inserted 215191885 1523375680
+wrap function in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:image alignment"
+
+\end_inset
+
+ is a c
+\change_deleted 215191885 1523375680
+C
+\change_unchanged
+amera 
+\change_inserted 215191885 1523413615
+transformation between a pair of images,
+\change_deleted 215191885 1523372190
+trajectory
+\change_inserted 215191885 1523372195
  
 \change_deleted 215191885 1521032811
 , which 
+\change_inserted 215191885 1523375841
+ and it 
 \change_unchanged
-is a rigid body motion.
- We need an efficient model to represent and compute this rigid body motion.
- The camera position is represented by a 3D Vector in an Euclidean 
+is a rigid body motion
+\change_inserted 215191885 1523413625
+.
+\change_deleted 215191885 1523341834
+.
+
+\change_unchanged
+ 
+\change_inserted 215191885 1523341837
+w
+\change_deleted 215191885 1523341836
+W
+\change_unchanged
+e need an efficient model to represent and compute this rigid body motion.
+ The camera position is represented by a 
+\change_inserted 215191885 1523372230
+three dimensional 
+\change_deleted 215191885 1523372225
+3D
+\change_unchanged
+ 
+\change_inserted 215191885 1523372223
+v
+\change_deleted 215191885 1523372223
+V
+\change_unchanged
+ector in an Euclidean 
 \change_deleted 1699939148 1515788126
 S
 \change_unchanged
-space, this camera position is chosen to represent 
-\change_inserted 215191885 1521032965
-origin of 
+space
+\change_inserted 215191885 1523372232
+ 
+\begin_inset Formula $R^{3}$
+\end_inset
+
+
+\change_deleted 215191885 1523342048
+, this camera position is chosen to represent the world frame and specify
+ the translation and rotation of the scene relative to that frame.
+
 \change_unchanged
-the world frame and specify the translation and rotation of the scene relative
- to 
-\change_deleted 215191885 1521032976
-that
-\change_inserted 215191885 1521032976
-this
+ 
+\change_deleted 215191885 1523342059
+The 
+\change_inserted 215191885 1523372232
+ and the 
 \change_unchanged
- frame.
- The rigid body motion itself is composed of a rotation and translation.
+rigid body motion
+\change_inserted 215191885 1523372264
+ on this camera position
+\change_unchanged
+ 
+\change_deleted 215191885 1523372261
+itself
+\change_unchanged
+ is composed of a rotation and translation.
  
 \end_layout
 
@@ -2358,7 +3428,13 @@ Traditionally, rotation is represented by a
 \end_inset
 
  special orthogonal matrix called rotational matrix.
- Special Orthogonal matrix SO(3) are the matrix which satisfy 
+ Special Orthogonal matrix SO(3) 
+\change_deleted 215191885 1523413785
+are
+\change_inserted 215191885 1523413786
+is
+\change_unchanged
+ the matrix which satisfy 
 \begin_inset Formula $R^{T}R=RR^{T}=I$
 \end_inset
 
@@ -2385,7 +3461,17 @@ The rotation transformation of the coordinates
 \begin_inset Formula $X_{c}$
 \end_inset
 
-of a point p relative to frame C to its coordinates 
+
+\change_deleted 215191885 1523372951
+of a point p relative to
+\change_inserted 215191885 1523372953
+ from
+\change_unchanged
+ 
+\change_inserted 215191885 1523413672
+the 
+\change_unchanged
+frame C to its coordinates 
 \begin_inset Formula $X_{w}$
 \end_inset
 
@@ -2404,11 +3490,33 @@ X_{w}=R_{wc}X_{c}
 \end_layout
 
 \begin_layout Standard
-Also, because the rotational matrix are orthogonal, we have
+
+\change_deleted 215191885 1523413694
+Also, b
+\change_inserted 215191885 1523413694
+B
+\change_unchanged
+ecause the rotational matrix 
+\change_deleted 215191885 1523413769
+are
+\change_inserted 215191885 1523413769
+is
+\change_unchanged
+ orthogonal, we have
 \begin_inset Formula $R^{-1}=R^{T}$
 \end_inset
 
-, on this line the inverse transformation of coordinates are 
+, on this line
+\change_inserted 215191885 1523413714
+,
+\change_unchanged
+ the inverse transformation of coordinates 
+\change_deleted 215191885 1523413778
+are
+\change_inserted 215191885 1523413778
+is
+\change_unchanged
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2431,7 +3539,12 @@ The continuous rotation of a camera is described as a trajectory
 \begin_inset Formula $SO(3)$
 \end_inset
 
-.When the starting time is not t = 0, the relative motion between time 
+.
+
+\change_inserted 215191885 1523413813
+ 
+\change_unchanged
+When the starting time is not t = 0, the relative motion between time 
 \begin_inset Formula $t_{2}$
 \end_inset
 
@@ -2439,12 +3552,26 @@ The continuous rotation of a camera is described as a trajectory
 \begin_inset Formula $t_{1}$
 \end_inset
 
- will be denoted as 
+ 
+\change_deleted 215191885 1523413824
+will be 
+\change_inserted 215191885 1523413824
+is 
+\change_unchanged
+denoted as 
 \begin_inset Formula $R(t_{2},t_{1})$
 \end_inset
 
 .
- The composition law of the rotation group implies
+ The composition 
+\change_deleted 215191885 1523413835
+l
+\change_inserted 215191885 1523413845
+of two rotations is represented as 
+\change_deleted 215191885 1523413846
+aw of the rotation group implies
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -2459,7 +3586,13 @@ R(t_{2,}t_{0})=R(t_{2,}t_{1})\times R(t_{1,}t_{0}),\vee t_{0}<t_{1}<t_{2}\in R
 \end_layout
 
 \begin_layout Standard
-On the other hand the translation is represented by a 
+
+\change_deleted 215191885 1523413862
+On the other hand t
+\change_inserted 215191885 1523413862
+T
+\change_unchanged
+he translation is represented by a 
 \begin_inset Formula $T\in R^{3}$
 \end_inset
 
@@ -2467,8 +3600,36 @@ On the other hand the translation is represented by a
 \begin_inset Formula $1\times3$
 \end_inset
 
- vector which adds the translation values in each dimension.With this, the
- complete rigid body motion is represented by 
+ vector
+\change_inserted 215191885 1523413869
+,
+\change_unchanged
+ which 
+\change_deleted 215191885 1523413909
+adds
+\change_inserted 215191885 1523413915
+represents
+\change_unchanged
+ the 
+\change_inserted 215191885 1523413926
+amount of 
+\change_unchanged
+translation 
+\change_deleted 215191885 1523413904
+values
+\change_unchanged
+ 
+\change_deleted 215191885 1523413879
+in each
+\change_inserted 215191885 1523413881
+for every
+\change_unchanged
+ dimension.
+
+\change_inserted 215191885 1523372997
+ 
+\change_unchanged
+With this, the complete rigid body motion is represented by 
 \end_layout
 
 \begin_layout Standard
@@ -2517,7 +3678,20 @@ X_{3}\\
 
 \begin_layout Standard
 With this new notation for point, we can rewrite the transformation from
- equation 6 as following
+ equation 
+\change_inserted 215191885 1523414014
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1"
+
+\end_inset
+
+
+\change_deleted 215191885 1523413986
+6
+\change_unchanged
+ as following
 \end_layout
 
 \begin_layout Standard
@@ -2541,7 +3715,11 @@ X_{c}\\
 \end_layout
 
 \begin_layout Standard
-where the 
+where
+\change_inserted 215191885 1523414025
+,
+\change_unchanged
+ the 
 \begin_inset Formula $4\times4$
 \end_inset
 
@@ -2554,8 +3732,11 @@ is called the homogeneous representation of the rigid-body motion.
 
 \begin_layout Standard
 The set of all possible configurations of a rigid body can then be described
- by the space of rigid-body motions or special Euclidean transformations
- called SE(3)
+ by the space of rigid-body motions or 
+\change_inserted 215191885 1523414047
+a 
+\change_unchanged
+special Euclidean transformations called SE(3)
 \end_layout
 
 \begin_layout Standard
@@ -2576,13 +3757,46 @@ R & T\\
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521824363
-Finally, one other dimension we could consider is the scale, this can represente
-d by a Similarity transformation 
+\change_inserted 215191885 1523414142
+The is representation can extend to include an variable for uniform scaling
+ in all the dimensions.
+ With 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ representing the scalar value for uniform scaling, the transformation from
+ equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:2"
+
+\end_inset
+
+ is updated as fallowing
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523373354
+\begin_inset Formula 
+\begin{equation}
+\bar{X}_{w}=\alpha\bar{g}_{wc}\bar{X}_{c}\label{eq:uniform scalling}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523373704
+The set of all possible configurations of a rigid body with different scaling
+ is represented by a Similarity transformation 
 \begin_inset Formula $Sim(3)$
 \end_inset
 
-, which is the composition of a rotation, translation and a uniform rescaling,
+, which is the composition of a rotation, translation and a uniform scale,
  and hence this representation has 7 degree of freedom, 
 \end_layout
 
@@ -2593,8 +3807,8 @@ d by a Similarity transformation
 \begin{equation}
 Sim(3)=\{\bar{g}=\left[\begin{array}{cc}
 R & T\\
-0 & s^{-1}
-\end{array}\right]\mid R\in SO(3),T\in R^{3},s\in R\}\subset\mathbb{R}^{4\times4}\label{eq:sim3}
+0 & \alpha^{-1}
+\end{array}\right]\mid R\in SO(3),T\in R^{3},\alpha\in R\}\subset\mathbb{R}^{4\times4}\label{eq:sim3}
 \end{equation}
 
 \end_inset
@@ -2609,8 +3823,27 @@ Exponential Map
 \end_layout
 
 \begin_layout Standard
-The special orthogonal group in three dimensions can be represented by a
+The special orthogonal group 
+\change_deleted 215191885 1523415270
+in
+\change_inserted 215191885 1523415271
+for a
+\change_unchanged
+ three dimension
+\change_inserted 215191885 1523415290
+al transformation 
+\change_deleted 215191885 1523415284
+s
+\change_unchanged
  
+\change_deleted 215191885 1523374325
+can be
+\change_unchanged
+ 
+\change_inserted 215191885 1523374327
+is 
+\change_unchanged
+represented by a 
 \begin_inset Formula $3\times3$
 \end_inset
 
@@ -2618,38 +3851,95 @@ The special orthogonal group in three dimensions can be represented by a
 \begin_inset Formula $R\in SO(3)$
 \end_inset
 
-, which must satisfy the constraint 
+, 
+\change_deleted 215191885 1523374195
+which must satisfy
+\change_inserted 215191885 1523374198
+ with
+\change_unchanged
+ the constraint 
 \begin_inset Formula $R^{T}R=I$
 \end_inset
 
-, this implies that the 
+, this
+\change_inserted 215191885 1523374520
+ constraint
+\change_unchanged
+ implies that the 
 \begin_inset Formula $SO(3)$
 \end_inset
 
- transformations leaves the quantity 
+ transformations 
+\change_inserted 215191885 1523374404
+does not affect the volume of the rigid body, i.e the value of the quantity
+ 
 \begin_inset Formula $x^{2}+y^{2}+z^{2}$
 \end_inset
 
- invariant.
+ is not changed by the rotation transformation.
+ 
+\change_deleted 215191885 1523374308
+leaves the quantity 
+\begin_inset Formula $x^{2}+y^{2}+z^{2}$
+\end_inset
+
+ invariant
+\change_unchanged
+.
  The group 
 \begin_inset Formula $SO(3)$
 \end_inset
 
- has 9 parameters, but the invariance of the length produces six independent
- conditions, leaving three free parameters, Hence, the dimension of the
- space of rotation matrices 
+ has 9 parameters, but the invariance of the 
+\change_deleted 215191885 1523374416
+length
+\change_inserted 215191885 1523374421
+volume
+\change_unchanged
+ 
+\change_deleted 215191885 1523374712
+produces
+\change_inserted 215191885 1523375038
+implies
+\change_deleted 215191885 1523374712
+ 
+\change_unchanged
+six independent 
+\change_deleted 215191885 1523374821
+conditions
+\change_inserted 215191885 1523374823
+constraints
+\change_unchanged
+, 
+\change_deleted 215191885 1523374429
+leaving
+\change_inserted 215191885 1523375058
+making only
+\change_unchanged
+ three free parameters
+\change_inserted 215191885 1523415365
+.
+\change_deleted 215191885 1523415365
+,
+\change_unchanged
+ 
+\change_inserted 215191885 1523415399
+It is obvious from this intuition, that the six out of nine parameters in
+ 
 \begin_inset Formula $SO(3)$
 \end_inset
 
+ representation are redundant, and we can have better a representation for
+ rigid body motion.
  
-\change_deleted 215191885 1521848714
-should
-\change_inserted 215191885 1521848714
-can
-\change_unchanged
- be only three, and six parameters out of the nine are in fact redundant.We
- can use this to have better representation of Rigid body motion.
-\change_inserted 215191885 1516614036
+\change_deleted 215191885 1523374841
+Hence, the dimension of the space of rotation matrices 
+\begin_inset Formula $SO(3)$
+\end_inset
+
+ should be only three, and six parameters out of the nine are in fact redundant.W
+e can use this to have better representation of Rigid body motion.
+\change_inserted 215191885 1523374992
 
 \end_layout
 
@@ -3414,7 +4704,7 @@ log:SE(3)\rightarrow se(3);log(g)\mapsto\hat{\xi}
 \end_inset
 
 
-\change_inserted 215191885 1517225203
+\change_inserted 215191885 1523371695
 
 \end_layout
 
@@ -3426,27 +4716,27 @@ Visual Odometer
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521739096
-With this efficient representation for rigid body transformation eq 
+\change_inserted 215191885 1523415560
+With the efficient representation for rigid body transformation eq 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:sim3"
 
 \end_inset
 
-,the trajectory of camera is determined by the process of direct image alignment
- 
+, the trajectory of camera is determined by the process of direct image
+ alignment 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Image-alignment"
 
 \end_inset
 
-, i.e we can incrementally find the relative pose 
+, i.e we can incrementally estimate the relative pose 
 \begin_inset Formula $\xi\in SIM(3)$
 \end_inset
 
-that minimize the photometric error between image pixels.
+ that minimize the photometric error between image pixels.
 \end_layout
 
 \begin_layout Standard
@@ -3510,19 +4800,15 @@ reference "eq:Direct image alignment"
  
 \end_layout
 
-\begin_layout Subsection
-
-\change_inserted 215191885 1521739054
-Estimation of the 3D structure
-\change_unchanged
-
-\end_layout
-
 \begin_layout Subsubsection*
+
+\change_deleted 215191885 1523338302
 Camera model
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 The 2D image is formed by capturing the light energy (irradiance) for every
  pixel, this process can be mathematically represented by thin lens camera
  model, which describes the relationship between the three-dimensional coordinat
@@ -3551,12 +4837,12 @@ d by the geometry of the lens.
 \end_inset
 
 
-\change_inserted 1699939148 1515788341
+\change_deleted 215191885 1523338302
 
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -3601,16 +4887,18 @@ Put caption here explain variables and what I'm looking at
 \end_inset
 
 
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 Using similar triangles, from above figure, we obtain the following fundamental
  equation of the thin lens
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 \begin_inset Formula 
 \[
 \frac{1}{Z}+\frac{1}{z}=\frac{1}{f}
@@ -3622,6 +4910,8 @@ Using similar triangles, from above figure, we obtain the following fundamental
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 For the simplification of calculation, we consider a Ideal camera model
  called the pinhole camera model, here the aperture of a thin lens is assumed
  to decreased to zero, all rays are forced to go through the optical center
@@ -3653,12 +4943,12 @@ For the simplification of calculation, we consider a Ideal camera model
 \end_inset
 
 
-\change_inserted 1699939148 1515788385
+\change_deleted 215191885 1523338302
 
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -3688,6 +4978,15 @@ status collapsed
 Pin-hole camera model 
 \change_deleted 215191885 1516609091
 Caption here
+\change_inserted 215191885 1523325114
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Pin-hole-camera-model"
+
+\end_inset
+
+
 \change_unchanged
 
 \end_layout
@@ -3701,12 +5000,12 @@ Caption here
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 \begin_inset Formula 
 \begin{equation}
 x=-f\frac{X}{Z}\label{eq:pinhole camera x}
@@ -3718,6 +5017,8 @@ x=-f\frac{X}{Z}\label{eq:pinhole camera x}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 \begin_inset Formula 
 \begin{equation}
 y=-f\frac{Y}{Z}\label{eq:pinhole camera y}
@@ -3730,11 +5031,9 @@ y=-f\frac{Y}{Z}\label{eq:pinhole camera y}
 
 \begin_layout Standard
 
-\change_deleted 215191885 1521852700
-[write projection as a matrix transform similar to ROS]
-\change_unchanged
-This mapping of 3D point to 2D is called projection and is represented by
- 
+\change_deleted 215191885 1523338302
+[write projection as a matrix transform similar to ROS]This mapping of 3D
+ point to 2D is called projection and is represented by 
 \begin_inset Formula $\pi$
 \end_inset
 
@@ -3742,6 +5041,8 @@ This mapping of 3D point to 2D is called projection and is represented by
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 \begin_inset Formula 
 \[
 \pi:R^{3}\rightarrow R^{2}
@@ -3753,6 +5054,8 @@ This mapping of 3D point to 2D is called projection and is represented by
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 This is also written as 
 \begin_inset Formula $x=\pi(X)$
 \end_inset
@@ -3762,6 +5065,8 @@ This is also written as
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 The negative sign in the 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3789,6 +5094,8 @@ There for the equation 2 and 3 changes to
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 \begin_inset Formula 
 \[
 x=f\frac{X}{Z}
@@ -3800,6 +5107,8 @@ x=f\frac{X}{Z}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 \begin_inset Formula 
 \[
 y=f\frac{Y}{Z}
@@ -3811,10 +5120,14 @@ y=f\frac{Y}{Z}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 This can be represented in matrix form as 
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 \begin_inset Formula 
 \[
 x=\left[\begin{array}{c}
@@ -3832,6 +5145,8 @@ Y
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 \begin_inset Formula 
 \[
 Z\left[\begin{array}{c}
@@ -3856,6 +5171,8 @@ Z\\
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 The above equation can be decomposed into
 \begin_inset Formula 
 \[
@@ -3880,10 +5197,14 @@ f & 0 & 0\\
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 with
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 \begin_inset Formula 
 \[
 K_{f}=\left[\begin{array}{cccc}
@@ -3903,6 +5224,8 @@ f & 0 & 0 & 0\\
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 The matrix 
 \begin_inset Formula $\Pi_{0}$
 \end_inset
@@ -3911,6 +5234,8 @@ is a standard projection matrix.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 With the rigid body transformation from 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3922,6 +5247,8 @@ reference "eq:2"
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 \begin_inset Formula 
 \begin{equation}
 \lambda\left[\begin{array}{c}
@@ -3953,6 +5280,8 @@ Z_{0}\\
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 Where 
 \begin_inset Formula $\lambda$
 \end_inset
@@ -3961,28 +5290,28 @@ Where
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 However, the above equation represents the ideal model where the retinal
  frame centered at the optical center with one axis aligned with the optical
  axis.But in practice, this does not true and the origin of the image coordinate
- frame typically in the upper-left corner of the image.
-
-\change_inserted 215191885 1522010690
- 
-\change_unchanged
-we need to address this relationship between the retinal plane coordinate
- frame and the pixel array in our camera model.
+ frame typically in the upper-left corner of the image.we need to address
+ this relationship between the retinal plane coordinate frame and the pixel
+ array in our camera model.
  This can be represented by a special matrix as following
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 \begin_inset Formula 
-\[
+\begin{equation}
 K_{s}=\left[\begin{array}{ccc}
 s_{x} & s_{\theta} & o_{x}\\
 0 & s_{y} & o_{y}\\
 0 & 0 & 1
-\end{array}\right]\in\mathbb{R}^{3\times3}
-\]
+\end{array}\right]\in\mathbb{R}^{3\times3}\label{eq:intrensic matrix-1}
+\end{equation}
 
 \end_inset
 
@@ -3990,13 +5319,17 @@ s_{x} & s_{\theta} & o_{x}\\
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 with these new parameters the we can represent the interstice parameters
  of camera as following
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 \begin_inset Formula 
-\[
+\begin{equation}
 K=K_{s}K_{f}=\left[\begin{array}{ccc}
 s_{x} & s_{\theta} & o_{x}\\
 0 & s_{y} & o_{y}\\
@@ -4009,8 +5342,8 @@ f & 0 & 0\\
 fs_{x} & s_{\theta} & o_{x}\\
 0 & fs_{y} & o_{y}\\
 0 & 0 & 1
-\end{array}\right]
-\]
+\end{array}\right]\label{eq:intresic matrix}
+\end{equation}
 
 \end_inset
 
@@ -4018,24 +5351,32 @@ fs_{x} & s_{\theta} & o_{x}\\
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 where
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
+
+\change_deleted 215191885 1523338302
 \begin_inset Formula $o_{x}$
 \end_inset
 
 : x-coordinate of the principal point in pixels, 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
+
+\change_deleted 215191885 1523338302
 \begin_inset Formula $o_{y}$
 \end_inset
 
 : y-coordinate of the principal point in pixels, 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
+
+\change_deleted 215191885 1523338302
 \begin_inset Formula $fs_{x}$
 \end_inset
 
@@ -4046,7 +5387,9 @@ where
  : size of unit length in horizontal pixels, 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
+
+\change_deleted 215191885 1523338302
 \begin_inset Formula $fs_{y}$
 \end_inset
 
@@ -4057,7 +5400,9 @@ where
  : size of unit length in vertical pixels, 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
+
+\change_deleted 215191885 1523338302
 \begin_inset Formula $\frac{\alpha_{x}}{\alpha_{y}}$
 \end_inset
 
@@ -4068,15 +5413,13 @@ where
 , 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
+
+\change_deleted 215191885 1523338302
 \begin_inset Formula $fs_{\theta}$
 \end_inset
 
-: skew of the pixel, often close to zero.
-\end_layout
-
-\begin_layout Standard
-Now, the ideal camera model 
+: skew of the pixel, often close to zero.Now, the ideal camera model 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:ideal camera model"
@@ -4087,6 +5430,8 @@ can be updated as
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 \begin_inset Formula 
 \begin{equation}
 \lambda\left[\begin{array}{c}
@@ -4118,10 +5463,14 @@ Z_{0}\\
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 In the matrix notation,
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 \begin_inset Formula 
 \begin{equation}
 \lambda x=K\Pi_{0}gX_{0}\label{eq:camera model with internsic parameter matrix rep}
@@ -4133,6 +5482,8 @@ In the matrix notation,
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523338302
 To summarize, 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4160,6 +5511,8 @@ reference "eq:camera model with internsic parameter matrix rep"
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523325388
 In addition to above linear distortion, if a camera has a wide field of
  view, there will be a significant distortion along radial directions called
  radial distortion.
@@ -4167,6 +5520,8 @@ In addition to above linear distortion, if a camera has a wide field of
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523325388
 \begin_inset Formula 
 \[
 x=x_{d}(1+a_{1}r^{2}+a_{2}r^{4})
@@ -4178,6 +5533,8 @@ x=x_{d}(1+a_{1}r^{2}+a_{2}r^{4})
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523325388
 \begin_inset Formula 
 \[
 y=y_{d}(1+a_{1}r^{2}+a_{2}r^{4})
@@ -4189,6 +5546,8 @@ y=y_{d}(1+a_{1}r^{2}+a_{2}r^{4})
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523325388
 where 
 \begin_inset Formula $(x_{d},y_{d})$
 \end_inset
@@ -4202,7 +5561,7 @@ are the coefficients of radial distortion and
 \end_inset
 
  is the radius of the radial distortion.
-\change_inserted 215191885 1517237472
+\change_inserted 215191885 1523332433
 
 \end_layout
 
@@ -4235,7 +5594,11 @@ Consider two images of the same point p from two camera position with relative
 \begin_inset Formula $T\in\mathbb{R}^{3}$
 \end_inset
 
-is the relative position,then if 
+is the relative position,
+\change_inserted 215191885 1523415769
+ 
+\change_unchanged
+then if 
 \begin_inset Formula $X_{1},X_{2}\in\mathbb{R}^{3}$
 \end_inset
 
@@ -4324,7 +5687,7 @@ By multiplying both the side by
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -4384,10 +5747,17 @@ This is the epipolar constraint and the matrix
 \begin_inset Formula $E=\hat{T}R$
 \end_inset
 
- is called the essential matrix.It encodes the relative pose between the
- two cameras.
- Geometrically, it impose that the The vector connecting the first camera
- center 
+ is called the essential matrix.
+
+\change_inserted 215191885 1523339593
+ 
+\change_unchanged
+It encodes the relative pose between the two cameras.
+ Geometrically, it impose that the 
+\change_deleted 215191885 1523339600
+The
+\change_unchanged
+ vector connecting the first camera center 
 \begin_inset Formula $o_{1}$
 \end_inset
 
@@ -4407,8 +5777,14 @@ This is the epipolar constraint and the matrix
  Therefore, the three vectors lie on the same plane.Hence the their triple
  product which measures the volume of the parallelepiped is zero.
  
-\change_inserted 215191885 1521739288
+\change_inserted 215191885 1523379438
 
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 215191885 1523379439
+Estimation of the 3D structure
 \end_layout
 
 \begin_layout Subsubsection*
@@ -4441,7 +5817,7 @@ reference "sub:Epipolar-geometry"
  and known translation between the pair of images, we can efficiently compute
  disparity of image, this approach is called the fixed baseline disparity
  mapping since the baseline between pair of image are known and they are
- fixed .
+ fixed.
  This process starts with finding the correspondence between images.
  Stereo correspondence is the problem of finding which part of one image
  correspond to which parts of another image, where the difference are due
@@ -4511,7 +5887,7 @@ name "fig:Disparity-Computation"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521739289
+\change_inserted 215191885 1523418619
 Let 
 \begin_inset Formula $x_{L}$
 \end_inset
@@ -4531,9 +5907,15 @@ reference "fig:Disparity-Computation"
 \begin_inset Formula $P=(x_{p},y_{p},z_{p})$
 \end_inset
 
- be the 3D location of object, from the epiploar constraint we know that
- these corresponding image points and 3D position of the object forms a
- triangle as depicted in the image 
+ be the 3D location of object, from the epiploar constraint 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:epipolar constraint"
+
+\end_inset
+
+, we know that these corresponding image points and 3D position of the object
+ forms a triangle as depicted in the image 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Disparity-Computation"
@@ -4552,7 +5934,7 @@ reference "fig:Disparity-Computation"
 \begin_inset Formula $d$
 \end_inset
 
- and consequently the depth of object 
+, and consequently the depth of object 
 \begin_inset Formula $z_{p}$
 \end_inset
 
@@ -4600,11 +5982,12 @@ z_{p}=\frac{fB}{d}
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521741278
+\change_inserted 215191885 1523418655
 However, the problem with the fixed baseline disparity computation is that
  the error grows quadratically with depth, as a result the nearer depths
- have better accuracy but not the further depths.This can addressed efficiently
- by using variable baseline/resolution instead of fixed baseline
+ have better accuracy but not the further depths.
+ This can addressed efficiently by using variable baseline/resolution instead
+ of fixed baseline
 \begin_inset CommandInset citation
 LatexCommand cite
 key "4587671"
@@ -4621,13 +6004,13 @@ key "6751290"
 
 \end_inset
 
- which explicitly takes advantage of the fact that in a video, small- baseline
+, which explicitly takes advantage of the fact that in a video, small- baseline
  frames are available before large-baseline frames.
  In this case, for each pixel a suitable frame is selected for disparity
  search.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Subsubsection*
 
 \change_inserted 215191885 1521741278
 Solving for Scene Geometry
@@ -4724,23 +6107,62 @@ Here, reconstruction is limited to those pixels which possess high intensity
 
 \end_layout
 
-\begin_layout Subsubsection
+\begin_layout Subsection
 The eight-point linear algorithm
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521741584
-One of the simple closed-form algorithm which estimates camera trajectory
- and 3D depths from pair of images is The eight-point algorithm, 
-\change_deleted 215191885 1521741600
+\change_inserted 215191885 1523419185
+One of the simple, closed-form algorithm to estimate the camera trajectory
+ and three dimensional depths from pair of images is the eight-point algorithm.
+ 
+\change_deleted 215191885 1523419190
 With epipolar constrain between two images, we should be able to retrieve
  the relative pose of the cameras.
- The eight-point linear algorithm is a simple closed-form algorithm
+ The eight-point linear algorithm is a simple closed-form algorithm,
 \change_unchanged
-, it consists of two steps: First a matrix E is recovered from a number
- of epipolar constraints; then relative translation and orientation are
- extracted from E.
+ 
+\change_inserted 215191885 1523419194
+I
+\change_deleted 215191885 1523419194
+i
+\change_unchanged
+t consists of two steps: First
+\change_inserted 215191885 1523419223
+,
+\change_unchanged
+ a matrix E is 
+\change_deleted 215191885 1523419304
+recovered
+\change_inserted 215191885 1523419308
+estimated,
+\change_unchanged
+ 
+\change_deleted 215191885 1523419230
+from
+\change_inserted 215191885 1523419313
+by imposing the 
+\change_deleted 215191885 1523419240
+ a number of 
+\change_unchanged
+epipolar constraints
+\change_inserted 215191885 1523419441
+ on atleast eight correspondence between the image pair.
+\change_deleted 215191885 1523419370
+;
+\change_unchanged
+ 
+\change_deleted 215191885 1523419376
+then 
+\change_inserted 215191885 1523419457
+From this matrix E, the 
+\change_unchanged
+relative translation and orientation are extracted
+\change_deleted 215191885 1523419404
+ from E
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Standard
@@ -4782,7 +6204,11 @@ E=\left[e_{11},e_{21},e_{31},e_{12},e_{22},e_{32},e_{13},e_{23},e_{33}\right]^{T
 \end_layout
 
 \begin_layout Standard
-and for 
+and for
+\change_inserted 215191885 1523419507
+ homogeneous points
+\change_unchanged
+ 
 \begin_inset Formula $x_{1}=\left[x_{1,}y_{1},z_{1}\right]^{T}\in\mathbb{R}^{3}$
 \end_inset
 
@@ -4832,7 +6258,11 @@ this representation emphasizes the linear dependence of the epipolar constraint
 \end_layout
 
 \begin_layout Standard
-Now,with a set of corresponding image points 
+Now,w
+\change_inserted 215191885 1523419525
+ 
+\change_unchanged
+ith a set of corresponding image points 
 \begin_inset Formula $(x_{1}^{j},x_{2}^{j}),j=1,2,....,n$
 \end_inset
 
@@ -4888,7 +6318,12 @@ Because of errors in correspondences, we try to find the E that minimizes
 \begin_inset Formula $\left\Vert \chi E\right\Vert ^{2}$
 \end_inset
 
-.We do this by choosing eigenvector of 
+.
+
+\change_inserted 215191885 1523419557
+ 
+\change_unchanged
+We do this by choosing eigenvector of 
 \begin_inset Formula $\chi^{T}\chi$
 \end_inset
 
@@ -4994,20 +6429,29 @@ Structure Reconstruction
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523419912
 One remaining thing to find is the position of points in three-dimension
- by recovering their depths relative to each camera frame.With the estimated
- pose (Translation is T is defined up to the scale 
+ by recovering their depths relative to each camera frame.
+\change_unchanged
+With the estimated pose (Translation is T is defined up to the scale 
 \begin_inset Formula $\gamma$
 \end_inset
 
-) and point correspondence, we have
+) and 
+\change_deleted 215191885 1523419923
+point
+\change_inserted 215191885 1523419924
+the image
+\change_unchanged
+ correspondence, we have
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-\lambda_{2}^{j}x_{2}^{j}=\lambda_{1}^{j}Rx_{1}^{j}+\gamma T
-\]
+\begin{equation}
+\lambda_{2}^{j}x_{2}^{j}=\lambda_{1}^{j}Rx_{1}^{j}+\gamma T\label{eq:st_recon}
+\end{equation}
 
 \end_inset
 
@@ -5040,11 +6484,31 @@ are depths with respect to the first and second camera frames, respectively.
 \begin_inset Formula $(R,T)$
 \end_inset
 
-.Hence we can eliminate, say, 
+.
+
+\change_inserted 215191885 1523419941
+ 
+\change_unchanged
+Hence we can eliminate, say, 
 \begin_inset Formula $\lambda_{2}$
 \end_inset
 
- from the above equation by multiplying both sides by 
+ from the 
+\change_deleted 215191885 1523419960
+above
+\change_unchanged
+ equation
+\change_inserted 215191885 1523419978
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:st_recon"
+
+\end_inset
+
+
+\change_unchanged
+ by multiplying both sides by 
 \begin_inset Formula $\hat{x_{2}}$
 \end_inset
 
@@ -5133,104 +6597,17 @@ M=\left[\begin{array}{cccccc}
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1523419997
 Then the equation
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-M\overrightarrow{\lambda}=0
-\]
-
-\end_inset
-
+\change_unchanged
 
 \end_layout
 
 \begin_layout Standard
-determines all the unknown depths up to a single universal scale.
- The linear least-squares estimate of 
-\begin_inset Formula $\overrightarrow{\lambda}$
-\end_inset
-
- is simply the eigenvector of 
-\begin_inset Formula $M^{T}M$
-\end_inset
-
-s that corresponds to its smallest eigenvalue.
-\change_inserted 215191885 1521047989
-
-\end_layout
-
-\begin_layout Standard
-
-\end_layout
-
-\begin_layout Section
-
-\change_inserted 215191885 1521070857
-RGBD Measurement Noise
-\begin_inset CommandInset label
-LatexCommand label
-name "sub:RGBD_Measurement-Noise"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1521070857
-The proposed fusion algorithm relies on experimental studies of accuracy
- and noise for RGBD sensor measurement, e.g., the Kinect sensor.
- Research in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "7925286"
-
-\end_inset
-
- shows that a Gaussian noise model provides a good fit to observed measurement
- errors on planar targets where the distribution parameters are mean 
-\begin_inset Formula $0$
-\end_inset
-
- and standard deviation
-\begin_inset Formula $\sigma_{Z}=\frac{m}{2f_{x}b}Z^{2}$
-\end_inset
-
- for depth measurements where 
-\begin_inset Formula $\frac{m}{f_{x}b}=-2.85e^{-3}$
-\end_inset
-
- is the linearized slope for the normalized disparity empirically found
- in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "7925286"
-
-\end_inset
-
-.
- Since 3D the coordinates for 
-\begin_inset Formula $(X,Y)$
-\end_inset
-
- are a function of both the pixel location and the depth, their distributions
- are also known as shown below:
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1521070857
 \begin_inset Formula 
 \begin{equation}
-\begin{array}{ccc}
-\sigma_{X} & = & \frac{x_{im}-c_{x}+\delta_{x}}{f_{x}}\sigma_{Z}=\frac{x_{im}-c_{x}+\delta_{x}}{f_{x}}(1.425e^{-3})Z^{2}\\
-\sigma_{Y} & = & \frac{y_{im}-c_{y}+\delta_{y}}{f_{y}}\sigma_{Z}=\frac{y_{im}-c_{y}+\delta_{y}}{f_{y}}(1.425e^{-3})Z^{2}\\
-\sigma_{Z} & = & \frac{m}{f_{x}b}Z^{2}\sigma_{d'}=(1.425e^{-3})Z^{2}
-\end{array}\label{eq:noise_models}
+M\overrightarrow{\lambda}=0\label{eq:depth_est}
 \end{equation}
 
 \end_inset
@@ -5240,25 +6617,71 @@ key "7925286"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521070857
-These equations indicate that 3D coordinate measurement uncertainty increases
- as a quadratic function of the depth for all three coordinate values.
- However, the quadratic coefficient for the 
-\begin_inset Formula $(X,Y)$
+\change_inserted 215191885 1523420333
+The solution to the equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:depth_est"
+
 \end_inset
 
- coordinate standard deviation is at most half that in the depth direction,
- i.e., 
-\begin_inset Formula $(\sigma_{X},\sigma_{Y})\approx0.5\sigma_{Z}$
-\end_inset
-
- at the image periphery where 
-\begin_inset Formula $\frac{x-c_{x}}{f}\approx0.5$
-\end_inset
-
-, and this value is significantly smaller for pixels close to the optical
- axis.
+ provides 
+\change_deleted 215191885 1523420131
+determines all
 \change_unchanged
+ the unknown depths up to a single universal scale.
+ The
+\change_inserted 215191885 1523420257
+ linear least-squares estimate
+\change_unchanged
+ 
+\change_inserted 215191885 1523420348
+is the simplest way to solve for 
+\change_deleted 215191885 1523420188
+linear least-squares estimate of
+\change_unchanged
+ 
+\begin_inset Formula $\overrightarrow{\lambda}$
+\end_inset
+
+
+\change_inserted 215191885 1523420275
+, which
+\change_unchanged
+ is simply the ei
+\change_inserted 215191885 1523425160
+x
+\change_unchanged
+gen
+\change_inserted 215191885 1523420446
+ 
+\change_unchanged
+vector of 
+\begin_inset Formula $M^{T}M$
+\end_inset
+
+
+\change_deleted 215191885 1523420142
+s 
+\change_unchanged
+that 
+\change_deleted 215191885 1523420216
+corresponds
+\change_inserted 215191885 1523420216
+has
+\change_unchanged
+ 
+\change_inserted 215191885 1523420222
+the
+\change_deleted 215191885 1523420224
+to its
+\change_unchanged
+ smallest eigen
+\change_inserted 215191885 1523420473
+ 
+\change_unchanged
+value.
+\change_inserted 215191885 1523420195
 
 \end_layout
 
@@ -5601,7 +7024,7 @@ Newton method
  required for approximation.
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 
 \change_inserted 215191885 1521822765
 Graph Optimization
@@ -8096,16 +9519,16 @@ Results for three experiments are shown.
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521514993
-We conducted experiments with different setups to test and analyze the depth
- fusion algorithm.
+\change_inserted 215191885 1523299565
+The experiments were conducted with different setups to test and analyze
+ the depth fusion algorithm.
  Experiments recorded RGBD image sequenced from ORBBEC Astra RGBD sensors
  and applied LSD-SLAM to their image streams using their factory-provided
  intrinsic camera calibration parameters.
  Each experiment included approximately 60 seconds of RGBD image data at
  the rate of 30 fps.
- Experimentally recorded RGB images were processed offline by the LSD-SLAM
- algorithm to generate SfM depth images.
+ The recorded RGB images were processed offline by the LSD-SLAM algorithm
+ to generate SfM depth images.
  Experiments initialize the LSD-SLAM algorithm with the first recorded depth
  image from the RGBD sensor to facilitate the initial scale approximation.
  The output from the LSD-SLAM algorithm consisting of the relative pose

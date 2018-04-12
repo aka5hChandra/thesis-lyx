@@ -487,12 +487,12 @@ in order to robustly determine correspondences.
 
 \begin_layout Abstract
 
-\change_inserted 215191885 1521734449
+\change_inserted 215191885 1523498865
 This article describes a technique to augment a typical RGBD sensor by integrati
 ng depth estimates obtained via Structure-from-Motion (SfM) with depth measureme
 nts from an RGBD sensor.
  Limitations in the RGBD depth sensing technology prevent capturing depth
- measurements in four important contexts: (1) distant surfaces (>5m), (2)
+ measurements in four important contexts: (1) distant surfaces (>8m), (2)
  dark surfaces, (3) brightly lit indoor scenes and (4) sunlit outdoor scenes.
  SfM technology computes depth via multi-view reconstruction from the RGB
  image sequence alone.
@@ -1788,11 +1788,11 @@ RGBD Camera
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523403223
+\change_inserted 215191885 1523494806
 RGBD cameras are the class of sensors that capture both intensity values
  (RGB values) and depth values for every pixel in the frame.
  The RGB values are measured by a traditional camera with the thin lens
- model section 
+ model 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sub:Camera-model"
@@ -1800,8 +1800,8 @@ reference "sub:Camera-model"
 \end_inset
 
 .
- And depths are measured with the help of infrared ray (IR) projectors and
- IR sensors.
+ And, depths are measured with the help of infrared ray (IR) projectors
+ and IR sensors.
  There are two different approaches of using the IR rays to measure the
  depth.
  The first approach relies on the principles of the structured light
@@ -1829,7 +1829,7 @@ key "Zanuttigh2016"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523402985
+\change_inserted 215191885 1523494845
 For this study, the ORBBEC Astra Pro RGBD sensor was used, and it has following
  features.
  
@@ -1908,7 +1908,7 @@ ORBBEC Astra RGBD sensor
 
 \end_layout
 
-\begin_layout Subsection*
+\begin_layout Subsection
 
 \change_inserted 215191885 1523335650
 RGBD Measurement Noise
@@ -1982,7 +1982,7 @@ key "7925286"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523335650
+\change_inserted 215191885 1523494878
 These equations indicate that 3D coordinate measurement uncertainty increases
  as a quadratic function of the depth for all three coordinate values.
  However, the quadratic coefficient for the 
@@ -2000,6 +2000,363 @@ These equations indicate that 3D coordinate measurement uncertainty increases
 
 , and this value is significantly smaller for pixels close to the optical
  axis.
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 215191885 1523495159
+Limitation of RGBD sensors
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523499143
+Despite their advancements over the years, RGBD sensors have limitations.
+ These limitations are primarily caused due to the use of infrared rays.
+ The main limitation of RGBD sensors is that they cannot be used outdoors
+ for depth measurements.
+ The IR rays emitted by the Sun overwhelms the IR rays projected by RGBD
+ sensors, making them useless figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RGBD limitatons-a"
+
+\end_inset
+
+.
+ For the same reason, the RGBD sensors fail to provide correct depth measurement
+s for sunlit indoors.
+ Secondly, the material property of an object in the environment affects
+ the fidelity of depth measurements.
+ For example, the highly specular objects like a mirror or a shiny metal
+ reflect IR rays 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RGBD limitatons-c"
+
+\end_inset
+
+.
+ While the refractive surface like glass make them pass through 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RGBD limitatons-b"
+
+\end_inset
+
+.
+ And the diffuse black objects observe them.
+ All this phenomenon modify the IR rays, resulting in incorrect depth measuremen
+ts.
+ Finally, RGBD sensors have a hardware limitation; they can measure depths
+ for an only limited range.
+ For ORBBEC Astra Pro it is 0.6 - 8 m 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RGBD limitatons-c"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523497149
+\begin_inset Float figure
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1523497812
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1523497149
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "2in"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1523497828
+\begin_inset Graphics
+	filename images/in_to_out_with_transformation_error/intensity.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1523497149
+\begin_inset Graphics
+	filename images/in_to_out_with_transformation_error/sensor_measurment.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1523497149
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1523499053
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RGBD limitatons-a"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1523497149
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "2in"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1523497834
+\begin_inset Graphics
+	filename images/exp3/intenstiy.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1523497149
+\begin_inset Graphics
+	filename images/exp3/sensor_depth.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1523497149
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1523499064
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RGBD limitatons-b"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1523497241
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "2in"
+special "none"
+height "1in"
+height_special "totalheight"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1523497841
+\begin_inset Graphics
+	filename images/exp2/intensity.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1523497241
+\begin_inset Graphics
+	filename images/exp2/sensor_measurments.png
+	lyxscale 10
+	height 1in
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1523497241
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1523499088
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RGBD limitatons-c"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\change_inserted 215191885 1523497149
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 215191885 1523497997
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RGBD limitatons"
+
+\end_inset
+
+ (a)Shows the RGBD failure for outdoor (b)Shows the RGBD failure for a black
+ object and a refractive door (c) Shows the RGBD failure for specular surface
+ and its the range limitation.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -3111,7 +3468,7 @@ key "Baker:2004:LYU:964568.964604"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523412904
+\change_inserted 215191885 1523506062
 In eq 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3119,7 +3476,7 @@ reference "eq:image alignment"
 
 \end_inset
 
- the wrap function 
+, the warp function 
 \begin_inset Formula $\omega$
 \end_inset
 
@@ -3338,8 +3695,8 @@ One of the goals of SfM it to estimate the
 The
 \change_unchanged
  
-\change_inserted 215191885 1523375680
-wrap function in 
+\change_inserted 215191885 1523505095
+warp function in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:image alignment"
@@ -3359,8 +3716,8 @@ trajectory
  
 \change_deleted 215191885 1521032811
 , which 
-\change_inserted 215191885 1523375841
- and it 
+\change_inserted 215191885 1523506460
+ which 
 \change_unchanged
 is a rigid body motion
 \change_inserted 215191885 1523413625
@@ -3370,12 +3727,22 @@ is a rigid body motion
 
 \change_unchanged
  
-\change_inserted 215191885 1523341837
-w
+\change_inserted 215191885 1523505986
+W
 \change_deleted 215191885 1523341836
 W
 \change_unchanged
-e need an efficient model to represent and compute this rigid body motion.
+e need an efficient model to represent 
+\change_deleted 215191885 1523505970
+and compute this
+\change_inserted 215191885 1523505971
+ these
+\change_unchanged
+ rigid body motion
+\change_inserted 215191885 1523505951
+s
+\change_unchanged
+.
  The camera position is represented by a 
 \change_inserted 215191885 1523372230
 three dimensional 
@@ -3393,12 +3760,12 @@ ector in an Euclidean
 S
 \change_unchanged
 space
-\change_inserted 215191885 1523372232
+\change_inserted 215191885 1523506484
  
 \begin_inset Formula $R^{3}$
 \end_inset
 
-
+,
 \change_deleted 215191885 1523342048
 , this camera position is chosen to represent the world frame and specify
  the translation and rotation of the scene relative to that frame.
@@ -3411,8 +3778,8 @@ The
  and the 
 \change_unchanged
 rigid body motion
-\change_inserted 215191885 1523372264
- on this camera position
+\change_inserted 215191885 1523506118
+ of this camera
 \change_unchanged
  
 \change_deleted 215191885 1523372261
@@ -3427,14 +3794,26 @@ Traditionally, rotation is represented by a
 \begin_inset Formula $3\times3$
 \end_inset
 
- special orthogonal matrix called rotational matrix.
+ special orthogonal 
+\change_deleted 215191885 1523507724
+matrix
+\change_inserted 215191885 1523507728
+group
+\change_unchanged
+ called rotational matrix.
  Special Orthogonal matrix SO(3) 
 \change_deleted 215191885 1523413785
 are
 \change_inserted 215191885 1523413786
 is
 \change_unchanged
- the matrix which satisfy 
+ 
+\change_deleted 215191885 1523507097
+the
+\change_inserted 215191885 1523507097
+a
+\change_unchanged
+ matrix which satisfy 
 \begin_inset Formula $R^{T}R=RR^{T}=I$
 \end_inset
 
@@ -3457,7 +3836,13 @@ SO(3)=\{R\in\mathbb{R}^{3\times3}\mid R^{T}R=I,det(R)=+1\}
 \end_layout
 
 \begin_layout Standard
-The rotation transformation of the coordinates 
+The rotation transformation of 
+\change_deleted 215191885 1523506161
+the coordinates
+\change_inserted 215191885 1523506167
+a camera position
+\change_unchanged
+ 
 \begin_inset Formula $X_{c}$
 \end_inset
 
@@ -3465,17 +3850,45 @@ The rotation transformation of the coordinates
 \change_deleted 215191885 1523372951
 of a point p relative to
 \change_inserted 215191885 1523372953
- from
+ 
+\change_deleted 215191885 1523506224
+ 
+\change_inserted 215191885 1523506533
+from its local cartesian 
+\change_unchanged
+frame C
+\change_inserted 215191885 1523506367
+,
+\change_unchanged
+ to its 
+\change_deleted 215191885 1523506184
+coordinates
+\change_inserted 215191885 1523506189
+position
 \change_unchanged
  
-\change_inserted 215191885 1523413672
-the 
-\change_unchanged
-frame C to its coordinates 
 \begin_inset Formula $X_{w}$
 \end_inset
 
- relative to frame W is 
+
+\change_inserted 215191885 1523506402
+,
+\change_unchanged
+ 
+\change_deleted 215191885 1523506398
+relative to
+\change_inserted 215191885 1523506558
+in the world
+\change_unchanged
+ 
+\change_inserted 215191885 1523506385
+cartesian 
+\change_unchanged
+frame W is 
+\change_inserted 215191885 1523506420
+represented as
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -3503,12 +3916,18 @@ are
 is
 \change_unchanged
  orthogonal, we have
+\change_inserted 215191885 1523506573
+ 
+\change_unchanged
+
 \begin_inset Formula $R^{-1}=R^{T}$
 \end_inset
 
-, on this line
-\change_inserted 215191885 1523413714
-,
+, 
+\change_deleted 215191885 1523506582
+on this line
+\change_inserted 215191885 1523506585
+with this,
 \change_unchanged
  the inverse transformation of coordinates 
 \change_deleted 215191885 1523413778
@@ -3517,6 +3936,10 @@ are
 is
 \change_unchanged
  
+\change_inserted 215191885 1523506597
+achieved by
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -3535,7 +3958,11 @@ The continuous rotation of a camera is described as a trajectory
 \begin_inset Formula $R(t):t\rightarrow SO(3)$
 \end_inset
 
- in the space 
+ in the space
+\change_inserted 215191885 1523507143
+ of
+\change_unchanged
+ 
 \begin_inset Formula $SO(3)$
 \end_inset
 
@@ -3544,7 +3971,32 @@ The continuous rotation of a camera is described as a trajectory
 \change_inserted 215191885 1523413813
  
 \change_unchanged
-When the starting time is not t = 0, the relative motion between time 
+When
+\change_inserted 215191885 1523507586
+ the start time of camera motion is not zero, the rotation of the camera
+ from time 
+\begin_inset Formula $t_{1}$
+\end_inset
+
+ to time 
+\begin_inset Formula $t_{2}$
+\end_inset
+
+ is denoted by 
+\begin_inset Formula $R(t_{2},t_{1})$
+\end_inset
+
+.
+ When we have more then one camera rotation, their composition is represented
+ as
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 215191885 1523507455
+ the starting time is not t = 0, the relative motion between time 
 \begin_inset Formula $t_{2}$
 \end_inset
 
@@ -3552,24 +4004,12 @@ When the starting time is not t = 0, the relative motion between time
 \begin_inset Formula $t_{1}$
 \end_inset
 
- 
-\change_deleted 215191885 1523413824
-will be 
-\change_inserted 215191885 1523413824
-is 
-\change_unchanged
-denoted as 
+ will be denoted as 
 \begin_inset Formula $R(t_{2},t_{1})$
 \end_inset
 
 .
- The composition 
-\change_deleted 215191885 1523413835
-l
-\change_inserted 215191885 1523413845
-of two rotations is represented as 
-\change_deleted 215191885 1523413846
-aw of the rotation group implies
+ The composition law of the rotation group implies
 \change_unchanged
 
 \end_layout
@@ -3592,11 +4032,19 @@ On the other hand t
 \change_inserted 215191885 1523413862
 T
 \change_unchanged
-he translation is represented by a 
+he translation 
+\change_inserted 215191885 1523506690
+of a camera 
+\change_unchanged
+is represented by a 
 \begin_inset Formula $T\in R^{3}$
 \end_inset
 
 ,
+\change_inserted 215191885 1523507614
+ 
+\change_unchanged
+
 \begin_inset Formula $1\times3$
 \end_inset
 
@@ -3607,22 +4055,24 @@ he translation is represented by a
  which 
 \change_deleted 215191885 1523413909
 adds
-\change_inserted 215191885 1523413915
-represents
+\change_inserted 215191885 1523506712
+accounts for
 \change_unchanged
  the 
 \change_inserted 215191885 1523413926
 amount of 
 \change_unchanged
-translation 
-\change_deleted 215191885 1523413904
-values
+translation
+\change_inserted 215191885 1523506797
+ 
+\change_deleted 215191885 1523506796
+ values
 \change_unchanged
  
 \change_deleted 215191885 1523413879
 in each
-\change_inserted 215191885 1523413881
-for every
+\change_inserted 215191885 1523506791
+in every
 \change_unchanged
  dimension.
 
@@ -3646,7 +4096,11 @@ X_{w}=R_{wc}X_{c}+T_{wc}\label{eq:1}
 \begin_layout Standard
 However, the above equation is not linear but affine.
  We may convert this to linear by using homogeneous coordinates, where we
- append 1 for 
+ append
+\change_inserted 215191885 1523505370
+ the value
+\change_unchanged
+ 1 for 
 \begin_inset Formula $1\times3$
 \end_inset
 
@@ -3691,7 +4145,11 @@ reference "eq:1"
 \change_deleted 215191885 1523413986
 6
 \change_unchanged
- as following
+ as 
+\change_deleted 215191885 1523505841
+following
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -3727,16 +4185,59 @@ where
 \begin_inset Formula $\bar{g}_{wc}\in R^{4\times4}$
 \end_inset
 
+
+\change_inserted 215191885 1523505402
+ 
+\change_unchanged
 is called the homogeneous representation of the rigid-body motion.
 \end_layout
 
 \begin_layout Standard
-The set of all possible configurations of a rigid body can then be described
- by the space of rigid-body motions or 
-\change_inserted 215191885 1523414047
-a 
+
+\change_deleted 215191885 1523505608
+The
+\change_inserted 215191885 1523505648
+The
 \change_unchanged
-special Euclidean transformations called SE(3)
+ set of all possible 
+\change_deleted 215191885 1523505612
+configurations
+\change_inserted 215191885 1523505612
+rigid body transformation
+\change_unchanged
+ 
+\change_deleted 215191885 1523505612
+of
+\change_unchanged
+ 
+\change_deleted 215191885 1523507665
+a
+\change_unchanged
+ 
+\change_deleted 215191885 1523505612
+rigid body
+\change_inserted 215191885 1523507670
+ involving a rotation and a translation
+\change_unchanged
+ can 
+\change_inserted 215191885 1523505568
+be 
+\change_deleted 215191885 1523505612
+then
+\change_inserted 215191885 1523505576
+represented by a
+\change_deleted 215191885 1523505612
+ be described by the space of rigid-body motions or 
+\change_inserted 215191885 1523414047
+ 
+\change_unchanged
+special Euclidean 
+\change_deleted 215191885 1523507683
+transformations
+\change_inserted 215191885 1523507688
+grorp
+\change_unchanged
+ called SE(3)
 \end_layout
 
 \begin_layout Standard
@@ -3757,8 +4258,8 @@ R & T\\
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523414142
-The is representation can extend to include an variable for uniform scaling
+\change_inserted 215191885 1523505652
+This representation can extend to include an variable for uniform scaling
  in all the dimensions.
  With 
 \begin_inset Formula $\alpha$
@@ -3790,8 +4291,15 @@ reference "eq:2"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523373704
-The set of all possible configurations of a rigid body with different scaling
+\change_inserted 215191885 1523505720
+Similar to 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:se3"
+
+\end_inset
+
+ the set of possible configurations of a rigid body with uniform scaling
  is represented by a Similarity transformation 
 \begin_inset Formula $Sim(3)$
 \end_inset
@@ -3890,7 +4398,13 @@ leaves the quantity
 \begin_inset Formula $SO(3)$
 \end_inset
 
- has 9 parameters, but the invariance of the 
+ has 
+\change_deleted 215191885 1523507849
+9
+\change_inserted 215191885 1523507850
+nine
+\change_unchanged
+ parameters, but the invariance of the 
 \change_deleted 215191885 1523374416
 length
 \change_inserted 215191885 1523374421
@@ -3902,6 +4416,8 @@ produces
 \change_inserted 215191885 1523375038
 implies
 \change_deleted 215191885 1523374712
+ 
+\change_inserted 215191885 1523507858
  
 \change_unchanged
 six independent 
@@ -3993,12 +4509,12 @@ so(3)\doteq\left\{ \hat{\omega}\in\mathbb{R}^{3\times3}\mid\omega\in\mathbb{R}^{
 
 \begin_layout Standard
 
-\change_inserted 215191885 1516619394
+\change_inserted 215191885 1523507901
 where 
 \begin_inset Formula $\hat{\omega}$
 \end_inset
 
-is a skew symmetric matrix for the vector 
+ is a skew symmetric matrix representation for the vector 
 \begin_inset Formula $\omega$
 \end_inset
 
@@ -4150,15 +4666,15 @@ exp:se(3)\rightarrow SE(3);\hat{\xi}\mapsto e^{\hat{\xi}}
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521849596
-and on the same lines of 
+\change_inserted 215191885 1523504808
+Similar to 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:inv_SO"
 
 \end_inset
 
- inverse to the exponential map is defined by logarithm 
+, the inverse to the exponential map is defined by logarithm 
 \end_layout
 
 \begin_layout Standard
@@ -4716,8 +5232,8 @@ Visual Odometer
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523415560
-With the efficient representation for rigid body transformation eq 
+\change_inserted 215191885 1523504843
+With the efficient representation of rigid body transformation in 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:sim3"
@@ -4744,7 +5260,7 @@ reference "sec:Image-alignment"
 \change_inserted 215191885 1521045043
 \begin_inset Formula 
 \begin{equation}
-\widehat{\xi}=\min_{\xi}\underset{\mathbf{x}}{\sum}\left(\mathbf{I}(\omega(\mathbf{x},\xi))-\mathbf{T}(\mathbf{x})\right)^{2}\label{eq:Direct image alignment}
+\widehat{\xi}=\min_{\xi}\underset{\mathbf{x}}{\sum}\left(\mathbf{I}(\omega(\mathbf{x},\xi))-\mathbf{I_{ref}}(\mathbf{x})\right)^{2}\label{eq:Direct image alignment}
 \end{equation}
 
 \end_inset
@@ -4754,7 +5270,7 @@ reference "sec:Image-alignment"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521045080
+\change_inserted 215191885 1523509840
 In equation (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4766,38 +5282,54 @@ reference "eq:Direct image alignment"
 \begin_inset Formula $\omega(\mathbf{x},\xi)$
 \end_inset
 
-, maps pixel locations, 
+, which is a rigid body motion in this case, maps pixel locations, 
 \begin_inset Formula $\mathbf{x}$
 \end_inset
 
-, in the template to pixel locations in the image 
-\begin_inset Formula $\mathbf{I}(\mathbf{x})$
+, in the reference image 
+\begin_inset Formula $I_{ref}$
 \end_inset
 
- using the warp transformation parameters 
+ to pixel locations in the image 
+\begin_inset Formula $I$
+\end_inset
+
+ with the current estimate of the transformation parameters 
 \begin_inset Formula $\xi$
 \end_inset
 
 .
- For direct correspondence estimation, 
+ With direct correspondence estimation, 
 \begin_inset Formula $\xi$
 \end_inset
 
- is a pose transformation of the viewing camera represented as a unknown
- 6x1 vector.
+ is a pose transformation of the viewing camera represented as 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sim3"
+
+\end_inset
+
+.
  We then seek the camera pose transformation parameters, 
 \begin_inset Formula $\widehat{\xi}$
 \end_inset
 
-, that minimize equation which provides the camera pose change that best
- explain the differences in these two of the same scene.
+, that minimize the error in equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Direct image alignment"
+
+\end_inset
+
+, which provides the camera pose change that best explain the differences
+ in these two of images of the same scene.
  Given two images and the camera pose change between them, one can take
- the information in one image, and through the warp function and map these
- values into the viewpoint of the other image establishing a correspondence.
+ the information in one image, and through the warp function map these values
+ into the viewpoint of the other image to establish a correspondence.
  In this case the theoretical difference between expected and observed values
  for the image pair is zero if the camera pose change is known exactly and
  sensor noise and other outside influences are ignored.
- 
 \end_layout
 
 \begin_layout Subsubsection*
@@ -5614,7 +6146,11 @@ X_{2}=RX_{1}+T
 
 \end_inset
 
-Now,let 
+Now,
+\change_inserted 215191885 1523509864
+ 
+\change_unchanged
+let 
 \begin_inset Formula $x_{1},x_{2}\in\mathbb{R}^{3}$
 \end_inset
 
@@ -5753,7 +6289,13 @@ This is the epipolar constraint and the matrix
  
 \change_unchanged
 It encodes the relative pose between the two cameras.
- Geometrically, it impose that the 
+ Geometrically, it 
+\change_deleted 215191885 1523511406
+impose
+\change_inserted 215191885 1523511406
+means
+\change_unchanged
+ that the 
 \change_deleted 215191885 1523339600
 The
 \change_unchanged
@@ -5773,9 +6315,18 @@ The
 \begin_inset Formula $o_{2}$
 \end_inset
 
- clearly form a triangle.
- Therefore, the three vectors lie on the same plane.Hence the their triple
- product which measures the volume of the parallelepiped is zero.
+ 
+\change_deleted 215191885 1523511417
+clearly
+\change_unchanged
+ form a triangle.
+ Therefore, the three vectors lie on the same plane.
+
+\change_inserted 215191885 1523511423
+ 
+\change_unchanged
+Hence the their triple product which measures the volume of the parallelepiped
+ is zero.
  
 \change_inserted 215191885 1523379438
 
@@ -6734,8 +7285,20 @@ and
 \begin_inset Formula $\omega_{2}^{j}=\left[\omega_{21}^{j},\omega_{22}^{j},0\right]^{T}$
 \end_inset
 
-are localization errors (called residuals) in the correspondence.Therefore,
- we need a way to optimize the parameters 
+are localization errors 
+\change_deleted 215191885 1523494300
+(called residuals)
+\change_unchanged
+ in the correspondence
+\change_inserted 215191885 1523494305
+ called residuals
+\change_unchanged
+.
+
+\change_inserted 215191885 1523494307
+ 
+\change_unchanged
+Therefore, we need a way to optimize the parameters 
 \begin_inset Formula $(x,R,T)$
 \end_inset
 
@@ -8179,7 +8742,7 @@ automatic,
 \begin_inset Float figure
 wide true
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent

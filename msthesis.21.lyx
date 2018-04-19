@@ -7541,6 +7541,10 @@ and
 \begin_inset Formula $x_{2}^{j}$
 \end_inset
 
+
+\change_inserted 215191885 1524114491
+ 
+\change_unchanged
 are the ideal image coordinates and 
 \begin_inset Formula $\omega_{1}^{j}=\left[\omega_{11}^{j},\omega_{12}^{j},0\right]^{T}$
 \end_inset
@@ -7671,10 +7675,55 @@ key "Triggs:1999:BAM:646271.685629"
 
 
 \change_inserted 215191885 1523984115
-, since , we are adjusting bundles of light rays to reduce the error.
+, since, we are adjusting bundles of light rays to reduce the error.
 \change_deleted 215191885 1523983905
 .
-\change_inserted 215191885 1521909532
+\change_inserted 215191885 1524106243
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524107675
+For the purpose of simplification consider a function
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524106658
+\begin_inset Formula 
+\begin{equation}
+y_{i}=f(x_{i})\label{eq:simple eq for optimization}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524107840
+the goal is to find the parameters 
+\begin_inset Formula $x$
+\end_inset
+
+, which minimizes the squared error between observation 
+\begin_inset Formula $y$
+\end_inset
+
+ and estimation 
+\begin_inset Formula $f(x),$
+\end_inset
+
+ i.e residual, 
+\begin_inset Formula 
+\begin{equation}
+r_{i}(x)^{2}=(f(x_{i})-y_{i})^{2}\label{eq:simple_residual}
+\end{equation}
+
+\end_inset
+
 
 \end_layout
 
@@ -7694,9 +7743,9 @@ One of the simplest ways to minimize this squared error is the gradient
 
 \change_inserted 215191885 1521910909
 \begin_inset Formula 
-\[
-x_{t+1}=x_{t}-\alpha g
-\]
+\begin{equation}
+x_{t+1}=x_{t}-\alpha g\label{eq:gradiant_decent}
+\end{equation}
 
 \end_inset
 
@@ -7717,9 +7766,9 @@ with step size
 
 \change_inserted 215191885 1521910909
 \begin_inset Formula 
-\[
-g_{j}=2\underset{i}{\sum}r_{i}\frac{\partial r_{i}}{\partial x_{i}}
-\]
+\begin{equation}
+g_{j}=2\underset{i}{\sum}r_{i}\frac{\partial r_{i}}{\partial x_{i}}\label{eq:gradiant}
+\end{equation}
 
 \end_inset
 
@@ -7745,42 +7794,78 @@ The problem with the gradient descent is that, since it is only a first
 \change_inserted 215191885 1523717305
 , this method achieves this by assuming that the least squares function
  is locally quadratic and tries to find the the minimum of the quadratic.
-\change_deleted 215191885 1521909702
-,
-\change_inserted 215191885 1523717305
- I
-\change_deleted 215191885 1521909725
-i
-\change_unchanged
-t starts with the initial guess
-\change_inserted 215191885 1523717361
-, 
-\change_deleted 215191885 1523717358
- and
-\change_unchanged
- 
-\change_inserted 215191885 1523719154
-and 
-\change_unchanged
-this method does not need the 
-\change_inserted 215191885 1523717368
-computation of 
-\change_unchanged
-second derivatives (Hessian matrix) of the of function, which is often expensive
+\change_deleted 215191885 1524110813
+,it starts with the initial guess and this method does not need the second
+ derivatives (Hessian matrix) of the of function, which is often expensive
  and sometimes not possible to compute, instead the Hessian is approximated
  with the Jacobian matrix of the function.
  
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-For the least-square function of form
+
+\change_deleted 215191885 1524108412
+For the 
+\change_inserted 215191885 1524110830
+For the residual from the equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:simple_residual"
+
+\end_inset
+
+ 
+\change_deleted 215191885 1524108471
+least-square function of form
+\change_inserted 215191885 1524108974
+we have to minimize 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-\underset{x}{min}\underset{i}{\sum}r_{i}(x)^{2}
-\]
+\begin{equation}
+\underset{x}{min}\underset{i}{\sum}r_{i}(x)^{2}\label{eq:res_min}
+\end{equation}
+
+\end_inset
+
+
+\change_inserted 215191885 1524109020
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524110867
+the parameters 
+\begin_inset Formula $x$
+\end_inset
+
+ that minimizes the equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:res_min"
+
+\end_inset
+
+ is determined by differentiating it with respect to 
+\begin_inset Formula $x$
+\end_inset
+
+ and equating it to zero
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524109194
+\begin_inset Formula 
+\begin{equation}
+2\underset{i}{\sum}r_{i}\frac{\partial r_{i}}{\partial x_{i}}=0\label{eq:residual derivatiive}
+\end{equation}
 
 \end_inset
 
@@ -7788,10 +7873,41 @@ For the least-square function of form
 \end_layout
 
 \begin_layout Standard
-Gauss-Newton method iteratively solves 
+
+\change_inserted 215191885 1524109483
+But the equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:residual derivatiive"
+
+\end_inset
+
+ cannot be solved directly.
+ 
+\change_unchanged
+Gauss-Newton method iteratively 
+\change_deleted 215191885 1524109545
+solves
+\change_inserted 215191885 1524109559
+approximate the Taylor approximation of residual function
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 215191885 1524109780
+\begin_inset Formula 
+\begin{equation}
+r(x)\simeq r(x_{t})+g^{T}(x-x_{t})+\frac{1}{2}(x-x_{t})^{T}H(x-x_{t})\label{eq:Tylor_approximation_of_resduial}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 215191885 1524110153
 \begin_inset Formula 
 \[
 x_{t+1}=x_{t}-H^{-1}g
@@ -7800,13 +7916,21 @@ x_{t+1}=x_{t}-H^{-1}g
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1524108558
 with gradient g
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1524108555
 \begin_inset Formula 
 \[
 g_{j}=2\underset{i}{\sum}r_{i}\frac{\partial r_{i}}{\partial x_{i}}
@@ -7815,10 +7939,34 @@ g_{j}=2\underset{i}{\sum}r_{i}\frac{\partial r_{i}}{\partial x_{i}}
 \end_inset
 
 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1524109872
 and the Hessian H
+\change_inserted 215191885 1524111886
+The equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Tylor_approximation_of_resduial"
+
+\end_inset
+
+ is the Taylor approximation of residual upto second derivative, where 
+\begin_inset Formula $g$
+\end_inset
+
+ is the gradient as defined in equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:gradiant"
+
+\end_inset
+
+ and the Hessian H is 
 \end_layout
 
 \begin_layout Standard
@@ -7846,9 +7994,11 @@ reference "eq:full hassain"
 
  is full hassian, by assuming the the problem is quadratic, we can
 \change_unchanged
- dropp
-\change_deleted 215191885 1523981864
-ing 
+ 
+\change_inserted 215191885 1524114563
+ignore
+\change_deleted 215191885 1524114559
+dropping 
 \change_unchanged
 the second order term 
 \change_inserted 215191885 1523982441
@@ -7863,9 +8013,9 @@ as :
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-H_{jk}=2\underset{i}{\sum}J_{ij}J_{ik}
-\]
+\begin{equation}
+H_{jk}=2\underset{i}{\sum}J_{ij}J_{ik}\label{eq:hassian_from_jacobian}
+\end{equation}
 
 \end_inset
 
@@ -7882,13 +8032,90 @@ J_{ij}=\frac{\partial r_{i}}{\partial x_{j}}
 \end_inset
 
 
+\change_inserted 215191885 1524109966
+
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521913214
-Finaly, t
+\change_inserted 215191885 1524110017
+Now, by the equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Tylor_approximation_of_resduial"
+
+\end_inset
+
+ can be differentiated as 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524110027
+\begin_inset Formula 
+\[
+\frac{\partial r}{\partial x}=g+H(x-x_{t})=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524110192
+For which we can estimate 
+\begin_inset Formula $x_{t+1}$
+\end_inset
+
+ as
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524110915
+\begin_inset Formula 
+\begin{equation}
+x_{t+1}=x_{t}-H^{-1}g\label{eq:guass_newton}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524112053
+Gauss-Newton starts with the initial guess for 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+and it iteratively sloves for 
+\begin_inset Formula $x_{t+1}$
+\end_inset
+
+ untill the minimum is approached,  and this method does not need the computatio
+n of second derivatives (Hessian matrix) of the of function, which is often
+ expensive and sometimes not possible to compute, instead the Hessian is
+ approximated with the Jacobian matrix of the function as show in equaition
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:hassian_from_jacobian"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
 \change_deleted 215191885 1521913213
+T
+\change_inserted 215191885 1524112159
 T
 \change_unchanged
 he modification to Gauss-Newton method is 
@@ -7913,9 +8140,9 @@ algorithm,
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
-x_{t+1}=x_{t}-(H+\lambda I)^{-1}g
-\]
+\begin{equation}
+x_{t+1}=x_{t}-(H+\lambda I)^{-1}g\label{eq:lvm}
+\end{equation}
 
 \end_inset
 
@@ -7931,34 +8158,88 @@ modification
 \change_inserted 215191885 1521912344
 Gauss-
 \change_unchanged
-Newton method
-\change_inserted 215191885 1523717991
-, for
+Newton
+\change_inserted 215191885 1524112828
+ and gradient decent
+\change_unchanged
+ method
+\change_inserted 215191885 1524112992
+s.
+ For small value of
 \change_unchanged
  
-\begin_inset Formula $(\lambda=0)$
+\begin_inset Formula $\lambda\simeq0$
 \end_inset
 
 
-\change_inserted 215191885 1523717994
-,
-\change_unchanged
- and a gradient descent
-\change_inserted 215191885 1523718004
-,
-\change_unchanged
- step size 
-\begin_inset Formula $1/\lambda$
+\change_inserted 215191885 1524113023
+, the equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lvm"
+
 \end_inset
 
- for 
+ is equivalent to the Gauss-Newton method as represented in the equation
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:guass_newton"
+
+\end_inset
+
+,
+\change_unchanged
+ 
+\change_inserted 215191885 1524114660
+and for the large value of 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, the identity matrix in equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lvm"
+
+\end_inset
+
+ dominates the Hessian matrix 
+\begin_inset Formula $H$
+\end_inset
+
+ and the equation behaves as a gradient decent, similar to equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:gradiant_decent"
+
+\end_inset
+
+ with the 
+\change_deleted 215191885 1524113204
+and a gradient descent 
+\change_unchanged
+step size 
+\change_inserted 215191885 1524113223
+of 
+\change_unchanged
+
+\begin_inset Formula $\alpha=1/\lambda$
+\end_inset
+
+
+\change_inserted 215191885 1524113240
+.
+
+\change_unchanged
+ 
+\change_deleted 215191885 1524113213
+for 
 \begin_inset Formula $\lambda\longrightarrow\infty$
 \end_inset
 
 
-\change_inserted 215191885 1523718083
-.
- i.e., LVM efficiently minimizes the squared error by updating the parameters
+\change_inserted 215191885 1524113535
+ LVM efficiently minimizes the squared error by updating the parameters
  in the steepest-descent direction when the initial guess are far way from
  the solution, and switches to Gauss-Newton method when small updates are
  required for approximation.
@@ -7966,9 +8247,47 @@ Newton method
 \begin_inset Formula $\lambda$
 \end_inset
 
- is called a damping parameter, which adjusted every iteration based the
- previous error, and this process is also called as the damped least-squares
- approximation.
+ is called a damping parameter, which was heuristically selected and adjusted
+ every iteration based the previous error, and this process is also called
+ as the damped least-squares approximation.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524113994
+Further, Marquardt suggested that the convergence can achieved faster if
+ there is larger movement along the directions where the gradient is smaller.
+ To achieve this he replaced the identity matrix 
+\begin_inset Formula $I$
+\end_inset
+
+ in the equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lvm"
+
+\end_inset
+
+ with diagonal values of 
+\begin_inset Formula $J^{T}J$
+\end_inset
+
+, with the intuition of scaling each component of the gradient according
+ to the curvature.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524114000
+\begin_inset Formula 
+\[
+x_{t+1}=x_{t}-(H+\lambda(diag(J^{T}J)))^{-1}g
+\]
+
+\end_inset
+
+
 \change_unchanged
 
 \end_layout

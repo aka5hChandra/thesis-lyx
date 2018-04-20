@@ -6179,16 +6179,24 @@ name "subsec:Epipolar-geometry"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523632985
-When we have a stereo image of same point p, 
-\change_deleted 215191885 1523632975
-Consider two images of the same point p from two camera position 
-\change_unchanged
-with 
-\change_inserted 215191885 1523632989
-the 
-\change_unchanged
-relative pose 
+\change_inserted 215191885 1524182152
+The figure 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "fig:Epipolar-geometry"
+
+\end_inset
+
+ represents an epipolar geometry, in which a pair of cameras at their respective
+ origins 
+\begin_inset Formula $o_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $o_{2}$
+\end_inset
+
+, with a relative pose of 
 \begin_inset Formula $(R,T)$
 \end_inset
 
@@ -6200,22 +6208,76 @@ relative pose
 \begin_inset Formula $T\in\mathbb{R}^{3}$
 \end_inset
 
-is the relative position
-\change_inserted 215191885 1523633044
- as show in figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Epipolar-geometry"
-
+ is translation, are capturing two dimensional images of the same three
+ dimensional point 
+\begin_inset Formula $p$
 \end_inset
 
+.
+ Here, the projection of a camera center 
+\begin_inset Formula $o_{1}$
+\end_inset
 
-\change_unchanged
-,
-\change_inserted 215191885 1523415769
+ and 
+\begin_inset Formula $o_{2}$
+\end_inset
+
+ onto their counter stereo image pair are called epipoles 
+\begin_inset Formula $e_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $e_{2}$
+\end_inset
+
+ respectively.
+ The triangle formed among the camera origins 
+\begin_inset Formula $o_{1}$
+\end_inset
+
+ , 
+\begin_inset Formula $o_{2}$
+\end_inset
+
+ and the three dimensional point 
+\begin_inset Formula $p$
+\end_inset
+
+ is in the same plane, called an epiploar plane.
+ Finally, the line formed by intersection of epiploar plane with image plane,
  
+\begin_inset Formula $l_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $l_{1}$
+\end_inset
+
+ are the two epipolar lines.
+ 
+\change_deleted 215191885 1524181810
+Consider two images of the same point p from two camera position with relative
+ pose 
+\begin_inset Formula $(R,T)$
+\end_inset
+
+, where 
+\begin_inset Formula $R\in SO(3)$
+\end_inset
+
+ is the relative orientation and 
+\begin_inset Formula $T\in\mathbb{R}^{3}$
+\end_inset
+
+is the relative position,then
 \change_unchanged
-then if 
+ 
+\change_inserted 215191885 1524181815
+I
+\change_deleted 215191885 1524181814
+i
+\change_unchanged
+f 
 \begin_inset Formula $X_{1},X_{2}\in\mathbb{R}^{3}$
 \end_inset
 
@@ -6263,10 +6325,22 @@ and
 \end_layout
 
 \begin_layout Standard
-By multiplying both the side by 
+By 
+\change_inserted 215191885 1524187033
+left-
+\change_unchanged
+multiplying both the side by 
 \begin_inset Formula $\hat{T}$
 \end_inset
 
+
+\change_inserted 215191885 1524186770
+, where 
+\begin_inset Formula $\hat{T}$
+\end_inset
+
+ is a skew symmetric representation of the vector T
+\change_unchanged
 
 \end_layout
 
@@ -6282,8 +6356,12 @@ By multiplying both the side by
 \end_layout
 
 \begin_layout Standard
-By multiplying both the side by 
-\begin_inset Formula $x_{2}$
+By 
+\change_inserted 215191885 1524187038
+left-
+\change_unchanged
+multiplying both the side by 
+\begin_inset Formula $x_{2}^{T}$
 \end_inset
 
 
@@ -6416,14 +6494,34 @@ It encodes the relative pose between the two cameras.
  Geometrically, it 
 \change_deleted 215191885 1523511406
 impose
-\change_inserted 215191885 1523511406
-means
+\change_inserted 215191885 1524181933
+proves
 \change_unchanged
- that the 
+ that 
+\change_inserted 215191885 1524182056
+
+\begin_inset Formula $o_{1}$
+\end_inset
+
+ , 
+\begin_inset Formula $o_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $p$
+\end_inset
+
+ 
+\change_deleted 215191885 1524182052
+the
+\change_unchanged
+ 
 \change_deleted 215191885 1523339600
 The
 \change_unchanged
- vector connecting the first camera center 
+ 
+\change_deleted 215191885 1524182031
+vector connecting the first camera center 
 \begin_inset Formula $o_{1}$
 \end_inset
 
@@ -6439,22 +6537,38 @@ The
 \begin_inset Formula $o_{2}$
 \end_inset
 
+ clearly
+\change_unchanged
+ form
+\change_inserted 215191885 1524182055
+s
+\change_unchanged
+ a triangle
+\change_deleted 215191885 1524182093
+.
+
+\change_unchanged
  
-\change_deleted 215191885 1523511417
-clearly
+\change_deleted 215191885 1524182073
+Therefore
+\change_inserted 215191885 1524182073
+and
 \change_unchanged
- form a triangle.
- Therefore, the
-\change_inserted 215191885 1523633729
-se
+, 
+\change_deleted 215191885 1524182086
+the three vector
 \change_unchanged
- three vectors lie on the same plane
-\change_inserted 215191885 1523633587
-, called an epiploar plane,
+s lie
+\change_inserted 215191885 1524182090
+s
+\change_unchanged
+ on the same plane
+\change_inserted 215191885 1524182055
+, i.e., an epiploar plane,
 \change_deleted 215191885 1523633578
 .
 
-\change_inserted 215191885 1523633589
+\change_inserted 215191885 1524182055
  h
 \change_deleted 215191885 1523633589
 H
@@ -6466,45 +6580,12 @@ the
  their triple product which measures the volume of the parallelepiped is
  zero.
 
-\change_inserted 215191885 1523633399
- Few other important terminologies to
-\change_unchanged
+\change_inserted 215191885 1524182055
  
-\change_inserted 215191885 1523633627
-remember here are, the epipoles 
-\begin_inset Formula $e_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $e_{2}$
-\end_inset
-
- in the figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Epipolar-geometry"
-
-\end_inset
-
-, is the projection of a camera center into its stereo image pair.
- The epipolar line, the line formed by intersection of epiploar plane with
- image plane, 
-\begin_inset Formula $l_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $l_{1}$
-\end_inset
-
- are the two epipoles in the figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:Epipolar-geometry"
-
-\end_inset
-
-.
+\change_deleted 215191885 1524181843
  
+\change_inserted 215191885 1524182055
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -6709,7 +6790,7 @@ name "fig:Disparity-Computation"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523418619
+\change_inserted 215191885 1524162140
 Let 
 \begin_inset Formula $x_{L}$
 \end_inset
@@ -6753,11 +6834,11 @@ reference "fig:Disparity-Computation"
 \end_inset
 
  are known, we can compute the disparity 
-\begin_inset Formula $d$
+\begin_inset Formula $\lambda$
 \end_inset
 
-, and consequently the depth of object 
-\begin_inset Formula $z_{p}$
+, and consequently the inverse depth of object 
+\begin_inset Formula $idepth_{p}$
 \end_inset
 
  with properties of similarity triangles as fallowing.
@@ -6768,7 +6849,7 @@ reference "fig:Disparity-Computation"
 \change_inserted 215191885 1521739289
 \begin_inset Formula 
 \[
-d=x_{L}-x_{R}=f\left(\frac{x_{p}+l}{z_{p}}-\frac{x_{p}-l}{z_{p}}\right)
+\lambda=x_{L}-x_{R}=f\left(\frac{x_{p}+l}{z_{p}}-\frac{x_{p}-l}{z_{p}}\right)
 \]
 
 \end_inset
@@ -6778,10 +6859,10 @@ d=x_{L}-x_{R}=f\left(\frac{x_{p}+l}{z_{p}}-\frac{x_{p}-l}{z_{p}}\right)
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521739289
+\change_inserted 215191885 1524162208
 \begin_inset Formula 
 \[
-d=\frac{2fl}{z_{p}}
+\lambda=\frac{2fl}{z_{p}}
 \]
 
 \end_inset
@@ -6791,11 +6872,37 @@ d=\frac{2fl}{z_{p}}
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521739289
+\change_inserted 215191885 1524162278
 \begin_inset Formula 
 \[
-z_{p}=\frac{fB}{d}
+\frac{1}{z_{p}}=\frac{d}{fB}
 \]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524162320
+\begin_inset Formula 
+\begin{equation}
+idepth=\frac{d}{fB}\label{eq:inverse_depth}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524162331
+\begin_inset Formula 
+\begin{equation}
+idepth\propto disparity\label{eq:relation_invDep_and_diparity}
+\end{equation}
 
 \end_inset
 
@@ -6823,7 +6930,7 @@ key "4587671"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523633820
+\change_inserted 215191885 1524162500
 Further performance and accuracy improvements could be achieved by using
  probabilistic approach of adaptive baseline
 \begin_inset CommandInset citation
@@ -6838,9 +6945,14 @@ key "6751290"
  search.
  Instead of looking at every pixels, only the subset of them, which contributes
  to the high accuracy of disparity search are selected for the depth estimation.
- Also, for every selected pixel, instead of using a single reference frame,
- the one dimensional disparity search is performed with the suitably selected
- reference frame, from the stack of earlier frames.
+ For every selected pixel, the one dimensional disparity search is performed
+ with the suitably selected reference frame, from the stack of earlier tracked
+ frames.
+ This selection of the frame is based on the age of the pixel, for a given
+ pixel, the oldest frame in which disparity search range and the observation
+ angle was not above certain threshold was selected.
+ If a disparity search with this frame is unsuccessful, the pixels age is
+ increased, such that subsequent disparity search use newer frames.
  This adaptive baseline disparity search maximize the stereo accuracy.
  Further, the prior knowledge from earlier iteration of disparity search
  is utilized to minimize the disparity search range.
@@ -6848,7 +6960,7 @@ key "6751290"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523986865
+\change_inserted 215191885 1524175239
 The disparity search is made along the epiploar line, and it is subjected
  to two source of errors 
 \begin_inset CommandInset citation
@@ -6877,10 +6989,238 @@ key "6751290"
  if the epipolar line is parallel to the image gradient, and a large otherwise.
  Similarly, small image intensity errors have a large effect on the estimated
  disparity if the image gradient is small, and a small effect otherwise.
+ This knowledge helps us prevent the bad depth computation in the earlier
+ stage itself, as soon as we have the epipolar lines constructed for given
+ pixel, we can compare the direction and magnitude of the epipolar line
+ to the local gradient of the image around the pixel for a threshold.
  As a consequence, the region of the image with the rich pattern, which
  results in large gradient change, have a high probability of depth estimation,
  then the region with no gradient, making the semi dense depth estimation.
  
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524176060
+Let 
+\begin_inset Formula $l$
+\end_inset
+
+ and 
+\begin_inset Formula $g$
+\end_inset
+
+ represent a normalized epipolar line and a normalized image gradient respective
+ly, if 
+\begin_inset Formula $\epsilon_{l}$
+\end_inset
+
+ is the isotropic Gaussian noise associated with the absolute position of
+ the origin of the epipolar line 
+\begin_inset Formula $l$
+\end_inset
+
+ with variance 
+\begin_inset Formula $\sigma_{l}^{2}$
+\end_inset
+
+, then the variance of the geometric disparity error is 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524176062
+\begin_inset Formula 
+\begin{equation}
+\sigma_{\lambda(\xi,\pi)}^{2}=\frac{\sigma_{l}^{2}}{\left\langle g,l\right\rangle ^{2}}\label{eq:geo_error_var}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524177714
+It is evident in the equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:geo_error_var"
+
+\end_inset
+
+ that the direction of the image gradient and epipolar line defines the
+ error, and this originates from the noise in camera orientation 
+\begin_inset Formula $\xi$
+\end_inset
+
+ and the camera calibration 
+\begin_inset Formula $\pi$
+\end_inset
+
+ and independent of noise in intensity of image.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524178003
+With 
+\begin_inset Formula $g_{p}$
+\end_inset
+
+ representing the gradient of a image intensity on the epipolar line at
+ disparity 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, and 
+\begin_inset Formula $\sigma_{i}^{2}$
+\end_inset
+
+ representing the variance of the image intensity noise, we can have the
+ variance of the photometric disparity error ass 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524178352
+\begin_inset Formula 
+\begin{equation}
+\sigma_{\lambda(I)}^{2}=\frac{2\sigma_{i}^{2}}{g_{p}^{2}}\label{eq:intensity_var_var}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524179506
+Equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:intensity_var_var"
+
+\end_inset
+
+ shows that the photometric disparity error depends on the magnitude of
+ gradient of image, which direclty depends on the intensity of image and
+ hence is independent of the geometric disparity error.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524179685
+With equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:geo_error_var"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:intensity_var_var"
+
+\end_inset
+
+ the total the observation variance of the inverse depth estimated using
+ equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:inverse_depth"
+
+\end_inset
+
+ is
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524179792
+\begin_inset Formula 
+\begin{equation}
+\sigma_{d,obs}^{2}=\alpha^{2}(\sigma_{\lambda(\xi,\pi)}^{2}+\sigma_{\lambda(I)}^{2})\label{eq:depth_observation_var}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524179859
+where 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is the proportionality constant is different for each pixel, and can be
+ calculated as 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524179902
+\begin_inset Formula 
+\[
+\alpha=\frac{\delta_{d}}{\delta_{\lambda}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524180115
+where 
+\begin_inset Formula $\delta_{d}$
+\end_inset
+
+ is the length of the searched inverse depth interval, and 
+\begin_inset Formula $\delta_{\lambda}$
+\end_inset
+
+ the length of the searched epipolar line segment.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524180580
+For a given pixel, the constructed depth from equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:inverse_depth"
+
+\end_inset
+
+ is represented as Gaussian distribution with the variance 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:depth_observation_var"
+
+\end_inset
+
+ as
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524180298
+\begin_inset Formula 
+\begin{equation}
+\mathcal{N}(d_{obs},\sigma_{d,obs}^{2})\label{eq:gassuain_stereo_depth}
+\end{equation}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -7519,6 +7859,17 @@ s that corresponds to its smallest eigenvalue.
 
 \begin_layout Section
 Non linear Optimization
+\change_inserted 215191885 1524197371
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Non-linear-Optimization"
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -8042,9 +8393,9 @@ H_{jk}=2\underset{i}{\sum}J_{ij}J_{ik}\label{eq:hassian_from_jacobian}
 \begin_layout Standard
 with
 \begin_inset Formula 
-\[
-J_{ij}=\frac{\partial r_{i}}{\partial x_{j}}
-\]
+\begin{equation}
+J_{ij}=\frac{\partial r_{i}}{\partial x_{j}}\label{eq:jacobian}
+\end{equation}
 
 \end_inset
 
@@ -8056,7 +8407,7 @@ J_{ij}=\frac{\partial r_{i}}{\partial x_{j}}
 \begin_layout Standard
 
 \change_inserted 215191885 1524110017
-Now, by the equation 
+Now, the equation 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:Tylor_approximation_of_resduial"
@@ -8068,10 +8419,83 @@ reference "eq:Tylor_approximation_of_resduial"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524110027
+\change_inserted 215191885 1524187930
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial r}{\partial x}=g+H(x-x_{t})=0\label{eq:gauss_new_intermediate}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524188177
+From equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:gradiant"
+
+\end_inset
+
+ and equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:jacobian"
+
+\end_inset
+
+ , we have 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524188184
+\begin_inset Formula 
+\begin{equation}
+g=2J^{T}r\label{eq:gradian_jacobian}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524188614
+with the Jacobian representation for gradient as shown in equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:gradian_jacobian"
+
+\end_inset
+
+ and Hassian as in equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:hassian_from_jacobian"
+
+\end_inset
+
+, equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:gauss_new_intermediate"
+
+\end_inset
+
+ can be updated as 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524188310
 \begin_inset Formula 
 \[
-\frac{\partial r}{\partial x}=g+H(x-x_{t})=0
+2J^{T}r+J^{T}J(x-x_{t})=0
 \]
 
 \end_inset
@@ -8081,12 +8505,12 @@ reference "eq:Tylor_approximation_of_resduial"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524110192
-For which we can estimate 
+\change_inserted 215191885 1524188436
+and 
 \begin_inset Formula $x_{t+1}$
 \end_inset
 
- as
+ is estimated as
 \end_layout
 
 \begin_layout Standard
@@ -8094,7 +8518,7 @@ For which we can estimate
 \change_inserted 215191885 1524110915
 \begin_inset Formula 
 \begin{equation}
-x_{t+1}=x_{t}-H^{-1}g\label{eq:guass_newton}
+x_{t+1}=x_{t}-(J^{T}J)^{-1}J^{T}r\label{eq:guass_newton}
 \end{equation}
 
 \end_inset
@@ -8158,7 +8582,7 @@ algorithm,
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-x_{t+1}=x_{t}-(H+\lambda I)^{-1}g\label{eq:lvm}
+x_{t+1}=x_{t}-((J^{T}J)+\lambda I)^{-1}J^{T}r\label{eq:lvm}
 \end{equation}
 
 \end_inset
@@ -8208,7 +8632,7 @@ reference "eq:guass_newton"
 ,
 \change_unchanged
  
-\change_inserted 215191885 1524114182
+\change_inserted 215191885 1524114660
 and for the large value of 
 \begin_inset Formula $\lambda$
 \end_inset
@@ -8231,7 +8655,7 @@ reference "eq:gradiant_decent"
 
 \end_inset
 
- with the
+ with the 
 \change_deleted 215191885 1524113204
 and a gradient descent 
 \change_unchanged
@@ -8299,7 +8723,7 @@ reference "eq:lvm"
 \change_inserted 215191885 1524114000
 \begin_inset Formula 
 \[
-x_{t+1}=x_{t}-(H+\lambda(diag(J^{T}J)))^{-1}g
+x_{t+1}=x_{t}-((J^{T}J)+\lambda(diag(J^{T}J)))^{-1}J^{T}r
 \]
 
 \end_inset
@@ -8417,7 +8841,7 @@ direct
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521048998
+\change_inserted 215191885 1524196388
 \begin_inset Formula 
 \begin{equation}
 E(\xi)=\underset{i}{\sum}(I_{ref}(p_{i})-I(\omega(p_{i},D_{ref}(p_{i}),\xi)))^{2}\label{eq:Photomatric Error}
@@ -8430,7 +8854,7 @@ E(\xi)=\underset{i}{\sum}(I_{ref}(p_{i})-I(\omega(p_{i},D_{ref}(p_{i}),\xi)))^{2
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521074363
+\change_inserted 215191885 1524197308
 Equation (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -8463,7 +8887,153 @@ reference "sec:Image-alignment"
  is the depth associated with current key frame, these depth values could
  be initialized either with random values or with the depth measurements
  from a RGBD sensor to initiate the process.
- For every new frame tracked, the depths associated with the keyframe are
+ 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524197453
+We can apply Guass-Newton optimization, as discussed in section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Non-linear-Optimization"
+
+\end_inset
+
+, to find optimal 
+\begin_inset Formula $\xi$
+\end_inset
+
+ which minimizes the equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Photomatric Error"
+
+\end_inset
+
+, to do that we need to compute the Jacobian of the residual as required
+ by the equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:guass_newton"
+
+\end_inset
+
+.
+ The jacobian of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Photomatric Error"
+
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\xi$
+\end_inset
+
+ is
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524199415
+\begin_inset Formula 
+\begin{equation}
+J_{r}=\frac{1}{z^{\prime}}\left(\begin{array}{cc}
+\nabla I_{x}f_{x} & \nabla I_{y}f_{y}\end{array}\right)\left(\begin{array}{cccccc}
+1 & 0 & -\frac{x^{\prime}}{z^{\prime}} & -\frac{x^{\prime}y^{\prime}}{z^{\prime}} & (z^{\prime}+\frac{x^{\prime2}}{z^{\prime}}) & -y^{\prime}\\
+0 & 1 & -\frac{y^{\prime}}{z^{\prime}} & -(z^{\prime}+\frac{y^{\prime2}}{z^{\prime}}) & -\frac{x^{\prime}y^{\prime}}{z^{\prime}} & x^{\prime}
+\end{array}\right)\label{eq:jacobian_of_photomatric_error}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524199848
+\begin_inset Formula $x^{\prime}$
+\end_inset
+
+,
+\begin_inset Formula $y^{\prime}$
+\end_inset
+
+and 
+\begin_inset Formula $z^{\prime}$
+\end_inset
+
+ are the warped three dimensional points before projection
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524199858
+\begin_inset Formula 
+\[
+\left(\begin{array}{c}
+x^{\prime}\\
+y^{\prime}\\
+z^{\prime}
+\end{array}\right)=R_{\xi}K^{-1}\left(\begin{array}{c}
+x\\
+y\\
+d
+\end{array}\right)+t_{\xi}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524200063
+here, 
+\begin_inset Formula $d$
+\end_inset
+
+ is the reference depth at the pixel 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+.
+ 
+\begin_inset Formula $f_{x}$
+\end_inset
+
+, 
+\begin_inset Formula $f_{y}$
+\end_inset
+
+ are the focal lengths of the camera and 
+\begin_inset Formula $K$
+\end_inset
+
+ is the intrinsic matrix of the camera.
+ 
+\begin_inset Formula $\nabla I_{x}$
+\end_inset
+
+ and 
+\begin_inset Formula $\nabla I_{y}$
+\end_inset
+
+ are the image gradients.
+ 
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524196952
+For every new frame tracked, the depths associated with the keyframe are
  continuously refined by performing the adaptive baseline stereo 3D reconstructi
 on 
 \begin_inset CommandInset citation
@@ -8472,7 +9042,15 @@ key "6751290"
 
 \end_inset
 
- between new tracked frames and the stack of previously tracked frames.
+ between new tracked frames and the stack of previously tracked frames as
+ discussed in the section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Estimation-of-the-depth"
+
+\end_inset
+
+.
  When there is drastic pose change between the tracked frame and keyframe,
  the current tracked frame is promoted as a keyframe and depth map from
  previous keyframe is propagated to the new keyframe and regularized.

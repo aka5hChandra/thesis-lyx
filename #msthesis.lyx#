@@ -518,13 +518,16 @@ If you decide to have a acknowledgements page, your acknowledgement text
 \end_layout
 
 \begin_layout Acknowledgements
-The Acknowledgement page should be brief, simple, and free of sentimentality
- or trivia.
+The Acknowledge
+\change_deleted 215191885 1524263882
+ment page should be brief, simple, and free of sentimentality or trivia.
  It is customary to recognize the role of the advisor, the other members
  of the advisory committee, and only those organizations or individuals
  who actually aided in the project.
  Further, you should acknowledge any outside source of financial assistance,
  such as GASP grants, contracts, or fellowships.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Dedication
@@ -2497,7 +2500,7 @@ name "subsec:Camera-model"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523408440
+\change_inserted 215191885 1524236143
 The SfM operates on two-dimensional images, and it is important to understand
  how these images are generated.
  An image is formed by capturing the light energy (irradiance) for every
@@ -2506,7 +2509,7 @@ The SfM operates on two-dimensional images, and it is important to understand
  model, which describes the relationship between the three-dimensional coordinat
 es and its projection onto the two-dimensional image plane.
  In this model, the center of the lens is called an optic center, and the
- line passing through the optic center is called an optic axis.
+ line passing through the optic center (o) is called an optic axis.
  The plane perpendicular to the optic axis is called the focal plane.
  The thin lens itself is characterized by its focal length and diameter.
  The focal length is the distance from the optic center,  where all the
@@ -2602,7 +2605,7 @@ reference "fig:Thin-lens-camera"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523409018
+\change_inserted 215191885 1524236189
 For the simplification of calculation, we consider an ideal camera model
  called the pinhole camera model.
  In this case, the aperture of a thin lens is assumed to be zero, all rays
@@ -2613,14 +2616,14 @@ e to the irradiance at the image pixel
 \begin_inset Formula $x=\left[x,y\right]$
 \end_inset
 
- are on a line through the center o (optic center) of the lens.
+ are on a line through the center o of the lens.
  If a point p has coordinates 
 \begin_inset Formula $X=\left[X,Y,Z\right]$
 \end_inset
 
- relative to a reference frame centered at the optical center 0, with its
- z-axis being the optical axis (of the lens), then it is immediate from
- the similar triangles in the figure 
+ relative to a reference frame centered at the optical center o, with its
+ z-axis being the optical axis of the lens, then it is immediate from the
+ similar triangles in the figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Pin-hole-camera-model-1"
@@ -2745,7 +2748,7 @@ This is also written as
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523406281
+\change_inserted 215191885 1524236271
 The negative sign in the eq 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2770,7 +2773,7 @@ reference "eq:pinhole camera y-1"
 \begin_inset Formula $(x,y)\rightarrow(-x,-y).$
 \end_inset
 
- There for the equation 
+ Then the equation 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:pinhole camera x-1"
@@ -2784,7 +2787,7 @@ reference "eq:pinhole camera y-1"
 
 \end_inset
 
- changes to 
+ can be updated as 
 \end_layout
 
 \begin_layout Standard
@@ -2866,7 +2869,7 @@ Z\\
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523409115
+\change_inserted 215191885 1524236302
 The equation 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2874,7 +2877,7 @@ reference "eq:homogennous"
 
 \end_inset
 
- can be decomposed into
+ can be further decomposed into
 \begin_inset Formula 
 \[
 \left[\begin{array}{cccc}
@@ -2926,12 +2929,12 @@ f & 0 & 0 & 0\\
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523338315
+\change_inserted 215191885 1524236311
 The matrix 
 \begin_inset Formula $\Pi_{0}$
 \end_inset
 
-is a standard projection matrix.
+ is a standard projection matrix.
 \end_layout
 
 \begin_layout Standard
@@ -2992,7 +2995,7 @@ Where
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523409345
+\change_inserted 215191885 1524236413
 The equation 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3004,9 +3007,9 @@ reference "eq:ideal camera model-1"
  at the optical center, and its axis aligned with the optical axis.
  But in practice, this does not true and the origin of the image coordinate
  frame typically in the upper-left corner of the image.
- we need to address this relationship between the retinal plane coordinate
+ We need to address this distortion between the retinal plane coordinate
  frame and the pixel array in our camera model.
- This can be represented by a special matrix :
+ This distortion can be corrected by a special matrix :
 \end_layout
 
 \begin_layout Standard
@@ -3133,7 +3136,7 @@ where
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523994125
+\change_inserted 215191885 1524236466
 Since the parameters in matrix 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3144,15 +3147,15 @@ reference "eq:intresic matrix-1"
  are unique to every camera and are not influenced by any external factors,
  they are called an intrinsic parameter, and the matrix itself is called
  an intrinsic matrix 
-\begin_inset Formula $k$
+\begin_inset Formula $K$
 \end_inset
 
 .
  With matrix 
-\begin_inset Formula $k$
+\begin_inset Formula $K$
 \end_inset
 
- the ideal camera model from equation 
+, the ideal camera model from equation 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:ideal camera model-1"
@@ -3206,7 +3209,7 @@ In the matrix notation,
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \begin{equation}
-\lambda x=K\Pi_{0}gX_{0}\label{eq:camera model with internsic parameter matrix rep-1}
+\lambda x=K\Pi_{0}\xi X_{0}\label{eq:camera model with internsic parameter matrix rep-1}
 \end{equation}
 
 \end_inset
@@ -3216,7 +3219,7 @@ In the matrix notation,
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523666832
+\change_inserted 215191885 1524236569
 To summarize, equation 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3228,11 +3231,12 @@ reference "eq:camera model with internsic parameter matrix rep-1"
 \begin_inset Formula $X_{0}$
 \end_inset
 
- by camera with orientation (extrinsic parameters)
-\begin_inset Formula $g$
+ by camera with orientation 
+\begin_inset Formula $\xi$
 \end_inset
 
- and intrinsic parameters K, onto two-dimensional coordinate 
+ (also called as extrinsic parameters) and camera calibration K, onto two-dimens
+ional coordinate 
 \begin_inset Formula $x$
 \end_inset
 
@@ -3307,7 +3311,7 @@ y_{corrected}=y(1+k_{1}r^{2}+k_{2}r^{4}+k_{3}r^{6})
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523411885
+\change_inserted 215191885 1524237314
 where 
 \begin_inset Formula $(x,y)$
 \end_inset
@@ -3316,12 +3320,12 @@ where
 \begin_inset Formula $(x_{corrected},y_{corrected})$
 \end_inset
 
- are corrected image intensities, with 
+ are corrected image intensities, where 
 \begin_inset Formula $k_{x}$
 \end_inset
 
-is the distortion coefficient of the camera to be determined, and r is the
- distance of pixel from the principal point.
+ is the distortion coefficient of the camera to be determined, and r is
+ the distance of pixel from the principal point.
  
 \end_layout
 
@@ -3388,7 +3392,7 @@ D_{coff}=(k_{1},k_{2},p_{1},p_{2},k_{3})\label{eq:distortion coeff}
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523666893
+\change_inserted 215191885 1524237372
 For any given camera, all the essential parameters from equation 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3417,15 +3421,15 @@ key "Zhang2014,Zhang:2000:FNT:357014.357025"
 \end_inset
 
 .
- There are many standard library implementations of this process and one
- in OpenCV library 
+ There are many standard library implementations of this process and we
+ have used the one in OpenCV library 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "5534797"
 
 \end_inset
 
- is used.
+.
 \end_layout
 
 \begin_layout Standard
@@ -3487,7 +3491,7 @@ name "subsec:Estimation-of-the-pose"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523670549
+\change_inserted 215191885 1524237671
 The camera pose is represented by the rigid body motion, which is introduced
  in the section 
 \begin_inset CommandInset ref
@@ -3497,7 +3501,7 @@ reference "subsec:Rigid-Body-Motion"
 \end_inset
 
 , these camera poses between pair of images can be estimated by solving
- for their alignment, as shown in the section 
+ for their alignment, as discussed in the section 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Solving-for-Image"
@@ -3532,8 +3536,8 @@ name "sec:Image-alignment"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523670750
-The image alignment is the process of transforming (wraping) one image with
+\change_inserted 215191885 1524237689
+The image alignment is the process of transforming (warping) one image with
  respect to another image, with a goal to minimizing the total difference
  between the intensities 
 \begin_inset CommandInset citation
@@ -6197,7 +6201,7 @@ reference "fig:Epipolar-geometry"
 \end_inset
 
 , with a relative pose of 
-\begin_inset Formula $(R,T)$
+\begin_inset Formula $\xi=(R,T)$
 \end_inset
 
 , where 
@@ -6301,6 +6305,10 @@ let
 \begin_inset Formula $x_{1},x_{2}\in\mathbb{R}^{3}$
 \end_inset
 
+
+\change_inserted 215191885 1524238533
+ 
+\change_unchanged
 be the homogeneous coordinates of the projection of the same point p in
  the two image planes with respective unknown scales of 
 \begin_inset Formula $\lambda_{1}$
@@ -6555,10 +6563,10 @@ Therefore
 and
 \change_unchanged
 , 
-\change_deleted 215191885 1524182086
-the three vector
+\change_deleted 215191885 1524238579
+the three vectors
 \change_unchanged
-s lie
+ lie
 \change_inserted 215191885 1524182090
 s
 \change_unchanged
@@ -6698,18 +6706,18 @@ name "subsec:Stereo-corr-and-disparity-est"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521739289
-We can estimate the depth of object from a pair of images captured by the
- same camera with a small transnational change but the same orientation.
- The amount of distance that the object have shifted from first image to
- second is called the disparity
+\change_inserted 215191885 1524241453
+We can estimate the depth of the object from a pair of images captured by
+ the same camera with a small transnational change but the same orientation.
+ The amount of distance that the object has shifted from the first image
+ to the second is called the disparity 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Schmidt2002DenseDM"
 
 \end_inset
 
- and this information is useful in computing the depth of the object itself.
+, and this information is useful in computing the depth of the object itself.
  With the epiplore constraint 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -6718,12 +6726,12 @@ reference "subsec:Epipolar-geometry"
 \end_inset
 
  and known translation between the pair of images, we can efficiently compute
- disparity of image, this approach is called the fixed baseline disparity
- mapping since the baseline between pair of image are known and they are
- fixed.
+ disparity of the pixel, this approach is called the fixed baseline disparity
+ mapping since the baseline between the pair of images are known, and they
+ are fixed.
  This process starts with finding the correspondence between images.
  Stereo correspondence is the problem of finding which part of one image
- correspond to which parts of another image, where the difference are due
+ correspond to which parts of another image, where the difference is due
  to the movement of the camera.
  As discussed in 
 \begin_inset CommandInset ref
@@ -6733,8 +6741,10 @@ reference "subsec:Solving-for-Image"
 \end_inset
 
  the correspondence can be either dense or sparse.
- In dense correspondence image intensities are used, where as in sparse
+ In dense correspondence, image intensities are used, whereas in the sparse,
  only image feature are used.
+ Also, with epiploar constraint in place, the correspondence search can
+ be narrowed down along the epipolar lines.
 \end_layout
 
 \begin_layout Standard
@@ -6790,7 +6800,7 @@ name "fig:Disparity-Computation"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524162140
+\change_inserted 215191885 1524239466
 Let 
 \begin_inset Formula $x_{L}$
 \end_inset
@@ -6838,10 +6848,10 @@ reference "fig:Disparity-Computation"
 \end_inset
 
 , and consequently the inverse depth of object 
-\begin_inset Formula $idepth_{p}$
+\begin_inset Formula $idepth$
 \end_inset
 
- with properties of similarity triangles as fallowing.
+ with properties of similarity triangles as following
 \end_layout
 
 \begin_layout Standard
@@ -6930,9 +6940,9 @@ key "4587671"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524162500
-Further performance and accuracy improvements could be achieved by using
- probabilistic approach of adaptive baseline
+\change_inserted 215191885 1524241162
+Further accuracy and performance improvements could be achieved by adopting
+ a probabilistic approach of adaptive baseline
 \begin_inset CommandInset citation
 LatexCommand cite
 key "6751290"
@@ -6941,28 +6951,27 @@ key "6751290"
 
 , which explicitly takes advantage of the fact that in a video, small baseline
  frames are available before large-baseline frames.
- In this case, for each pixel a suitable frame is selected for disparity
- search.
- Instead of looking at every pixels, only the subset of them, which contributes
- to the high accuracy of disparity search are selected for the depth estimation.
- For every selected pixel, the one dimensional disparity search is performed
- with the suitably selected reference frame, from the stack of earlier tracked
- frames.
+ In this case, instead of estimating depth for every pixel, only the subset
+ of them which contributes to the high accuracy of disparity search were
+ preferred.
+ For every qualified pixel, a suitable reference frame is selected from
+ the stack of earlier tracked frames for disparity search, in which, the
+ one dimensional disparity search is performed along the epiploar line.
  This selection of the frame is based on the age of the pixel, for a given
  pixel, the oldest frame in which disparity search range and the observation
  angle was not above certain threshold was selected.
  If a disparity search with this frame is unsuccessful, the pixels age is
  increased, such that subsequent disparity search use newer frames.
- This adaptive baseline disparity search maximize the stereo accuracy.
- Further, the prior knowledge from earlier iteration of disparity search
+ This adaptive baseline disparity search maximizes the stereo accuracy.
+ Further, the prior knowledge from an earlier iteration of disparity search
  is utilized to minimize the disparity search range.
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524175239
-The disparity search is made along the epiploar line, and it is subjected
- to two source of errors 
+\change_inserted 215191885 1524241855
+The disparity search is performed along the epiploar line, and it is subjected
+ to two sources of errors 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "6751290"
@@ -6979,7 +6988,7 @@ key "6751290"
 \end_inset
 
 .
- And, the photometric error, which are caused form the intensity difference
+ And, the photometric error, which is caused by the intensity difference
  between image pair.
  The image gradient plays a crucial role in depth estimation since it determines
  the extent of both the errors.
@@ -6989,19 +6998,19 @@ key "6751290"
  if the epipolar line is parallel to the image gradient, and a large otherwise.
  Similarly, small image intensity errors have a large effect on the estimated
  disparity if the image gradient is small, and a small effect otherwise.
- This knowledge helps us prevent the bad depth computation in the earlier
- stage itself, as soon as we have the epipolar lines constructed for given
- pixel, we can compare the direction and magnitude of the epipolar line
- to the local gradient of the image around the pixel for a threshold.
+ This intuition helps us prevent the erroneous depth computation in the
+ earlier stage itself, as soon as we have the epipolar lines constructed
+ for given pixel, we can compare the direction and magnitude of the epipolar
+ line to the local gradient of the image around the pixel for a threshold.
  As a consequence, the region of the image with the rich pattern, which
  results in large gradient change, have a high probability of depth estimation,
- then the region with no gradient, making the semi dense depth estimation.
+ then the region with no gradient, resulting in the semi dense depth estimation.
  
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524176060
+\change_inserted 215191885 1524242201
 Let 
 \begin_inset Formula $l$
 \end_inset
@@ -7015,13 +7024,13 @@ ly, if
 \begin_inset Formula $\epsilon_{l}$
 \end_inset
 
- is the isotropic Gaussian noise associated with the absolute position of
- the origin of the epipolar line 
-\begin_inset Formula $l$
+ is the isotropic Gaussian noise, with variance 
+\begin_inset Formula $\sigma_{l}^{2}$
 \end_inset
 
- with variance 
-\begin_inset Formula $\sigma_{l}^{2}$
+ , associated with the absolute position of the origin of the epipolar line
+ 
+\begin_inset Formula $l$
 \end_inset
 
 , then the variance of the geometric disparity error is 
@@ -7042,7 +7051,7 @@ ly, if
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524177714
+\change_inserted 215191885 1524201147
 It is evident in the equation 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -7050,7 +7059,7 @@ reference "eq:geo_error_var"
 
 \end_inset
 
- that the direction of the image gradient and epipolar line defines the
+ that the direction of the image gradient and epipolar line defines this
  error, and this originates from the noise in camera orientation 
 \begin_inset Formula $\xi$
 \end_inset
@@ -7064,8 +7073,8 @@ reference "eq:geo_error_var"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524178003
-With 
+\change_inserted 215191885 1524242233
+Let 
 \begin_inset Formula $g_{p}$
 \end_inset
 
@@ -7079,7 +7088,7 @@ With
 \end_inset
 
  representing the variance of the image intensity noise, we can have the
- variance of the photometric disparity error ass 
+ variance of the photometric disparity error as
 \end_layout
 
 \begin_layout Standard
@@ -7097,7 +7106,7 @@ With
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524179506
+\change_inserted 215191885 1524242274
 Equation 
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -7106,7 +7115,7 @@ reference "eq:intensity_var_var"
 \end_inset
 
  shows that the photometric disparity error depends on the magnitude of
- gradient of image, which direclty depends on the intensity of image and
+ gradient of image, which directly depends on the intensity of image and
  hence is independent of the geometric disparity error.
  
 \end_layout
@@ -7154,13 +7163,13 @@ reference "eq:inverse_depth"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524179859
+\change_inserted 215191885 1524242336
 where 
 \begin_inset Formula $\alpha$
 \end_inset
 
- is the proportionality constant is different for each pixel, and can be
- calculated as 
+ is the proportionality constant defined for each pixel, and can be calculated
+ as 
 \end_layout
 
 \begin_layout Standard
@@ -7238,25 +7247,28 @@ name "subsec:Depth-propagation"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523637619
-The depths estimated for every pair of images are propagated, and can be
+\change_inserted 215191885 1524242569
+The depths estimated for every pair of images are propagated and can be
  used as an prior knowledge for the next iteration of depth estimation for
- new pair of images.
+ the new pair of images.
  For the small camera rotation, the inverse depth and its variance from
- previous frame is propagated, and is assigned to closet integer pixel position.
+ the earlier frame is propagated and is assigned to closet integer pixel
+ position.
  If 
 \begin_inset Formula $d_{0}$
 \end_inset
 
- is an inverse depth for a pixel from previous frame, an inverse depth 
+ is the inverse depth for a pixel from the previous frame, and the inverse
+ depth 
 \begin_inset Formula $d_{1}$
 \end_inset
 
- at same pixel for new frame with the camera translation of 
+ at the same pixel for the current frame with the camera translation of
+ 
 \begin_inset Formula $t_{z}$
 \end_inset
 
-along the optical axis is estimated as 
+ along the optical axis is estimated as 
 \end_layout
 
 \begin_layout Standard
@@ -7297,7 +7309,7 @@ and its variance
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523639857
+\change_inserted 215191885 1524242419
 where, 
 \begin_inset Formula $\sigma_{d_{0}}^{2}$
 \end_inset
@@ -7306,7 +7318,7 @@ where,
 \begin_inset Formula $\sigma_{d_{p}}^{2}$
 \end_inset
 
-is the inverse depth prediction uncertainty.
+ is the inverse depth prediction uncertainty.
  These depths are fused in similar fashion of the extended Kalman filter
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -8993,8 +9005,41 @@ d
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524199861
-with 
+\change_inserted 215191885 1524200063
+here, 
+\begin_inset Formula $d$
+\end_inset
+
+ is the reference depth at the pixel 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+.
+ 
+\begin_inset Formula $f_{x}$
+\end_inset
+
+, 
+\begin_inset Formula $f_{y}$
+\end_inset
+
+ are the focal lengths of the camera and 
+\begin_inset Formula $K$
+\end_inset
+
+ is the intrinsic matrix of the camera.
+ 
+\begin_inset Formula $\nabla I_{x}$
+\end_inset
+
+ and 
+\begin_inset Formula $\nabla I_{y}$
+\end_inset
+
+ are the image gradients.
+ 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard

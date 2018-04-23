@@ -8477,8 +8477,8 @@ reference "eq:Tylor_approximation_of_resduial"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524188177
-From equation 
+\change_inserted 215191885 1524265333
+Also from the equation 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:gradiant"
@@ -8765,10 +8765,23 @@ reference "eq:lvm"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524114000
+\change_inserted 215191885 1524455801
 \begin_inset Formula 
 \[
 x_{t+1}=x_{t}-((J^{T}J)+\lambda(diag(J^{T}J)))^{-1}J^{T}r
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524455813
+\begin_inset Formula 
+\[
+\Delta\xi=-((J^{T}J)+\lambda(diag(J^{T}J)))^{-1}J^{T}r
 \]
 
 \end_inset
@@ -11027,7 +11040,7 @@ For fusing measurements we consider the structured-light measurement of
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521071427
+\change_inserted 215191885 1524330119
 Fortunately, previous sections show that Gaussian models are appropriate
  distributions for both the RGBD and SfM depth values and the parameters
  of these models are either known (see 
@@ -11099,16 +11112,23 @@ key "Maybeck79stochasticsmodels"
 \end_inset
 
  be represented as 
-\begin_inset Formula $\mathcal{N}(\mathbf{d}_{rgbd},\sigma_{rgbd}^{2})$
+\begin_inset Formula $\mathcal{N}(d_{rgbd},\sigma_{rgbd}^{2})$
 \end_inset
 
- and the Gaussian noise for the co-registered SfM depth image at position
+ and from the section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Stereo-corr-and-disparity-est"
+
+\end_inset
+
+ we have the Gaussian noise for the co-registered SfM depth image at position
  
 \begin_inset Formula $(x,y)$
 \end_inset
 
- be 
-\begin_inset Formula $\mathcal{N}(\mu_{SfM},\sigma_{SfM}^{2})$
+ as 
+\begin_inset Formula $\mathcal{N}(d_{obs},\sigma_{d,obs}^{2})$
 \end_inset
 
 .
@@ -11154,7 +11174,7 @@ reference "eq:fused_variance"
 \change_inserted 215191885 1521071427
 \begin_inset Formula 
 \begin{equation}
-\mu_{fused}=\frac{\mathbf{d}_{rgbd}\sigma_{SfM}^{2}+\mu_{SfM}\sigma_{rgbd}^{2}}{\sigma_{SfM}^{2}+\sigma_{rgbd}^{2}}\label{eq:fused_mean}
+\mu_{fused}=\frac{d_{rgbd}\sigma_{d,obs}^{2}+d_{obs}\sigma_{rgbd}^{2}}{\sigma_{d,obs}^{2}+\sigma_{rgbd}^{2}}\label{eq:fused_mean}
 \end{equation}
 
 \end_inset
@@ -11167,7 +11187,7 @@ reference "eq:fused_variance"
 \change_inserted 215191885 1521514889
 \begin_inset Formula 
 \begin{equation}
-\sigma_{fused}^{2}=\frac{\sigma_{rgbd}^{2}\sigma_{SfM}^{2}}{\sigma_{rgbd}^{2}+\sigma_{SfM}^{2}}\label{eq:fused_variance}
+\sigma_{fused}^{2}=\frac{\sigma_{rgbd}^{2}\sigma_{d,obs}^{2}}{\sigma_{rgbd}^{2}+\sigma_{d,obs}^{2}}\label{eq:fused_variance}
 \end{equation}
 
 \end_inset

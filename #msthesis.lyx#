@@ -222,8 +222,14 @@ status open
 
 
 \backslash
-advisor{Dr.
- Andrew Willis}
+advisor{
+\change_deleted 215191885 1524264138
+Dr.
+ Andrew Willis
+\change_inserted 215191885 1524264150
+Dr.Andrew R.Willis
+\change_unchanged
+}
 \change_inserted 215191885 1521524005
 
 \end_layout
@@ -275,9 +281,9 @@ committeeMember{Dr.
 
 \backslash
 committeeMember{Dr.
- 
-\change_deleted 215191885 1521523590
-Min Shin
+
+\change_deleted 215191885 1524264157
+ Min Shin
 \change_inserted 215191885 1521523595
 Srinivas Akella
 \change_unchanged
@@ -289,9 +295,9 @@ Srinivas Akella
 
 \backslash
 committeeMember{Dr.
- 
-\change_deleted 215191885 1521523646
-Jianping Fan
+
+\change_deleted 215191885 1524264159
+ Jianping Fan
 \change_inserted 215191885 1521523647
 Hamed Tabkhi
 \change_unchanged
@@ -513,14 +519,31 @@ nts from an RGBD sensor.
 \end_layout
 
 \begin_layout Acknowledgements
+
+\change_inserted 215191885 1524264062
+I would like to express my gratitude to Dr.
+ Andrew R.
+ Willis, for taking me under his wing and encouraging me at every step of
+ the way with his exceptional understanding of the subject.
+ His invaluable insights played a crucial role in this research.
+ I would also like to thank my co-advisor, Dr.
+ Min Shin, for enabling me to continue research from the Electrical department
+ and for guiding me in the right direction.
+ Additionally, I appreciate the members of my committee, Dr.
+ Srinivas Akella, and Dr.
+ Hamed Tabkhi, for their constant support.
+ Last but not the least, I would like to acknowledge Mr.
+ John Papadakis for all the thought-provoking discussions.
+\change_deleted 215191885 1524264064
 If you decide to have a acknowledgements page, your acknowledgement text
  would go here.
 \end_layout
 
 \begin_layout Acknowledgements
-The Acknowledge
-\change_deleted 215191885 1524263882
-ment page should be brief, simple, and free of sentimentality or trivia.
+
+\change_deleted 215191885 1524264064
+The Acknowledgement page should be brief, simple, and free of sentimentality
+ or trivia.
  It is customary to recognize the role of the advisor, the other members
  of the advisory committee, and only those organizations or individuals
  who actually aided in the project.
@@ -539,15 +562,21 @@ The Dedication page, if used, pays a special tribute to a person(s) who
  has given extraordinary encouragement or support to one's academic career.
 \end_layout
 
-\begin_layout Introduction
+\begin_layout Standard
+
+\change_deleted 215191885 1524264440
 If you decide to have an introduction page, your introduction text would
  go here.
  
 \end_layout
 
-\begin_layout Introduction
+\begin_layout Standard
+
+\change_deleted 215191885 1524264440
 Depending on the discipline or the requirements of the student's advisory
  committee, an Introduction may be included as a preliminary page.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -8016,6 +8045,10 @@ re-projection error
 \begin_inset Formula $x_{2}^{j}$
 \end_inset
 
+
+\change_inserted 215191885 1524265189
+ 
+\change_unchanged
 are the recovered 
 \change_deleted 215191885 1523983867
 3-D
@@ -8375,8 +8408,8 @@ reference "eq:full hassain"
  is full hassian, by assuming the the problem is quadratic, we can
 \change_unchanged
  
-\change_inserted 215191885 1524114563
-ignore
+\change_inserted 215191885 1524265305
+ignore 
 \change_deleted 215191885 1524114559
 dropping 
 \change_unchanged
@@ -8444,8 +8477,8 @@ reference "eq:Tylor_approximation_of_resduial"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524188177
-From equation 
+\change_inserted 215191885 1524265333
+Also from the equation 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:gradiant"
@@ -10994,7 +11027,7 @@ For fusing measurements we consider the structured-light measurement of
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521071427
+\change_inserted 215191885 1524330060
 Fortunately, previous sections show that Gaussian models are appropriate
  distributions for both the RGBD and SfM depth values and the parameters
  of these models are either known (see 
@@ -11069,8 +11102,8 @@ key "Maybeck79stochasticsmodels"
 \begin_inset Formula $\mathcal{N}(\mathbf{d}_{rgbd},\sigma_{rgbd}^{2})$
 \end_inset
 
- and the Gaussian noise for the co-registered SfM depth image at position
- 
+ and from the section Gaussian noise for the co-registered SfM depth image
+ at position 
 \begin_inset Formula $(x,y)$
 \end_inset
 

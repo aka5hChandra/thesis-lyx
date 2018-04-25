@@ -2529,7 +2529,7 @@ name "subsec:Camera-model"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524236143
+\change_inserted 215191885 1524666218
 The SfM operates on two-dimensional images, and it is important to understand
  how these images are generated.
  An image is formed by capturing the light energy (irradiance) for every
@@ -2540,7 +2540,7 @@ es and its projection onto the two-dimensional image plane.
  In this model, the center of the lens is called an optic center, and the
  line passing through the optic center (o) is called an optic axis.
  The plane perpendicular to the optic axis is called the focal plane.
- The thin lens itself is characterized by its focal length and diameter.
+ The thin lens itself is characterized by its focal length (f) and diameter.
  The focal length is the distance from the optic center,  where all the
  ray intersects the optic axis.
  The point of the intersection itself is called the focus of the lens.
@@ -2984,7 +2984,7 @@ reference "eq:2"
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \begin{equation}
-\lambda\left[\begin{array}{c}
+c\left[\begin{array}{c}
 x^{\prime}\\
 y^{\prime}\\
 1
@@ -3016,7 +3016,7 @@ Z_{0}\\
 
 \change_inserted 215191885 1523338315
 Where 
-\begin_inset Formula $\lambda$
+\begin_inset Formula $c$
 \end_inset
 
  is the unknown scale factor.
@@ -3199,7 +3199,7 @@ reference "eq:ideal camera model-1"
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \begin{equation}
-\lambda\left[\begin{array}{c}
+c\left[\begin{array}{c}
 x^{\prime}\\
 y^{\prime}\\
 1
@@ -3238,7 +3238,7 @@ In the matrix notation,
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \begin{equation}
-\lambda x=K\Pi_{0}\xi X_{0}\label{eq:camera model with internsic parameter matrix rep-1}
+cx=K\Pi_{0}\xi X_{0}\label{eq:camera model with internsic parameter matrix rep-1}
 \end{equation}
 
 \end_inset
@@ -6340,11 +6340,11 @@ let
 \change_unchanged
 be the homogeneous coordinates of the projection of the same point p in
  the two image planes with respective unknown scales of 
-\begin_inset Formula $\lambda_{1}$
+\begin_inset Formula $s_{1}$
 \end_inset
 
 and 
-\begin_inset Formula $\lambda_{2}$
+\begin_inset Formula $s_{2}$
 \end_inset
 
 .
@@ -6353,7 +6353,7 @@ and
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\lambda_{2}x_{2}=R\lambda_{1}x_{1}+T
+s_{2}x_{2}=Rs_{1}x_{1}+T
 \]
 
 \end_inset
@@ -6384,7 +6384,7 @@ multiplying both the side by
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\lambda_{2}\hat{T}x_{2}=\hat{T}R\lambda_{1}x_{1}
+s_{2}\hat{T}x_{2}=\hat{T}Rs_{1}x_{1}
 \]
 
 \end_inset
@@ -6407,7 +6407,7 @@ multiplying both the side by
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-0=x_{2}^{T}\hat{T}R\lambda_{1}x_{1}\label{eq:epipolar constraint}
+0=x_{2}^{T}\hat{T}Rs_{1}x_{1}\label{eq:epipolar constraint}
 \end{equation}
 
 \end_inset
@@ -6877,7 +6877,7 @@ reference "fig:Disparity-Computation"
 \end_inset
 
 , and consequently the inverse depth of object 
-\begin_inset Formula $idepth$
+\begin_inset Formula $invdepth$
 \end_inset
 
  with properties of similarity triangles as following
@@ -6914,7 +6914,7 @@ reference "fig:Disparity-Computation"
 \change_inserted 215191885 1524162278
 \begin_inset Formula 
 \[
-\frac{1}{z_{p}}=\frac{d}{fB}
+\frac{1}{z_{p}}=\frac{\lambda}{fB}
 \]
 
 \end_inset
@@ -6927,7 +6927,7 @@ reference "fig:Disparity-Computation"
 \change_inserted 215191885 1524162320
 \begin_inset Formula 
 \begin{equation}
-idepth=\frac{d}{fB}\label{eq:inverse_depth}
+invdepth=\frac{\lambda}{fB}\label{eq:inverse_depth}
 \end{equation}
 
 \end_inset
@@ -6940,7 +6940,7 @@ idepth=\frac{d}{fB}\label{eq:inverse_depth}
 \change_inserted 215191885 1524162331
 \begin_inset Formula 
 \begin{equation}
-idepth\propto disparity\label{eq:relation_invDep_and_diparity}
+invdepth\propto disparity\label{eq:relation_invDep_and_diparity}
 \end{equation}
 
 \end_inset
@@ -8627,7 +8627,7 @@ algorithm,
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-x_{t+1}=x_{t}-((J^{T}J)+\lambda I)^{-1}J^{T}r\label{eq:lvm}
+x_{t+1}=x_{t}-((J^{T}J)+\rho I)^{-1}J^{T}r\label{eq:lvm}
 \end{equation}
 
 \end_inset
@@ -8654,7 +8654,7 @@ s.
  For small value of
 \change_unchanged
  
-\begin_inset Formula $\lambda\simeq0$
+\begin_inset Formula $\rho\simeq0$
 \end_inset
 
 
@@ -8679,7 +8679,7 @@ reference "eq:guass_newton"
  
 \change_inserted 215191885 1524114660
 and for the large value of 
-\begin_inset Formula $\lambda$
+\begin_inset Formula $\rho$
 \end_inset
 
 , the identity matrix in equation 
@@ -8709,7 +8709,7 @@ step size
 of 
 \change_unchanged
 
-\begin_inset Formula $\alpha=1/\lambda$
+\begin_inset Formula $\alpha=1/\rho$
 \end_inset
 
 
@@ -8730,7 +8730,7 @@ for
  the solution, and switches to Gauss-Newton method when small updates are
  required for approximation.
  The parameter 
-\begin_inset Formula $\lambda$
+\begin_inset Formula $\rho$
 \end_inset
 
  is called a damping parameter, which was heuristically selected and adjusted
@@ -8765,23 +8765,10 @@ reference "eq:lvm"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524455801
+\change_inserted 215191885 1524114000
 \begin_inset Formula 
 \[
-x_{t+1}=x_{t}-((J^{T}J)+\lambda(diag(J^{T}J)))^{-1}J^{T}r
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1524455813
-\begin_inset Formula 
-\[
-\Delta\xi=-((J^{T}J)+\lambda(diag(J^{T}J)))^{-1}J^{T}r
+x_{t+1}=x_{t}-((J^{T}J)+\rho(diag(J^{T}J)))^{-1}J^{T}r
 \]
 
 \end_inset
@@ -9536,7 +9523,7 @@ where
 \end_inset
 
  denotes the camera focal length (in pixels), 
-\begin_inset Formula $(c_{x},c_{x})$
+\begin_inset Formula $(c_{x},c_{y})$
 \end_inset
 
  denotes the pixel coordinate of the image center, i.e., the principal point,

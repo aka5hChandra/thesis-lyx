@@ -2029,8 +2029,8 @@ key "7925286"
 \begin_inset Formula 
 \begin{equation}
 \begin{array}{ccc}
-\sigma_{X} & = & \frac{x_{im}-c_{x}+\delta_{x}}{f_{x}}\sigma_{Z}=\frac{x_{im}-c_{x}+\delta_{x}}{f_{x}}(1.425e^{-3})Z^{2}\\
-\sigma_{Y} & = & \frac{y_{im}-c_{y}+\delta_{y}}{f_{y}}\sigma_{Z}=\frac{y_{im}-c_{y}+\delta_{y}}{f_{y}}(1.425e^{-3})Z^{2}\\
+\sigma_{X} & = & \frac{x_{im}-o_{x}+\delta_{x}}{f_{x}}\sigma_{Z}=\frac{x_{im}-o_{x}+\delta_{x}}{f_{x}}(1.425e^{-3})Z^{2}\\
+\sigma_{Y} & = & \frac{y_{im}-o_{y}+\delta_{y}}{f_{y}}\sigma_{Z}=\frac{y_{im}-o_{y}+\delta_{y}}{f_{y}}(1.425e^{-3})Z^{2}\\
 \sigma_{Z} & = & \frac{m}{f_{x}b}Z^{2}\sigma_{d'}=(1.425e^{-3})Z^{2}
 \end{array}\label{eq:noise_models}
 \end{equation}
@@ -2055,7 +2055,7 @@ These equations indicate that 3D coordinate measurement uncertainty increases
 \end_inset
 
  at the image periphery where 
-\begin_inset Formula $\frac{x-c_{x}}{f}\approx0.5$
+\begin_inset Formula $\frac{x-o_{x}}{f}\approx0.5$
 \end_inset
 
 , and this value is significantly smaller for pixels close to the optical
@@ -2529,7 +2529,7 @@ name "subsec:Camera-model"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524236143
+\change_inserted 215191885 1524666218
 The SfM operates on two-dimensional images, and it is important to understand
  how these images are generated.
  An image is formed by capturing the light energy (irradiance) for every
@@ -2540,7 +2540,7 @@ es and its projection onto the two-dimensional image plane.
  In this model, the center of the lens is called an optic center, and the
  line passing through the optic center (o) is called an optic axis.
  The plane perpendicular to the optic axis is called the focal plane.
- The thin lens itself is characterized by its focal length and diameter.
+ The thin lens itself is characterized by its focal length (f) and diameter.
  The focal length is the distance from the optic center,  where all the
  ray intersects the optic axis.
  The point of the intersection itself is called the focus of the lens.
@@ -2984,7 +2984,7 @@ reference "eq:2"
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \begin{equation}
-\lambda\left[\begin{array}{c}
+c\left[\begin{array}{c}
 x^{\prime}\\
 y^{\prime}\\
 1
@@ -3016,7 +3016,7 @@ Z_{0}\\
 
 \change_inserted 215191885 1523338315
 Where 
-\begin_inset Formula $\lambda$
+\begin_inset Formula $c$
 \end_inset
 
  is the unknown scale factor.
@@ -3047,8 +3047,8 @@ reference "eq:ideal camera model-1"
 \begin_inset Formula 
 \begin{equation}
 K_{s}=\left[\begin{array}{ccc}
-s_{x} & s_{\theta} & o_{x}\\
-0 & s_{y} & o_{y}\\
+s_{x} & s_{\theta} & \delta_{x}\\
+0 & s_{y} & \delta_{y}\\
 0 & 0 & 1
 \end{array}\right]\in\mathbb{R}^{3\times3}\label{eq:intrensic matrix-1-1}
 \end{equation}
@@ -3070,16 +3070,16 @@ s_{x} & s_{\theta} & o_{x}\\
 \begin_inset Formula 
 \begin{equation}
 K=K_{s}K_{f}=\left[\begin{array}{ccc}
-s_{x} & s_{\theta} & o_{x}\\
-0 & s_{y} & o_{y}\\
+s_{x} & s_{\theta} & \delta_{x}\\
+0 & s_{y} & \delta_{y}\\
 0 & 0 & 1
 \end{array}\right]\left[\begin{array}{ccc}
 f & 0 & 0\\
 0 & f & 0\\
 0 & 0 & 1
 \end{array}\right]=\left[\begin{array}{ccc}
-fs_{x} & s_{\theta} & o_{x}\\
-0 & fs_{y} & o_{y}\\
+fs_{x} & s_{\theta} & \delta_{x}\\
+0 & fs_{y} & \delta_{y}\\
 0 & 0 & 1
 \end{array}\right]\label{eq:intresic matrix-1}
 \end{equation}
@@ -3098,7 +3098,7 @@ where
 \begin_layout Itemize
 
 \change_inserted 215191885 1523338315
-\begin_inset Formula $o_{x}$
+\begin_inset Formula $\delta_{x}$
 \end_inset
 
 : x-coordinate of the principal point in pixels, 
@@ -3107,7 +3107,7 @@ where
 \begin_layout Itemize
 
 \change_inserted 215191885 1523338315
-\begin_inset Formula $o_{y}$
+\begin_inset Formula $\delta_{y}$
 \end_inset
 
 : y-coordinate of the principal point in pixels, 
@@ -3199,7 +3199,7 @@ reference "eq:ideal camera model-1"
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \begin{equation}
-\lambda\left[\begin{array}{c}
+c\left[\begin{array}{c}
 x^{\prime}\\
 y^{\prime}\\
 1
@@ -3238,7 +3238,7 @@ In the matrix notation,
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \begin{equation}
-\lambda x=K\Pi_{0}\xi X_{0}\label{eq:camera model with internsic parameter matrix rep-1}
+cx=K\Pi_{0}\xi X_{0}\label{eq:camera model with internsic parameter matrix rep-1}
 \end{equation}
 
 \end_inset
@@ -6340,11 +6340,11 @@ let
 \change_unchanged
 be the homogeneous coordinates of the projection of the same point p in
  the two image planes with respective unknown scales of 
-\begin_inset Formula $\lambda_{1}$
+\begin_inset Formula $s_{1}$
 \end_inset
 
 and 
-\begin_inset Formula $\lambda_{2}$
+\begin_inset Formula $s_{2}$
 \end_inset
 
 .
@@ -6353,7 +6353,7 @@ and
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\lambda_{2}x_{2}=R\lambda_{1}x_{1}+T
+s_{2}x_{2}=Rs_{1}x_{1}+T
 \]
 
 \end_inset
@@ -6384,7 +6384,7 @@ multiplying both the side by
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\lambda_{2}\hat{T}x_{2}=\hat{T}R\lambda_{1}x_{1}
+s_{2}\hat{T}x_{2}=\hat{T}Rs_{1}x_{1}
 \]
 
 \end_inset
@@ -6407,7 +6407,7 @@ multiplying both the side by
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-0=x_{2}^{T}\hat{T}R\lambda_{1}x_{1}\label{eq:epipolar constraint}
+0=x_{2}^{T}\hat{T}Rs_{1}x_{1}\label{eq:epipolar constraint}
 \end{equation}
 
 \end_inset
@@ -6877,7 +6877,7 @@ reference "fig:Disparity-Computation"
 \end_inset
 
 , and consequently the inverse depth of object 
-\begin_inset Formula $idepth$
+\begin_inset Formula $invdepth$
 \end_inset
 
  with properties of similarity triangles as following
@@ -6914,7 +6914,7 @@ reference "fig:Disparity-Computation"
 \change_inserted 215191885 1524162278
 \begin_inset Formula 
 \[
-\frac{1}{z_{p}}=\frac{d}{fB}
+\frac{1}{z_{p}}=\frac{\lambda}{fB}
 \]
 
 \end_inset
@@ -6927,7 +6927,7 @@ reference "fig:Disparity-Computation"
 \change_inserted 215191885 1524162320
 \begin_inset Formula 
 \begin{equation}
-idepth=\frac{d}{fB}\label{eq:inverse_depth}
+invdepth=\frac{\lambda}{fB}\label{eq:inverse_depth}
 \end{equation}
 
 \end_inset
@@ -6940,7 +6940,7 @@ idepth=\frac{d}{fB}\label{eq:inverse_depth}
 \change_inserted 215191885 1524162331
 \begin_inset Formula 
 \begin{equation}
-idepth\propto disparity\label{eq:relation_invDep_and_diparity}
+invdepth\propto disparity\label{eq:relation_invDep_and_diparity}
 \end{equation}
 
 \end_inset
@@ -8627,7 +8627,7 @@ algorithm,
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-x_{t+1}=x_{t}-((J^{T}J)+\lambda I)^{-1}J^{T}r\label{eq:lvm}
+x_{t+1}=x_{t}-((J^{T}J)+\rho I)^{-1}J^{T}r\label{eq:lvm}
 \end{equation}
 
 \end_inset
@@ -8654,7 +8654,7 @@ s.
  For small value of
 \change_unchanged
  
-\begin_inset Formula $\lambda\simeq0$
+\begin_inset Formula $\rho\simeq0$
 \end_inset
 
 
@@ -8679,7 +8679,7 @@ reference "eq:guass_newton"
  
 \change_inserted 215191885 1524114660
 and for the large value of 
-\begin_inset Formula $\lambda$
+\begin_inset Formula $\rho$
 \end_inset
 
 , the identity matrix in equation 
@@ -8709,7 +8709,7 @@ step size
 of 
 \change_unchanged
 
-\begin_inset Formula $\alpha=1/\lambda$
+\begin_inset Formula $\alpha=1/\rho$
 \end_inset
 
 
@@ -8730,7 +8730,7 @@ for
  the solution, and switches to Gauss-Newton method when small updates are
  required for approximation.
  The parameter 
-\begin_inset Formula $\lambda$
+\begin_inset Formula $\rho$
 \end_inset
 
  is called a damping parameter, which was heuristically selected and adjusted
@@ -8768,7 +8768,7 @@ reference "eq:lvm"
 \change_inserted 215191885 1524114000
 \begin_inset Formula 
 \[
-x_{t+1}=x_{t}-((J^{T}J)+\lambda(diag(J^{T}J)))^{-1}J^{T}r
+x_{t+1}=x_{t}-((J^{T}J)+\rho(diag(J^{T}J)))^{-1}J^{T}r
 \]
 
 \end_inset
@@ -11027,7 +11027,7 @@ For fusing measurements we consider the structured-light measurement of
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524330060
+\change_inserted 215191885 1524330119
 Fortunately, previous sections show that Gaussian models are appropriate
  distributions for both the RGBD and SfM depth values and the parameters
  of these models are either known (see 
@@ -11099,16 +11099,23 @@ key "Maybeck79stochasticsmodels"
 \end_inset
 
  be represented as 
-\begin_inset Formula $\mathcal{N}(\mathbf{d}_{rgbd},\sigma_{rgbd}^{2})$
+\begin_inset Formula $\mathcal{N}(d_{rgbd},\sigma_{rgbd}^{2})$
 \end_inset
 
- and from the section Gaussian noise for the co-registered SfM depth image
- at position 
+ and from the section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Stereo-corr-and-disparity-est"
+
+\end_inset
+
+ we have the Gaussian noise for the co-registered SfM depth image at position
+ 
 \begin_inset Formula $(x,y)$
 \end_inset
 
- be 
-\begin_inset Formula $\mathcal{N}(\mu_{SfM},\sigma_{SfM}^{2})$
+ as 
+\begin_inset Formula $\mathcal{N}(d_{obs},\sigma_{d,obs}^{2})$
 \end_inset
 
 .
@@ -11154,7 +11161,7 @@ reference "eq:fused_variance"
 \change_inserted 215191885 1521071427
 \begin_inset Formula 
 \begin{equation}
-\mu_{fused}=\frac{\mathbf{d}_{rgbd}\sigma_{SfM}^{2}+\mu_{SfM}\sigma_{rgbd}^{2}}{\sigma_{SfM}^{2}+\sigma_{rgbd}^{2}}\label{eq:fused_mean}
+\mu_{fused}=\frac{d_{rgbd}\sigma_{d,obs}^{2}+d_{obs}\sigma_{rgbd}^{2}}{\sigma_{d,obs}^{2}+\sigma_{rgbd}^{2}}\label{eq:fused_mean}
 \end{equation}
 
 \end_inset
@@ -11167,7 +11174,7 @@ reference "eq:fused_variance"
 \change_inserted 215191885 1521514889
 \begin_inset Formula 
 \begin{equation}
-\sigma_{fused}^{2}=\frac{\sigma_{rgbd}^{2}\sigma_{SfM}^{2}}{\sigma_{rgbd}^{2}+\sigma_{SfM}^{2}}\label{eq:fused_variance}
+\sigma_{fused}^{2}=\frac{\sigma_{rgbd}^{2}\sigma_{d,obs}^{2}}{\sigma_{rgbd}^{2}+\sigma_{d,obs}^{2}}\label{eq:fused_variance}
 \end{equation}
 
 \end_inset

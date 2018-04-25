@@ -2042,10 +2042,38 @@ key "7925286"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523494878
+\change_inserted 215191885 1524670418
 These equations indicate that 3D coordinate measurement uncertainty increases
- as a quadratic function of the depth for all three coordinate values.
- However, the quadratic coefficient for the 
+ as a quadratic function of the depth for all three coordinate values, where
+ 
+\begin_inset Formula $Z$
+\end_inset
+
+ denotes the sensed depth at image position 
+\begin_inset Formula $(x_{im},y_{im})$
+\end_inset
+
+, 
+\begin_inset Formula $(f_{x},f_{y})$
+\end_inset
+
+ denotes the camera focal length (in pixels), 
+\begin_inset Formula $(o_{x},o_{y})$
+\end_inset
+
+ denotes the pixel coordinate of the image center, i.e., the principal point,
+ and 
+\begin_inset Formula $(\delta_{x},\delta_{y})$
+\end_inset
+
+ denote adjustments of the projected pixel coordinate to correct for camera
+ lens distortion.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1523494878
+However, the quadratic coefficient for the 
 \begin_inset Formula $(X,Y)$
 \end_inset
 
@@ -2055,7 +2083,7 @@ These equations indicate that 3D coordinate measurement uncertainty increases
 \end_inset
 
  at the image periphery where 
-\begin_inset Formula $\frac{x-o_{x}}{f}\approx0.5$
+\begin_inset Formula $\frac{x-c_{x}}{f}\approx0.5$
 \end_inset
 
 , and this value is significantly smaller for pixels close to the optical
@@ -2642,12 +2670,12 @@ For the simplification of calculation, we consider an ideal camera model
 d.
  Consequently, as the aperture decreases to zero, the only points that contribut
 e to the irradiance at the image pixel 
-\begin_inset Formula $x=\left[x,y\right]$
+\begin_inset Formula $\boldsymbol{x}=\left[x,y\right]$
 \end_inset
 
  are on a line through the center o of the lens.
  If a point p has coordinates 
-\begin_inset Formula $X=\left[X,Y,Z\right]$
+\begin_inset Formula $\boldsymbol{X}=\left[X,Y,Z\right]$
 \end_inset
 
  relative to a reference frame centered at the optical center o, with its
@@ -2768,7 +2796,7 @@ This mapping of 3D point to 2D is called projection and is represented by
 
 \change_inserted 215191885 1523338315
 This is also written as 
-\begin_inset Formula $x=\pi(X)$
+\begin_inset Formula $\boldsymbol{x}=\pi(\boldsymbol{X})$
 \end_inset
 
 .
@@ -2856,7 +2884,7 @@ This can be represented in matrix form as
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \[
-x=\left[\begin{array}{c}
+\boldsymbol{x}=\left[\begin{array}{c}
 x\\
 y
 \end{array}\right]=\frac{f}{Z}\left[\begin{array}{c}
@@ -2940,11 +2968,11 @@ with
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \[
-K_{f}=\left[\begin{array}{cccc}
+\boldsymbol{K}_{f}=\left[\begin{array}{cccc}
 f & 0 & 0 & 0\\
 0 & f & 0 & 0\\
 0 & 0 & 1 & 0
-\end{array}\right]\in R^{3\times3},\Pi_{0}=\left[\begin{array}{cccc}
+\end{array}\right]\in R^{3\times3},\boldsymbol{\Pi}_{0}=\left[\begin{array}{cccc}
 1 & 0 & 0 & 0\\
 0 & 1 & 0 & 0\\
 0 & 0 & 1 & 0
@@ -2997,7 +3025,7 @@ f & 0 & 0\\
 0 & 1 & 0 & 0\\
 0 & 0 & 1 & 0
 \end{array}\right]\left[\begin{array}{cc}
-R & T\\
+\boldsymbol{R} & \boldsymbol{T}\\
 0 & 1
 \end{array}\right]\left[\begin{array}{c}
 X_{0}\\
@@ -3046,9 +3074,9 @@ reference "eq:ideal camera model-1"
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \begin{equation}
-K_{s}=\left[\begin{array}{ccc}
-s_{x} & s_{\theta} & \delta_{x}\\
-0 & s_{y} & \delta_{y}\\
+\boldsymbol{K}_{s}=\left[\begin{array}{ccc}
+s_{x} & s_{\theta} & o_{x}\\
+0 & s_{y} & o_{y}\\
 0 & 0 & 1
 \end{array}\right]\in\mathbb{R}^{3\times3}\label{eq:intrensic matrix-1-1}
 \end{equation}
@@ -3069,17 +3097,17 @@ s_{x} & s_{\theta} & \delta_{x}\\
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \begin{equation}
-K=K_{s}K_{f}=\left[\begin{array}{ccc}
-s_{x} & s_{\theta} & \delta_{x}\\
-0 & s_{y} & \delta_{y}\\
+\boldsymbol{K}=\boldsymbol{K}_{s}\boldsymbol{K_{f}}=\left[\begin{array}{ccc}
+s_{x} & s_{\theta} & o_{x}\\
+0 & s_{y} & o_{y}\\
 0 & 0 & 1
 \end{array}\right]\left[\begin{array}{ccc}
 f & 0 & 0\\
 0 & f & 0\\
 0 & 0 & 1
 \end{array}\right]=\left[\begin{array}{ccc}
-fs_{x} & s_{\theta} & \delta_{x}\\
-0 & fs_{y} & \delta_{y}\\
+fs_{x} & s_{\theta} & o_{x}\\
+0 & fs_{y} & o_{y}\\
 0 & 0 & 1
 \end{array}\right]\label{eq:intresic matrix-1}
 \end{equation}
@@ -3098,7 +3126,7 @@ where
 \begin_layout Itemize
 
 \change_inserted 215191885 1523338315
-\begin_inset Formula $\delta_{x}$
+\begin_inset Formula $o_{x}$
 \end_inset
 
 : x-coordinate of the principal point in pixels, 
@@ -3107,7 +3135,7 @@ where
 \begin_layout Itemize
 
 \change_inserted 215191885 1523338315
-\begin_inset Formula $\delta_{y}$
+\begin_inset Formula $o_{y}$
 \end_inset
 
 : y-coordinate of the principal point in pixels, 
@@ -3212,7 +3240,7 @@ s_{x} & s_{\theta} & o_{x}\\
 0 & 1 & 0 & 0\\
 0 & 0 & 1 & 0
 \end{array}\right]\left[\begin{array}{cc}
-R & T\\
+\boldsymbol{R} & \boldsymbol{T}\\
 0 & 1
 \end{array}\right]\left[\begin{array}{c}
 X_{0}\\
@@ -3238,7 +3266,7 @@ In the matrix notation,
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \begin{equation}
-cx=K\Pi_{0}\xi X_{0}\label{eq:camera model with internsic parameter matrix rep-1}
+c\boldsymbol{x}=\boldsymbol{K}\boldsymbol{\Pi}_{0}\xi\boldsymbol{X}_{0}\label{eq:camera model with internsic parameter matrix rep-1}
 \end{equation}
 
 \end_inset
@@ -3257,7 +3285,7 @@ reference "eq:camera model with internsic parameter matrix rep-1"
 \end_inset
 
  represents the projection of three-dimensional coordinates 
-\begin_inset Formula $X_{0}$
+\begin_inset Formula $\boldsymbol{X}_{0}$
 \end_inset
 
  by camera with orientation 
@@ -3578,7 +3606,7 @@ key "Baker:2004:LYU:964568.964604"
 .
 \begin_inset Formula 
 \begin{equation}
-\widehat{\xi}=\min_{\xi}\underset{\mathbf{x}}{\sum}\left(\mathbf{I}(\omega(\mathbf{x},\xi))-\mathbf{I_{ref}}(\mathbf{x})\right)^{2}\label{eq:Direct image alignment}
+\hat{\xi}=\min_{\xi}\underset{\mathbf{x}}{\sum}\left(\mathbf{I}(\omega(\mathbf{x},\xi))-\mathbf{I_{ref}}(\mathbf{x})\right)^{2}\label{eq:Direct image alignment}
 \end{equation}
 
 \end_inset
@@ -3590,7 +3618,7 @@ key "Baker:2004:LYU:964568.964604"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523670705
+\change_inserted 215191885 1524674757
 In equation (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3602,16 +3630,16 @@ reference "eq:Direct image alignment"
 \begin_inset Formula $\omega(\mathbf{x},\xi)$
 \end_inset
 
-, which is a rigid body motion in this case, maps pixel locations, 
+, which is a rigid body motion, maps pixel locations, 
 \begin_inset Formula $\mathbf{x}$
 \end_inset
 
 , in the reference image 
-\begin_inset Formula $I_{ref}$
+\begin_inset Formula $\mathbf{I_{ref}}$
 \end_inset
 
  to pixel locations in the image 
-\begin_inset Formula $I$
+\begin_inset Formula $\mathbf{I}$
 \end_inset
 
  with the current estimate of the transformation parameters 
@@ -3632,7 +3660,7 @@ reference "eq:sim3"
 
 .
  We then seek the camera pose transformation parameters, 
-\begin_inset Formula $\widehat{\xi}$
+\begin_inset Formula $\hat{\xi}$
 \end_inset
 
 , that minimize the error in equation 
@@ -3982,7 +4010,7 @@ the
 a
 \change_unchanged
  matrix which satisfy 
-\begin_inset Formula $R^{T}R=RR^{T}=I$
+\begin_inset Formula $\boldsymbol{R}^{T}\boldsymbol{R}=\boldsymbol{R}\boldsymbol{R}^{T}=\boldsymbol{I}$
 \end_inset
 
  and have a determinant of 
@@ -3995,7 +4023,7 @@ a
 \begin_layout Standard
 \begin_inset Formula 
 \[
-SO(3)=\{R\in\mathbb{R}^{3\times3}\mid R^{T}R=I,det(R)=+1\}
+SO(3)=\{\boldsymbol{R}\in\mathbb{R}^{3\times3}\mid\boldsymbol{R}^{T}\boldsymbol{R}=I,det(\boldsymbol{R})=+1\}
 \]
 
 \end_inset
@@ -4062,7 +4090,7 @@ represented as
 \begin_layout Standard
 \begin_inset Formula 
 \[
-X_{w}=R_{wc}X_{c}
+\boldsymbol{X}_{w}=\boldsymbol{R}_{wc}\boldsymbol{X}_{c}
 \]
 
 \end_inset
@@ -4088,7 +4116,7 @@ is
  
 \change_unchanged
 
-\begin_inset Formula $R^{-1}=R^{T}$
+\begin_inset Formula $\boldsymbol{R}^{-1}=\boldsymbol{R}^{T}$
 \end_inset
 
 , 
@@ -4113,7 +4141,7 @@ achieved by
 \begin_layout Standard
 \begin_inset Formula 
 \[
-X_{c}=R_{wc}^{-1}X_{w}=R_{wc}^{T}X_{w}
+\boldsymbol{X}_{c}=\boldsymbol{R}_{wc}^{-1}\boldsymbol{X}_{w}=\boldsymbol{R}_{wc}^{T}\boldsymbol{X}_{w}
 \]
 
 \end_inset
@@ -4185,7 +4213,7 @@ When
 \begin_layout Standard
 \begin_inset Formula 
 \[
-R(t_{2,}t_{0})=R(t_{2,}t_{1})\times R(t_{1,}t_{0}),\vee t_{0}<t_{1}<t_{2}\in R
+\boldsymbol{R}(t_{2,}t_{0})=\boldsymbol{R}(t_{2,}t_{1})\times\boldsymbol{R}(t_{1,}t_{0}),\vee t_{0}<t_{1}<t_{2}\in\boldsymbol{R}
 \]
 
 \end_inset
@@ -4253,7 +4281,7 @@ With this, the complete rigid body motion is represented by
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-X_{w}=R_{wc}X_{c}+T_{wc}\label{eq:1}
+\boldsymbol{X}_{w}=\boldsymbol{R}_{wc}\boldsymbol{X}_{c}+\boldsymbol{T}_{wc}\label{eq:1}
 \end{equation}
 
 \end_inset
@@ -4282,13 +4310,13 @@ However, the above equation is not linear but affine.
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\bar{X}=\left[\begin{array}{c}
-X\\
+\bar{\boldsymbol{X}}=\left[\begin{array}{c}
+\boldsymbol{X}\\
 1
 \end{array}\right]=\left[\begin{array}{c}
-X_{1}\\
-X_{2}\\
-X_{3}\\
+X\\
+Y\\
+Z\\
 1
 \end{array}\right]\in\mathbb{R}^{4}
 \]
@@ -9502,8 +9530,8 @@ reference "eq:RGBD_reconstruction"
 \begin_inset Formula 
 \begin{equation}
 \begin{array}{ccc}
-X & = & (x+\delta_{x}-c_{x})Z/f_{x}\\
-Y & = & (y+\delta_{y}-c_{y})Z/f_{y}\\
+X & = & (x+\delta_{x}-o_{x})Z/f_{x}\\
+Y & = & (y+\delta_{y}-o_{y})Z/f_{y}\\
 Z & = & Z
 \end{array}\label{eq:RGBD_reconstruction}
 \end{equation}
@@ -9523,7 +9551,7 @@ where
 \end_inset
 
  denotes the camera focal length (in pixels), 
-\begin_inset Formula $(c_{x},c_{x})$
+\begin_inset Formula $(o_{x},o_{y})$
 \end_inset
 
  denotes the pixel coordinate of the image center, i.e., the principal point,
@@ -9701,8 +9729,8 @@ reference "eq:re_projection"
 \begin_inset Formula 
 \begin{equation}
 \begin{array}{ccc}
-x & = & f_{x}(\frac{X^{'}}{Z^{'}})-\delta_{x}+c_{x}\\
-y & = & f_{y}(\frac{Y^{'}}{Z^{'}})-\delta_{y}+c_{y}\\
+x & = & f_{x}(\frac{X^{'}}{Z^{'}})-\delta_{x}+o_{x}\\
+y & = & f_{y}(\frac{Y^{'}}{Z^{'}})-\delta_{y}+o_{y}\\
 Z & = & Z^{'}
 \end{array}\label{eq:re_projection}
 \end{equation}

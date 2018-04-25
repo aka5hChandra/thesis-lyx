@@ -2670,12 +2670,12 @@ For the simplification of calculation, we consider an ideal camera model
 d.
  Consequently, as the aperture decreases to zero, the only points that contribut
 e to the irradiance at the image pixel 
-\begin_inset Formula $x=\left[x,y\right]$
+\begin_inset Formula $\boldsymbol{x}=\left[x,y\right]$
 \end_inset
 
  are on a line through the center o of the lens.
  If a point p has coordinates 
-\begin_inset Formula $X=\left[X,Y,Z\right]$
+\begin_inset Formula $\boldsymbol{X}=\left[X,Y,Z\right]$
 \end_inset
 
  relative to a reference frame centered at the optical center o, with its
@@ -2796,7 +2796,7 @@ This mapping of 3D point to 2D is called projection and is represented by
 
 \change_inserted 215191885 1523338315
 This is also written as 
-\begin_inset Formula $x=\pi(X)$
+\begin_inset Formula $\boldsymbol{x}=\pi(\boldsymbol{X})$
 \end_inset
 
 .
@@ -2884,7 +2884,7 @@ This can be represented in matrix form as
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \[
-x=\left[\begin{array}{c}
+\boldsymbol{x}=\left[\begin{array}{c}
 x\\
 y
 \end{array}\right]=\frac{f}{Z}\left[\begin{array}{c}
@@ -2968,11 +2968,11 @@ with
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \[
-K_{f}=\left[\begin{array}{cccc}
+\boldsymbol{K}_{f}=\left[\begin{array}{cccc}
 f & 0 & 0 & 0\\
 0 & f & 0 & 0\\
 0 & 0 & 1 & 0
-\end{array}\right]\in R^{3\times3},\Pi_{0}=\left[\begin{array}{cccc}
+\end{array}\right]\in R^{3\times3},\boldsymbol{\Pi}_{0}=\left[\begin{array}{cccc}
 1 & 0 & 0 & 0\\
 0 & 1 & 0 & 0\\
 0 & 0 & 1 & 0
@@ -3025,7 +3025,7 @@ f & 0 & 0\\
 0 & 1 & 0 & 0\\
 0 & 0 & 1 & 0
 \end{array}\right]\left[\begin{array}{cc}
-R & T\\
+\boldsymbol{R} & \boldsymbol{T}\\
 0 & 1
 \end{array}\right]\left[\begin{array}{c}
 X_{0}\\
@@ -3074,7 +3074,7 @@ reference "eq:ideal camera model-1"
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \begin{equation}
-K_{s}=\left[\begin{array}{ccc}
+\boldsymbol{K}_{s}=\left[\begin{array}{ccc}
 s_{x} & s_{\theta} & o_{x}\\
 0 & s_{y} & o_{y}\\
 0 & 0 & 1
@@ -3097,7 +3097,7 @@ s_{x} & s_{\theta} & o_{x}\\
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \begin{equation}
-K=K_{s}K_{f}=\left[\begin{array}{ccc}
+\boldsymbol{K}=\boldsymbol{K}_{s}\boldsymbol{K_{f}}=\left[\begin{array}{ccc}
 s_{x} & s_{\theta} & o_{x}\\
 0 & s_{y} & o_{y}\\
 0 & 0 & 1
@@ -3240,7 +3240,7 @@ s_{x} & s_{\theta} & o_{x}\\
 0 & 1 & 0 & 0\\
 0 & 0 & 1 & 0
 \end{array}\right]\left[\begin{array}{cc}
-R & T\\
+\boldsymbol{R} & \boldsymbol{T}\\
 0 & 1
 \end{array}\right]\left[\begin{array}{c}
 X_{0}\\
@@ -3266,7 +3266,7 @@ In the matrix notation,
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \begin{equation}
-cx=K\Pi_{0}\xi X_{0}\label{eq:camera model with internsic parameter matrix rep-1}
+c\boldsymbol{x}=\boldsymbol{K}\boldsymbol{\Pi}_{0}\xi\boldsymbol{X}_{0}\label{eq:camera model with internsic parameter matrix rep-1}
 \end{equation}
 
 \end_inset
@@ -3285,7 +3285,7 @@ reference "eq:camera model with internsic parameter matrix rep-1"
 \end_inset
 
  represents the projection of three-dimensional coordinates 
-\begin_inset Formula $X_{0}$
+\begin_inset Formula $\boldsymbol{X}_{0}$
 \end_inset
 
  by camera with orientation 
@@ -3606,7 +3606,7 @@ key "Baker:2004:LYU:964568.964604"
 .
 \begin_inset Formula 
 \begin{equation}
-\widehat{\xi}=\min_{\xi}\underset{\mathbf{x}}{\sum}\left(\mathbf{I}(\omega(\mathbf{x},\xi))-\mathbf{I_{ref}}(\mathbf{x})\right)^{2}\label{eq:Direct image alignment}
+\hat{\xi}=\min_{\xi}\underset{\mathbf{x}}{\sum}\left(\mathbf{I}(\omega(\mathbf{x},\xi))-\mathbf{I_{ref}}(\mathbf{x})\right)^{2}\label{eq:Direct image alignment}
 \end{equation}
 
 \end_inset
@@ -3618,7 +3618,7 @@ key "Baker:2004:LYU:964568.964604"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523670705
+\change_inserted 215191885 1524674757
 In equation (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3630,16 +3630,16 @@ reference "eq:Direct image alignment"
 \begin_inset Formula $\omega(\mathbf{x},\xi)$
 \end_inset
 
-, which is a rigid body motion in this case, maps pixel locations, 
+, which is a rigid body motion, maps pixel locations, 
 \begin_inset Formula $\mathbf{x}$
 \end_inset
 
 , in the reference image 
-\begin_inset Formula $I_{ref}$
+\begin_inset Formula $\mathbf{I_{ref}}$
 \end_inset
 
  to pixel locations in the image 
-\begin_inset Formula $I$
+\begin_inset Formula $\mathbf{I}$
 \end_inset
 
  with the current estimate of the transformation parameters 
@@ -3660,7 +3660,7 @@ reference "eq:sim3"
 
 .
  We then seek the camera pose transformation parameters, 
-\begin_inset Formula $\widehat{\xi}$
+\begin_inset Formula $\hat{\xi}$
 \end_inset
 
 , that minimize the error in equation 
@@ -4010,7 +4010,7 @@ the
 a
 \change_unchanged
  matrix which satisfy 
-\begin_inset Formula $R^{T}R=RR^{T}=I$
+\begin_inset Formula $\boldsymbol{R}^{T}\boldsymbol{R}=\boldsymbol{R}\boldsymbol{R}^{T}=\boldsymbol{I}$
 \end_inset
 
  and have a determinant of 
@@ -4023,7 +4023,7 @@ a
 \begin_layout Standard
 \begin_inset Formula 
 \[
-SO(3)=\{R\in\mathbb{R}^{3\times3}\mid R^{T}R=I,det(R)=+1\}
+SO(3)=\{\boldsymbol{R}\in\mathbb{R}^{3\times3}\mid\boldsymbol{R}^{T}\boldsymbol{R}=I,det(\boldsymbol{R})=+1\}
 \]
 
 \end_inset
@@ -4090,7 +4090,7 @@ represented as
 \begin_layout Standard
 \begin_inset Formula 
 \[
-X_{w}=R_{wc}X_{c}
+\boldsymbol{X}_{w}=\boldsymbol{R}_{wc}\boldsymbol{X}_{c}
 \]
 
 \end_inset
@@ -4116,7 +4116,7 @@ is
  
 \change_unchanged
 
-\begin_inset Formula $R^{-1}=R^{T}$
+\begin_inset Formula $\boldsymbol{R}^{-1}=\boldsymbol{R}^{T}$
 \end_inset
 
 , 
@@ -4141,7 +4141,7 @@ achieved by
 \begin_layout Standard
 \begin_inset Formula 
 \[
-X_{c}=R_{wc}^{-1}X_{w}=R_{wc}^{T}X_{w}
+\boldsymbol{X}_{c}=\boldsymbol{R}_{wc}^{-1}\boldsymbol{X}_{w}=\boldsymbol{R}_{wc}^{T}\boldsymbol{X}_{w}
 \]
 
 \end_inset
@@ -4213,7 +4213,7 @@ When
 \begin_layout Standard
 \begin_inset Formula 
 \[
-R(t_{2,}t_{0})=R(t_{2,}t_{1})\times R(t_{1,}t_{0}),\vee t_{0}<t_{1}<t_{2}\in R
+\boldsymbol{R}(t_{2,}t_{0})=\boldsymbol{R}(t_{2,}t_{1})\times\boldsymbol{R}(t_{1,}t_{0}),\vee t_{0}<t_{1}<t_{2}\in\boldsymbol{R}
 \]
 
 \end_inset
@@ -4281,7 +4281,7 @@ With this, the complete rigid body motion is represented by
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-X_{w}=R_{wc}X_{c}+T_{wc}\label{eq:1}
+\boldsymbol{X}_{w}=\boldsymbol{R}_{wc}\boldsymbol{X}_{c}+\boldsymbol{T}_{wc}\label{eq:1}
 \end{equation}
 
 \end_inset
@@ -4310,13 +4310,13 @@ However, the above equation is not linear but affine.
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\bar{X}=\left[\begin{array}{c}
-X\\
+\bar{\boldsymbol{X}}=\left[\begin{array}{c}
+\boldsymbol{X}\\
 1
 \end{array}\right]=\left[\begin{array}{c}
-X_{1}\\
-X_{2}\\
-X_{3}\\
+X\\
+Y\\
+Z\\
 1
 \end{array}\right]\in\mathbb{R}^{4}
 \]
@@ -4351,16 +4351,16 @@ following
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\bar{X}_{w}=\left[\begin{array}{c}
-X_{w}\\
+\bar{\boldsymbol{X}}_{w}=\left[\begin{array}{c}
+\boldsymbol{X}_{w}\\
 1
 \end{array}\right]=\left[\begin{array}{cc}
-R_{wc} & T_{wc}\\
+\boldsymbol{R}_{wc} & \boldsymbol{T}_{wc}\\
 0 & 1
 \end{array}\right]\left[\begin{array}{c}
-X_{c}\\
+\boldsymbol{X}_{c}\\
 1
-\end{array}\right]=\bar{g}_{wc}\bar{X}_{c}\label{eq:2}
+\end{array}\right]=\bar{g}_{wc}\bar{\boldsymbol{X}}_{c}\label{eq:2}
 \end{equation}
 
 \end_inset
@@ -4440,9 +4440,9 @@ grorp
 \begin_inset Formula 
 \begin{equation}
 SE(3)=\{\bar{g}=\left[\begin{array}{cc}
-R & T\\
+\boldsymbol{R} & \boldsymbol{T}\\
 0 & 1
-\end{array}\right]\mid R\in SO(3),T\in R^{3}\}\subset\mathbb{R}^{4\times4}\label{eq:se3}
+\end{array}\right]\mid\boldsymbol{R}\in SO(3),\boldsymbol{T}\in\mathbb{R}^{3}\}\subset\mathbb{R}^{4\times4}\label{eq:se3}
 \end{equation}
 
 \end_inset
@@ -4477,7 +4477,7 @@ reference "eq:2"
 \change_inserted 215191885 1523373354
 \begin_inset Formula 
 \begin{equation}
-\bar{X}_{w}=\alpha\bar{g}_{wc}\bar{X}_{c}\label{eq:uniform scalling}
+\bar{\boldsymbol{X}}_{w}=\alpha\boldsymbol{\bar{g}}_{wc}\bar{\boldsymbol{X}}_{c}\label{eq:uniform scalling}
 \end{equation}
 
 \end_inset
@@ -4510,9 +4510,9 @@ reference "eq:se3"
 \begin_inset Formula 
 \begin{equation}
 Sim(3)=\{\bar{g}=\left[\begin{array}{cc}
-R & T\\
+\boldsymbol{R} & \boldsymbol{T}\\
 0 & \alpha^{-1}
-\end{array}\right]\mid R\in SO(3),T\in R^{3},\alpha\in R\}\subset\mathbb{R}^{4\times4}\label{eq:sim3}
+\end{array}\right]\mid\boldsymbol{R}\in SO(3),\boldsymbol{T}\in\mathbb{R}^{3},\alpha\in R\}\subset\mathbb{R}^{4\times4}\label{eq:sim3}
 \end{equation}
 
 \end_inset
@@ -4695,7 +4695,7 @@ For rotation group
 \change_inserted 215191885 1516619360
 \begin_inset Formula 
 \[
-so(3)\doteq\left\{ \hat{\omega}\in\mathbb{R}^{3\times3}\mid\omega\in\mathbb{R}^{3}\right\} 
+so(3)\doteq\left\{ \hat{\boldsymbol{\omega}}\in\mathbb{R}^{3\times3}\mid\boldsymbol{\omega}\in\mathbb{R}^{3}\right\} 
 \]
 
 \end_inset
@@ -4736,7 +4736,7 @@ The map from the space
 \change_inserted 215191885 1516618685
 \begin_inset Formula 
 \[
-exp:so(3)\rightarrow SO(3);\hat{\omega}\mapsto e^{\hat{\omega}}
+exp:so(3)\rightarrow SO(3);\hat{\boldsymbol{\omega}}\mapsto e^{\hat{\boldsymbol{\omega}}}
 \]
 
 \end_inset
@@ -4749,7 +4749,7 @@ exp:so(3)\rightarrow SO(3);\hat{\omega}\mapsto e^{\hat{\omega}}
 \change_inserted 215191885 1516618599
 \begin_inset Formula 
 \begin{equation}
-R(t)=e^{\hat{\omega}t}\label{exp map for so(3)}
+R(t)=e^{\hat{\boldsymbol{\omega}}t}\label{exp map for so(3)}
 \end{equation}
 
 \end_inset
@@ -4784,7 +4784,7 @@ reference "exp map for so(3)"
 \change_inserted 215191885 1516618286
 \begin_inset Formula 
 \begin{equation}
-log:SO(3)\rightarrow so(3);log(R)\mapsto\hat{\omega}\label{eq:inv_SO}
+log:SO(3)\rightarrow so(3);log(\boldsymbol{R})\mapsto\hat{\boldsymbol{\omega}}\label{eq:inv_SO}
 \end{equation}
 
 \end_inset
@@ -4813,9 +4813,9 @@ We can extend this to full rigid body motion which also involves the translation
 \begin_inset Formula 
 \[
 se(3)\doteq\left\{ \hat{\xi}=\left[\begin{array}{cc}
-\hat{\omega} & \upsilon\\
+\hat{\boldsymbol{\omega}} & \boldsymbol{\upsilon}\\
 0 & 0
-\end{array}\right]\mid\hat{\omega}\in so(3),\upsilon\in\mathbb{R}^{3}\right\} \subset\mathbb{R}^{4\times4}
+\end{array}\right]\mid\hat{\boldsymbol{\omega}}\in so(3),\boldsymbol{\upsilon}\in\mathbb{R}^{3}\right\} \subset\mathbb{R}^{4\times4}
 \]
 
 \end_inset
@@ -4827,7 +4827,7 @@ se(3)\doteq\left\{ \hat{\xi}=\left[\begin{array}{cc}
 
 \change_inserted 215191885 1516618477
 with 
-\begin_inset Formula $\upsilon(t)=\dot{T}(t)-\hat{\omega}(t)T(t)\in\mathbb{R}^{3}$
+\begin_inset Formula $\boldsymbol{\upsilon}(t)=\dot{T}(t)-\hat{\boldsymbol{\omega}}(t)T(t)\in\mathbb{R}^{3}$
 \end_inset
 
 
@@ -6258,15 +6258,15 @@ reference "fig:Epipolar-geometry"
 \end_inset
 
 , with a relative pose of 
-\begin_inset Formula $\xi=(R,T)$
+\begin_inset Formula $\xi=(\boldsymbol{R},\boldsymbol{T})$
 \end_inset
 
 , where 
-\begin_inset Formula $R\in SO(3)$
+\begin_inset Formula $\boldsymbol{R}\in SO(3)$
 \end_inset
 
  is the relative orientation and 
-\begin_inset Formula $T\in\mathbb{R}^{3}$
+\begin_inset Formula $\boldsymbol{T}\in\mathbb{R}^{3}$
 \end_inset
 
  is translation, are capturing two dimensional images of the same three
@@ -6349,7 +6349,7 @@ f
 \begin_layout Standard
 \begin_inset Formula 
 \[
-X_{2}=RX_{1}+T
+\boldsymbol{X}_{2}=\boldsymbol{R}\boldsymbol{X}_{1}+\boldsymbol{T}
 \]
 
 \end_inset
@@ -6381,7 +6381,7 @@ and
 \begin_layout Standard
 \begin_inset Formula 
 \[
-s_{2}x_{2}=Rs_{1}x_{1}+T
+s_{2}\boldsymbol{x}_{2}=\boldsymbol{R}s_{1}\boldsymbol{x}_{1}+\boldsymbol{T}
 \]
 
 \end_inset
@@ -6412,7 +6412,7 @@ multiplying both the side by
 \begin_layout Standard
 \begin_inset Formula 
 \[
-s_{2}\hat{T}x_{2}=\hat{T}Rs_{1}x_{1}
+s_{2}\boldsymbol{\hat{T}}\boldsymbol{x}_{2}=\hat{\boldsymbol{T}}\boldsymbol{R}s_{1}\boldsymbol{x}_{1}
 \]
 
 \end_inset
@@ -6435,7 +6435,7 @@ multiplying both the side by
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-0=x_{2}^{T}\hat{T}Rs_{1}x_{1}\label{eq:epipolar constraint}
+0=\boldsymbol{x}_{2}^{T}\boldsymbol{\hat{T}}\boldsymbol{R}s_{1}\boldsymbol{x}_{1}\label{eq:epipolar constraint}
 \end{equation}
 
 \end_inset
@@ -6456,7 +6456,7 @@ with
 \change_inserted 215191885 1523630322
 \begin_inset Formula 
 \begin{equation}
-E=\hat{T}R\label{eq:essnetial matrix}
+\boldsymbol{E}=\hat{\boldsymbol{T}}\boldsymbol{R}\label{eq:essnetial matrix}
 \end{equation}
 
 \end_inset
@@ -6547,7 +6547,7 @@ reference "eq:epipolar constraint"
 
 \change_unchanged
  is the epipolar constraint and the matrix 
-\begin_inset Formula $E=\hat{T}R$
+\begin_inset Formula $\boldsymbol{E}=\hat{\boldsymbol{T}}\boldsymbol{R}$
 \end_inset
 
  is called the essential matrix.
@@ -8033,7 +8033,7 @@ consider
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\phi(x,R,T,\lambda)=\stackrel[j=1]{n}{\sum}\left\Vert \omega_{1}^{j}\right\Vert +\left\Vert \omega_{2}^{j}\right\Vert ^{2}=\stackrel[j=1]{n}{\sum}\left\Vert \widetilde{x}_{1}^{j}-x_{1}^{j}\right\Vert ^{2}+\left\Vert \widetilde{x}_{2}^{j}-\pi(R\lambda_{1}^{j}x_{1}^{j}+T)\right\Vert ^{2}\label{eq:residual}
+\phi(x,\boldsymbol{R},\boldsymbol{T},\lambda)=\stackrel[j=1]{n}{\sum}\left\Vert \omega_{1}^{j}\right\Vert +\left\Vert \omega_{2}^{j}\right\Vert ^{2}=\stackrel[j=1]{n}{\sum}\left\Vert \widetilde{x}_{1}^{j}-x_{1}^{j}\right\Vert ^{2}+\left\Vert \widetilde{x}_{2}^{j}-\pi(R\lambda_{1}^{j}x_{1}^{j}+T)\right\Vert ^{2}\label{eq:residual}
 \end{equation}
 
 \end_inset
@@ -8185,7 +8185,7 @@ One of the simplest ways to minimize this squared error is the gradient
 \change_inserted 215191885 1521910909
 \begin_inset Formula 
 \begin{equation}
-x_{t+1}=x_{t}-\alpha g\label{eq:gradiant_decent}
+x_{t+1}=x_{t}-\alpha\boldsymbol{g}\label{eq:gradiant_decent}
 \end{equation}
 
 \end_inset
@@ -8208,7 +8208,7 @@ with step size
 \change_inserted 215191885 1521910909
 \begin_inset Formula 
 \begin{equation}
-g_{j}=2\underset{i}{\sum}r_{i}\frac{\partial r_{i}}{\partial x_{i}}\label{eq:gradiant}
+\boldsymbol{g}_{j}=2\underset{i}{\sum}r_{i}\frac{\partial r_{i}}{\partial x_{i}}\label{eq:gradiant}
 \end{equation}
 
 \end_inset
@@ -8413,7 +8413,7 @@ reference "eq:gradiant"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-H_{jk}=2\underset{i}{\sum}r_{i}(\frac{\partial r_{i}}{\partial x_{j}}\frac{\partial r_{i}}{\partial x_{k}}+r_{i}\frac{\partial^{2}r_{i}}{\partial x_{i}\partial x_{k}})\label{eq:full hassain}
+\boldsymbol{H}_{jk}=2\underset{i}{\sum}r_{i}(\frac{\partial r_{i}}{\partial x_{j}}\frac{\partial r_{i}}{\partial x_{k}}+r_{i}\frac{\partial^{2}r_{i}}{\partial x_{i}\partial x_{k}})\label{eq:full hassain}
 \end{equation}
 
 \end_inset
@@ -8455,7 +8455,7 @@ as :
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-H_{jk}=2\underset{i}{\sum}J_{ij}J_{ik}\label{eq:hassian_from_jacobian}
+\boldsymbol{H}_{jk}=2\underset{i}{\sum}\boldsymbol{J}_{ij}\boldsymbol{J}_{ik}\label{eq:hassian_from_jacobian}
 \end{equation}
 
 \end_inset
@@ -8467,7 +8467,7 @@ H_{jk}=2\underset{i}{\sum}J_{ij}J_{ik}\label{eq:hassian_from_jacobian}
 with
 \begin_inset Formula 
 \begin{equation}
-J_{ij}=\frac{\partial r_{i}}{\partial x_{j}}\label{eq:jacobian}
+\boldsymbol{J}_{ij}=\frac{\partial r_{i}}{\partial x_{j}}\label{eq:jacobian}
 \end{equation}
 
 \end_inset
@@ -8495,7 +8495,7 @@ reference "eq:Tylor_approximation_of_resduial"
 \change_inserted 215191885 1524187930
 \begin_inset Formula 
 \begin{equation}
-\frac{\partial r}{\partial x}=g+H(x-x_{t})=0\label{eq:gauss_new_intermediate}
+\frac{\partial r}{\partial x}=\boldsymbol{g}+\boldsymbol{H}(x-x_{t})=0\label{eq:gauss_new_intermediate}
 \end{equation}
 
 \end_inset
@@ -8528,7 +8528,7 @@ reference "eq:jacobian"
 \change_inserted 215191885 1524188184
 \begin_inset Formula 
 \begin{equation}
-g=2J^{T}r\label{eq:gradian_jacobian}
+\boldsymbol{g}=2\boldsymbol{J}^{T}r\label{eq:gradian_jacobian}
 \end{equation}
 
 \end_inset
@@ -8568,7 +8568,7 @@ reference "eq:gauss_new_intermediate"
 \change_inserted 215191885 1524188310
 \begin_inset Formula 
 \[
-2J^{T}r+J^{T}J(x-x_{t})=0
+2\boldsymbol{J}^{T}r+\boldsymbol{J}^{T}\boldsymbol{J}(x-x_{t})=0
 \]
 
 \end_inset
@@ -8591,7 +8591,7 @@ and
 \change_inserted 215191885 1524110915
 \begin_inset Formula 
 \begin{equation}
-x_{t+1}=x_{t}-(J^{T}J)^{-1}J^{T}r\label{eq:guass_newton}
+x_{t+1}=x_{t}-(\boldsymbol{J}^{T}\boldsymbol{J})^{-1}\boldsymbol{J}^{T}r\label{eq:guass_newton}
 \end{equation}
 
 \end_inset
@@ -8655,7 +8655,7 @@ algorithm,
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-x_{t+1}=x_{t}-((J^{T}J)+\rho I)^{-1}J^{T}r\label{eq:lvm}
+x_{t+1}=x_{t}-((\boldsymbol{J}^{T}\boldsymbol{J})+\rho\boldsymbol{I})^{-1}\boldsymbol{J}^{T}r\label{eq:lvm}
 \end{equation}
 
 \end_inset
@@ -8796,7 +8796,7 @@ reference "eq:lvm"
 \change_inserted 215191885 1524114000
 \begin_inset Formula 
 \[
-x_{t+1}=x_{t}-((J^{T}J)+\rho(diag(J^{T}J)))^{-1}J^{T}r
+x_{t+1}=x_{t}-((\boldsymbol{J}^{T}\boldsymbol{J})+\rho(diag(\boldsymbol{J}^{T}\boldsymbol{J})))^{-1}\boldsymbol{J}^{T}r
 \]
 
 \end_inset
@@ -9052,11 +9052,11 @@ and
 x^{\prime}\\
 y^{\prime}\\
 z^{\prime}
-\end{array}\right)=R_{\xi}K^{-1}\left(\begin{array}{c}
+\end{array}\right)=\boldsymbol{R}_{\xi}\boldsymbol{K}^{-1}\left(\begin{array}{c}
 x\\
 y\\
 d
-\end{array}\right)+t_{\xi}
+\end{array}\right)+\boldsymbol{T}_{\xi}
 \]
 
 \end_inset
@@ -10262,7 +10262,7 @@ the optimum rotation matrix
 \change_inserted 215191885 1521501637
 \begin_inset Formula 
 \[
-R=USV^{T}
+\boldsymbol{R}=\boldsymbol{U}\boldsymbol{S}\boldsymbol{V}^{T}
 \]
 
 \end_inset
@@ -10275,7 +10275,7 @@ R=USV^{T}
 \change_inserted 215191885 1521507419
 \begin_inset Formula 
 \[
-S=I\begin{cases}
+\boldsymbol{S}=\boldsymbol{I}\begin{cases}
 I & det(\Sigma_{SfM,rgbd})\geq0\\
 diag(1,1,-1) & det(\Sigma_{SfM,rgbd})<0
 \end{cases}
@@ -10301,7 +10301,7 @@ The scale adjustment
 \change_inserted 215191885 1521507699
 \begin_inset Formula 
 \[
-c=\frac{1}{\sigma_{SfM}^{2}}trace(DS)
+c=\frac{1}{\sigma_{SfM}^{2}}trace(\boldsymbol{D}\boldsymbol{S})
 \]
 
 \end_inset
@@ -10321,7 +10321,7 @@ With scale and rotation established, the translation parameters are determined
 \change_inserted 215191885 1521508665
 \begin_inset Formula 
 \[
-t=\mu_{rgbd}-cR\mu_{SfM}
+\boldsymbol{t}=\mu_{rgbd}-c\boldsymbol{R}\mu_{SfM}
 \]
 
 \end_inset
@@ -10349,7 +10349,7 @@ with the
 \change_inserted 215191885 1521514011
 \begin_inset Formula 
 \[
-\tilde{\boldsymbol{pc_{SfM}}}=cR\boldsymbol{pc}_{SfM}+t
+\tilde{\boldsymbol{pc_{SfM}}}=c\boldsymbol{R}\boldsymbol{pc}_{SfM}+\boldsymbol{T}
 \]
 
 \end_inset

@@ -701,10 +701,183 @@ set_width "auto"
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 215191885 1524686201
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "ECE"
 description "An acronym for Electrical and Computer Engineering."
+
+\end_inset
+
+
+\change_inserted 215191885 1524686217
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524695867
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "BA"
+description "Bundle adjustment"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524695867
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "IR"
+description "Infrared ray"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524695389
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "LSD SLAM"
+description "Large Scale Direct Simultaneous localization and mapping"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524695390
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "LIDAR"
+description "Light Detection and Ranging "
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524689149
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "LVM"
+description "Levenberg Marquardt"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524696273
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "RGBD"
+description "Red Green Blue Depth"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524696273
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "ROS"
+description "Robot Operating Syste"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524687837
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "SE"
+description "Special euclidean"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524687964
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "SfM"
+description "Structure from motion"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524687964
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "SIM"
+description "Similarity"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524687818
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "SLAM"
+description "Simultaneous localization and mapping."
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524695629
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "SO"
+description "Special orthogonal"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524695629
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "SONAR"
+description "Sound Navigation And Ranging"
 
 \end_inset
 
@@ -2784,7 +2957,7 @@ This mapping of 3D point to 2D is called projection and is represented by
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \[
-\pi:R^{3}\rightarrow R^{2}
+\pi:\mathbb{R}^{3}\rightarrow\mathbb{R}^{2}
 \]
 
 \end_inset
@@ -3266,7 +3439,7 @@ In the matrix notation,
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \begin{equation}
-c\boldsymbol{x}=\boldsymbol{K}\boldsymbol{\Pi}_{0}\xi\boldsymbol{X}_{0}\label{eq:camera model with internsic parameter matrix rep-1}
+c\boldsymbol{x}=\boldsymbol{K}\boldsymbol{\Pi}_{0}\boldsymbol{\xi}\boldsymbol{X}_{0}\label{eq:camera model with internsic parameter matrix rep-1}
 \end{equation}
 
 \end_inset
@@ -3606,7 +3779,7 @@ key "Baker:2004:LYU:964568.964604"
 .
 \begin_inset Formula 
 \begin{equation}
-\hat{\xi}=\min_{\xi}\underset{\mathbf{x}}{\sum}\left(\mathbf{I}(\omega(\mathbf{x},\xi))-\mathbf{I_{ref}}(\mathbf{x})\right)^{2}\label{eq:Direct image alignment}
+\hat{\xi}=\min_{\xi}\underset{\mathbf{x}}{\sum}\left(\mathbf{I}(\omega(\mathbf{x},\boldsymbol{\xi}))-\mathbf{I_{ref}}(\mathbf{x})\right)^{2}\label{eq:Direct image alignment}
 \end{equation}
 
 \end_inset
@@ -3627,7 +3800,7 @@ reference "eq:Direct image alignment"
 \end_inset
 
 ), the warp function, 
-\begin_inset Formula $\omega(\mathbf{x},\xi)$
+\begin_inset Formula $\omega(\mathbf{x},\boldsymbol{\xi})$
 \end_inset
 
 , which is a rigid body motion, maps pixel locations, 
@@ -4351,16 +4524,16 @@ following
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\bar{X}_{w}=\left[\begin{array}{c}
-X_{w}\\
+\bar{\boldsymbol{X}}_{w}=\left[\begin{array}{c}
+\boldsymbol{X}_{w}\\
 1
 \end{array}\right]=\left[\begin{array}{cc}
-R_{wc} & T_{wc}\\
+\boldsymbol{R}_{wc} & \boldsymbol{T}_{wc}\\
 0 & 1
 \end{array}\right]\left[\begin{array}{c}
-X_{c}\\
+\boldsymbol{X}_{c}\\
 1
-\end{array}\right]=\bar{g}_{wc}\bar{X}_{c}\label{eq:2}
+\end{array}\right]=\bar{g}_{wc}\bar{\boldsymbol{X}}_{c}\label{eq:2}
 \end{equation}
 
 \end_inset
@@ -4439,10 +4612,10 @@ grorp
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-SE(3)=\{\bar{g}=\left[\begin{array}{cc}
-R & T\\
+SE(3)=\{\boldsymbol{\xi}=\left[\begin{array}{cc}
+\boldsymbol{R} & \boldsymbol{T}\\
 0 & 1
-\end{array}\right]\mid R\in SO(3),T\in R^{3}\}\subset\mathbb{R}^{4\times4}\label{eq:se3}
+\end{array}\right]\mid\boldsymbol{R}\in SO(3),\boldsymbol{T}\in\mathbb{R}^{3}\}\subset\mathbb{R}^{4\times4}\label{eq:se3}
 \end{equation}
 
 \end_inset
@@ -4477,7 +4650,7 @@ reference "eq:2"
 \change_inserted 215191885 1523373354
 \begin_inset Formula 
 \begin{equation}
-\bar{X}_{w}=\alpha\bar{g}_{wc}\bar{X}_{c}\label{eq:uniform scalling}
+\bar{\boldsymbol{X}}_{w}=\alpha\boldsymbol{\xi}_{wc}\bar{\boldsymbol{X}}_{c}\label{eq:uniform scalling}
 \end{equation}
 
 \end_inset
@@ -4510,9 +4683,9 @@ reference "eq:se3"
 \begin_inset Formula 
 \begin{equation}
 Sim(3)=\{\bar{g}=\left[\begin{array}{cc}
-R & T\\
+\boldsymbol{R} & \boldsymbol{T}\\
 0 & \alpha^{-1}
-\end{array}\right]\mid R\in SO(3),T\in R^{3},\alpha\in R\}\subset\mathbb{R}^{4\times4}\label{eq:sim3}
+\end{array}\right]\mid\boldsymbol{R}\in SO(3),\boldsymbol{T}\in\mathbb{R}^{3},\alpha\in\mathbb{R}\}\subset\mathbb{R}^{4\times4}\label{eq:sim3}
 \end{equation}
 
 \end_inset
@@ -4695,7 +4868,7 @@ For rotation group
 \change_inserted 215191885 1516619360
 \begin_inset Formula 
 \[
-so(3)\doteq\left\{ \hat{\omega}\in\mathbb{R}^{3\times3}\mid\omega\in\mathbb{R}^{3}\right\} 
+so(3)\doteq\left\{ \hat{\boldsymbol{\omega}}\in\mathbb{R}^{3\times3}\mid\boldsymbol{\omega}\in\mathbb{R}^{3}\right\} 
 \]
 
 \end_inset
@@ -4736,7 +4909,7 @@ The map from the space
 \change_inserted 215191885 1516618685
 \begin_inset Formula 
 \[
-exp:so(3)\rightarrow SO(3);\hat{\omega}\mapsto e^{\hat{\omega}}
+exp:so(3)\rightarrow SO(3);\hat{\boldsymbol{\omega}}\mapsto e^{\hat{\boldsymbol{\omega}}}
 \]
 
 \end_inset
@@ -4749,7 +4922,7 @@ exp:so(3)\rightarrow SO(3);\hat{\omega}\mapsto e^{\hat{\omega}}
 \change_inserted 215191885 1516618599
 \begin_inset Formula 
 \begin{equation}
-R(t)=e^{\hat{\omega}t}\label{exp map for so(3)}
+R(t)=e^{\hat{\boldsymbol{\omega}}t}\label{exp map for so(3)}
 \end{equation}
 
 \end_inset
@@ -4784,7 +4957,7 @@ reference "exp map for so(3)"
 \change_inserted 215191885 1516618286
 \begin_inset Formula 
 \begin{equation}
-log:SO(3)\rightarrow so(3);log(R)\mapsto\hat{\omega}\label{eq:inv_SO}
+log:SO(3)\rightarrow so(3);log(\boldsymbol{R})\mapsto\hat{\boldsymbol{\omega}}\label{eq:inv_SO}
 \end{equation}
 
 \end_inset
@@ -4812,10 +4985,10 @@ We can extend this to full rigid body motion which also involves the translation
 \change_inserted 215191885 1516618391
 \begin_inset Formula 
 \[
-se(3)\doteq\left\{ \hat{\xi}=\left[\begin{array}{cc}
-\hat{\omega} & \upsilon\\
+se(3)\doteq\left\{ \hat{\boldsymbol{\xi}}=\left[\begin{array}{cc}
+\hat{\boldsymbol{\omega}} & \boldsymbol{\upsilon}\\
 0 & 0
-\end{array}\right]\mid\hat{\omega}\in so(3),\upsilon\in\mathbb{R}^{3}\right\} \subset\mathbb{R}^{4\times4}
+\end{array}\right]\mid\hat{\boldsymbol{\omega}}\in so(3),\boldsymbol{\upsilon}\in\mathbb{R}^{3}\right\} \subset\mathbb{R}^{4\times4}
 \]
 
 \end_inset
@@ -4827,7 +5000,7 @@ se(3)\doteq\left\{ \hat{\xi}=\left[\begin{array}{cc}
 
 \change_inserted 215191885 1516618477
 with 
-\begin_inset Formula $\upsilon(t)=\dot{T}(t)-\hat{\omega}(t)T(t)\in\mathbb{R}^{3}$
+\begin_inset Formula $\boldsymbol{\upsilon}(t)=\dot{T}(t)-\hat{\boldsymbol{\omega}}(t)T(t)\in\mathbb{R}^{3}$
 \end_inset
 
 
@@ -4852,7 +5025,7 @@ is given by
 \change_inserted 215191885 1516618478
 \begin_inset Formula 
 \[
-exp:se(3)\rightarrow SE(3);\hat{\xi}\mapsto e^{\hat{\xi}}
+exp:se(3)\rightarrow SE(3);\hat{\boldsymbol{\xi}}\mapsto e^{\hat{\boldsymbol{\xi}}}
 \]
 
 \end_inset
@@ -6258,15 +6431,15 @@ reference "fig:Epipolar-geometry"
 \end_inset
 
 , with a relative pose of 
-\begin_inset Formula $\xi=(R,T)$
+\begin_inset Formula $\xi=(\boldsymbol{R},\boldsymbol{T})$
 \end_inset
 
 , where 
-\begin_inset Formula $R\in SO(3)$
+\begin_inset Formula $\boldsymbol{R}\in SO(3)$
 \end_inset
 
  is the relative orientation and 
-\begin_inset Formula $T\in\mathbb{R}^{3}$
+\begin_inset Formula $\boldsymbol{T}\in\mathbb{R}^{3}$
 \end_inset
 
  is translation, are capturing two dimensional images of the same three
@@ -6349,7 +6522,7 @@ f
 \begin_layout Standard
 \begin_inset Formula 
 \[
-X_{2}=RX_{1}+T
+\boldsymbol{X}_{2}=\boldsymbol{R}\boldsymbol{X}_{1}+\boldsymbol{T}
 \]
 
 \end_inset
@@ -6381,7 +6554,7 @@ and
 \begin_layout Standard
 \begin_inset Formula 
 \[
-s_{2}x_{2}=Rs_{1}x_{1}+T
+s_{2}\boldsymbol{x}_{2}=\boldsymbol{R}s_{1}\boldsymbol{x}_{1}+\boldsymbol{T}
 \]
 
 \end_inset
@@ -6412,7 +6585,7 @@ multiplying both the side by
 \begin_layout Standard
 \begin_inset Formula 
 \[
-s_{2}\hat{T}x_{2}=\hat{T}Rs_{1}x_{1}
+s_{2}\boldsymbol{\hat{T}}\boldsymbol{x}_{2}=\hat{\boldsymbol{T}}\boldsymbol{R}s_{1}\boldsymbol{x}_{1}
 \]
 
 \end_inset
@@ -6435,7 +6608,7 @@ multiplying both the side by
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-0=x_{2}^{T}\hat{T}Rs_{1}x_{1}\label{eq:epipolar constraint}
+0=\boldsymbol{x}_{2}^{T}\boldsymbol{\hat{T}}\boldsymbol{R}s_{1}\boldsymbol{x}_{1}\label{eq:epipolar constraint}
 \end{equation}
 
 \end_inset
@@ -6456,7 +6629,7 @@ with
 \change_inserted 215191885 1523630322
 \begin_inset Formula 
 \begin{equation}
-E=\hat{T}R\label{eq:essnetial matrix}
+\boldsymbol{E}=\hat{\boldsymbol{T}}\boldsymbol{R}\label{eq:essnetial matrix}
 \end{equation}
 
 \end_inset
@@ -6547,7 +6720,7 @@ reference "eq:epipolar constraint"
 
 \change_unchanged
  is the epipolar constraint and the matrix 
-\begin_inset Formula $E=\hat{T}R$
+\begin_inset Formula $\boldsymbol{E}=\hat{\boldsymbol{T}}\boldsymbol{R}$
 \end_inset
 
  is called the essential matrix.
@@ -8033,7 +8206,7 @@ consider
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\phi(x,R,T,\lambda)=\stackrel[j=1]{n}{\sum}\left\Vert \omega_{1}^{j}\right\Vert +\left\Vert \omega_{2}^{j}\right\Vert ^{2}=\stackrel[j=1]{n}{\sum}\left\Vert \widetilde{x}_{1}^{j}-x_{1}^{j}\right\Vert ^{2}+\left\Vert \widetilde{x}_{2}^{j}-\pi(R\lambda_{1}^{j}x_{1}^{j}+T)\right\Vert ^{2}\label{eq:residual}
+\phi(x,\boldsymbol{R},\boldsymbol{T},\lambda)=\stackrel[j=1]{n}{\sum}\left\Vert \omega_{1}^{j}\right\Vert +\left\Vert \omega_{2}^{j}\right\Vert ^{2}=\stackrel[j=1]{n}{\sum}\left\Vert \widetilde{x}_{1}^{j}-x_{1}^{j}\right\Vert ^{2}+\left\Vert \widetilde{x}_{2}^{j}-\pi(R\lambda_{1}^{j}x_{1}^{j}+T)\right\Vert ^{2}\label{eq:residual}
 \end{equation}
 
 \end_inset
@@ -8185,7 +8358,7 @@ One of the simplest ways to minimize this squared error is the gradient
 \change_inserted 215191885 1521910909
 \begin_inset Formula 
 \begin{equation}
-x_{t+1}=x_{t}-\alpha g\label{eq:gradiant_decent}
+x_{t+1}=x_{t}-\alpha\boldsymbol{g}\label{eq:gradiant_decent}
 \end{equation}
 
 \end_inset
@@ -8208,7 +8381,7 @@ with step size
 \change_inserted 215191885 1521910909
 \begin_inset Formula 
 \begin{equation}
-g_{j}=2\underset{i}{\sum}r_{i}\frac{\partial r_{i}}{\partial x_{i}}\label{eq:gradiant}
+\boldsymbol{g}_{j}=2\underset{i}{\sum}r_{i}\frac{\partial r_{i}}{\partial x_{i}}\label{eq:gradiant}
 \end{equation}
 
 \end_inset
@@ -8413,7 +8586,7 @@ reference "eq:gradiant"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-H_{jk}=2\underset{i}{\sum}r_{i}(\frac{\partial r_{i}}{\partial x_{j}}\frac{\partial r_{i}}{\partial x_{k}}+r_{i}\frac{\partial^{2}r_{i}}{\partial x_{i}\partial x_{k}})\label{eq:full hassain}
+\boldsymbol{H}_{jk}=2\underset{i}{\sum}r_{i}(\frac{\partial r_{i}}{\partial x_{j}}\frac{\partial r_{i}}{\partial x_{k}}+r_{i}\frac{\partial^{2}r_{i}}{\partial x_{i}\partial x_{k}})\label{eq:full hassain}
 \end{equation}
 
 \end_inset
@@ -8455,7 +8628,7 @@ as :
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-H_{jk}=2\underset{i}{\sum}J_{ij}J_{ik}\label{eq:hassian_from_jacobian}
+\boldsymbol{H}_{jk}=2\underset{i}{\sum}\boldsymbol{J}_{ij}\boldsymbol{J}_{ik}\label{eq:hassian_from_jacobian}
 \end{equation}
 
 \end_inset
@@ -8467,7 +8640,7 @@ H_{jk}=2\underset{i}{\sum}J_{ij}J_{ik}\label{eq:hassian_from_jacobian}
 with
 \begin_inset Formula 
 \begin{equation}
-J_{ij}=\frac{\partial r_{i}}{\partial x_{j}}\label{eq:jacobian}
+\boldsymbol{J}_{ij}=\frac{\partial r_{i}}{\partial x_{j}}\label{eq:jacobian}
 \end{equation}
 
 \end_inset
@@ -8495,7 +8668,7 @@ reference "eq:Tylor_approximation_of_resduial"
 \change_inserted 215191885 1524187930
 \begin_inset Formula 
 \begin{equation}
-\frac{\partial r}{\partial x}=g+H(x-x_{t})=0\label{eq:gauss_new_intermediate}
+\frac{\partial r}{\partial x}=\boldsymbol{g}+\boldsymbol{H}(x-x_{t})=0\label{eq:gauss_new_intermediate}
 \end{equation}
 
 \end_inset
@@ -8528,7 +8701,7 @@ reference "eq:jacobian"
 \change_inserted 215191885 1524188184
 \begin_inset Formula 
 \begin{equation}
-g=2J^{T}r\label{eq:gradian_jacobian}
+\boldsymbol{g}=2\boldsymbol{J}^{T}r\label{eq:gradian_jacobian}
 \end{equation}
 
 \end_inset
@@ -8568,7 +8741,7 @@ reference "eq:gauss_new_intermediate"
 \change_inserted 215191885 1524188310
 \begin_inset Formula 
 \[
-2J^{T}r+J^{T}J(x-x_{t})=0
+2\boldsymbol{J}^{T}r+\boldsymbol{J}^{T}\boldsymbol{J}(x-x_{t})=0
 \]
 
 \end_inset
@@ -8591,7 +8764,7 @@ and
 \change_inserted 215191885 1524110915
 \begin_inset Formula 
 \begin{equation}
-x_{t+1}=x_{t}-(J^{T}J)^{-1}J^{T}r\label{eq:guass_newton}
+x_{t+1}=x_{t}-(\boldsymbol{J}^{T}\boldsymbol{J})^{-1}\boldsymbol{J}^{T}r\label{eq:guass_newton}
 \end{equation}
 
 \end_inset
@@ -8655,7 +8828,7 @@ algorithm,
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-x_{t+1}=x_{t}-((J^{T}J)+\rho I)^{-1}J^{T}r\label{eq:lvm}
+x_{t+1}=x_{t}-((\boldsymbol{J}^{T}\boldsymbol{J})+\rho\boldsymbol{I})^{-1}\boldsymbol{J}^{T}r\label{eq:lvm}
 \end{equation}
 
 \end_inset
@@ -8796,7 +8969,7 @@ reference "eq:lvm"
 \change_inserted 215191885 1524114000
 \begin_inset Formula 
 \[
-x_{t+1}=x_{t}-((J^{T}J)+\rho(diag(J^{T}J)))^{-1}J^{T}r
+x_{t+1}=x_{t}-((\boldsymbol{J}^{T}\boldsymbol{J})+\rho(diag(\boldsymbol{J}^{T}\boldsymbol{J})))^{-1}\boldsymbol{J}^{T}r
 \]
 
 \end_inset
@@ -8917,7 +9090,7 @@ direct
 \change_inserted 215191885 1524196388
 \begin_inset Formula 
 \begin{equation}
-E(\xi)=\underset{i}{\sum}(I_{ref}(p_{i})-I(\omega(p_{i},D_{ref}(p_{i}),\xi)))^{2}\label{eq:Photomatric Error}
+E(\xi)=\underset{i}{\sum}(I_{ref}(p_{i})-I(\pi(p_{i},D_{ref}(p_{i}),\boldsymbol{\xi})))^{2}\label{eq:Photomatric Error}
 \end{equation}
 
 \end_inset
@@ -8927,7 +9100,7 @@ E(\xi)=\underset{i}{\sum}(I_{ref}(p_{i})-I(\omega(p_{i},D_{ref}(p_{i}),\xi)))^{2
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524197308
+\change_inserted 215191885 1524680600
 Equation (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -8949,7 +9122,7 @@ reference "sec:Image-alignment"
 \end_inset
 
  to determine the relative pose 
-\begin_inset Formula $\xi\in sim(3)$
+\begin_inset Formula $\boldsymbol{\xi}\in sim(3)$
 \end_inset
 
 .
@@ -8961,6 +9134,11 @@ reference "sec:Image-alignment"
  be initialized either with random values or with the depth measurements
  from a RGBD sensor to initiate the process.
  
+\begin_inset Formula $\pi$
+\end_inset
+
+ is the projection of the three dimensional point cloud to two dimensional
+ pixel coordinates and it depends on the camera calibration.
 \end_layout
 
 \begin_layout Standard
@@ -9052,11 +9230,11 @@ and
 x^{\prime}\\
 y^{\prime}\\
 z^{\prime}
-\end{array}\right)=R_{\xi}K^{-1}\left(\begin{array}{c}
+\end{array}\right)=\boldsymbol{R}_{\xi}\boldsymbol{K}^{-1}\left(\begin{array}{c}
 x\\
 y\\
 d
-\end{array}\right)+t_{\xi}
+\end{array}\right)+\boldsymbol{T}_{\xi}
 \]
 
 \end_inset
@@ -9765,7 +9943,7 @@ Methodology
 \begin_inset Float figure
 wide true
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -9775,7 +9953,7 @@ status collapsed
 \begin_inset Graphics
 	filename images/overview_coloum_span.png
 	lyxscale 20
-	width 7in
+	width 6.5in
 	height 2.5in
 
 \end_inset
@@ -10262,7 +10440,7 @@ the optimum rotation matrix
 \change_inserted 215191885 1521501637
 \begin_inset Formula 
 \[
-R=USV^{T}
+\boldsymbol{R}=\boldsymbol{U}\boldsymbol{S}\boldsymbol{V}^{T}
 \]
 
 \end_inset
@@ -10275,7 +10453,7 @@ R=USV^{T}
 \change_inserted 215191885 1521507419
 \begin_inset Formula 
 \[
-S=I\begin{cases}
+\boldsymbol{S}=\boldsymbol{I}\begin{cases}
 I & det(\Sigma_{SfM,rgbd})\geq0\\
 diag(1,1,-1) & det(\Sigma_{SfM,rgbd})<0
 \end{cases}
@@ -10301,7 +10479,7 @@ The scale adjustment
 \change_inserted 215191885 1521507699
 \begin_inset Formula 
 \[
-c=\frac{1}{\sigma_{SfM}^{2}}trace(DS)
+c=\frac{1}{\sigma_{SfM}^{2}}trace(\boldsymbol{D}\boldsymbol{S})
 \]
 
 \end_inset
@@ -10321,7 +10499,7 @@ With scale and rotation established, the translation parameters are determined
 \change_inserted 215191885 1521508665
 \begin_inset Formula 
 \[
-t=\mu_{rgbd}-cR\mu_{SfM}
+\boldsymbol{t}=\mu_{rgbd}-c\boldsymbol{R}\mu_{SfM}
 \]
 
 \end_inset
@@ -10349,7 +10527,7 @@ with the
 \change_inserted 215191885 1521514011
 \begin_inset Formula 
 \[
-\tilde{\boldsymbol{pc_{SfM}}}=cR\boldsymbol{pc}_{SfM}+t
+\tilde{\boldsymbol{pc_{SfM}}}=c\boldsymbol{R}\boldsymbol{pc}_{SfM}+\boldsymbol{T}
 \]
 
 \end_inset

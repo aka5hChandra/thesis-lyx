@@ -7190,11 +7190,11 @@ invdepth\propto disparity\label{eq:relation_invDep_and_diparity}
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524748234
+\change_inserted 215191885 1524748250
 However, the problem with the fixed baseline disparity computation is that
  the error grows quadratically with depth, error of the depth is proportional
  to the length of the baseline, as a result, for the shorter baseline, the
- nearer depths have better accuracy but not the further depths, and viseversa.
+ nearer depths have better accuracy but not the further depths, and vise-versa.
  This can addressed efficiently by using variable baseline/resolution instead
  of fixed baseline
 \begin_inset CommandInset citation
@@ -9010,10 +9010,23 @@ reference "eq:lvm"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524114000
+\change_inserted 215191885 1524750164
 \begin_inset Formula 
 \[
 x_{t+1}=x_{t}-((\boldsymbol{J}^{T}\boldsymbol{J})+\rho(diag(\boldsymbol{J}^{T}\boldsymbol{J})))^{-1}\boldsymbol{J}^{T}r
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524750171
+\begin_inset Formula 
+\[
+\Delta\xi=-((\boldsymbol{J}^{T}\boldsymbol{J})+\rho(diag(\boldsymbol{J}^{T}\boldsymbol{J})))^{-1}\boldsymbol{J}^{T}r
 \]
 
 \end_inset
@@ -9234,7 +9247,7 @@ reference "eq:Photomatric Error"
 \change_inserted 215191885 1524199415
 \begin_inset Formula 
 \begin{equation}
-J_{r}=\frac{1}{z^{\prime}}\left(\begin{array}{cc}
+J=\frac{1}{z^{\prime}}\left(\begin{array}{cc}
 \nabla I_{x}f_{x} & \nabla I_{y}f_{y}\end{array}\right)\left(\begin{array}{cccccc}
 1 & 0 & -\frac{x^{\prime}}{z^{\prime}} & -\frac{x^{\prime}y^{\prime}}{z^{\prime}} & (z^{\prime}+\frac{x^{\prime2}}{z^{\prime}}) & -y^{\prime}\\
 0 & 1 & -\frac{y^{\prime}}{z^{\prime}} & -(z^{\prime}+\frac{y^{\prime2}}{z^{\prime}}) & -\frac{x^{\prime}y^{\prime}}{z^{\prime}} & x^{\prime}

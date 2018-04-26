@@ -9010,7 +9010,7 @@ reference "eq:lvm"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524114000
+\change_inserted 215191885 1524750164
 \begin_inset Formula 
 \[
 x_{t+1}=x_{t}-((\boldsymbol{J}^{T}\boldsymbol{J})+\rho(diag(\boldsymbol{J}^{T}\boldsymbol{J})))^{-1}\boldsymbol{J}^{T}r
@@ -9018,8 +9018,6 @@ x_{t+1}=x_{t}-((\boldsymbol{J}^{T}\boldsymbol{J})+\rho(diag(\boldsymbol{J}^{T}\b
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -9234,7 +9232,7 @@ reference "eq:Photomatric Error"
 \change_inserted 215191885 1524199415
 \begin_inset Formula 
 \begin{equation}
-J_{r}=\frac{1}{z^{\prime}}\left(\begin{array}{cc}
+J=\frac{1}{z^{\prime}}\left(\begin{array}{cc}
 \nabla I_{x}f_{x} & \nabla I_{y}f_{y}\end{array}\right)\left(\begin{array}{cccccc}
 1 & 0 & -\frac{x^{\prime}}{z^{\prime}} & -\frac{x^{\prime}y^{\prime}}{z^{\prime}} & (z^{\prime}+\frac{x^{\prime2}}{z^{\prime}}) & -y^{\prime}\\
 0 & 1 & -\frac{y^{\prime}}{z^{\prime}} & -(z^{\prime}+\frac{y^{\prime2}}{z^{\prime}}) & -\frac{x^{\prime}y^{\prime}}{z^{\prime}} & x^{\prime}

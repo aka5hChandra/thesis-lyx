@@ -756,11 +756,24 @@ description "Large Scale Direct Simultaneous localization and mapping"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524695390
+\change_inserted 215191885 1524696496
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "LIDAR"
 description "Light Detection and Ranging "
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524696496
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "LKT"
+description "Lucas Kanade Tomasi"
 
 \end_inset
 
@@ -834,7 +847,7 @@ description "Structure from motion"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524687964
+\change_inserted 215191885 1524696399
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "SIM"
@@ -847,11 +860,37 @@ description "Similarity"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524687818
+\change_inserted 215191885 1524696400
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "SIFT"
+description "Scale-Invariant Feature Transform"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524696579
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "SLAM"
 description "Simultaneous localization and mapping."
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524696579
+\begin_inset CommandInset nomenclature
+LatexCommand nomenclature
+symbol "SURF"
+description "Speeded-Up Robust Features"
 
 \end_inset
 
@@ -8206,7 +8245,7 @@ consider
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\phi(x,\boldsymbol{R},\boldsymbol{T},\lambda)=\stackrel[j=1]{n}{\sum}\left\Vert \omega_{1}^{j}\right\Vert +\left\Vert \omega_{2}^{j}\right\Vert ^{2}=\stackrel[j=1]{n}{\sum}\left\Vert \widetilde{x}_{1}^{j}-x_{1}^{j}\right\Vert ^{2}+\left\Vert \widetilde{x}_{2}^{j}-\pi(R\lambda_{1}^{j}x_{1}^{j}+T)\right\Vert ^{2}\label{eq:residual}
+\phi(x,\boldsymbol{R},\boldsymbol{T},c)=\stackrel[j=1]{n}{\sum}\left\Vert \omega_{1}^{j}\right\Vert +\left\Vert \omega_{2}^{j}\right\Vert ^{2}=\stackrel[j=1]{n}{\sum}\left\Vert \widetilde{x}_{1}^{j}-x_{1}^{j}\right\Vert ^{2}+\left\Vert \widetilde{x}_{2}^{j}-\pi(\boldsymbol{R}c^{j}x_{1}^{j}+\boldsymbol{T})\right\Vert ^{2}\label{eq:residual}
 \end{equation}
 
 \end_inset

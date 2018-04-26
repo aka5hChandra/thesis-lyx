@@ -6452,7 +6452,7 @@ name "subsec:Epipolar-geometry"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524182152
+\change_inserted 215191885 1524716952
 The figure 
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -6504,7 +6504,7 @@ reference "fig:Epipolar-geometry"
 \end_inset
 
  respectively.
- The triangle formed among the camera origins 
+ The triangle formed between the camera origins 
 \begin_inset Formula $o_{1}$
 \end_inset
 
@@ -6517,8 +6517,7 @@ reference "fig:Epipolar-geometry"
 \end_inset
 
  is in the same plane, called an epiploar plane.
- Finally, the line formed by intersection of epiploar plane with image plane,
- 
+ The lines formed by intersection of epiploar plane with image plane, 
 \begin_inset Formula $l_{1}$
 \end_inset
 
@@ -6526,7 +6525,7 @@ reference "fig:Epipolar-geometry"
 \begin_inset Formula $l_{1}$
 \end_inset
 
- are the two epipolar lines.
+ are called the epipolar lines.
  
 \change_deleted 215191885 1524181810
 Consider two images of the same point p from two camera position with relative
@@ -7190,10 +7189,11 @@ invdepth\propto disparity\label{eq:relation_invDep_and_diparity}
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523594319
+\change_inserted 215191885 1524718648
 However, the problem with the fixed baseline disparity computation is that
- the error grows quadratically with depth, as a result the nearer depths
- have better accuracy but not the further depths.
+ the error grows quadratically with depth, error of the depth is proportional
+ to the length of the baseline, as a result, for the shorter baseline, the
+ nearer depths have better accuracy but not the further depths.
  This can addressed efficiently by using variable baseline/resolution instead
  of fixed baseline
 \begin_inset CommandInset citation
@@ -8245,7 +8245,7 @@ consider
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\phi(x,\boldsymbol{R},\boldsymbol{T},\lambda)=\stackrel[j=1]{n}{\sum}\left\Vert \omega_{1}^{j}\right\Vert +\left\Vert \omega_{2}^{j}\right\Vert ^{2}=\stackrel[j=1]{n}{\sum}\left\Vert \widetilde{x}_{1}^{j}-x_{1}^{j}\right\Vert ^{2}+\left\Vert \widetilde{x}_{2}^{j}-\pi(R\lambda_{1}^{j}x_{1}^{j}+T)\right\Vert ^{2}\label{eq:residual}
+\phi(x,\boldsymbol{R},\boldsymbol{T},c)=\stackrel[j=1]{n}{\sum}\left\Vert \omega_{1}^{j}\right\Vert +\left\Vert \omega_{2}^{j}\right\Vert ^{2}=\stackrel[j=1]{n}{\sum}\left\Vert \widetilde{x}_{1}^{j}-x_{1}^{j}\right\Vert ^{2}+\left\Vert \widetilde{x}_{2}^{j}-\pi(\boldsymbol{R}c^{j}x_{1}^{j}+\boldsymbol{T})\right\Vert ^{2}\label{eq:residual}
 \end{equation}
 
 \end_inset
@@ -8550,7 +8550,7 @@ approximate the Taylor approximation of residual function
 \change_inserted 215191885 1524109780
 \begin_inset Formula 
 \begin{equation}
-r(x)\simeq r(x_{t})+g^{T}(x-x_{t})+\frac{1}{2}(x-x_{t})^{T}H(x-x_{t})\label{eq:Tylor_approximation_of_resduial}
+r(x)\simeq r(x_{t})+\boldsymbol{g}^{T}(x-x_{t})+\frac{1}{2}(x-x_{t})^{T}\boldsymbol{H}(x-x_{t})\label{eq:Tylor_approximation_of_resduial}
 \end{equation}
 
 \end_inset

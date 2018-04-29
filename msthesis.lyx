@@ -691,12 +691,16 @@ nomname}
 \end_inset
 
 
+\change_deleted 215191885 1524962521
+
 \begin_inset CommandInset nomencl_print
 LatexCommand printnomenclature
 set_width "auto"
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -712,214 +716,6 @@ description "An acronym for Electrical and Computer Engineering."
 
 
 \change_inserted 215191885 1524686217
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1524695867
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "BA"
-description "Bundle adjustment"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1524695867
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "IR"
-description "Infrared ray"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1524695389
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "LSD SLAM"
-description "Large Scale Direct Simultaneous localization and mapping"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1524696496
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "LIDAR"
-description "Light Detection and Ranging "
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1524696496
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "LKT"
-description "Lucas Kanade Tomasi"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1524689149
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "LVM"
-description "Levenberg Marquardt"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1524696273
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "RGBD"
-description "Red Green Blue Depth"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1524696273
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "ROS"
-description "Robot Operating Syste"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1524687837
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "SE"
-description "Special euclidean"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1524687964
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "SfM"
-description "Structure from motion"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1524696399
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "SIM"
-description "Similarity"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1524696400
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "SIFT"
-description "Scale-Invariant Feature Transform"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1524696579
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "SLAM"
-description "Simultaneous localization and mapping."
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1524696579
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "SURF"
-description "Speeded-Up Robust Features"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1524695629
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "SO"
-description "Special orthogonal"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1524695629
-\begin_inset CommandInset nomenclature
-LatexCommand nomenclature
-symbol "SONAR"
-description "Sound Navigation And Ranging"
-
-\end_inset
-
 
 \end_layout
 
@@ -2050,7 +1846,7 @@ RGBD Camera
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523665701
+\change_inserted 215191885 1524962546
 RGBD cameras are the class of sensors that capture both intensity values
  (RGB values) and depth values for every pixel in the frame.
  The RGB values are measured by a traditional camera with the thin lens
@@ -2062,8 +1858,8 @@ reference "subsec:Camera-model"
 \end_inset
 
 .
- And, depths are measured with the help of infrared ray (IR) projectors
- and IR sensors.
+ Depths are measured with the help of infrared ray (IR) projectors and IR
+ sensors.
  There are two different approaches of using the IR rays to measure the
  depth.
  The first approach relies on the principles of the structured light 
@@ -2178,128 +1974,6 @@ ORBBEC Astra RGBD sensor
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-
-\change_inserted 215191885 1523335650
-RGBD Measurement Noise
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:RGBD_Measurement-Noise"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1523335650
-The proposed fusion algorithm relies on experimental studies of accuracy
- and noise for RGBD sensor measurement, e.g., the Kinect sensor.
- Research in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "7925286"
-
-\end_inset
-
- shows that a Gaussian noise model provides a good fit to observed measurement
- errors on planar targets where the distribution parameters are mean 
-\begin_inset Formula $0$
-\end_inset
-
- and standard deviation
-\begin_inset Formula $\sigma_{Z}=\frac{m}{2f_{x}b}Z^{2}$
-\end_inset
-
- for depth measurements where 
-\begin_inset Formula $\frac{m}{f_{x}b}=-2.85e^{-3}$
-\end_inset
-
- is the linearized slope for the normalized disparity empirically found
- in 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "7925286"
-
-\end_inset
-
-.
- Since 3D the coordinates for 
-\begin_inset Formula $(X,Y)$
-\end_inset
-
- are a function of both the pixel location and the depth, their distributions
- are also known as shown below:
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1523335650
-\begin_inset Formula 
-\begin{equation}
-\begin{array}{ccc}
-\sigma_{X} & = & \frac{x_{im}-o_{x}+\delta_{x}}{f_{x}}\sigma_{Z}=\frac{x_{im}-o_{x}+\delta_{x}}{f_{x}}(1.425e^{-3})Z^{2}\\
-\sigma_{Y} & = & \frac{y_{im}-o_{y}+\delta_{y}}{f_{y}}\sigma_{Z}=\frac{y_{im}-o_{y}+\delta_{y}}{f_{y}}(1.425e^{-3})Z^{2}\\
-\sigma_{Z} & = & \frac{m}{f_{x}b}Z^{2}\sigma_{d'}=(1.425e^{-3})Z^{2}
-\end{array}\label{eq:noise_models}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1524670418
-These equations indicate that 3D coordinate measurement uncertainty increases
- as a quadratic function of the depth for all three coordinate values, where
- 
-\begin_inset Formula $Z$
-\end_inset
-
- denotes the sensed depth at image position 
-\begin_inset Formula $(x_{im},y_{im})$
-\end_inset
-
-, 
-\begin_inset Formula $(f_{x},f_{y})$
-\end_inset
-
- denotes the camera focal length (in pixels), 
-\begin_inset Formula $(o_{x},o_{y})$
-\end_inset
-
- denotes the pixel coordinate of the image center, i.e., the principal point,
- and 
-\begin_inset Formula $(\delta_{x},\delta_{y})$
-\end_inset
-
- denote adjustments of the projected pixel coordinate to correct for camera
- lens distortion.
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1523494878
-However, the quadratic coefficient for the 
-\begin_inset Formula $(X,Y)$
-\end_inset
-
- coordinate standard deviation is at most half that in the depth direction,
- i.e., 
-\begin_inset Formula $(\sigma_{X},\sigma_{Y})\approx0.5\sigma_{Z}$
-\end_inset
-
- at the image periphery where 
-\begin_inset Formula $\frac{x-c_{x}}{f}\approx0.5$
-\end_inset
-
-, and this value is significantly smaller for pixels close to the optical
- axis.
 \end_layout
 
 \begin_layout Subsection
@@ -2882,12 +2556,12 @@ For the simplification of calculation, we consider an ideal camera model
 d.
  Consequently, as the aperture decreases to zero, the only points that contribut
 e to the irradiance at the image pixel 
-\begin_inset Formula $\boldsymbol{x}=\left[x,y\right]$
+\begin_inset Formula $\mathrm{\boldsymbol{\mathbf{p}}}=\left[x,y\right]$
 \end_inset
 
  are on a line through the center o of the lens.
  If a point p has coordinates 
-\begin_inset Formula $\boldsymbol{X}=\left[X,Y,Z\right]$
+\begin_inset Formula $\mathbf{\boldsymbol{\mathbf{P}}}=\left[X,Y,Z\right]$
 \end_inset
 
  relative to a reference frame centered at the optical center o, with its
@@ -2959,7 +2633,7 @@ name "fig:Pin-hole-camera-model-1"
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \begin{equation}
-x=-f\frac{X}{Z}\label{eq:pinhole camera x-1}
+x=-f_{x}\frac{X}{Z}\label{eq:pinhole camera x-1}
 \end{equation}
 
 \end_inset
@@ -2972,7 +2646,7 @@ x=-f\frac{X}{Z}\label{eq:pinhole camera x-1}
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \begin{equation}
-y=-f\frac{Y}{Z}\label{eq:pinhole camera y-1}
+y=-f_{y}\frac{Y}{Z}\label{eq:pinhole camera y-1}
 \end{equation}
 
 \end_inset
@@ -2982,10 +2656,10 @@ y=-f\frac{Y}{Z}\label{eq:pinhole camera y-1}
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523338315
+\change_inserted 215191885 1524954407
 This mapping of 3D point to 2D is called projection and is represented by
  
-\begin_inset Formula $\pi$
+\begin_inset Formula $\boldsymbol{\pi}$
 \end_inset
 
 
@@ -2996,7 +2670,7 @@ This mapping of 3D point to 2D is called projection and is represented by
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \[
-\pi:\mathbb{R}^{3}\rightarrow\mathbb{R}^{2}
+\boldsymbol{\pi}:\mathbb{R}^{3}\rightarrow\mathbb{R}^{2}
 \]
 
 \end_inset
@@ -3008,7 +2682,7 @@ This mapping of 3D point to 2D is called projection and is represented by
 
 \change_inserted 215191885 1523338315
 This is also written as 
-\begin_inset Formula $\boldsymbol{x}=\pi(\boldsymbol{X})$
+\begin_inset Formula $\boldsymbol{\mathbf{p}}=\mathbf{\mathbf{\boldsymbol{\pi}}}(\boldsymbol{\mathbf{P}})$
 \end_inset
 
 .
@@ -3035,54 +2709,14 @@ reference "eq:pinhole camera y-1"
  makes the object appear upside down on the image plane.
  Since we are working with digital camera, we can handle this by moving
  the image plane to front of the optic center to 
-\begin_inset Formula $\{z=-f\}$
+\begin_inset Formula $z=(f_{x},f_{y})$
 \end_inset
 
 , which will make 
 \begin_inset Formula $(x,y)\rightarrow(-x,-y).$
 \end_inset
 
- Then the equation 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:pinhole camera x-1"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:pinhole camera y-1"
-
-\end_inset
-
- can be updated as 
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1523338315
-\begin_inset Formula 
-\[
-x=f\frac{X}{Z}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1523338315
-\begin_inset Formula 
-\[
-y=f\frac{Y}{Z}
-\]
-
-\end_inset
-
-
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3096,10 +2730,10 @@ This can be represented in matrix form as
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \[
-\boldsymbol{x}=\left[\begin{array}{c}
+\boldsymbol{\mathbf{p}}=\left[\begin{array}{c}
 x\\
 y
-\end{array}\right]=\frac{f}{Z}\left[\begin{array}{c}
+\end{array}\right]=\frac{1}{Z}\left[f_{x},f_{y}\right]\left[\begin{array}{c}
 X\\
 Y
 \end{array}\right]
@@ -3115,13 +2749,13 @@ Y
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \begin{equation}
-Z\left[\begin{array}{c}
+\left[\begin{array}{c}
 x\\
 y\\
 1
-\end{array}\right]=\left[\begin{array}{cccc}
-f & 0 & 0 & 0\\
-0 & f & 0 & 0\\
+\end{array}\right]=\frac{1}{Z}\left[\begin{array}{cccc}
+f_{x} & 0 & 0 & 0\\
+0 & f_{y} & 0 & 0\\
 0 & 0 & 1 & 0
 \end{array}\right]\left[\begin{array}{c}
 X\\
@@ -3150,14 +2784,14 @@ reference "eq:homogennous"
 \begin_inset Formula 
 \[
 \left[\begin{array}{cccc}
-f & 0 & 0 & 0\\
-0 & f & 0 & 0\\
+f_{x} & 0 & 0 & 0\\
+0 & f_{y} & 0 & 0\\
 0 & 0 & 1 & 0
 \end{array}\right]=\left[\begin{array}{ccc}
-f & 0 & 0\\
-0 & f & 0\\
+f_{x} & 0 & 0\\
+0 & f_{y} & 0\\
 0 & 0 & 1
-\end{array}\right]\left[\begin{array}{cccc}
+\end{array}\right]\frac{1}{Z}\left[\begin{array}{cccc}
 1 & 0 & 0 & 0\\
 0 & 1 & 0 & 0\\
 0 & 0 & 1 & 0
@@ -3180,11 +2814,11 @@ with
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \[
-\boldsymbol{K}_{f}=\left[\begin{array}{cccc}
-f & 0 & 0 & 0\\
-0 & f & 0 & 0\\
+\boldsymbol{\mathbf{K}}_{f}=\left[\begin{array}{cccc}
+f_{x} & 0 & 0 & 0\\
+0 & f_{y} & 0 & 0\\
 0 & 0 & 1 & 0
-\end{array}\right]\in R^{3\times3},\boldsymbol{\Pi}_{0}=\left[\begin{array}{cccc}
+\end{array}\right]\in R^{3\times3},\mathbf{\boldsymbol{\pi}}=\frac{1}{Z}\left[\begin{array}{cccc}
 1 & 0 & 0 & 0\\
 0 & 1 & 0 & 0\\
 0 & 0 & 1 & 0
@@ -3198,12 +2832,12 @@ f & 0 & 0 & 0\\
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524236311
+\change_inserted 215191885 1524769306
 The matrix 
-\begin_inset Formula $\Pi_{0}$
+\begin_inset Formula $\boldsymbol{\mathbf{\pi}}$
 \end_inset
 
- is a standard projection matrix.
+ is a projection matrix and it is a non linear operation .
 \end_layout
 
 \begin_layout Standard
@@ -3224,25 +2858,25 @@ reference "eq:2"
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \begin{equation}
-c\left[\begin{array}{c}
-x^{\prime}\\
-y^{\prime}\\
+\left[\begin{array}{c}
+x\\
+y\\
 1
 \end{array}\right]=\left[\begin{array}{ccc}
-f & 0 & 0\\
-0 & f & 0\\
+f_{x} & 0 & 0\\
+0 & f_{y} & 0\\
 0 & 0 & 1
-\end{array}\right]\left[\begin{array}{cccc}
+\end{array}\right]\frac{1}{Z}\left[\begin{array}{cccc}
 1 & 0 & 0 & 0\\
 0 & 1 & 0 & 0\\
 0 & 0 & 1 & 0
 \end{array}\right]\left[\begin{array}{cc}
-\boldsymbol{R} & \boldsymbol{T}\\
+\boldsymbol{\mathbf{R}} & \boldsymbol{\mathbf{T}}\\
 0 & 1
 \end{array}\right]\left[\begin{array}{c}
-X_{0}\\
-Y_{0}\\
-Z_{0}\\
+X\\
+Y\\
+Z\\
 1
 \end{array}\right]\label{eq:ideal camera model-1}
 \end{equation}
@@ -3254,9 +2888,9 @@ Z_{0}\\
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523338315
+\change_inserted 215191885 1524765276
 Where 
-\begin_inset Formula $c$
+\begin_inset Formula $\alpha$
 \end_inset
 
  is the unknown scale factor.
@@ -3286,9 +2920,9 @@ reference "eq:ideal camera model-1"
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \begin{equation}
-\boldsymbol{K}_{s}=\left[\begin{array}{ccc}
-s_{x} & s_{\theta} & o_{x}\\
-0 & s_{y} & o_{y}\\
+\boldsymbol{\mathbf{K}}_{s}=\left[\begin{array}{ccc}
+1 & s_{\theta} & o_{x}\\
+0 & 1 & o_{y}\\
 0 & 0 & 1
 \end{array}\right]\in\mathbb{R}^{3\times3}\label{eq:intrensic matrix-1-1}
 \end{equation}
@@ -3309,17 +2943,17 @@ s_{x} & s_{\theta} & o_{x}\\
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \begin{equation}
-\boldsymbol{K}=\boldsymbol{K}_{s}\boldsymbol{K_{f}}=\left[\begin{array}{ccc}
-s_{x} & s_{\theta} & o_{x}\\
-0 & s_{y} & o_{y}\\
+\mathbf{\boldsymbol{\mathbf{K}}}=\boldsymbol{\mathbf{K}}_{s}\boldsymbol{\mathbf{K}_{f}}=\left[\begin{array}{ccc}
+1 & s_{\theta} & o_{x}\\
+0 & 1 & o_{y}\\
 0 & 0 & 1
 \end{array}\right]\left[\begin{array}{ccc}
-f & 0 & 0\\
-0 & f & 0\\
+f_{x} & 0 & 0\\
+0 & f_{y} & 0\\
 0 & 0 & 1
 \end{array}\right]=\left[\begin{array}{ccc}
-fs_{x} & s_{\theta} & o_{x}\\
-0 & fs_{y} & o_{y}\\
+f_{x} & s_{\theta} & o_{x}\\
+0 & f_{y} & o_{y}\\
 0 & 0 & 1
 \end{array}\right]\label{eq:intresic matrix-1}
 \end{equation}
@@ -3356,11 +2990,7 @@ where
 \begin_layout Itemize
 
 \change_inserted 215191885 1523338315
-\begin_inset Formula $fs_{x}$
-\end_inset
-
-= 
-\begin_inset Formula $\alpha_{x}$
+\begin_inset Formula $f_{x}$
 \end_inset
 
  : size of unit length in horizontal pixels also called as focal length
@@ -3370,11 +3000,7 @@ where
 \begin_layout Itemize
 
 \change_inserted 215191885 1523338315
-\begin_inset Formula $fs_{y}$
-\end_inset
-
-= 
-\begin_inset Formula $\alpha_{y}$
+\begin_inset Formula $f_{y}$
 \end_inset
 
  : size of unit length in vertical pixels also called as focal length in
@@ -3383,21 +3009,17 @@ where
 
 \begin_layout Itemize
 
-\change_inserted 215191885 1523338315
-\begin_inset Formula $\frac{\alpha_{x}}{\alpha_{y}}$
+\change_inserted 215191885 1524765556
+\begin_inset Formula $\frac{f_{x}}{f_{y}}$
 \end_inset
 
-: aspect ratio 
-\begin_inset Formula $\sigma$
-\end_inset
-
-, 
+: aspect ratio of a pixle 
 \end_layout
 
 \begin_layout Itemize
 
 \change_inserted 215191885 1523338315
-\begin_inset Formula $fs_{\theta}$
+\begin_inset Formula $s_{\theta}$
 \end_inset
 
 : skew of the pixel, often close to zero.
@@ -3416,12 +3038,12 @@ reference "eq:intresic matrix-1"
  are unique to every camera and are not influenced by any external factors,
  they are called an intrinsic parameter, and the matrix itself is called
  an intrinsic matrix 
-\begin_inset Formula $K$
+\begin_inset Formula $\mathbf{K}$
 \end_inset
 
 .
  With matrix 
-\begin_inset Formula $K$
+\begin_inset Formula $\mathbf{K}$
 \end_inset
 
 , the ideal camera model from equation 
@@ -3439,25 +3061,25 @@ reference "eq:ideal camera model-1"
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \begin{equation}
-c\left[\begin{array}{c}
-x^{\prime}\\
-y^{\prime}\\
+\left[\begin{array}{c}
+x\\
+y\\
 1
 \end{array}\right]=\left[\begin{array}{ccc}
-s_{x} & s_{\theta} & o_{x}\\
-0 & s_{y} & o_{y}\\
+f_{x} & s_{\theta} & o_{x}\\
+0 & f_{y} & o_{y}\\
 0 & 0 & 1
-\end{array}\right]\left[\begin{array}{cccc}
+\end{array}\right]\frac{1}{Z}\left[\begin{array}{cccc}
 1 & 0 & 0 & 0\\
 0 & 1 & 0 & 0\\
 0 & 0 & 1 & 0
 \end{array}\right]\left[\begin{array}{cc}
-\boldsymbol{R} & \boldsymbol{T}\\
+\boldsymbol{\mathbf{R}} & \boldsymbol{\mathbf{T}}\\
 0 & 1
 \end{array}\right]\left[\begin{array}{c}
-X_{0}\\
-Y_{0}\\
-Z_{0}\\
+X\\
+Y\\
+Z\\
 1
 \end{array}\right]\label{eq:camera model with internsic parameter-1}
 \end{equation}
@@ -3478,7 +3100,7 @@ In the matrix notation,
 \change_inserted 215191885 1523338315
 \begin_inset Formula 
 \begin{equation}
-c\boldsymbol{x}=\boldsymbol{K}\boldsymbol{\Pi}_{0}\boldsymbol{\xi}\boldsymbol{X}_{0}\label{eq:camera model with internsic parameter matrix rep-1}
+\mathbf{p}=\boldsymbol{\mathbf{K}}\boldsymbol{\mathbf{\pi}}\boldsymbol{\mathbf{Q}}\boldsymbol{\mathbf{P}}\label{eq:camera model with internsic parameter matrix rep-1}
 \end{equation}
 
 \end_inset
@@ -3488,7 +3110,7 @@ c\boldsymbol{x}=\boldsymbol{K}\boldsymbol{\Pi}_{0}\boldsymbol{\xi}\boldsymbol{X}
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524236569
+\change_inserted 215191885 1524966620
 To summarize, equation 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3497,29 +3119,28 @@ reference "eq:camera model with internsic parameter matrix rep-1"
 \end_inset
 
  represents the projection of three-dimensional coordinates 
-\begin_inset Formula $\boldsymbol{X}_{0}$
+\begin_inset Formula $\boldsymbol{\mathbf{P}=}[X,Y,Z]$
 \end_inset
 
- by camera with orientation 
-\begin_inset Formula $\xi$
+ by camera with the pose 
+\begin_inset Formula $\boldsymbol{\mathbf{Q}}$
 \end_inset
 
- (also called as extrinsic parameters) and camera calibration K, onto two-dimens
-ional coordinate 
-\begin_inset Formula $x$
+ (also called as extrinsic parameters) and camera calibration 
+\begin_inset Formula $\mathbf{\boldsymbol{\mathbf{K}}}$
 \end_inset
 
- with known scale 
-\begin_inset Formula $\lambda$
+, onto two-dimensional coordinate 
+\begin_inset Formula $\boldsymbol{\mathbf{p}}=[x,y]$
 \end_inset
 
-
+ .
 \end_layout
 
 \begin_layout Subsection
 
-\change_inserted 215191885 1523338315
-Camera Calibration
+\change_inserted 215191885 1524767314
+Camera Distortion and Calibration
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Camera-Calibration"
@@ -3532,9 +3153,7 @@ name "sec:Camera-Calibration"
 \begin_layout Standard
 
 \change_inserted 215191885 1523666842
-The camera calibration is the process of determining all intrinsic parameters
- of the camera.
- The images generated by a typical camera usually have a distortions.
+The images generated by a typical camera usually have a distortions.
  Since, these images are used for the estimation of intrinsic parameters,
  the distortions should be fixed, in order to prevent errors in camera calibrati
 on.
@@ -3661,8 +3280,10 @@ D_{coff}=(k_{1},k_{2},p_{1},p_{2},k_{3})\label{eq:distortion coeff}
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524237372
-For any given camera, all the essential parameters from equation 
+\change_inserted 215191885 1524770289
+The camera calibration is the process of determining all intrinsic parameters
+ of the camera.
+ For any given camera, all the essential parameters from equation 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:intresic matrix-1"
@@ -3818,7 +3439,7 @@ key "Baker:2004:LYU:964568.964604"
 .
 \begin_inset Formula 
 \begin{equation}
-\hat{\xi}=\min_{\xi}\underset{\mathbf{x}}{\sum}\left(\mathbf{I}(\omega(\mathbf{x},\boldsymbol{\xi}))-\mathbf{I_{ref}}(\mathbf{x})\right)^{2}\label{eq:Direct image alignment}
+\hat{\boldsymbol{\mathbf{\xi}}}=\min_{\xi}\underset{\mathbf{\mathbf{\mathbf{p}}}}{\sum}\left(\mathbf{I}(\omega(\mathbf{\mathbf{\mathbf{p}}},\boldsymbol{\mathbf{\xi}}))-\mathbf{I_{ref}}(\mathbf{\mathbf{\mathbf{p}}})\right)^{2}\label{eq:Direct image alignment}
 \end{equation}
 
 \end_inset
@@ -3830,7 +3451,7 @@ key "Baker:2004:LYU:964568.964604"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524674757
+\change_inserted 215191885 1524952869
 In equation (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3839,11 +3460,11 @@ reference "eq:Direct image alignment"
 \end_inset
 
 ), the warp function, 
-\begin_inset Formula $\omega(\mathbf{x},\boldsymbol{\xi})$
+\begin_inset Formula $\omega(\mathbf{\mathbf{\mathbf{x}}},\boldsymbol{\xi})$
 \end_inset
 
 , which is a rigid body motion, maps pixel locations, 
-\begin_inset Formula $\mathbf{x}$
+\begin_inset Formula $\mathbf{\mathbf{\mathbf{\mathbf{p}}}}$
 \end_inset
 
 , in the reference image 
@@ -3855,12 +3476,12 @@ reference "eq:Direct image alignment"
 \end_inset
 
  with the current estimate of the transformation parameters 
-\begin_inset Formula $\xi$
+\begin_inset Formula $\boldsymbol{\mathbf{\xi}}$
 \end_inset
 
 .
  With correspondence estimation, 
-\begin_inset Formula $\xi$
+\begin_inset Formula $\boldsymbol{\mathbf{\xi}}$
 \end_inset
 
  is a pose transformation of the viewing camera represented as 
@@ -3872,7 +3493,7 @@ reference "eq:sim3"
 
 .
  We then seek the camera pose transformation parameters, 
-\begin_inset Formula $\hat{\xi}$
+\begin_inset Formula $\hat{\boldsymbol{\mathbf{\xi}}}$
 \end_inset
 
 , that minimize the error in equation 
@@ -4058,11 +3679,11 @@ Direct methods on the other hand typically iteratively solve for a set of
 \end_inset
 
 , maps a pixel location, 
-\begin_inset Formula $\mathbf{x}=[x,y]^{t}$
+\begin_inset Formula $\mathbf{\mathbf{p}}=[x,y]^{t}$
 \end_inset
 
 , in the original coordinate field to new coordinate positions, 
-\begin_inset Formula $\mathbf{x}'$
+\begin_inset Formula $\mathbf{\mathbf{p}}'$
 \end_inset
 
 , such that both locations correspond to images.
@@ -4170,7 +3791,7 @@ S
 space
 \change_inserted 215191885 1523506484
  
-\begin_inset Formula $R^{3}$
+\begin_inset Formula $\mathbb{R}^{3}$
 \end_inset
 
 ,
@@ -4222,7 +3843,7 @@ the
 a
 \change_unchanged
  matrix which satisfy 
-\begin_inset Formula $\boldsymbol{R}^{T}\boldsymbol{R}=\boldsymbol{R}\boldsymbol{R}^{T}=\boldsymbol{I}$
+\begin_inset Formula $\mathbf{\boldsymbol{\mathbf{R}}}^{T}\mathbf{\boldsymbol{\mathbf{R}}}=\mathbf{\boldsymbol{\mathbf{R}}\boldsymbol{\mathbf{R}}^{T}}=\boldsymbol{\mathbf{\mathbf{I}}}$
 \end_inset
 
  and have a determinant of 
@@ -4235,7 +3856,7 @@ a
 \begin_layout Standard
 \begin_inset Formula 
 \[
-SO(3)=\{\boldsymbol{R}\in\mathbb{R}^{3\times3}\mid\boldsymbol{R}^{T}\boldsymbol{R}=I,det(\boldsymbol{R})=+1\}
+SO(3)=\{\boldsymbol{\mathbf{R}}\in\mathbb{R}^{3\times3}\mid\boldsymbol{\mathbf{R}}^{T}\boldsymbol{\mathbf{R}}=\mathbf{I},det(\boldsymbol{\mathbf{R}})=+1\}
 \]
 
 \end_inset
@@ -4251,18 +3872,20 @@ the coordinates
 a camera position
 \change_unchanged
  
-\begin_inset Formula $X_{c}$
+\begin_inset Formula $\mathbf{P}_{c}$
 \end_inset
 
 
+\change_inserted 215191885 1524952975
+ 
 \change_deleted 215191885 1523372951
 of a point p relative to
 \change_inserted 215191885 1523372953
  
 \change_deleted 215191885 1523506224
  
-\change_inserted 215191885 1523506533
-from its local cartesian 
+\change_inserted 215191885 1524770971
+from its local coordinate 
 \change_unchanged
 frame C
 \change_inserted 215191885 1523506367
@@ -4275,7 +3898,7 @@ coordinates
 position
 \change_unchanged
  
-\begin_inset Formula $X_{w}$
+\begin_inset Formula $\mathbf{P}_{w}$
 \end_inset
 
 
@@ -4289,8 +3912,8 @@ relative to
 in the world
 \change_unchanged
  
-\change_inserted 215191885 1523506385
-cartesian 
+\change_inserted 215191885 1524770976
+coordinate 
 \change_unchanged
 frame W is 
 \change_inserted 215191885 1523506420
@@ -4302,7 +3925,7 @@ represented as
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\boldsymbol{X}_{w}=\boldsymbol{R}_{wc}\boldsymbol{X}_{c}
+\mathbf{P}_{w}=\boldsymbol{\mathbf{R}}_{wc}\mathbf{P}_{c}
 \]
 
 \end_inset
@@ -4328,7 +3951,7 @@ is
  
 \change_unchanged
 
-\begin_inset Formula $\boldsymbol{R}^{-1}=\boldsymbol{R}^{T}$
+\begin_inset Formula $\boldsymbol{\mathbf{R}}^{-1}=\boldsymbol{\mathbf{R}}^{T}$
 \end_inset
 
 , 
@@ -4353,7 +3976,7 @@ achieved by
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\boldsymbol{X}_{c}=\boldsymbol{R}_{wc}^{-1}\boldsymbol{X}_{w}=\boldsymbol{R}_{wc}^{T}\boldsymbol{X}_{w}
+\mathbf{P}_{c}=\boldsymbol{\mathbf{R}}_{wc}^{-1}\mathbf{P}_{w}=\boldsymbol{\mathbf{R}}_{wc}^{T}\boldsymbol{\mathbf{P}}_{w}
 \]
 
 \end_inset
@@ -4363,7 +3986,7 @@ achieved by
 
 \begin_layout Standard
 The continuous rotation of a camera is described as a trajectory 
-\begin_inset Formula $R(t):t\rightarrow SO(3)$
+\begin_inset Formula $\mathbf{R}(t):t\rightarrow SO(3)$
 \end_inset
 
  in the space
@@ -4391,7 +4014,7 @@ When
 \end_inset
 
  is denoted by 
-\begin_inset Formula $R(t_{2},t_{1})$
+\begin_inset Formula $\mathbf{R}(t_{2},t_{1})$
 \end_inset
 
 .
@@ -4425,7 +4048,7 @@ When
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\boldsymbol{R}(t_{2,}t_{0})=\boldsymbol{R}(t_{2,}t_{1})\times\boldsymbol{R}(t_{1,}t_{0}),\vee t_{0}<t_{1}<t_{2}\in\boldsymbol{R}
+\boldsymbol{\mathbf{R}}(t_{2,}t_{0})=\boldsymbol{\mathbf{R}}(t_{2,}t_{1})\times\boldsymbol{\mathbf{R}}(t_{1,}t_{0}),t_{0}<t_{1}<t_{2}\in\mathbb{\mathbb{R}}
 \]
 
 \end_inset
@@ -4493,7 +4116,7 @@ With this, the complete rigid body motion is represented by
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\boldsymbol{X}_{w}=\boldsymbol{R}_{wc}\boldsymbol{X}_{c}+\boldsymbol{T}_{wc}\label{eq:1}
+\boldsymbol{\mathbf{P}}_{w}=\boldsymbol{\mathbf{R}}_{wc}\mathbf{P_{c}}+\boldsymbol{\mathbf{T}}_{wc}\label{eq:1}
 \end{equation}
 
 \end_inset
@@ -4522,8 +4145,8 @@ However, the above equation is not linear but affine.
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\bar{\boldsymbol{X}}=\left[\begin{array}{c}
-\boldsymbol{X}\\
+\bar{\mathbf{P}}=\left[\begin{array}{c}
+\mathbf{P}\\
 1
 \end{array}\right]=\left[\begin{array}{c}
 X\\
@@ -4563,16 +4186,16 @@ following
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\bar{\boldsymbol{X}}_{w}=\left[\begin{array}{c}
-\boldsymbol{X}_{w}\\
+\bar{\boldsymbol{\mathbf{P}}}_{w}=\left[\begin{array}{c}
+\mathbf{P}_{w}\\
 1
 \end{array}\right]=\left[\begin{array}{cc}
-\boldsymbol{R}_{wc} & \boldsymbol{T}_{wc}\\
+\boldsymbol{\mathbf{R}}_{wc} & \boldsymbol{\mathbf{T}}_{wc}\\
 0 & 1
 \end{array}\right]\left[\begin{array}{c}
-\boldsymbol{X}_{c}\\
+\boldsymbol{\mathbf{P}}_{c}\\
 1
-\end{array}\right]=\bar{g}_{wc}\bar{\boldsymbol{X}}_{c}\label{eq:2}
+\end{array}\right]=\mathbf{Q}_{wc}\mathbf{\bar{P}}_{c}\label{eq:2}
 \end{equation}
 
 \end_inset
@@ -4590,7 +4213,7 @@ where
 \end_inset
 
  matrix 
-\begin_inset Formula $\bar{g}_{wc}\in R^{4\times4}$
+\begin_inset Formula $\mathbf{Q}_{wc}\in\mathbb{R}^{4\times4}$
 \end_inset
 
 
@@ -4651,10 +4274,10 @@ grorp
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-SE(3)=\{\boldsymbol{\xi}=\left[\begin{array}{cc}
-\boldsymbol{R} & \boldsymbol{T}\\
+SE(3)=\{\boldsymbol{\mathbf{Q}}=\left[\begin{array}{cc}
+\boldsymbol{\mathbf{R}} & \boldsymbol{\mathbf{T}}\\
 0 & 1
-\end{array}\right]\mid\boldsymbol{R}\in SO(3),\boldsymbol{T}\in\mathbb{R}^{3}\}\subset\mathbb{R}^{4\times4}\label{eq:se3}
+\end{array}\right]\mid\boldsymbol{\mathbf{R}}\in SO(3),\boldsymbol{\mathbf{T}}\in\mathbb{R}^{3}\}\subset\mathbb{R}^{4\times4}\label{eq:se3}
 \end{equation}
 
 \end_inset
@@ -4689,7 +4312,7 @@ reference "eq:2"
 \change_inserted 215191885 1523373354
 \begin_inset Formula 
 \begin{equation}
-\bar{\boldsymbol{X}}_{w}=\alpha\boldsymbol{\xi}_{wc}\bar{\boldsymbol{X}}_{c}\label{eq:uniform scalling}
+\bar{\boldsymbol{\mathbf{P}}}_{w}=\alpha\boldsymbol{\mathbf{Q}}_{wc}\bar{\boldsymbol{\mathbf{P}}}_{c}\label{eq:uniform scalling}
 \end{equation}
 
 \end_inset
@@ -4718,18 +4341,52 @@ reference "eq:se3"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1516637515
+\change_inserted 215191885 1524959997
 \begin_inset Formula 
 \begin{equation}
-Sim(3)=\{\bar{g}=\left[\begin{array}{cc}
-\boldsymbol{R} & \boldsymbol{T}\\
+Sim(3)=\{\mathbf{QQ}=\left[\begin{array}{cc}
+\mathbf{R} & \boldsymbol{\mathbf{T}}\\
 0 & \alpha^{-1}
-\end{array}\right]\mid\boldsymbol{R}\in SO(3),\boldsymbol{T}\in\mathbb{R}^{3},\alpha\in\mathbb{R}\}\subset\mathbb{R}^{4\times4}\label{eq:sim3}
+\end{array}\right]\mid\boldsymbol{\mathbf{R}}\in SO(3),\boldsymbol{\mathbf{T}}\in\mathbb{R}^{3},\alpha\in\mathbb{R}\}\subset\mathbb{R}^{4\times4}\label{eq:sim3}
 \end{equation}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524960343
+We can represent the pose change of the camera between two time instances
+ as a combination of orientation and translation by 
+\begin_inset Formula $SE(3)$
+\end_inset
+
+ as shown in the equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:se3"
+
+\end_inset
+
+.
+ We could also incorporate the scale change to 
+\begin_inset Formula $SE(3)$
+\end_inset
+
+ by using 
+\begin_inset Formula $Sim(3)$
+\end_inset
+
+ as shown in the equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sim3"
+
+\end_inset
+
+ 
 \change_unchanged
 
 \end_layout
@@ -4764,7 +4421,7 @@ represented by a
 \end_inset
 
  rotation matrix 
-\begin_inset Formula $R\in SO(3)$
+\begin_inset Formula $\mathbf{R}\in SO(3)$
 \end_inset
 
 , 
@@ -4774,7 +4431,7 @@ which must satisfy
  with
 \change_unchanged
  the constraint 
-\begin_inset Formula $R^{T}R=I$
+\begin_inset Formula $\mathbf{R}^{T}\mathbf{R}=\mathbf{I}$
 \end_inset
 
 , this
@@ -4907,7 +4564,7 @@ For rotation group
 \change_inserted 215191885 1516619360
 \begin_inset Formula 
 \[
-so(3)\doteq\left\{ \hat{\boldsymbol{\omega}}\in\mathbb{R}^{3\times3}\mid\boldsymbol{\omega}\in\mathbb{R}^{3}\right\} 
+so(3)\doteq\left\{ \hat{\boldsymbol{\mathbf{\omega}}}\in\mathbb{R}^{3\times3}\mid\boldsymbol{\mathbf{\omega}}\in\mathbb{R}^{3}\right\} 
 \]
 
 \end_inset
@@ -4948,7 +4605,7 @@ The map from the space
 \change_inserted 215191885 1516618685
 \begin_inset Formula 
 \[
-exp:so(3)\rightarrow SO(3);\hat{\boldsymbol{\omega}}\mapsto e^{\hat{\boldsymbol{\omega}}}
+exp:so(3)\rightarrow SO(3);\mathbf{\hat{\boldsymbol{\omega}}}\mapsto e^{\hat{\boldsymbol{\mathbf{R}}}}
 \]
 
 \end_inset
@@ -4961,7 +4618,7 @@ exp:so(3)\rightarrow SO(3);\hat{\boldsymbol{\omega}}\mapsto e^{\hat{\boldsymbol{
 \change_inserted 215191885 1516618599
 \begin_inset Formula 
 \begin{equation}
-R(t)=e^{\hat{\boldsymbol{\omega}}t}\label{exp map for so(3)}
+\mathbf{\mathbf{\hat{\mathbf{\boldsymbol{\omega}}}}}(t)=e^{\hat{\boldsymbol{\mathbf{R}}}t}\label{exp map for so(3)}
 \end{equation}
 
 \end_inset
@@ -4996,7 +4653,7 @@ reference "exp map for so(3)"
 \change_inserted 215191885 1516618286
 \begin_inset Formula 
 \begin{equation}
-log:SO(3)\rightarrow so(3);log(\boldsymbol{R})\mapsto\hat{\boldsymbol{\omega}}\label{eq:inv_SO}
+log:SO(3)\rightarrow so(3);log(\boldsymbol{\mathbf{R}})\mapsto\hat{\boldsymbol{\mathbf{\omega}}}\label{eq:inv_SO}
 \end{equation}
 
 \end_inset
@@ -5024,10 +4681,10 @@ We can extend this to full rigid body motion which also involves the translation
 \change_inserted 215191885 1516618391
 \begin_inset Formula 
 \[
-se(3)\doteq\left\{ \hat{\boldsymbol{\xi}}=\left[\begin{array}{cc}
-\hat{\boldsymbol{\omega}} & \boldsymbol{\upsilon}\\
+se(3)\doteq\left\{ \hat{\boldsymbol{\mathbf{\xi}}}=\left[\begin{array}{cc}
+\hat{\boldsymbol{\mathbf{\omega}}} & \boldsymbol{\mathbf{\upsilon}}\\
 0 & 0
-\end{array}\right]\mid\hat{\boldsymbol{\omega}}\in so(3),\boldsymbol{\upsilon}\in\mathbb{R}^{3}\right\} \subset\mathbb{R}^{4\times4}
+\end{array}\right]\mid\hat{\boldsymbol{\mathbf{\omega}}}\in so(3),\boldsymbol{\mathbf{\upsilon}}\in\mathbb{R}^{3}\right\} \subset\mathbb{R}^{4\times4}
 \]
 
 \end_inset
@@ -5039,7 +4696,7 @@ se(3)\doteq\left\{ \hat{\boldsymbol{\xi}}=\left[\begin{array}{cc}
 
 \change_inserted 215191885 1516618477
 with 
-\begin_inset Formula $\boldsymbol{\upsilon}(t)=\dot{T}(t)-\hat{\boldsymbol{\omega}}(t)T(t)\in\mathbb{R}^{3}$
+\begin_inset Formula $\boldsymbol{\mathbf{\upsilon}}(t)=\mathbf{\dot{T}}(t)-\hat{\mathbf{\boldsymbol{\omega}}}(t)\mathbf{T}(t)\in\mathbb{R}^{3}$
 \end_inset
 
 
@@ -5064,7 +4721,7 @@ is given by
 \change_inserted 215191885 1516618478
 \begin_inset Formula 
 \[
-exp:se(3)\rightarrow SE(3);\hat{\boldsymbol{\xi}}\mapsto e^{\hat{\boldsymbol{\xi}}}
+exp:se(3)\rightarrow SE(3);\hat{\boldsymbol{\mathbf{\mathbf{\xi}}}}\mapsto e^{\mathbf{\mathbf{Q}}}
 \]
 
 \end_inset
@@ -5087,15 +4744,31 @@ reference "eq:inv_SO"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1516639609
+\change_inserted 215191885 1524960541
 \begin_inset Formula 
 \[
-log:SE(3)\rightarrow se(3);log(g)\mapsto\hat{\xi}
+log:SE(3)\rightarrow se(3);log(\mathbf{Q})\mapsto\hat{\boldsymbol{\mathbf{\mathbf{\xi}}}}
 \]
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524960767
+With the exponential map and its inverse, we could easily change states
+ from Lie group to Lie algebra and visa-verse, which very essential to gain
+ the performance during the non-linear optimization of image alignment as
+ discussed in the section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Non-linear-Optimization"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -6470,15 +6143,15 @@ reference "fig:Epipolar-geometry"
 \end_inset
 
 , with a relative pose of 
-\begin_inset Formula $\xi=(\boldsymbol{R},\boldsymbol{T})$
+\begin_inset Formula $\mathbf{\mathbf{\xi}}=(\boldsymbol{\mathbf{R}},\boldsymbol{\mathbf{T}})$
 \end_inset
 
 , where 
-\begin_inset Formula $\boldsymbol{R}\in SO(3)$
+\begin_inset Formula $\boldsymbol{\mathbf{R}}\in SO(3)$
 \end_inset
 
  is the relative orientation and 
-\begin_inset Formula $\boldsymbol{T}\in\mathbb{R}^{3}$
+\begin_inset Formula $\boldsymbol{\mathbf{T}}\in\mathbb{R}^{3}$
 \end_inset
 
  is translation, are capturing two dimensional images of the same three
@@ -6513,7 +6186,7 @@ reference "fig:Epipolar-geometry"
 \end_inset
 
  and the three dimensional point 
-\begin_inset Formula $p$
+\begin_inset Formula $\mathbf{P}$
 \end_inset
 
  is in the same plane, called an epiploar plane.
@@ -6551,17 +6224,27 @@ I
 i
 \change_unchanged
 f 
-\begin_inset Formula $X_{1},X_{2}\in\mathbb{R}^{3}$
+\begin_inset Formula $\mathbf{P}_{1},\mathbf{P}_{2}\in\mathbb{R}^{3}$
 \end_inset
 
- are the 3-D coordinates of a point p relative to the two camera frames,
- by the rigid-body transformation we have
+ are the 3-D coordinates of a point 
+\change_deleted 215191885 1524775133
+p
+\change_inserted 215191885 1524775137
+
+\begin_inset Formula $\mathbf{P}$
+\end_inset
+
+
+\change_unchanged
+ relative to the two camera frames, by the rigid-body transformation we
+ have
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\boldsymbol{X}_{2}=\boldsymbol{R}\boldsymbol{X}_{1}+\boldsymbol{T}
+\boldsymbol{\mathbf{P}}_{2}=\boldsymbol{\mathbf{R}}\mathbf{P}_{1}+\boldsymbol{\mathbf{T}}
 \]
 
 \end_inset
@@ -6571,20 +6254,29 @@ Now,
  
 \change_unchanged
 let 
-\begin_inset Formula $x_{1},x_{2}\in\mathbb{R}^{3}$
+\begin_inset Formula $\mathbf{x}_{1},\mathbf{x}_{2}\in\mathbb{R}^{3}$
 \end_inset
 
 
 \change_inserted 215191885 1524238533
  
 \change_unchanged
-be the homogeneous coordinates of the projection of the same point p in
- the two image planes with respective unknown scales of 
-\begin_inset Formula $s_{1}$
+be the homogeneous coordinates of the projection of the same point 
+\change_deleted 215191885 1524775204
+p
+\change_inserted 215191885 1524775204
+
+\begin_inset Formula $\mathbf{P}$
+\end_inset
+
+
+\change_unchanged
+ in the two image planes with respective unknown scales of 
+\begin_inset Formula $\alpha_{1}$
 \end_inset
 
 and 
-\begin_inset Formula $s_{2}$
+\begin_inset Formula $\alpha_{2}$
 \end_inset
 
 .
@@ -6593,7 +6285,7 @@ and
 \begin_layout Standard
 \begin_inset Formula 
 \[
-s_{2}\boldsymbol{x}_{2}=\boldsymbol{R}s_{1}\boldsymbol{x}_{1}+\boldsymbol{T}
+\alpha_{2}\mathbf{\boldsymbol{x}}_{2}=\boldsymbol{\mathbf{R}}\alpha\mathbf{\boldsymbol{x}}_{1}+\boldsymbol{\mathbf{T}}
 \]
 
 \end_inset
@@ -6624,7 +6316,7 @@ multiplying both the side by
 \begin_layout Standard
 \begin_inset Formula 
 \[
-s_{2}\boldsymbol{\hat{T}}\boldsymbol{x}_{2}=\hat{\boldsymbol{T}}\boldsymbol{R}s_{1}\boldsymbol{x}_{1}
+\alpha_{2}\boldsymbol{\mathbf{\hat{T}}}\mathbf{\boldsymbol{x}}_{2}=\hat{\mathbf{T}}\boldsymbol{\mathbf{R}}\alpha_{1}\mathbf{\boldsymbol{x}_{1}}
 \]
 
 \end_inset
@@ -6647,7 +6339,7 @@ multiplying both the side by
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-0=\boldsymbol{x}_{2}^{T}\boldsymbol{\hat{T}}\boldsymbol{R}s_{1}\boldsymbol{x}_{1}\label{eq:epipolar constraint}
+0=\boldsymbol{\mathbf{x}}_{2}^{T}\boldsymbol{\mathbf{\hat{T}}}\boldsymbol{\mathbf{R}}\alpha\mathbf{\boldsymbol{x}}_{1}\label{eq:epipolar constraint}
 \end{equation}
 
 \end_inset
@@ -6668,7 +6360,7 @@ with
 \change_inserted 215191885 1523630322
 \begin_inset Formula 
 \begin{equation}
-\boldsymbol{E}=\hat{\boldsymbol{T}}\boldsymbol{R}\label{eq:essnetial matrix}
+\boldsymbol{\mathbf{E}}=\hat{\mathbf{T}}\mathbf{R}\label{eq:essnetial matrix}
 \end{equation}
 
 \end_inset
@@ -6759,7 +6451,7 @@ reference "eq:epipolar constraint"
 
 \change_unchanged
  is the epipolar constraint and the matrix 
-\begin_inset Formula $\boldsymbol{E}=\hat{\boldsymbol{T}}\boldsymbol{R}$
+\begin_inset Formula $\boldsymbol{\mathbf{E}}=\hat{\mathbf{T}}\mathbf{R}$
 \end_inset
 
  is called the essential matrix.
@@ -7086,7 +6778,7 @@ reference "fig:Disparity-Computation"
 \end_inset
 
  and 
-\begin_inset Formula $P=(x_{p},y_{p},z_{p})$
+\begin_inset Formula $\mathbf{P}=(X,Y,Z)$
 \end_inset
 
  be the 3D location of object, from the epiploar constraint 
@@ -7105,7 +6797,7 @@ reference "fig:Disparity-Computation"
 \end_inset
 
  Since the focal length 
-\begin_inset Formula $f$
+\begin_inset Formula $f_{x}$
 \end_inset
 
  of the camera and baseline 
@@ -7117,7 +6809,7 @@ reference "fig:Disparity-Computation"
 \end_inset
 
 , and consequently the inverse depth of object 
-\begin_inset Formula $invdepth$
+\begin_inset Formula $invZ$
 \end_inset
 
  with properties of similarity triangles as following
@@ -7128,7 +6820,7 @@ reference "fig:Disparity-Computation"
 \change_inserted 215191885 1521739289
 \begin_inset Formula 
 \[
-\lambda=x_{L}-x_{R}=f\left(\frac{x_{p}+l}{z_{p}}-\frac{x_{p}-l}{z_{p}}\right)
+\lambda=x_{L}-x_{R}=f\left(\frac{X+l}{Z}-\frac{X-l}{Z}\right)
 \]
 
 \end_inset
@@ -7141,7 +6833,7 @@ reference "fig:Disparity-Computation"
 \change_inserted 215191885 1524162208
 \begin_inset Formula 
 \[
-\lambda=\frac{2fl}{z_{p}}
+\lambda=\frac{2lf_{x}}{Z}
 \]
 
 \end_inset
@@ -7154,7 +6846,7 @@ reference "fig:Disparity-Computation"
 \change_inserted 215191885 1524162278
 \begin_inset Formula 
 \[
-\frac{1}{z_{p}}=\frac{\lambda}{fB}
+\frac{1}{Z}=\frac{\lambda}{fB}
 \]
 
 \end_inset
@@ -7167,7 +6859,7 @@ reference "fig:Disparity-Computation"
 \change_inserted 215191885 1524162320
 \begin_inset Formula 
 \begin{equation}
-invdepth=\frac{\lambda}{fB}\label{eq:inverse_depth}
+invZ=\frac{\lambda}{fB}\label{eq:inverse_depth}
 \end{equation}
 
 \end_inset
@@ -7180,7 +6872,7 @@ invdepth=\frac{\lambda}{fB}\label{eq:inverse_depth}
 \change_inserted 215191885 1524162331
 \begin_inset Formula 
 \begin{equation}
-invdepth\propto disparity\label{eq:relation_invDep_and_diparity}
+invZ\propto disparity\label{eq:relation_invDep_and_diparity}
 \end{equation}
 
 \end_inset
@@ -7311,7 +7003,7 @@ ly, if
 \change_inserted 215191885 1524176062
 \begin_inset Formula 
 \begin{equation}
-\sigma_{\lambda(\xi,\pi)}^{2}=\frac{\sigma_{l}^{2}}{\left\langle g,l\right\rangle ^{2}}\label{eq:geo_error_var}
+\sigma_{\lambda(\xi,\pi)}^{2}=\frac{\sigma_{l}^{2}}{dot(g,l)^{2}}\label{eq:geo_error_var}
 \end{equation}
 
 \end_inset
@@ -7321,7 +7013,7 @@ ly, if
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524201147
+\change_inserted 215191885 1524775673
 It is evident in the equation 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -7329,8 +7021,17 @@ reference "eq:geo_error_var"
 
 \end_inset
 
- that the direction of the image gradient and epipolar line defines this
- error, and this originates from the noise in camera orientation 
+ that the direction of the image gradient and epipolar line, measured by
+ the square of the dot product between 
+\begin_inset Formula $g$
+\end_inset
+
+ and 
+\begin_inset Formula $l$
+\end_inset
+
+, defines this error.This error originates from the noise in camera orientation
+ 
 \begin_inset Formula $\xi$
 \end_inset
 
@@ -7392,8 +7093,8 @@ reference "eq:intensity_var_var"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524179685
-With equation 
+\change_inserted 215191885 1524967724
+With the variance from equation 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:geo_error_var"
@@ -7407,15 +7108,18 @@ reference "eq:intensity_var_var"
 
 \end_inset
 
- the total the observation variance of the inverse depth estimated using
- equation 
+, the total variance of the observed inverse depth 
+\begin_inset Formula $invZ$
+\end_inset
+
+, estimated using equation 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:inverse_depth"
 
 \end_inset
 
- is
+, is
 \end_layout
 
 \begin_layout Standard
@@ -7423,7 +7127,7 @@ reference "eq:inverse_depth"
 \change_inserted 215191885 1524179792
 \begin_inset Formula 
 \begin{equation}
-\sigma_{d,obs}^{2}=\alpha^{2}(\sigma_{\lambda(\xi,\pi)}^{2}+\sigma_{\lambda(I)}^{2})\label{eq:depth_observation_var}
+\sigma_{invZ,obs}^{2}=\alpha^{2}(\sigma_{\lambda(\xi,\pi)}^{2}+\sigma_{\lambda(I)}^{2})\label{eq:depth_observation_var}
 \end{equation}
 
 \end_inset
@@ -7447,7 +7151,7 @@ where
 \change_inserted 215191885 1524179902
 \begin_inset Formula 
 \[
-\alpha=\frac{\delta_{d}}{\delta_{\lambda}}
+\alpha=\frac{\delta_{invZ}}{\delta_{\lambda}}
 \]
 
 \end_inset
@@ -7471,22 +7175,30 @@ where
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524180580
-For a given pixel, the constructed depth from equation 
+\change_inserted 215191885 1524967567
+For a given pixel, the depth observed 
+\begin_inset Formula $Z_{obs}$
+\end_inset
+
+ is computed as the inverse of the equation 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:inverse_depth"
 
 \end_inset
 
- is represented as Gaussian distribution with the variance 
+, and its variance 
+\begin_inset Formula $\sigma_{Z,obs}^{2}$
+\end_inset
+
+ is same as the equation 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:depth_observation_var"
 
 \end_inset
 
- as
+ , which can be represented as Gaussian distribution 
 \end_layout
 
 \begin_layout Standard
@@ -7494,7 +7206,7 @@ reference "eq:depth_observation_var"
 \change_inserted 215191885 1524180298
 \begin_inset Formula 
 \begin{equation}
-\mathcal{N}(d_{obs},\sigma_{d,obs}^{2})\label{eq:gassuain_stereo_depth}
+\mathcal{N}(Z_{obs},\sigma_{Z,obs}^{2})\label{eq:gassuain_stereo_depth}
 \end{equation}
 
 \end_inset
@@ -7525,12 +7237,12 @@ The depths estimated for every pair of images are propagated and can be
  the earlier frame is propagated and is assigned to closet integer pixel
  position.
  If 
-\begin_inset Formula $d_{0}$
+\begin_inset Formula $invZ_{0}$
 \end_inset
 
  is the inverse depth for a pixel from the previous frame, and the inverse
  depth 
-\begin_inset Formula $d_{1}$
+\begin_inset Formula $invZ_{1}$
 \end_inset
 
  at the same pixel for the current frame with the camera translation of
@@ -7546,7 +7258,7 @@ The depths estimated for every pair of images are propagated and can be
 \change_inserted 215191885 1523637725
 \begin_inset Formula 
 \[
-d_{1}(d_{0})=(d_{0}^{-1}-t_{z})^{-1}
+invZ_{1}(invZ_{0})=(invZ_{0}^{-1}-t_{z})^{-1}
 \]
 
 \end_inset
@@ -7558,7 +7270,7 @@ d_{1}(d_{0})=(d_{0}^{-1}-t_{z})^{-1}
 
 \change_inserted 215191885 1523637857
 and its variance 
-\begin_inset Formula $\sigma_{d_{1}}^{2}$
+\begin_inset Formula $\sigma_{invZ_{1}}^{2}$
 \end_inset
 
  is given by 
@@ -7569,7 +7281,7 @@ and its variance
 \change_inserted 215191885 1523637862
 \begin_inset Formula 
 \[
-\sigma_{d_{1}}^{2}=\left(\frac{d_{1}}{d_{0}}\right)^{4}\sigma_{d_{0}}^{2}+\sigma_{p}^{2}
+\sigma_{d_{1}}^{2}=\left(\frac{invZ_{1}}{invZ_{0}}\right)^{4}\sigma_{invZ_{0}}^{2}+\sigma_{invZ_{p}}^{2}
 \]
 
 \end_inset
@@ -7579,13 +7291,13 @@ and its variance
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524242419
+\change_inserted 215191885 1524960856
 where, 
-\begin_inset Formula $\sigma_{d_{0}}^{2}$
+\begin_inset Formula $\sigma_{invZ_{0}}^{2}$
 \end_inset
 
  is the variance of inverse depth from previous frame and 
-\begin_inset Formula $\sigma_{d_{p}}^{2}$
+\begin_inset Formula $\sigma_{invZ_{p}}^{2}$
 \end_inset
 
  is the inverse depth prediction uncertainty.
@@ -7597,22 +7309,21 @@ key "Welch:1995:IKF:897831"
 \end_inset
 
  , where 
-\begin_inset Formula $\sigma_{d_{p}}^{2}$
+\begin_inset Formula $\sigma_{invZ_{p}}^{2}$
 \end_inset
 
  corresponds to variance from to the prediction step and 
-\begin_inset Formula $\sigma_{d_{0}}^{2}$
+\begin_inset Formula $\sigma_{invZ_{0}}^{2}$
 \end_inset
 
  corresponds to the variance from the measurement step.
  Finally, the new observation of inverse depth is incorporated into the
- prior, by multiplying two distributions, for better standard deviation.
- i.e., if 
-\begin_inset Formula $\mathcal{N}(d_{p},\sigma_{p}^{2})$
+ prior, by multiplying two distributions i.e., if 
+\begin_inset Formula $\mathcal{N}(invZ_{p},\sigma_{invZ_{p}}^{2})$
 \end_inset
 
  is the prior distribution and the 
-\begin_inset Formula $\mathcal{N}(d_{o},\sigma_{o}^{2})$
+\begin_inset Formula $\mathcal{N}(invZ_{0},\sigma_{invZ_{0}}^{2})$
 \end_inset
 
  is the noise observation, the posterior inverse depth is 
@@ -7620,15 +7331,23 @@ key "Welch:1995:IKF:897831"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523671854
+\change_inserted 215191885 1524960864
 \begin_inset Formula 
 \[
-\mathcal{N}(\frac{\sigma_{p}^{2}d_{o}+\sigma_{o}^{2}d_{p}}{\sigma_{p}^{2}+\sigma_{o}^{2}},\frac{\sigma_{p}^{2}\sigma_{o}^{2}}{\sigma_{p}^{2}+\sigma_{o}^{2}})
+\mathcal{N}(\frac{\sigma_{invZ_{p}}^{2}invZ_{0}+\sigma_{invZ_{0}}^{2}invZ_{p}}{\sigma_{invZ_{p}}^{2}+\sigma_{invZ_{0}}^{2}},\frac{\sigma_{invZ_{p}}^{2}\sigma_{invZ_{0}}^{2}}{\sigma_{invZ_{p}}^{2}+\sigma_{invZ_{0}}^{2}})
 \]
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524968155
+The posterior inverse depth will have a better standard deviation then the
+ observed inverse depth, and propagated to next frame as an prior.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -8220,7 +7939,7 @@ are localization errors
  
 \change_unchanged
 Therefore, we need a way to optimize the parameters 
-\begin_inset Formula $(x,R,T)$
+\begin_inset Formula $(x,\mathbf{R},\mathbf{T})$
 \end_inset
 
  that minimize this errors.
@@ -8249,7 +7968,7 @@ consider
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\phi(x,\boldsymbol{R},\boldsymbol{T},c)=\stackrel[j=1]{n}{\sum}\left\Vert \omega_{1}^{j}\right\Vert +\left\Vert \omega_{2}^{j}\right\Vert ^{2}=\stackrel[j=1]{n}{\sum}\left\Vert \widetilde{x}_{1}^{j}-x_{1}^{j}\right\Vert ^{2}+\left\Vert \widetilde{x}_{2}^{j}-\pi(\boldsymbol{R}c^{j}x_{1}^{j}+\boldsymbol{T})\right\Vert ^{2}\label{eq:residual}
+\phi(x,\boldsymbol{\mathbf{R}},\mathbf{T},\alpha)=\stackrel[j=1]{n}{\sum}\left\Vert \omega_{1}^{j}\right\Vert +\left\Vert \omega_{2}^{j}\right\Vert ^{2}=\stackrel[j=1]{n}{\sum}\left\Vert \widetilde{x}_{1}^{j}-x_{1}^{j}\right\Vert ^{2}+\left\Vert \widetilde{x}_{2}^{j}-\pi(\boldsymbol{\mathbf{R}}\alpha^{j}x_{1}^{j}+\boldsymbol{\mathbf{T}})\right\Vert ^{2}\label{eq:residual}
 \end{equation}
 
 \end_inset
@@ -8401,7 +8120,7 @@ One of the simplest ways to minimize this squared error is the gradient
 \change_inserted 215191885 1521910909
 \begin_inset Formula 
 \begin{equation}
-x_{t+1}=x_{t}-\alpha\boldsymbol{g}\label{eq:gradiant_decent}
+x_{t+1}=x_{t}-\alpha\boldsymbol{\mathbf{g}}\label{eq:gradiant_decent}
 \end{equation}
 
 \end_inset
@@ -8424,7 +8143,7 @@ with step size
 \change_inserted 215191885 1521910909
 \begin_inset Formula 
 \begin{equation}
-\boldsymbol{g}_{j}=2\underset{i}{\sum}r_{i}\frac{\partial r_{i}}{\partial x_{i}}\label{eq:gradiant}
+\mathbf{g}_{j}=2\underset{i}{\sum}r_{i}\frac{\partial r_{i}}{\partial x_{i}}\label{eq:gradiant}
 \end{equation}
 
 \end_inset
@@ -8554,7 +8273,7 @@ approximate the Taylor approximation of residual function
 \change_inserted 215191885 1524109780
 \begin_inset Formula 
 \begin{equation}
-r(x)\simeq r(x_{t})+\boldsymbol{g}^{T}(x-x_{t})+\frac{1}{2}(x-x_{t})^{T}\boldsymbol{H}(x-x_{t})\label{eq:Tylor_approximation_of_resduial}
+r(x)\simeq r(x_{t})+\boldsymbol{\mathbf{g}}^{T}(x-x_{t})+\frac{1}{2}(x-x_{t})^{T}\boldsymbol{\mathbf{H}}(x-x_{t})\label{eq:Tylor_approximation_of_resduial}
 \end{equation}
 
 \end_inset
@@ -8629,7 +8348,7 @@ reference "eq:gradiant"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\boldsymbol{H}_{jk}=2\underset{i}{\sum}r_{i}(\frac{\partial r_{i}}{\partial x_{j}}\frac{\partial r_{i}}{\partial x_{k}}+r_{i}\frac{\partial^{2}r_{i}}{\partial x_{i}\partial x_{k}})\label{eq:full hassain}
+\mathbf{\mathbf{H}_{jk}}=2\underset{i}{\sum}r_{i}(\frac{\partial r_{i}}{\partial x_{j}}\frac{\partial r_{i}}{\partial x_{k}}+r_{i}\frac{\partial^{2}r_{i}}{\partial x_{i}\partial x_{k}})\label{eq:full hassain}
 \end{equation}
 
 \end_inset
@@ -8671,7 +8390,7 @@ as :
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\boldsymbol{H}_{jk}=2\underset{i}{\sum}\boldsymbol{J}_{ij}\boldsymbol{J}_{ik}\label{eq:hassian_from_jacobian}
+\mathbf{H}_{jk}=2\underset{i}{\sum}\boldsymbol{\mathbf{J}}_{ij}\boldsymbol{\mathbf{J}}_{ik}\label{eq:hassian_from_jacobian}
 \end{equation}
 
 \end_inset
@@ -8683,7 +8402,7 @@ as :
 with
 \begin_inset Formula 
 \begin{equation}
-\boldsymbol{J}_{ij}=\frac{\partial r_{i}}{\partial x_{j}}\label{eq:jacobian}
+\boldsymbol{\mathbf{J}}_{ij}=\frac{\partial r_{i}}{\partial x_{j}}\label{eq:jacobian}
 \end{equation}
 
 \end_inset
@@ -8711,7 +8430,7 @@ reference "eq:Tylor_approximation_of_resduial"
 \change_inserted 215191885 1524187930
 \begin_inset Formula 
 \begin{equation}
-\frac{\partial r}{\partial x}=\boldsymbol{g}+\boldsymbol{H}(x-x_{t})=0\label{eq:gauss_new_intermediate}
+\frac{\partial r}{\partial x}=\boldsymbol{\mathbf{g}}+\boldsymbol{\mathbf{H}}(x-x_{t})=0\label{eq:gauss_new_intermediate}
 \end{equation}
 
 \end_inset
@@ -8744,7 +8463,7 @@ reference "eq:jacobian"
 \change_inserted 215191885 1524188184
 \begin_inset Formula 
 \begin{equation}
-\boldsymbol{g}=2\boldsymbol{J}^{T}r\label{eq:gradian_jacobian}
+\boldsymbol{\mathbf{g}}=2\mathbf{J}^{T}r\label{eq:gradian_jacobian}
 \end{equation}
 
 \end_inset
@@ -8784,7 +8503,7 @@ reference "eq:gauss_new_intermediate"
 \change_inserted 215191885 1524188310
 \begin_inset Formula 
 \[
-2\boldsymbol{J}^{T}r+\boldsymbol{J}^{T}\boldsymbol{J}(x-x_{t})=0
+2\mathbf{J}^{T}r+\boldsymbol{\mathbf{J}}^{T}\mathbf{J}(x-x_{t})=0
 \]
 
 \end_inset
@@ -8807,7 +8526,7 @@ and
 \change_inserted 215191885 1524110915
 \begin_inset Formula 
 \begin{equation}
-x_{t+1}=x_{t}-(\boldsymbol{J}^{T}\boldsymbol{J})^{-1}\boldsymbol{J}^{T}r\label{eq:guass_newton}
+x_{t+1}=x_{t}-(\boldsymbol{\mathbf{J}}^{T}\boldsymbol{\mathbf{J}})^{-1}\mathbf{J}^{T}r\label{eq:guass_newton}
 \end{equation}
 
 \end_inset
@@ -8817,7 +8536,7 @@ x_{t+1}=x_{t}-(\boldsymbol{J}^{T}\boldsymbol{J})^{-1}\boldsymbol{J}^{T}r\label{e
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524112053
+\change_inserted 215191885 1524963044
 Gauss-Newton starts with the initial guess for 
 \begin_inset Formula $x_{t}$
 \end_inset
@@ -8826,11 +8545,11 @@ and it iteratively sloves for
 \begin_inset Formula $x_{t+1}$
 \end_inset
 
- untill the minimum is approached,  and this method does not need the computatio
-n of second derivatives (Hessian matrix) of the of function, which is often
- expensive and sometimes not possible to compute, instead the Hessian is
- approximated with the Jacobian matrix of the function as show in equaition
- 
+ untill the minimum is approached.
+ This method does not need the computation of second derivatives (Hessian
+ matrix) of the of function, which is often expensive and sometimes not
+ possible to compute, instead the Hessian is approximated with the Jacobian
+ matrix of the function as show in equaition 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:hassian_from_jacobian"
@@ -8871,7 +8590,7 @@ algorithm,
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-x_{t+1}=x_{t}-((\boldsymbol{J}^{T}\boldsymbol{J})+\rho\boldsymbol{I})^{-1}\boldsymbol{J}^{T}r\label{eq:lvm}
+x_{t+1}=x_{t}-((\boldsymbol{\mathbf{J}}^{T}\mathbf{\mathbf{J}})+\rho\boldsymbol{\mathbf{I}})^{-1}\mathbf{\mathbf{J}}^{T}r\label{eq:lvm}
 \end{equation}
 
 \end_inset
@@ -8921,7 +8640,7 @@ reference "eq:guass_newton"
 ,
 \change_unchanged
  
-\change_inserted 215191885 1524114660
+\change_inserted 215191885 1524953301
 and for the large value of 
 \begin_inset Formula $\rho$
 \end_inset
@@ -8934,7 +8653,7 @@ reference "eq:lvm"
 \end_inset
 
  dominates the Hessian matrix 
-\begin_inset Formula $H$
+\begin_inset Formula $\mathbf{H}$
 \end_inset
 
  and the equation behaves as a gradient decent, similar to equation 
@@ -8984,12 +8703,12 @@ for
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524746946
+\change_inserted 215191885 1524953323
 Further, Marquardt suggested that the convergence can be achieved quicker
  if there is larger movement along the directions where the gradient is
  smaller.
  To achieve this he replaced the identity matrix 
-\begin_inset Formula $I$
+\begin_inset Formula $\mathbf{I}$
 \end_inset
 
  in the equation 
@@ -9000,7 +8719,7 @@ reference "eq:lvm"
 \end_inset
 
  with diagonal values of 
-\begin_inset Formula $J^{T}J$
+\begin_inset Formula $\mathbf{J}^{T}\mathbf{J}$
 \end_inset
 
 , with the intuition of scaling each component of the gradient according
@@ -9010,14 +8729,34 @@ reference "eq:lvm"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524750164
+\change_inserted 215191885 1524962560
 \begin_inset Formula 
-\[
-x_{t+1}=x_{t}-((\boldsymbol{J}^{T}\boldsymbol{J})+\rho(diag(\boldsymbol{J}^{T}\boldsymbol{J})))^{-1}\boldsymbol{J}^{T}r
-\]
+\begin{equation}
+x_{t+1}=x_{t}-((\boldsymbol{\mathbf{J}}^{T}\mathbf{J})+\rho(diag(\mathbf{J}^{T}\boldsymbol{\mathbf{J}})))^{-1}\mathbf{\mathbf{J}}^{T}r\label{eq:lvm_2}
+\end{equation}
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524963735
+The Gauss-Newton and Levenberg-Marquardt are the second order approximation
+ methods, used to find the parameters which produces the minimal residual,
+ equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:simple_residual"
+
+\end_inset
+
+.
+ Unlike the gradient decent method, which is a first order approximation,
+ these methods are faster and does not end up with the local minimum.
+ 
+\change_unchanged
 
 \end_layout
 
@@ -9132,7 +8871,7 @@ direct
 \change_inserted 215191885 1524196388
 \begin_inset Formula 
 \begin{equation}
-E(\xi)=\underset{i}{\sum}(I_{ref}(p_{i})-I(\pi(p_{i},D_{ref}(p_{i}),\boldsymbol{\xi})))^{2}\label{eq:Photomatric Error}
+E(\xi)=\underset{i}{\sum}(\mathbf{I}_{ref}(\mathbf{p}_{i})-\mathbf{I}(\pi(\mathbf{p}_{i},D_{ref}(p_{i}),\boldsymbol{\xi})))^{2}\label{eq:Photomatric Error}
 \end{equation}
 
 \end_inset
@@ -9232,8 +8971,8 @@ reference "eq:Photomatric Error"
 \change_inserted 215191885 1524199415
 \begin_inset Formula 
 \begin{equation}
-J=\frac{1}{z^{\prime}}\left(\begin{array}{cc}
-\nabla I_{x}f_{x} & \nabla I_{y}f_{y}\end{array}\right)\left(\begin{array}{cccccc}
+\mathbf{J}=\frac{1}{z^{\prime}}\left(\begin{array}{cc}
+\nabla\mathbf{I}_{x}f_{x} & \nabla\mathbf{I}_{y}f_{y}\end{array}\right)\left(\begin{array}{cccccc}
 1 & 0 & -\frac{x^{\prime}}{z^{\prime}} & -\frac{x^{\prime}y^{\prime}}{z^{\prime}} & (z^{\prime}+\frac{x^{\prime2}}{z^{\prime}}) & -y^{\prime}\\
 0 & 1 & -\frac{y^{\prime}}{z^{\prime}} & -(z^{\prime}+\frac{y^{\prime2}}{z^{\prime}}) & -\frac{x^{\prime}y^{\prime}}{z^{\prime}} & x^{\prime}
 \end{array}\right)\label{eq:jacobian_of_photomatric_error}
@@ -9272,11 +9011,11 @@ and
 x^{\prime}\\
 y^{\prime}\\
 z^{\prime}
-\end{array}\right)=\boldsymbol{R}_{\xi}\boldsymbol{K}^{-1}\left(\begin{array}{c}
+\end{array}\right)=\boldsymbol{\mathbf{R}}_{\xi}\boldsymbol{\mathbf{K}}^{-1}\left(\begin{array}{c}
 x\\
 y\\
-d
-\end{array}\right)+\boldsymbol{T}_{\xi}
+\hat{z}
+\end{array}\right)+\boldsymbol{\mathbf{T}}_{\xi}
 \]
 
 \end_inset
@@ -9288,7 +9027,7 @@ d
 
 \change_inserted 215191885 1524200063
 here, 
-\begin_inset Formula $d$
+\begin_inset Formula $\hat{z}$
 \end_inset
 
  is the reference depth at the pixel 
@@ -9310,11 +9049,11 @@ here,
 
  is the intrinsic matrix of the camera.
  
-\begin_inset Formula $\nabla I_{x}$
+\begin_inset Formula $\nabla\mathbf{I}_{x}$
 \end_inset
 
  and 
-\begin_inset Formula $\nabla I_{y}$
+\begin_inset Formula $\nabla\mathbf{I}_{y}$
 \end_inset
 
  are the image gradients.
@@ -9808,7 +9547,7 @@ re-projection.
 \end_inset
 
  For discussion, assume that depth image 
-\begin_inset Formula $\mathbf{d}(x,y)$
+\begin_inset Formula $z(x,y)$
 \end_inset
 
  has been recorded in the 
@@ -9848,7 +9587,7 @@ Let
  coordinate system to align with the same axes of a second camera having
  arbitrary pose.
  Similarly, Let 
-\begin_inset Formula $\mathbf{t}$
+\begin_inset Formula $\mathbf{T}$
 \end_inset
 
  denote the 3D translation vector describing the position of the focal point
@@ -9861,7 +9600,7 @@ Let
 
 \change_inserted 215191885 1521070779
 Back-project 
-\begin_inset Formula $\mathbf{d}(x,y)$
+\begin_inset Formula $z(x,y)$
 \end_inset
 
  to create an 
@@ -9888,13 +9627,13 @@ reference "subsec:Point-Cloud-Reconstruction"
 
 \begin_layout Enumerate
 
-\change_inserted 215191885 1522689207
+\change_inserted 215191885 1524848139
 Transform, i.e., rotate, translate and scale, each point 
-\begin_inset Formula $\mathbf{p}_{i}=[X,Y,Z]^{t}$
+\begin_inset Formula $\mathbf{P}_{i}=[X,Y,Z]^{t}$
 \end_inset
 
  in the point cloud to generate a new point 
-\begin_inset Formula $\mathbf{p}_{i}^{'}=[X^{'},Y^{'},Z^{'}]^{t}$
+\begin_inset Formula $\mathbf{P}_{i}^{'}=[X^{'},Y^{'},Z^{'}]^{t}$
 \end_inset
 
  that lies in a standard optical coordinate system centered on the second
@@ -9913,7 +9652,7 @@ reference "eq:coordinate_system_change"
 ),
 \begin_inset Formula 
 \begin{equation}
-\mathbf{p}_{i}^{'}=\mathbf{R}*s*(\mathbf{p}_{i}-\mathbf{t})\label{eq:coordinate_system_change}
+\mathbf{P}_{i}^{'}=\mathbf{R}*\alpha*(\mathbf{P}_{i}-\mathbf{T})\label{eq:coordinate_system_change}
 \end{equation}
 
 \end_inset
@@ -9930,7 +9669,7 @@ Re-project the
 
  point cloud using the pinhole camera equations to compute the new depth
  image 
-\begin_inset Formula $\mathbf{d}^{'}(x,y)=Z$
+\begin_inset Formula $z^{'}(x,y)=Z$
 \end_inset
 
  using equation (
@@ -9965,7 +9704,7 @@ Z & = & Z^{'}
 \change_inserted 215191885 1521070779
 Typically, the re-projected point cloud measurements fall at non-integer
  locations in the new depth image and the values of 
-\begin_inset Formula $\mathbf{d}^{'}(x,y)$
+\begin_inset Formula $z^{'}(x,y)$
 \end_inset
 
  must then be interpolated via bilinear interpolation or some other interpolatio
@@ -10273,7 +10012,7 @@ Fusing depth measurements requires knowledge of the correspondence between
  For SfM keyframes this correspondence is trivial due to the fact that RGBD
  sensors support hardware registration.
  Hardware registration co-locates the RGBD depth image measurements, 
-\begin_inset Formula $\mathbf{d}_{rgbd}(x,y)$
+\begin_inset Formula $Z_{rgbd}(x,y)$
 \end_inset
 
 , and RGB appearance values, 
@@ -10282,7 +10021,7 @@ Fusing depth measurements requires knowledge of the correspondence between
 
 .
  Hence, for hardware-registered RGBD depth images, 
-\begin_inset Formula $\mathbf{d}_{rgbd}(x,y)$
+\begin_inset Formula $Z_{rgbd}(x,y)$
 \end_inset
 
  is the measured depth of the surface having RGB pixel 
@@ -10291,7 +10030,7 @@ Fusing depth measurements requires knowledge of the correspondence between
 
 .
  Similarly, SfM-estimated depths for an RGB keyframe, 
-\begin_inset Formula $\mu d_{SfM}(x,y)$
+\begin_inset Formula $\mu Z_{obs}(x,y)$
 \end_inset
 
 , are the depths for the surface having RGB pixel 
@@ -10305,11 +10044,11 @@ Fusing depth measurements requires knowledge of the correspondence between
 \end_inset
 
  locations in the RGBD depth image, 
-\begin_inset Formula $\mathbf{d}_{rgbd}(x,y)$
+\begin_inset Formula $Z_{rgbd}(x,y)$
 \end_inset
 
 , and the SfM depth image, 
-\begin_inset Formula $\mu\mathbf{d}_{SfM}(x,y)$
+\begin_inset Formula $\mu Z_{obs}(x,y)$
 \end_inset
 
 .
@@ -10323,7 +10062,7 @@ Depth correspondences for RGB images that are not SfM keyframes must be
  This article uses the most recent, i.e., closest-in-time, keyframe to generate
  co-registered SfM depth images for arbitrary RGB images.
  To do so, the depth image from the most recent keyframe, 
-\begin_inset Formula $\mathbf{d}_{SfM}(x,y)$
+\begin_inset Formula $Z_{obs}(x,y)$
 \end_inset
 
 , is 
@@ -10339,11 +10078,11 @@ back-projected
  are then re-projected into the RGB camera image plane using the 3D projection
  equations for the camera provided via camera calibration.
  The resulting depth image, 
-\begin_inset Formula $\widetilde{\mathbf{d}}_{SfM}(x,y)$
+\begin_inset Formula $\widetilde{Z}_{obs}(x,y)$
 \end_inset
 
  is then co-registered with the RGBD depth image 
-\begin_inset Formula $\mathbf{d}_{rgbd}(x,y)$
+\begin_inset Formula $Z_{rgbd}(x,y)$
 \end_inset
 
  and RGB image 
@@ -10355,7 +10094,7 @@ back-projected
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523721651
+\change_inserted 215191885 1524968188
 However, due to the noise in depth computation and consequent trajectory
  estimation, the depth registration is not always exact, this should be
  addressed as early as possible to avoid the drift in their computations.
@@ -10379,12 +10118,13 @@ key "Umeyama:1991:LET:105514.105525"
  In his work, Umeyama shows how to estimates the rotation, translation and
  scale between two point clouds with known correspondence.
  In order to avoid errors, we use only the valid depths in both the point
- cloud for estimation.By using 
+ cloud for estimation.
+ By using 
 \begin_inset Formula $\mathbf{pc}_{rgbd}$
 \end_inset
 
 and 
-\begin_inset Formula $\mathbf{pc}_{SfM}$
+\begin_inset Formula $\mathbf{pc}_{obs}$
 \end_inset
 
 to represent the valid point clouds of sensor measurements and LSD estimation
@@ -10412,7 +10152,7 @@ to represent the valid point clouds of sensor measurements and LSD estimation
 \change_inserted 215191885 1521484766
 \begin_inset Formula 
 \[
-\mu_{SfM}=\frac{\sum\boldsymbol{pc}_{SfM}}{n}
+\mu_{obs}=\frac{\sum\boldsymbol{pc}_{obs}}{n}
 \]
 
 \end_inset
@@ -10438,7 +10178,7 @@ to represent the valid point clouds of sensor measurements and LSD estimation
 \change_inserted 215191885 1521484795
 \begin_inset Formula 
 \[
-\sigma_{SfM}^{2}=\frac{\sum\left\Vert \boldsymbol{pc}_{SfM}-\mu_{SfM}\right\Vert ^{2}}{n}
+\sigma_{obs}^{2}=\frac{\sum\left\Vert \boldsymbol{pc}_{obs}-\mu_{obs}\right\Vert ^{2}}{n}
 \]
 
 \end_inset
@@ -10451,7 +10191,7 @@ to represent the valid point clouds of sensor measurements and LSD estimation
 \change_inserted 215191885 1521501433
 \begin_inset Formula 
 \[
-\Sigma_{SfM,rgbd}=\frac{\sum(\boldsymbol{pc}_{rgbd}-\mu_{rgbd})(\boldsymbol{pc}_{SfM}-\mu_{SfM})^{T}}{n}
+\Sigma_{obs,rgbd}=\frac{\sum(\boldsymbol{pc}_{rgbd}-\mu_{rgbd})(\boldsymbol{pc}_{obs}-\mu_{obs})^{T}}{n}
 \]
 
 \end_inset
@@ -10463,11 +10203,11 @@ to represent the valid point clouds of sensor measurements and LSD estimation
 
 \change_inserted 215191885 1521501595
 With singular value decomposition of 
-\begin_inset Formula $\Sigma_{SfM,rgbd}$
+\begin_inset Formula $\Sigma_{obs,rgbd}$
 \end_inset
 
  as 
-\begin_inset Formula $UDV^{T},$
+\begin_inset Formula $\mathbf{U}\mathbf{D}\mathbf{V}^{T},$
 \end_inset
 
 the optimum rotation matrix 
@@ -10482,7 +10222,7 @@ the optimum rotation matrix
 \change_inserted 215191885 1521501637
 \begin_inset Formula 
 \[
-\boldsymbol{R}=\boldsymbol{U}\boldsymbol{S}\boldsymbol{V}^{T}
+\boldsymbol{\mathbf{R}}=\boldsymbol{\mathbf{U}}\boldsymbol{\mathbf{S}}\mathbf{\boldsymbol{V}}^{T}
 \]
 
 \end_inset
@@ -10495,9 +10235,9 @@ the optimum rotation matrix
 \change_inserted 215191885 1521507419
 \begin_inset Formula 
 \[
-\boldsymbol{S}=\boldsymbol{I}\begin{cases}
-I & det(\Sigma_{SfM,rgbd})\geq0\\
-diag(1,1,-1) & det(\Sigma_{SfM,rgbd})<0
+\boldsymbol{\mathbf{S}}=\mathbf{\boldsymbol{I}}\begin{cases}
+I & det(\Sigma_{obs,rgbd})\geq0\\
+diag(1,1,-1) & det(\Sigma_{obs,rgbd})<0
 \end{cases}
 \]
 
@@ -10521,7 +10261,7 @@ The scale adjustment
 \change_inserted 215191885 1521507699
 \begin_inset Formula 
 \[
-c=\frac{1}{\sigma_{SfM}^{2}}trace(\boldsymbol{D}\boldsymbol{S})
+\alpha=\frac{1}{\sigma_{obs}^{2}}trace(\mathbf{\boldsymbol{D}}\mathbf{\boldsymbol{S}})
 \]
 
 \end_inset
@@ -10541,7 +10281,7 @@ With scale and rotation established, the translation parameters are determined
 \change_inserted 215191885 1521508665
 \begin_inset Formula 
 \[
-\boldsymbol{t}=\mu_{rgbd}-c\boldsymbol{R}\mu_{SfM}
+\mathbf{T}=\mu_{rgbd}-\alpha\boldsymbol{\mathbf{R}}\mu_{obs}
 \]
 
 \end_inset
@@ -10558,7 +10298,7 @@ with the
 
  parameters we transform LSD point clouds before projecting them to find
  
-\begin_inset Formula $\widetilde{\mathbf{d}}_{SfM}(x,y)$
+\begin_inset Formula $\widetilde{z}_{obs}(x,y)$
 \end_inset
 
  
@@ -10569,7 +10309,7 @@ with the
 \change_inserted 215191885 1521514011
 \begin_inset Formula 
 \[
-\tilde{\boldsymbol{pc_{SfM}}}=c\boldsymbol{R}\boldsymbol{pc}_{SfM}+\boldsymbol{T}
+\tilde{\boldsymbol{pc_{obs}}}=\alpha\mathbf{\boldsymbol{R}}\boldsymbol{pc}_{obs}+\boldsymbol{\mathbf{T}}
 \]
 
 \end_inset
@@ -11217,7 +10957,7 @@ reference "eq:depth_scale_solution"
 \change_inserted 215191885 1521071427
 \begin_inset Formula 
 \begin{equation}
-e(\alpha)=\sum_{(x,y)\epsilon V}\left\Vert \mathbf{d}_{rgbd}(x,y)-\alpha\mathbf{d}_{SfM}(x,y)\right\Vert ^{2}\label{eq:scale error}
+e(\alpha)=\sum_{(x,y)\epsilon V}\left\Vert Z_{rgbd}(x,y)-\alpha Z_{SfM}(x,y)\right\Vert ^{2}\label{eq:scale error}
 \end{equation}
 
 \end_inset
@@ -11227,15 +10967,137 @@ e(\alpha)=\sum_{(x,y)\epsilon V}\left\Vert \mathbf{d}_{rgbd}(x,y)-\alpha\mathbf{
 
 \begin_layout Standard
 
-\change_inserted 215191885 1521071427
+\change_inserted 215191885 1524951224
 \begin_inset Formula 
 \begin{equation}
-\widehat{\alpha}=\sum_{(x,y)\epsilon V}\frac{\mathbf{d}{}_{rgbd}(x,y)}{\mathbf{d}_{SfM}(x,y)}\label{eq:depth_scale_solution}
+\widehat{\alpha}=\sum_{(x,y)\epsilon V}\frac{Z_{rgbd}(x,y)}{Z_{SfM}(x,y)}\label{eq:depth_scale_solution}
 \end{equation}
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+
+\change_inserted 215191885 1524951225
+RGBD Measurement Noise
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:RGBD_Measurement-Noise"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524951225
+The proposed fusion algorithm relies on experimental studies of accuracy
+ and noise for RGBD sensor measurement, e.g., the Kinect sensor.
+ Research in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "7925286"
+
+\end_inset
+
+ shows that a Gaussian noise model provides a good fit to observed measurement
+ errors on planar targets where the distribution parameters are mean 
+\begin_inset Formula $0$
+\end_inset
+
+ and standard deviation
+\begin_inset Formula $\sigma_{Z}=\frac{m}{2f_{x}b}Z^{2}$
+\end_inset
+
+ for depth measurements where 
+\begin_inset Formula $\frac{m}{f_{x}b}=-2.85e^{-3}$
+\end_inset
+
+ is the linearized slope for the normalized disparity empirically found
+ in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "7925286"
+
+\end_inset
+
+.
+ Since 3D the coordinates for 
+\begin_inset Formula $(X,Y)$
+\end_inset
+
+ are a function of both the pixel location and the depth, their distributions
+ are also known as shown below:
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524951225
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{ccc}
+\sigma_{X} & = & \frac{x-o_{x}+\delta_{x}}{f_{x}}\sigma_{Z}=\frac{x-o_{x}+\delta_{x}}{f_{x}}(1.425e^{-3})Z^{2}\\
+\sigma_{Y} & = & \frac{y-o_{y}+\delta_{y}}{f_{y}}\sigma_{Z}=\frac{y-o_{y}+\delta_{y}}{f_{y}}(1.425e^{-3})Z^{2}\\
+\sigma_{Z} & = & \frac{m}{f_{x}b}Z^{2}\sigma_{d'}=(1.425e^{-3})Z^{2}
+\end{array}\label{eq:noise_models}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524951225
+These equations indicate that 3D coordinate measurement uncertainty increases
+ as a quadratic function of the depth for all three coordinate values, where
+ 
+\begin_inset Formula $Z$
+\end_inset
+
+ denotes the sensed depth at image position 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+, 
+\begin_inset Formula $(f_{x},f_{y})$
+\end_inset
+
+ denotes the camera focal length (in pixels), 
+\begin_inset Formula $(o_{x},o_{y})$
+\end_inset
+
+ denotes the pixel coordinate of the image center, i.e., the principal point,
+ and 
+\begin_inset Formula $(\delta_{x},\delta_{y})$
+\end_inset
+
+ denote adjustments of the projected pixel coordinate to correct for camera
+ lens distortion.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1524951225
+However, the quadratic coefficient for the 
+\begin_inset Formula $(X,Y)$
+\end_inset
+
+ coordinate standard deviation is at most half that in the depth direction,
+ i.e., 
+\begin_inset Formula $(\sigma_{X},\sigma_{Y})\approx0.5\sigma_{Z}$
+\end_inset
+
+ at the image periphery where 
+\begin_inset Formula $\frac{x-c_{x}}{f}\approx0.5$
+\end_inset
+
+, and this value is significantly smaller for pixels close to the optical
+ axis.
 \end_layout
 
 \begin_layout Section
@@ -11347,7 +11209,7 @@ key "Maybeck79stochasticsmodels"
 \end_inset
 
  be represented as 
-\begin_inset Formula $\mathcal{N}(d_{rgbd},\sigma_{rgbd}^{2})$
+\begin_inset Formula $\mathcal{N}(Z_{rgbd},\sigma_{rgbd}^{2})$
 \end_inset
 
  and from the section 
@@ -11363,7 +11225,7 @@ reference "subsec:Stereo-corr-and-disparity-est"
 \end_inset
 
  as 
-\begin_inset Formula $\mathcal{N}(d_{obs},\sigma_{d,obs}^{2})$
+\begin_inset Formula $\mathcal{N}(Z_{obs},\sigma_{Z,obs}^{2})$
 \end_inset
 
 .
@@ -11409,7 +11271,7 @@ reference "eq:fused_variance"
 \change_inserted 215191885 1521071427
 \begin_inset Formula 
 \begin{equation}
-\mu_{fused}=\frac{d_{rgbd}\sigma_{d,obs}^{2}+d_{obs}\sigma_{rgbd}^{2}}{\sigma_{d,obs}^{2}+\sigma_{rgbd}^{2}}\label{eq:fused_mean}
+\mu_{fused}=\frac{Z_{rgbd}\sigma_{Z,obs}^{2}+Z_{obs}\sigma_{rgbd}^{2}}{\sigma_{Z,obs}^{2}+\sigma_{rgbd}^{2}}\label{eq:fused_mean}
 \end{equation}
 
 \end_inset
@@ -11422,7 +11284,7 @@ reference "eq:fused_variance"
 \change_inserted 215191885 1521514889
 \begin_inset Formula 
 \begin{equation}
-\sigma_{fused}^{2}=\frac{\sigma_{rgbd}^{2}\sigma_{d,obs}^{2}}{\sigma_{rgbd}^{2}+\sigma_{d,obs}^{2}}\label{eq:fused_variance}
+\sigma_{fused}^{2}=\frac{\sigma_{rgbd}^{2}\sigma_{Z,obs}^{2}}{\sigma_{rgbd}^{2}+\sigma_{Z,obs}^{2}}\label{eq:fused_variance}
 \end{equation}
 
 \end_inset

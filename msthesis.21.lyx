@@ -520,15 +520,15 @@ nts from an RGBD sensor.
 
 \begin_layout Acknowledgements
 
-\change_inserted 215191885 1524264062
+\change_inserted 215191885 1525101156
 I would like to express my gratitude to Dr.
  Andrew R.
  Willis, for taking me under his wing and encouraging me at every step of
  the way with his exceptional understanding of the subject.
  His invaluable insights played a crucial role in this research.
  I would also like to thank my co-advisor, Dr.
- Min Shin, for enabling me to continue research from the Electrical department
- and for guiding me in the right direction.
+ Min Shin, for enabling me to continue research from the Electrical and
+ Computer Engineering Department and for guiding me in the right direction.
  Additionally, I appreciate the members of my committee, Dr.
  Srinivas Akella, and Dr.
  Hamed Tabkhi, for their constant support.
@@ -553,13 +553,19 @@ The Acknowledgement page should be brief, simple, and free of sentimentality
 
 \end_layout
 
-\begin_layout Dedication
+\begin_layout Standard
+
+\change_deleted 215191885 1525101176
 If you decide to have a dedication page, your dedication text would go here.
 \end_layout
 
-\begin_layout Dedication
+\begin_layout Standard
+
+\change_deleted 215191885 1525101176
 The Dedication page, if used, pays a special tribute to a person(s) who
  has given extraordinary encouragement or support to one's academic career.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -3099,7 +3105,7 @@ In the matrix notation,
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524966620
+\change_inserted 215191885 1525101410
 To summarize, equation 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3108,19 +3114,26 @@ reference "eq:camera model with internsic parameter matrix rep-1"
 \end_inset
 
  represents the projection of three-dimensional coordinates 
-\begin_inset Formula $\boldsymbol{\mathbf{P}=}[X,Y,Z]$
+\begin_inset Formula $\boldsymbol{\mathbf{P}=}[X,Y,Z]^{T}$
 \end_inset
 
  by camera with the pose 
 \begin_inset Formula $\boldsymbol{\mathbf{Q}}$
 \end_inset
 
- (also called as extrinsic parameters) and camera calibration 
+, as defined in the equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:se3"
+
+\end_inset
+
+, (also called as extrinsic parameters) and camera calibration 
 \begin_inset Formula $\mathbf{\boldsymbol{\mathbf{K}}}$
 \end_inset
 
 , onto two-dimensional coordinate 
-\begin_inset Formula $\boldsymbol{\mathbf{p}}=[x,y]$
+\begin_inset Formula $\boldsymbol{\mathbf{p}}=[x,y]^{T}$
 \end_inset
 
  .
@@ -4335,7 +4348,7 @@ reference "eq:se3"
 \change_inserted 215191885 1524959997
 \begin_inset Formula 
 \begin{equation}
-SIM(3)=\{\mathbf{QQ}=\left[\begin{array}{cc}
+SIM(3)=\{\mathbf{W}=\left[\begin{array}{cc}
 \mathbf{R} & \boldsymbol{\mathbf{T}}\\
 0 & \alpha^{-1}
 \end{array}\right]\mid\boldsymbol{\mathbf{R}}\in SO(3),\boldsymbol{\mathbf{T}}\in\mathbb{R}^{3},\alpha\in\mathbb{R}\}\subset\mathbb{R}^{4\times4}\label{eq:sim3}
@@ -4442,14 +4455,14 @@ does not affect the volume of the rigid body, i.e, the value of the quantity
 
  is not changed by the rotation transformation.
  
-\change_deleted 215191885 1523374308
+\change_deleted 215191885 1525098740
 leaves the quantity 
 \begin_inset Formula $x^{2}+y^{2}+z^{2}$
 \end_inset
 
- invariant
+ invariant.
+
 \change_unchanged
-.
  The group 
 \begin_inset Formula $SO(3)$
 \end_inset
@@ -4495,9 +4508,8 @@ making only
 ,
 \change_unchanged
  
-\change_inserted 215191885 1523415399
-It is obvious from this intuition, that the six out of nine parameters in
- 
+\change_inserted 215191885 1525098780
+From this intuition, we know that the six out of nine parameters in 
 \begin_inset Formula $SO(3)$
 \end_inset
 
@@ -6796,7 +6808,7 @@ reference "fig:Disparity-Computation"
 \end_inset
 
  are known, we can compute the disparity 
-\begin_inset Formula $\lambda$
+\begin_inset Formula $d$
 \end_inset
 
 , and consequently the inverse depth of object 
@@ -6811,7 +6823,7 @@ reference "fig:Disparity-Computation"
 \change_inserted 215191885 1521739289
 \begin_inset Formula 
 \[
-\lambda=x_{L}-x_{R}=f\left(\frac{X+l}{Z}-\frac{X-l}{Z}\right)
+d=x_{L}-x_{R}=f\left(\frac{X+l}{Z}-\frac{X-l}{Z}\right)
 \]
 
 \end_inset
@@ -6824,7 +6836,7 @@ reference "fig:Disparity-Computation"
 \change_inserted 215191885 1524162208
 \begin_inset Formula 
 \[
-\lambda=\frac{2lf_{x}}{Z}
+d=\frac{2lf_{x}}{Z}
 \]
 
 \end_inset
@@ -6837,7 +6849,7 @@ reference "fig:Disparity-Computation"
 \change_inserted 215191885 1524162278
 \begin_inset Formula 
 \[
-\frac{1}{Z}=\frac{\lambda}{fB}
+\frac{1}{Z}=\frac{d}{fB}
 \]
 
 \end_inset
@@ -6850,7 +6862,7 @@ reference "fig:Disparity-Computation"
 \change_inserted 215191885 1524162320
 \begin_inset Formula 
 \begin{equation}
-invZ=\frac{\lambda}{fB}\label{eq:inverse_depth}
+Z^{-1}=\frac{d}{fB}\label{eq:inverse_depth}
 \end{equation}
 
 \end_inset
@@ -6863,7 +6875,7 @@ invZ=\frac{\lambda}{fB}\label{eq:inverse_depth}
 \change_inserted 215191885 1524162331
 \begin_inset Formula 
 \begin{equation}
-invZ\propto disparity\label{eq:relation_invDep_and_diparity}
+Z^{-1}\propto disparity\label{eq:relation_invDep_and_diparity}
 \end{equation}
 
 \end_inset
@@ -6922,7 +6934,7 @@ key "6751290"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524241855
+\change_inserted 215191885 1525100247
 The disparity search is performed along the epiploar line, and it is subjected
  to two sources of errors 
 \begin_inset CommandInset citation
@@ -6937,7 +6949,7 @@ key "6751290"
 \end_inset
 
  and the projection 
-\begin_inset Formula $\boldsymbol{\pi}$
+\begin_inset Formula $\boldsymbol{\pi}(.)$
 \end_inset
 
 .
@@ -6963,7 +6975,7 @@ key "6751290"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524242201
+\change_inserted 215191885 1525100459
 Let 
 \begin_inset Formula $l$
 \end_inset
@@ -6973,15 +6985,16 @@ Let
 \end_inset
 
  represent a normalized epipolar line and a normalized image gradient respective
-ly, if 
+ly.
+ 
 \begin_inset Formula $\epsilon_{l}$
 \end_inset
 
- is the isotropic Gaussian noise, with variance 
+ be the isotropic Gaussian noise with the variance 
 \begin_inset Formula $\sigma_{l}^{2}$
 \end_inset
 
- , associated with the absolute position of the origin of the epipolar line
+ associated with the absolute position of the origin of the epipolar line
  
 \begin_inset Formula $l$
 \end_inset
@@ -7023,11 +7036,11 @@ reference "eq:geo_error_var"
 
 , defines this error.This error originates from the noise in camera orientation
  
-\begin_inset Formula $\xi$
+\begin_inset Formula $\boldsymbol{\mathbf{\xi}}$
 \end_inset
 
  and the camera calibration 
-\begin_inset Formula $\pi$
+\begin_inset Formula $\boldsymbol{\pi}(.)$
 \end_inset
 
  and independent of noise in intensity of image.
@@ -7118,7 +7131,7 @@ reference "eq:inverse_depth"
 \change_inserted 215191885 1524179792
 \begin_inset Formula 
 \begin{equation}
-\sigma_{invZ,obs}^{2}=\alpha^{2}(\sigma_{\lambda(\boldsymbol{\xi},\boldsymbol{\pi})}^{2}+\sigma_{\lambda(I)}^{2})\label{eq:depth_observation_var}
+\sigma_{Z^{-1},obs}^{2}=\alpha^{2}(\sigma_{\lambda(\boldsymbol{\xi},\boldsymbol{\pi})}^{2}+\sigma_{\lambda(I)}^{2})\label{eq:depth_observation_var}
 \end{equation}
 
 \end_inset
@@ -7142,7 +7155,7 @@ where
 \change_inserted 215191885 1524179902
 \begin_inset Formula 
 \[
-\alpha=\frac{\delta_{invZ}}{\delta_{\lambda}}
+\alpha=\frac{\delta_{Z^{-1}}}{\delta_{\lambda}}
 \]
 
 \end_inset
@@ -7249,7 +7262,7 @@ The depths estimated for every pair of images are propagated and can be
 \change_inserted 215191885 1523637725
 \begin_inset Formula 
 \[
-invZ_{1}(invZ_{0})=(invZ_{0}^{-1}-t_{z})^{-1}
+Z_{1}^{-1}=(\frac{1}{Z_{0}^{-1}}-t_{z})^{-1}
 \]
 
 \end_inset
@@ -7272,7 +7285,7 @@ and its variance
 \change_inserted 215191885 1523637862
 \begin_inset Formula 
 \[
-\sigma_{invZ_{1}}^{2}=\left(\frac{invZ_{1}}{invZ_{0}}\right)^{4}\sigma_{invZ_{0}}^{2}+\sigma_{invZ_{p}}^{2}
+\sigma_{Z_{1}^{-1}}^{2}=\left(\frac{Z_{1}^{-1}}{Z_{0}^{-1}}\right)^{4}\sigma_{Z_{0}^{-1}}^{2}+\sigma_{Z_{p}^{-1}}^{2}
 \]
 
 \end_inset
@@ -7284,11 +7297,11 @@ and its variance
 
 \change_inserted 215191885 1524960856
 where, 
-\begin_inset Formula $\sigma_{invZ_{0}}^{2}$
+\begin_inset Formula $\sigma_{Z^{-1}_{0}}^{2}$
 \end_inset
 
  is the variance of inverse depth from previous frame and 
-\begin_inset Formula $\sigma_{invZ_{p}}^{2}$
+\begin_inset Formula $\sigma_{Z^{-1}_{p}}^{2}$
 \end_inset
 
  is the inverse depth prediction uncertainty.
@@ -7300,17 +7313,17 @@ key "Welch:1995:IKF:897831"
 \end_inset
 
  , where 
-\begin_inset Formula $\sigma_{invZ_{p}}^{2}$
+\begin_inset Formula $\sigma_{Z^{-1}_{p}}^{2}$
 \end_inset
 
  corresponds to variance from to the prediction step and 
-\begin_inset Formula $\sigma_{invZ_{0}}^{2}$
+\begin_inset Formula $\sigma_{Z^{-1}_{0}}^{2}$
 \end_inset
 
  corresponds to the variance from the measurement step.
  Finally, the new observation of inverse depth is incorporated into the
  prior, by multiplying two distributions i.e., if 
-\begin_inset Formula $\mathcal{N}(invZ_{p},\sigma_{invZ_{p}}^{2})$
+\begin_inset Formula $\mathcal{N}(Z^{-1}_{p},\sigma_{Z^{-1}{}_{p}}^{2})$
 \end_inset
 
  is the prior distribution and the 
@@ -7325,7 +7338,7 @@ key "Welch:1995:IKF:897831"
 \change_inserted 215191885 1524960864
 \begin_inset Formula 
 \[
-\mathcal{N}(\frac{\sigma_{invZ_{p}}^{2}invZ_{0}+\sigma_{invZ_{0}}^{2}invZ_{p}}{\sigma_{invZ_{p}}^{2}+\sigma_{invZ_{0}}^{2}},\frac{\sigma_{invZ_{p}}^{2}\sigma_{invZ_{0}}^{2}}{\sigma_{invZ_{p}}^{2}+\sigma_{invZ_{0}}^{2}})
+\mathcal{N}(\frac{\sigma_{Z_{p}^{-1}}^{2}Z_{0}^{-1}+\sigma_{Z_{0}^{-1}}^{2}Z_{p}^{-1}}{\sigma_{Z_{p}^{-1}}^{2}+\sigma_{Z_{0}^{-1}}^{2}},\frac{\sigma_{Z_{p}^{-1}}^{2}\sigma_{Z_{0}^{-1}}^{2}}{\sigma_{Z_{p}^{-1}}^{2}+\sigma_{Z_{0}^{-1}}^{2}})
 \]
 
 \end_inset
@@ -7959,7 +7972,7 @@ consider
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\phi(x,\boldsymbol{\mathbf{R}},\mathbf{T},\alpha)=\stackrel[j=1]{n}{\sum}\left\Vert \omega_{1}^{j}\right\Vert +\left\Vert \omega_{2}^{j}\right\Vert ^{2}=\stackrel[j=1]{n}{\sum}\left\Vert \widetilde{x}_{1}^{j}-x_{1}^{j}\right\Vert ^{2}+\left\Vert \widetilde{x}_{2}^{j}-\pi(\boldsymbol{\mathbf{R}}\alpha^{j}x_{1}^{j}+\boldsymbol{\mathbf{T}})\right\Vert ^{2}\label{eq:residual}
+\phi(x,\boldsymbol{\mathbf{R}},\mathbf{T},\alpha)=\stackrel[j=1]{n}{\sum}\left\Vert \omega_{1}^{j}\right\Vert +\left\Vert \omega_{2}^{j}\right\Vert ^{2}=\stackrel[j=1]{n}{\sum}\left\Vert \widetilde{x}_{1}^{j}-x_{1}^{j}\right\Vert ^{2}+\left\Vert \widetilde{x}_{2}^{j}-\boldsymbol{\pi}(\boldsymbol{\mathbf{R}}\alpha^{j}x_{1}^{j}+\boldsymbol{\mathbf{T}})\right\Vert ^{2}\label{eq:residual}
 \end{equation}
 
 \end_inset
@@ -8026,7 +8039,7 @@ reference "eq:residual"
 
 \change_unchanged
  for the unknowns 
-\begin_inset Formula $(R,T,x_{1},\lambda)$
+\begin_inset Formula $(\mathbf{R},\mathbf{T},x_{1},\alpha)$
 \end_inset
 
  is 
@@ -8070,7 +8083,7 @@ y_{i}=f(x_{i})\label{eq:simple eq for optimization}
 
 \begin_layout Standard
 
-\change_inserted 215191885 1525009691
+\change_inserted 215191885 1525099289
 the goal is to find the parameters 
 \begin_inset Formula $x$
 \end_inset
@@ -8088,6 +8101,19 @@ the goal is to find the parameters
 \begin{equation}
 r_{i}(x)^{2}=(f(x_{i})-y_{i})^{2}\label{eq:simple_residual}
 \end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1525099295
+\begin_inset Formula 
+\[
+\mathbf{r}=[r_{0}(x_{0}),r_{1}(x_{1}),r_{2}(x_{2}).......r_{n-1}(x_{n-1})]^{T}
+\]
 
 \end_inset
 
@@ -8454,7 +8480,7 @@ reference "eq:jacobian"
 \change_inserted 215191885 1524188184
 \begin_inset Formula 
 \begin{equation}
-\boldsymbol{\mathbf{g}}=2\mathbf{J}^{T}r\label{eq:gradian_jacobian}
+\boldsymbol{\mathbf{g}}=2\mathbf{J}^{T}\mathbf{r}\label{eq:gradian_jacobian}
 \end{equation}
 
 \end_inset
@@ -8494,7 +8520,7 @@ reference "eq:gauss_new_intermediate"
 \change_inserted 215191885 1524188310
 \begin_inset Formula 
 \[
-2\mathbf{J}^{T}r+\boldsymbol{\mathbf{J}}^{T}\mathbf{J}(x-x_{t})=0
+2\mathbf{J}^{T}\mathbf{r}+\boldsymbol{\mathbf{J}}^{T}\mathbf{J}(x-x_{t})=0
 \]
 
 \end_inset
@@ -8517,7 +8543,7 @@ and
 \change_inserted 215191885 1524110915
 \begin_inset Formula 
 \begin{equation}
-x_{t+1}=x_{t}-(\boldsymbol{\mathbf{J}}^{T}\boldsymbol{\mathbf{J}})^{-1}\mathbf{J}^{T}r\label{eq:guass_newton}
+x_{t+1}=x_{t}-(\boldsymbol{\mathbf{J}}^{T}\boldsymbol{\mathbf{J}})^{-1}\mathbf{J}^{T}\mathbf{r}\label{eq:guass_newton}
 \end{equation}
 
 \end_inset
@@ -8581,7 +8607,7 @@ algorithm,
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-x_{t+1}=x_{t}-((\boldsymbol{\mathbf{J}}^{T}\mathbf{\mathbf{J}})+\rho\boldsymbol{\mathbf{I}})^{-1}\mathbf{\mathbf{J}}^{T}r\label{eq:lvm}
+x_{t+1}=x_{t}-((\boldsymbol{\mathbf{J}}^{T}\mathbf{\mathbf{J}})+\rho\boldsymbol{\mathbf{I}})^{-1}\mathbf{\mathbf{J}}^{T}\mathbf{r}\label{eq:lvm}
 \end{equation}
 
 \end_inset
@@ -8723,7 +8749,7 @@ reference "eq:lvm"
 \change_inserted 215191885 1524962560
 \begin_inset Formula 
 \begin{equation}
-x_{t+1}=x_{t}-((\boldsymbol{\mathbf{J}}^{T}\mathbf{J})+\rho(diag(\mathbf{J}^{T}\boldsymbol{\mathbf{J}})))^{-1}\mathbf{\mathbf{J}}^{T}r\label{eq:lvm_2}
+x_{t+1}=x_{t}-((\boldsymbol{\mathbf{J}}^{T}\mathbf{J})+\rho(diag(\mathbf{J}^{T}\boldsymbol{\mathbf{J}})))^{-1}\mathbf{\mathbf{J}}^{T}\mathbf{r}\label{eq:lvm_2}
 \end{equation}
 
 \end_inset
@@ -8862,7 +8888,7 @@ direct
 \change_inserted 215191885 1524196388
 \begin_inset Formula 
 \begin{equation}
-E(\xi)=\underset{i}{\sum}(\mathbf{I}_{ref}(\mathbf{p}_{i})-\mathbf{I}(\pi(\mathbf{p}_{i},D_{ref}(\mathbf{p}_{i}),\boldsymbol{\xi})))^{2}\label{eq:Photomatric Error}
+E(\boldsymbol{\xi})=\underset{i}{\sum}(\mathbf{I}_{ref}(\mathbf{p}_{i})-\mathbf{I}(\pi(\mathbf{p}_{i},D_{ref}(\mathbf{p}_{i}),\boldsymbol{\xi})))^{2}\label{eq:Photomatric Error}
 \end{equation}
 
 \end_inset
@@ -10085,7 +10111,7 @@ back-projected
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524968188
+\change_inserted 215191885 1525099917
 However, due to the noise in depth computation and consequent trajectory
  estimation, the depth registration is not always exact, this should be
  addressed as early as possible to avoid the drift in their computations.
@@ -10111,16 +10137,47 @@ key "Umeyama:1991:LET:105514.105525"
  In order to avoid errors, we use only the valid depths in both the point
  cloud for estimation.
  By using 
-\begin_inset Formula $\mathbf{pc}_{rgbd}$
+\begin_inset Formula $\mathcal{P}_{rgbd}$
 \end_inset
 
-and 
-\begin_inset Formula $\mathbf{pc}_{obs}$
+ and 
+\begin_inset Formula $\mathcal{P}_{obs}$
 \end_inset
 
-to represent the valid point clouds of sensor measurements and LSD estimation
- respectively, we compute the mean, variances and covariance of both them
- as following.
+ to represent the valid point clouds of sensor measurements and LSD estimation
+ respectively, 
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1525099933
+\begin_inset Formula 
+\[
+\mathcal{P}_{rgbd}=\left\{ \mathbf{P}_{0},\mathbf{P}_{1},\mathbf{P}_{1},.....\mathbf{P}_{n-1}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1525099933
+\begin_inset Formula 
+\[
+\mathcal{P}_{obs}=\left\{ \mathbf{P}_{0},\mathbf{P}_{1},\mathbf{P}_{1},.....\mathbf{P}_{n-1}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 215191885 1525099927
+we compute the mean, variances and covariance of both them as following.
 \change_unchanged
 
 \end_layout
@@ -10130,7 +10187,7 @@ to represent the valid point clouds of sensor measurements and LSD estimation
 \change_inserted 215191885 1521484409
 \begin_inset Formula 
 \[
-\mu_{rgbd}=\frac{\sum\mathbf{pc}_{rgbd}}{n}
+\boldsymbol{\mu}_{rgbd}=\frac{1}{N}\stackrel[i=0]{n-1}{\sum}\mathcal{P}_{rgbd,i}
 \]
 
 \end_inset
@@ -10143,7 +10200,7 @@ to represent the valid point clouds of sensor measurements and LSD estimation
 \change_inserted 215191885 1521484766
 \begin_inset Formula 
 \[
-\mu_{obs}=\frac{\sum\boldsymbol{pc}_{obs}}{n}
+\boldsymbol{\mu}_{obs}=\frac{1}{N}\stackrel[i=0]{n-1}{\sum}\mathcal{P}_{obs,i}
 \]
 
 \end_inset
@@ -10156,7 +10213,7 @@ to represent the valid point clouds of sensor measurements and LSD estimation
 \change_inserted 215191885 1521484766
 \begin_inset Formula 
 \[
-\sigma_{rgbd}^{2}=\frac{\sum\left\Vert \boldsymbol{pc}_{rgbd}-\mu_{rgbd}\right\Vert ^{2}}{n}
+\sigma_{rgbd}^{2}=\frac{1}{N}\stackrel[i=0]{n-1}{\sum}\left\Vert \mathcal{P}_{rgbd,i}-\boldsymbol{\mu}_{rgbd}\right\Vert ^{2}
 \]
 
 \end_inset
@@ -10169,7 +10226,7 @@ to represent the valid point clouds of sensor measurements and LSD estimation
 \change_inserted 215191885 1521484795
 \begin_inset Formula 
 \[
-\sigma_{obs}^{2}=\frac{\sum\left\Vert \boldsymbol{pc}_{obs}-\mu_{obs}\right\Vert ^{2}}{n}
+\sigma_{obs}^{2}=\frac{1}{N}\stackrel[i=0]{n-1}{\sum}\left\Vert \mathcal{P}_{obs,i}-\boldsymbol{\mu}_{obs}\right\Vert ^{2}
 \]
 
 \end_inset
@@ -10182,7 +10239,7 @@ to represent the valid point clouds of sensor measurements and LSD estimation
 \change_inserted 215191885 1521501433
 \begin_inset Formula 
 \[
-\Sigma_{obs,rgbd}=\frac{\sum(\boldsymbol{pc}_{rgbd}-\mu_{rgbd})(\boldsymbol{pc}_{obs}-\mu_{obs})^{T}}{n}
+\Sigma_{obs,rgbd}=\frac{1}{N}\stackrel[i=0]{n-1}{\sum}(\mathcal{P}_{rgbd,i}-\boldsymbol{\mu}_{rgbd})(\mathcal{P}_{obs,i}-\boldsymbol{\mu}_{obs})^{T}
 \]
 
 \end_inset
@@ -10272,7 +10329,7 @@ With scale and rotation established, the translation parameters are determined
 \change_inserted 215191885 1521508665
 \begin_inset Formula 
 \[
-\mathbf{T}=\mu_{rgbd}-\alpha\boldsymbol{\mathbf{R}}\mu_{obs}
+\mathbf{T}=\boldsymbol{\mu}_{rgbd}-\alpha\boldsymbol{\mathbf{R}}\boldsymbol{\mu}_{obs}
 \]
 
 \end_inset

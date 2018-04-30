@@ -284,6 +284,8 @@ committeeMember{Dr.
 \backslash
 committeeMember{Dr.
 
+\change_inserted 215191885 1525102300
+ 
 \change_deleted 215191885 1524264157
  Min Shin
 \change_inserted 215191885 1521523595
@@ -298,6 +300,8 @@ Srinivas Akella
 \backslash
 committeeMember{Dr.
 
+\change_inserted 215191885 1525102302
+ 
 \change_deleted 215191885 1524264159
  Jianping Fan
 \change_inserted 215191885 1521523647
@@ -6863,19 +6867,6 @@ d=\frac{2lf_{x}}{Z}
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524162278
-\begin_inset Formula 
-\[
-\frac{1}{Z}=\frac{d}{fB}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
 \change_inserted 215191885 1524162320
 \begin_inset Formula 
 \begin{equation}
@@ -7258,12 +7249,12 @@ The depths estimated for every pair of images are propagated and can be
  the earlier frame is propagated and is assigned to closet integer pixel
  position.
  If 
-\begin_inset Formula $invZ_{0}$
+\begin_inset Formula $Z_{0}^{-1}$
 \end_inset
 
  is the inverse depth for a pixel from the previous frame, and the inverse
  depth 
-\begin_inset Formula $invZ_{1}$
+\begin_inset Formula $Z_{1}^{-1}$
 \end_inset
 
  at the same pixel for the current frame with the camera translation of
@@ -7279,7 +7270,7 @@ The depths estimated for every pair of images are propagated and can be
 \change_inserted 215191885 1523637725
 \begin_inset Formula 
 \[
-Z_{1}^{-1}=(\frac{1}{Z_{0}^{-1}}-t_{z})^{-1}
+Z_{1}^{-1}=(Z_{0}-t_{z})^{-1}
 \]
 
 \end_inset
@@ -7314,11 +7305,11 @@ and its variance
 
 \change_inserted 215191885 1524960856
 where, 
-\begin_inset Formula $\sigma_{Z^{-1}_{0}}^{2}$
+\begin_inset Formula $\sigma_{Z_{0}^{-1}}^{2}$
 \end_inset
 
  is the variance of inverse depth from previous frame and 
-\begin_inset Formula $\sigma_{Z^{-1}_{p}}^{2}$
+\begin_inset Formula $\sigma_{Z_{p}^{-1}}^{2}$
 \end_inset
 
  is the inverse depth prediction uncertainty.
@@ -7330,17 +7321,17 @@ key "Welch:1995:IKF:897831"
 \end_inset
 
  , where 
-\begin_inset Formula $\sigma_{Z^{-1}_{p}}^{2}$
+\begin_inset Formula $\sigma_{Z_{p}^{-1}}^{2}$
 \end_inset
 
  corresponds to variance from to the prediction step and 
-\begin_inset Formula $\sigma_{Z^{-1}_{0}}^{2}$
+\begin_inset Formula $\sigma_{Z_{0}^{-1}}^{2}$
 \end_inset
 
  corresponds to the variance from the measurement step.
  Finally, the new observation of inverse depth is incorporated into the
  prior, by multiplying two distributions i.e., if 
-\begin_inset Formula $\mathcal{N}(Z^{-1}_{p},\sigma_{Z^{-1}{}_{p}}^{2})$
+\begin_inset Formula $\mathcal{N}(Z_{p}^{-1},\sigma_{Z_{p}^{-1}}^{2})$
 \end_inset
 
  is the prior distribution and the 
@@ -8129,7 +8120,7 @@ r_{i}(x)^{2}=(f(x_{i})-y_{i})^{2}\label{eq:simple_residual}
 \change_inserted 215191885 1525099295
 \begin_inset Formula 
 \[
-\mathbf{r}=[r_{0}(x_{0}),r_{1}(x_{1}),r_{2}(x_{2}).......r_{n-1}(x_{n-1})]^{T}
+\mathbf{r}=[r_{0}(x_{0}),r_{1}(x_{1}),r_{2}(x_{2}).......r_{N-1}(x_{N-1})]^{T}
 \]
 
 \end_inset
@@ -8949,7 +8940,7 @@ reference "sec:Image-alignment"
  be initialized either with random values or with the depth measurements
  from a RGBD sensor to initiate the process.
  
-\begin_inset Formula $\boldsymbol{\pi}$
+\begin_inset Formula $\boldsymbol{\pi}(.)$
 \end_inset
 
  is the projection of the three dimensional point cloud to two dimensional
@@ -10128,7 +10119,7 @@ back-projected
 
 \begin_layout Standard
 
-\change_inserted 215191885 1525099917
+\change_inserted 215191885 1525102923
 However, due to the noise in depth computation and consequent trajectory
  estimation, the depth registration is not always exact, this should be
  addressed as early as possible to avoid the drift in their computations.
@@ -10162,7 +10153,11 @@ key "Umeyama:1991:LET:105514.105525"
 \end_inset
 
  to represent the valid point clouds of sensor measurements and LSD estimation
- respectively, 
+ respectively, each containing 
+\begin_inset Formula $N$
+\end_inset
+
+ three dimensional points, 
 \end_layout
 
 \begin_layout Standard
@@ -10170,7 +10165,7 @@ key "Umeyama:1991:LET:105514.105525"
 \change_inserted 215191885 1525099933
 \begin_inset Formula 
 \[
-\mathcal{P}_{rgbd}=\left\{ \mathbf{P}_{0},\mathbf{P}_{1},\mathbf{P}_{1},.....\mathbf{P}_{n-1}\right\} 
+\mathcal{P}_{rgbd}=\left\{ \mathbf{P}_{0},\mathbf{P}_{1},\mathbf{P}_{1},.....\mathbf{P}_{N-1}\right\} 
 \]
 
 \end_inset
@@ -10183,7 +10178,7 @@ key "Umeyama:1991:LET:105514.105525"
 \change_inserted 215191885 1525099933
 \begin_inset Formula 
 \[
-\mathcal{P}_{obs}=\left\{ \mathbf{P}_{0},\mathbf{P}_{1},\mathbf{P}_{1},.....\mathbf{P}_{n-1}\right\} 
+\mathcal{P}_{obs}=\left\{ \mathbf{P}_{0},\mathbf{P}_{1},\mathbf{P}_{1},.....\mathbf{P}_{N-1}\right\} 
 \]
 
 \end_inset
@@ -10204,7 +10199,7 @@ we compute the mean, variances and covariance of both them as following.
 \change_inserted 215191885 1521484409
 \begin_inset Formula 
 \[
-\boldsymbol{\mu}_{rgbd}=\frac{1}{N}\stackrel[i=0]{n-1}{\sum}\mathcal{P}_{rgbd,i}
+\boldsymbol{\mu}_{rgbd}=\frac{1}{N}\stackrel[i=0]{N-1}{\sum}\mathcal{P}_{rgbd,i}
 \]
 
 \end_inset
@@ -10217,7 +10212,7 @@ we compute the mean, variances and covariance of both them as following.
 \change_inserted 215191885 1521484766
 \begin_inset Formula 
 \[
-\boldsymbol{\mu}_{obs}=\frac{1}{N}\stackrel[i=0]{n-1}{\sum}\mathcal{P}_{obs,i}
+\boldsymbol{\mu}_{obs}=\frac{1}{N}\stackrel[i=0]{N-1}{\sum}\mathcal{P}_{obs,i}
 \]
 
 \end_inset
@@ -10230,7 +10225,7 @@ we compute the mean, variances and covariance of both them as following.
 \change_inserted 215191885 1521484766
 \begin_inset Formula 
 \[
-\sigma_{rgbd}^{2}=\frac{1}{N}\stackrel[i=0]{n-1}{\sum}\left\Vert \mathcal{P}_{rgbd,i}-\boldsymbol{\mu}_{rgbd}\right\Vert ^{2}
+\sigma_{rgbd}^{2}=\frac{1}{N}\stackrel[i=0]{N-1}{\sum}\left\Vert \mathcal{P}_{rgbd,i}-\boldsymbol{\mu}_{rgbd}\right\Vert ^{2}
 \]
 
 \end_inset
@@ -10243,7 +10238,7 @@ we compute the mean, variances and covariance of both them as following.
 \change_inserted 215191885 1521484795
 \begin_inset Formula 
 \[
-\sigma_{obs}^{2}=\frac{1}{N}\stackrel[i=0]{n-1}{\sum}\left\Vert \mathcal{P}_{obs,i}-\boldsymbol{\mu}_{obs}\right\Vert ^{2}
+\sigma_{obs}^{2}=\frac{1}{N}\stackrel[i=0]{N-1}{\sum}\left\Vert \mathcal{P}_{obs,i}-\boldsymbol{\mu}_{obs}\right\Vert ^{2}
 \]
 
 \end_inset
@@ -10256,7 +10251,7 @@ we compute the mean, variances and covariance of both them as following.
 \change_inserted 215191885 1521501433
 \begin_inset Formula 
 \[
-\Sigma_{obs,rgbd}=\frac{1}{N}\stackrel[i=0]{n-1}{\sum}(\mathcal{P}_{rgbd,i}-\boldsymbol{\mu}_{rgbd})(\mathcal{P}_{obs,i}-\boldsymbol{\mu}_{obs})^{T}
+\Sigma_{obs,rgbd}=\frac{1}{N}\stackrel[i=0]{N-1}{\sum}(\mathcal{P}_{rgbd,i}-\boldsymbol{\mu}_{rgbd})(\mathcal{P}_{obs,i}-\boldsymbol{\mu}_{obs})^{T}
 \]
 
 \end_inset

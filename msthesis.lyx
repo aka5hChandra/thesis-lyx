@@ -175,8 +175,8 @@ doctype{thesis}
 title{
 \change_deleted 215191885 1521733925
 Structure From Motion
-\change_inserted 215191885 1521733925
-Structure-From-Motion and RGBD Depth Fusion
+\change_inserted 215191885 1525007674
+Structure-from-Motion and RGBD depth fusion
 \change_unchanged
 }
 \end_layout
@@ -226,8 +226,10 @@ advisor{
 \change_deleted 215191885 1524264138
 Dr.
  Andrew Willis
-\change_inserted 215191885 1524264150
-Dr.Andrew R.Willis
+\change_inserted 215191885 1525007512
+Dr.
+ Andrew R.
+ Willis
 \change_unchanged
 }
 \change_inserted 215191885 1521524005
@@ -2443,7 +2445,7 @@ name "subsec:Camera-model"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524666218
+\change_inserted 215191885 1525008240
 The SfM operates on two-dimensional images, and it is important to understand
  how these images are generated.
  An image is formed by capturing the light energy (irradiance) for every
@@ -2452,9 +2454,17 @@ The SfM operates on two-dimensional images, and it is important to understand
  model, which describes the relationship between the three-dimensional coordinat
 es and its projection onto the two-dimensional image plane.
  In this model, the center of the lens is called an optic center, and the
- line passing through the optic center (o) is called an optic axis.
+ line passing through the optic center (
+\begin_inset Formula $\mathbf{o}$
+\end_inset
+
+) is called an optic axis.
  The plane perpendicular to the optic axis is called the focal plane.
- The thin lens itself is characterized by its focal length (f) and diameter.
+ The thin lens itself is characterized by its focal length 
+\begin_inset Formula $(f_{x},f_{y})$
+\end_inset
+
+ and diameter.
  The focal length is the distance from the optic center,  where all the
  ray intersects the optic axis.
  The point of the intersection itself is called the focus of the lens.
@@ -2548,12 +2558,15 @@ reference "fig:Thin-lens-camera"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524236189
+\change_inserted 215191885 1525053852
 For the simplification of calculation, we consider an ideal camera model
  called the pinhole camera model.
  In this case, the aperture of a thin lens is assumed to be zero, all rays
- are forced to go through the optical center o; therefore they remain undeflecte
-d.
+ are forced to go through the optical center 
+\begin_inset Formula $\mathbf{o}$
+\end_inset
+
+; therefore they remain undeflected.
  Consequently, as the aperture decreases to zero, the only points that contribut
 e to the irradiance at the image pixel 
 \begin_inset Formula $\mathrm{\boldsymbol{\mathbf{p}}}=\left[x,y\right]$
@@ -2564,9 +2577,12 @@ e to the irradiance at the image pixel
 \begin_inset Formula $\mathbf{\boldsymbol{\mathbf{P}}}=\left[X,Y,Z\right]$
 \end_inset
 
- relative to a reference frame centered at the optical center o, with its
- z-axis being the optical axis of the lens, then it is immediate from the
- similar triangles in the figure 
+ relative to a reference frame centered at the optical center 
+\begin_inset Formula $\boldsymbol{\mathbf{o}}$
+\end_inset
+
+, with its z-axis being the optical axis of the lens, then it is immediate
+ from the similar triangles in the figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:Pin-hole-camera-model-1"
@@ -2654,9 +2670,9 @@ y=-f_{y}\frac{Y}{Z}\label{eq:pinhole camera y-1}
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quotation
 
-\change_inserted 215191885 1524954407
+\change_inserted 215191885 1525008290
 This mapping of 3D point to 2D is called projection and is represented by
  
 \begin_inset Formula $\boldsymbol{\pi}$
@@ -2818,7 +2834,7 @@ with
 f_{x} & 0 & 0 & 0\\
 0 & f_{y} & 0 & 0\\
 0 & 0 & 1 & 0
-\end{array}\right]\in R^{3\times3},\mathbf{\boldsymbol{\pi}}=\frac{1}{Z}\left[\begin{array}{cccc}
+\end{array}\right]\in\mathbb{R}^{3\times3},\mathbf{\boldsymbol{\pi}}=\frac{1}{Z}\left[\begin{array}{cccc}
 1 & 0 & 0 & 0\\
 0 & 1 & 0 & 0\\
 0 & 0 & 1 & 0
@@ -2884,16 +2900,6 @@ Z\\
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 215191885 1524765276
-Where 
-\begin_inset Formula $\alpha$
-\end_inset
-
- is the unknown scale factor.
 \end_layout
 
 \begin_layout Standard
@@ -3460,7 +3466,7 @@ reference "eq:Direct image alignment"
 \end_inset
 
 ), the warp function, 
-\begin_inset Formula $\omega(\mathbf{\mathbf{\mathbf{x}}},\boldsymbol{\xi})$
+\begin_inset Formula $\omega(\mathbf{\mathbf{\mathbf{p}}},\boldsymbol{\xi})$
 \end_inset
 
 , which is a rigid body motion, maps pixel locations, 
@@ -4048,7 +4054,7 @@ When
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\boldsymbol{\mathbf{R}}(t_{2,}t_{0})=\boldsymbol{\mathbf{R}}(t_{2,}t_{1})\times\boldsymbol{\mathbf{R}}(t_{1,}t_{0}),t_{0}<t_{1}<t_{2}\in\mathbb{\mathbb{R}}
+\boldsymbol{\mathbf{R}}(t_{2,}t_{0})=\boldsymbol{\mathbf{R}}(t_{2,}t_{1})\boldsymbol{\mathbf{R}}(t_{1,}t_{0}),t_{0}<t_{1}<t_{2}\in\mathbb{\mathbb{R}}
 \]
 
 \end_inset
@@ -4259,14 +4265,16 @@ then
 represented by a
 \change_deleted 215191885 1523505612
  be described by the space of rigid-body motions or 
-\change_inserted 215191885 1523414047
- 
+\change_inserted 215191885 1525009315
+ S
+\change_deleted 215191885 1525009315
+s
 \change_unchanged
-special Euclidean 
+pecial Euclidean 
 \change_deleted 215191885 1523507683
 transformations
-\change_inserted 215191885 1523507688
-grorp
+\change_inserted 215191885 1525009312
+group
 \change_unchanged
  called SE(3)
 \end_layout
@@ -4322,7 +4330,7 @@ reference "eq:2"
 
 \begin_layout Standard
 
-\change_inserted 215191885 1523505720
+\change_inserted 215191885 1525009379
 Similar to 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -4336,7 +4344,7 @@ reference "eq:se3"
 \end_inset
 
 , which is the composition of a rotation, translation and a uniform scale,
- and hence this representation has 7 degree of freedom, 
+ and hence this representation has 7 degrees of freedom, 
 \end_layout
 
 \begin_layout Standard
@@ -4344,7 +4352,7 @@ reference "eq:se3"
 \change_inserted 215191885 1524959997
 \begin_inset Formula 
 \begin{equation}
-Sim(3)=\{\mathbf{QQ}=\left[\begin{array}{cc}
+SIM(3)=\{\mathbf{QQ}=\left[\begin{array}{cc}
 \mathbf{R} & \boldsymbol{\mathbf{T}}\\
 0 & \alpha^{-1}
 \end{array}\right]\mid\boldsymbol{\mathbf{R}}\in SO(3),\boldsymbol{\mathbf{T}}\in\mathbb{R}^{3},\alpha\in\mathbb{R}\}\subset\mathbb{R}^{4\times4}\label{eq:sim3}
@@ -4376,7 +4384,7 @@ reference "eq:se3"
 \end_inset
 
  by using 
-\begin_inset Formula $Sim(3)$
+\begin_inset Formula $SIM(3)$
 \end_inset
 
  as shown in the equation 
@@ -4443,8 +4451,8 @@ which must satisfy
 \end_inset
 
  transformations 
-\change_inserted 215191885 1523374404
-does not affect the volume of the rigid body, i.e the value of the quantity
+\change_inserted 215191885 1525009490
+does not affect the volume of the rigid body, i.e, the value of the quantity
  
 \begin_inset Formula $x^{2}+y^{2}+z^{2}$
 \end_inset
@@ -4526,7 +4534,7 @@ e can use this to have better representation of Rigid body motion.
 
 \begin_layout Standard
 
-\change_inserted 215191885 1516618836
+\change_inserted 215191885 1525009831
 The 
 \begin_inset Formula $SO(3)$
 \end_inset
@@ -4539,8 +4547,8 @@ The
 \begin_inset Formula $SIM(3)$
 \end_inset
 
-are categorized under the special group called the Lie group, which represents
- the smooth differentiable manifolds.
+ are categorized under the special group called the Lie group, which are
+ defined on the smooth differentiable manifolds.
  Every Lie group has a tangent space at identity called the Lie algebra,
  which is a vector space used to study the infinitesimal transformations.
 \end_layout
@@ -4564,7 +4572,7 @@ For rotation group
 \change_inserted 215191885 1516619360
 \begin_inset Formula 
 \[
-so(3)\doteq\left\{ \hat{\boldsymbol{\mathbf{\omega}}}\in\mathbb{R}^{3\times3}\mid\boldsymbol{\mathbf{\omega}}\in\mathbb{R}^{3}\right\} 
+so(3)=\left\{ \hat{\boldsymbol{\mathbf{\omega}}}\in\mathbb{R}^{3\times3}\mid\boldsymbol{\mathbf{\omega}}\in\mathbb{R}^{3}\right\} 
 \]
 
 \end_inset
@@ -6532,7 +6540,7 @@ the three vectors
 s
 \change_unchanged
  on the same plane
-\change_inserted 215191885 1524182055
+\change_inserted 215191885 1525009604
 , i.e., an epiploar plane,
 \change_deleted 215191885 1523633578
 .
@@ -6942,11 +6950,11 @@ key "6751290"
 
 , the geometric error, which accounts for the noise in rigid body motion
  
-\begin_inset Formula $\xi$
+\begin_inset Formula $\boldsymbol{\xi}$
 \end_inset
 
  and the projection 
-\begin_inset Formula $\pi$
+\begin_inset Formula $\boldsymbol{\pi}$
 \end_inset
 
 .
@@ -7003,7 +7011,7 @@ ly, if
 \change_inserted 215191885 1524176062
 \begin_inset Formula 
 \begin{equation}
-\sigma_{\lambda(\xi,\pi)}^{2}=\frac{\sigma_{l}^{2}}{dot(g,l)^{2}}\label{eq:geo_error_var}
+\sigma_{\lambda(\boldsymbol{\xi},\boldsymbol{\pi})}^{2}=\frac{\sigma_{l}^{2}}{dot(g,l)^{2}}\label{eq:geo_error_var}
 \end{equation}
 
 \end_inset
@@ -7127,7 +7135,7 @@ reference "eq:inverse_depth"
 \change_inserted 215191885 1524179792
 \begin_inset Formula 
 \begin{equation}
-\sigma_{invZ,obs}^{2}=\alpha^{2}(\sigma_{\lambda(\xi,\pi)}^{2}+\sigma_{\lambda(I)}^{2})\label{eq:depth_observation_var}
+\sigma_{invZ,obs}^{2}=\alpha^{2}(\sigma_{\lambda(\boldsymbol{\xi},\boldsymbol{\pi})}^{2}+\sigma_{\lambda(I)}^{2})\label{eq:depth_observation_var}
 \end{equation}
 
 \end_inset
@@ -7281,7 +7289,7 @@ and its variance
 \change_inserted 215191885 1523637862
 \begin_inset Formula 
 \[
-\sigma_{d_{1}}^{2}=\left(\frac{invZ_{1}}{invZ_{0}}\right)^{4}\sigma_{invZ_{0}}^{2}+\sigma_{invZ_{p}}^{2}
+\sigma_{invZ_{1}}^{2}=\left(\frac{invZ_{1}}{invZ_{0}}\right)^{4}\sigma_{invZ_{0}}^{2}+\sigma_{invZ_{p}}^{2}
 \]
 
 \end_inset
@@ -8079,7 +8087,7 @@ y_{i}=f(x_{i})\label{eq:simple eq for optimization}
 
 \begin_layout Standard
 
-\change_inserted 215191885 1524107840
+\change_inserted 215191885 1525009691
 the goal is to find the parameters 
 \begin_inset Formula $x$
 \end_inset
@@ -8092,7 +8100,7 @@ the goal is to find the parameters
 \begin_inset Formula $f(x),$
 \end_inset
 
- i.e residual, 
+ i.e., residual, 
 \begin_inset Formula 
 \begin{equation}
 r_{i}(x)^{2}=(f(x_{i})-y_{i})^{2}\label{eq:simple_residual}
@@ -8871,7 +8879,7 @@ direct
 \change_inserted 215191885 1524196388
 \begin_inset Formula 
 \begin{equation}
-E(\xi)=\underset{i}{\sum}(\mathbf{I}_{ref}(\mathbf{p}_{i})-\mathbf{I}(\pi(\mathbf{p}_{i},D_{ref}(p_{i}),\boldsymbol{\xi})))^{2}\label{eq:Photomatric Error}
+E(\xi)=\underset{i}{\sum}(\mathbf{I}_{ref}(\mathbf{p}_{i})-\mathbf{I}(\pi(\mathbf{p}_{i},D_{ref}(\mathbf{p}_{i}),\boldsymbol{\xi})))^{2}\label{eq:Photomatric Error}
 \end{equation}
 
 \end_inset
@@ -8915,7 +8923,7 @@ reference "sec:Image-alignment"
  be initialized either with random values or with the depth measurements
  from a RGBD sensor to initiate the process.
  
-\begin_inset Formula $\pi$
+\begin_inset Formula $\boldsymbol{\pi}$
 \end_inset
 
  is the projection of the three dimensional point cloud to two dimensional
@@ -8933,7 +8941,7 @@ reference "sec:Non-linear-Optimization"
 \end_inset
 
 , to find optimal 
-\begin_inset Formula $\xi$
+\begin_inset Formula $\boldsymbol{\xi}$
 \end_inset
 
  which minimizes the equation 
@@ -8960,7 +8968,7 @@ reference "eq:Photomatric Error"
 \end_inset
 
  with respect to 
-\begin_inset Formula $\xi$
+\begin_inset Formula $\boldsymbol{\xi}$
 \end_inset
 
  is
@@ -9011,11 +9019,11 @@ and
 x^{\prime}\\
 y^{\prime}\\
 z^{\prime}
-\end{array}\right)=\boldsymbol{\mathbf{R}}_{\xi}\boldsymbol{\mathbf{K}}^{-1}\left(\begin{array}{c}
+\end{array}\right)=\boldsymbol{\mathbf{R}}_{\boldsymbol{\xi}}\boldsymbol{\mathbf{K}}^{-1}\left(\begin{array}{c}
 x\\
 y\\
 \hat{z}
-\end{array}\right)+\boldsymbol{\mathbf{T}}_{\xi}
+\end{array}\right)+\boldsymbol{\mathbf{T}}_{\boldsymbol{\xi}}
 \]
 
 \end_inset
@@ -12428,8 +12436,8 @@ Average
 
 \begin_layout Plain Layout
 
-\change_inserted 215191885 1521514993
-Ratios of depth measurements to total depths
+\change_inserted 215191885 1525007839
+Percentage of occurrence the depths from difference sources
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Ratios-of-depth"

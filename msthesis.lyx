@@ -8905,7 +8905,7 @@ direct
 \change_inserted 215191885 1524196388
 \begin_inset Formula 
 \begin{equation}
-E(\boldsymbol{\xi})=\underset{i}{\sum}(\mathbf{I}_{ref}(\mathbf{p}_{i})-\mathbf{I}(\pi(\mathbf{p}_{i},D_{ref}(\mathbf{p}_{i}),\boldsymbol{\xi})))^{2}\label{eq:Photomatric Error}
+E(\boldsymbol{\xi})=\underset{i}{\sum}(\mathbf{I}_{ref}(\mathbf{p}_{i})-\mathbf{I}(\boldsymbol{\pi}(\mathbf{p}_{i},D_{ref}(\mathbf{p}_{i}),\boldsymbol{\xi})))^{2}\label{eq:Photomatric Error}
 \end{equation}
 
 \end_inset
@@ -8949,7 +8949,7 @@ reference "sec:Image-alignment"
  be initialized either with random values or with the depth measurements
  from a RGBD sensor to initiate the process.
  
-\begin_inset Formula $\boldsymbol{\pi}$
+\begin_inset Formula $\boldsymbol{\pi}(.)$
 \end_inset
 
  is the projection of the three dimensional point cloud to two dimensional

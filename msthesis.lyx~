@@ -8905,7 +8905,7 @@ direct
 \change_inserted 215191885 1524196388
 \begin_inset Formula 
 \begin{equation}
-E(\boldsymbol{\xi})=\underset{i}{\sum}(\mathbf{I}_{ref}(\mathbf{p}_{i})-\mathbf{I}(\pi(\mathbf{p}_{i},D_{ref}(\mathbf{p}_{i}),\boldsymbol{\xi})))^{2}\label{eq:Photomatric Error}
+E(\boldsymbol{\xi})=\underset{i}{\sum}(\mathbf{I}_{ref}(\mathbf{p}_{i})-\mathbf{I}(\boldsymbol{\pi}(\mathbf{p}_{i},D_{ref}(\mathbf{p}_{i}),\boldsymbol{\xi})))^{2}\label{eq:Photomatric Error}
 \end{equation}
 
 \end_inset
@@ -10170,7 +10170,7 @@ key "Umeyama:1991:LET:105514.105525"
 \change_inserted 215191885 1525099933
 \begin_inset Formula 
 \[
-\mathcal{P}_{rgbd}=\left\{ \mathbf{P}_{0},\mathbf{P}_{1},\mathbf{P}_{1},.....\mathbf{P}_{n-1-}\right\} 
+\mathcal{P}_{rgbd}=\left\{ \mathbf{P}_{0},\mathbf{P}_{1},\mathbf{P}_{1},.....\mathbf{P}_{n-1}\right\} 
 \]
 
 \end_inset
@@ -10183,7 +10183,7 @@ key "Umeyama:1991:LET:105514.105525"
 \change_inserted 215191885 1525099933
 \begin_inset Formula 
 \[
-\mathcal{P}_{obs}=\left\{ \mathbf{P}_{0},\mathbf{P}_{1},\mathbf{P}_{1},.....\mathbf{P}_{n-1-}\right\} 
+\mathcal{P}_{obs}=\left\{ \mathbf{P}_{0},\mathbf{P}_{1},\mathbf{P}_{1},.....\mathbf{P}_{n-1}\right\} 
 \]
 
 \end_inset

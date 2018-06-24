@@ -1,0 +1,713 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass IEEEtran
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Methodology
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide true
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/overview_coloum_span.png
+	lyxscale 20
+	width 7in
+	height 2.5in
+	keepAspectRatio
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:The-complete-process"
+
+\end_inset
+
+An overview of the proposed depth fusion algorithm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The proposed fusion approach applies the semi-dense monocular reconstruction
+ approach referred to as Large Scale Direct (LSD) SLAM 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Engel2014"
+
+\end_inset
+
+.
+ The LSD-SLAM algorithm solves the SfM problem using a 
+\emph on
+direct
+\emph default
+ method to compute pixel correspondences and a 
+\emph on
+semi-dense
+\emph default
+ method for 3D reconstruction.
+ We select this approach as it does not require or impose any prior knowledge
+ about the scene structure as required by 
+\emph on
+dense 
+\emph default
+reconstruction methods and it gives more 3D estimates than 
+\emph on
+sparse
+\emph default
+ approaches while having similar computational cost.
+\end_layout
+
+\begin_layout Standard
+The LSD-SLAM SfM algorithm consists of the following three components:
+\end_layout
+
+\begin_layout Enumerate
+A tracking component that estimates the pose of the camera
+\end_layout
+
+\begin_layout Enumerate
+A depth map estimation component that estimates semi-dense depth images
+ for keyframes
+\end_layout
+
+\begin_layout Enumerate
+A map optimization component that seeks to create a 3D map of the environment
+ that is self-consistent.
+\end_layout
+
+\begin_layout Standard
+This work utilizes the first two components to explore fusion of RGBD depth
+ images with SfM depth images.
+ For this work, the map optimization component (3) is not used.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:The-complete-process"
+
+\end_inset
+
+ depicts an overview of the proposed depth fusion algorithm.
+\end_layout
+
+\begin_layout Subsection
+Time and Spatial Sampling Issues
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Time-and-Spatial"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As mentioned previously, RGBD sensors measure depth at a rate of 30 frames
+ per second (fps) and LSD-SLAM computes depth images only for 
+\emph on
+keyframes 
+\emph default
+which is a sparse subset of the measured RGB frames.
+ Further, keyframes are not generated uniformly in time but created when
+ the SfM algorithm detects criteria required to create a new keyframe.
+ This condition is triggered when the current camera pose is too far from
+ the most recent keyframe camera pose and when the current frame tracking
+ result is 
+\begin_inset Quotes eld
+\end_inset
+
+good
+\begin_inset Quotes erd
+\end_inset
+
+ in the sense that the image warping correspondence objective function suggests
+ an accurate or low-error result.
+ As a result, SfM-estimated depths exist only for those RGB images designated
+ as keyframes.
+\end_layout
+
+\begin_layout Standard
+Further, the spatial distribution of SfM-estimated depths within SfM keyframes
+ are localized to only those pixels having 
+\begin_inset Quotes eld
+\end_inset
+
+good
+\begin_inset Quotes erd
+\end_inset
+
+ 3D reconstruction characteristics.
+ In this sense, the quality of the depth estimate depends on accurately
+ matching pixels along epipolar lines inscribed in the image.
+ The matching performance here is best when there is a significant change
+ in the image intensities along the epipolar line.
+ Hence, 3D depth reconstruction is limited to those pixels that lie at sharp
+ intensity changes, i.e., 
+\begin_inset Quotes eld
+\end_inset
+
+edge
+\begin_inset Quotes erd
+\end_inset
+
+ pixels, and further limited to those 
+\begin_inset Quotes eld
+\end_inset
+
+edge
+\begin_inset Quotes erd
+\end_inset
+
+ pixels that lie on edges that are roughly perpendicular to the direction
+ of the epipolar line (see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "6751290"
+
+\end_inset
+
+ for details).
+ 
+\end_layout
+
+\begin_layout Standard
+The LSD-SLAM algorithm estimates depth at 
+\begin_inset Quotes eld
+\end_inset
+
+good
+\begin_inset Quotes erd
+\end_inset
+
+ pixel positions as a 1-dimensional Gaussian distribution specified as a
+ mean image 
+\begin_inset Formula $\mu_{SfM}(x,y)$
+\end_inset
+
+, i.e., the estimated depth image, and a variance image 
+\begin_inset Formula $\sigma_{SfM}^{2}(x,y)$
+\end_inset
+
+ such that the RGB keyframe pixel at location 
+\begin_inset Formula $\mathbf{I}(x,y)$
+\end_inset
+
+ is estimated to have depth 
+\begin_inset Formula $\mu_{SfM}(x,y)$
+\end_inset
+
+ with uncertainties given by 
+\begin_inset Formula $\sigma_{SfM}^{2}(x,y)$
+\end_inset
+
+.
+ In this sense, the keyframe image 
+\begin_inset Formula $\mathbf{I}(x,y)$
+\end_inset
+
+ augmented with the estimated depth image 
+\begin_inset Formula $\mu_{SfM}(x,y)$
+\end_inset
+
+ is analogous in format to sensed RGBD image data.
+ Yet, the uncertainties for the image 
+\begin_inset Formula $\mu_{SfM}(x,y)$
+\end_inset
+
+ are given by the image 
+\begin_inset Formula $\sigma_{SfM}^{2}(x,y)$
+\end_inset
+
+ rather than the experimentally validated uncertainties discussed in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:RGBD_Measurement-Noise"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Image Registration Issues
+\end_layout
+
+\begin_layout Standard
+Fusing depth measurements requires knowledge of the correspondence between
+ the depth measurements generated from the RGBD sensor and the SfM algorithm.
+ For SfM keyframes this correspondence is trivial due to the fact that RGBD
+ sensors support hardware registration.
+ Hardware registration co-locates the RGBD depth image measurements, 
+\begin_inset Formula $\mathbf{d}_{rgbd}(x,y)$
+\end_inset
+
+, and RGB appearance values, 
+\begin_inset Formula $\mathbf{I}(x,y)$
+\end_inset
+
+.
+ Hence, for hardware-registered RGBD depth images, 
+\begin_inset Formula $\mathbf{d}_{rgbd}(x,y)$
+\end_inset
+
+ is the measured depth of the surface having RGB pixel 
+\begin_inset Formula $\mathbf{I}(x,y)$
+\end_inset
+
+.
+ Similarly, SfM-estimated depths for an RGB keyframe, 
+\begin_inset Formula $\mu_{SfM}(x,y)$
+\end_inset
+
+, are the depths for the surface having RGB pixel 
+\begin_inset Formula $\mathbf{I}(x,y)$
+\end_inset
+
+.
+ Hence fusion is accomplished by fusing the measurements at corresponding
+ 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ locations in the RGBD depth image, 
+\begin_inset Formula $\mathbf{d}_{rgbd}(x,y)$
+\end_inset
+
+, and the SfM depth image, 
+\begin_inset Formula $\mu_{SfM}(x,y)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Depth correspondences for RGB images that are not SfM keyframes must be
+ computed from one or more SfM keyframe depth images.
+ This article uses the most recent, i.e., closest-in-time, keyframe to generate
+ co-registered SfM depth images for arbitrary RGB images.
+ To do so, the depth image from the most recent keyframe, 
+\begin_inset Formula $\mu_{SfM}(x,y)$
+\end_inset
+
+, is back-projected 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Point-Cloud-Reconstruction"
+
+\end_inset
+
+ to create a 3D point cloud of SfM measurements.
+ Using the estimated keyframe-to-camera pose change, the 3D measurements
+ are transformed, then projected 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Point-Cloud-Re-Projection"
+
+\end_inset
+
+ into the RGB camera image plane using the 3D projection equations for the
+ camera provided via camera calibration.
+ The resulting depth image, 
+\begin_inset Formula $\widetilde{\mu}_{SfM}(x,y)$
+\end_inset
+
+ is then co-registered with the RGBD depth image 
+\begin_inset Formula $\mathbf{d}_{rgbd}(x,y)$
+\end_inset
+
+ and RGB image 
+\begin_inset Formula $\mathbf{I}(x,y)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Using these techniques, co-registered SfM depth images can be computed for
+ a general RGBD image.
+ When RGBD images correspond to SfM keyframes the registration is 
+\begin_inset Quotes eld
+\end_inset
+
+automatic,
+\begin_inset Quotes erd
+\end_inset
+
+ i.e., no computation is necessary.
+ In all other cases, a co-registered SfM depth image must be computed by
+ reconstructing a 3D point cloud from a keyframe and then projecting the
+ point cloud into the target RGB camera image using the estimated camera
+ calibration and keyframe-to-camera-frame relative pose parameters.
+\end_layout
+
+\begin_layout Subsection
+Resolving the Unknown SfM Scale
+\end_layout
+
+\begin_layout Standard
+The methods described in previous sections detail how co-registered SfM
+ depth measurements are computed for every sensed RGBD frame.
+ However, as discussed in previously, SfM depth images intrinsically have
+ an unknown scale, 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, which reflects the fact that the solution for the scene structure is not
+ geometrically unique, i.e., the same scene structure can be observed at a
+ infinite number of distinct scales.
+ Therefore fusion requires the scale of the SfM depth image to fit the scale
+ of the real-world scene measured by the RGBD camera.
+\end_layout
+
+\begin_layout Standard
+Given that the depth measurements for the RGBD depth image are co-registered
+ with the SfM estimated depth image the scale parameter can be directly
+ estimated by minimizing the sum of the squared depth errors 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bishop:2006:PRM:1162264"
+
+\end_inset
+
+ between the SfM depth image and the RGBD depth image.
+ Let 
+\begin_inset Formula $V$
+\end_inset
+
+ denote the set of 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ positions that have valid depth measurements for 
+\begin_inset Quotes eld
+\end_inset
+
+standard
+\begin_inset Quotes erd
+\end_inset
+
+ fusion as described in the section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Fusing-RGBD-Depths"
+
+\end_inset
+
+.
+ Equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:scale error"
+
+\end_inset
+
+) shows the error function used to compute the unknown scale value and equation
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:depth_scale_solution"
+
+\end_inset
+
+) shows the solution 
+\begin_inset Formula $\widehat{\alpha}$
+\end_inset
+
+ that minimizes this error.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+e(\alpha)=\sum_{(x,y)\epsilon V}\left\Vert \mathbf{d}_{rgbd}(x,y)-\alpha\mu_{SfM}(x,y)\right\Vert ^{2}\label{eq:scale error}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\widehat{\alpha}=\sum_{(x,y)\epsilon V}\frac{\mathbf{d}{}_{rgbd}(x,y)}{\mu_{SfM}(x,y)}\label{eq:depth_scale_solution}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+RGBD and SfM Depth Fusion
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Fusing-RGBD-Depths"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For fusing measurements we consider the structured-light measurement of
+ the RGBD sensor to generate a distribution for the unknown true depth of
+ the scene surfaces at each 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ pixel in the depth image.
+ These measurements are considered to be independent and identically distributed
+ to the measurements of the true unknown depth of the scene surfaces from
+ the registered SfM estimated depths.
+ With these assumptions, solving the depth fusion problem is equivalent
+ to estimating the posterior distribution of the true scene depth at each
+ 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ position given the distributions for the RGBD and SfM depth values.
+\end_layout
+
+\begin_layout Standard
+Fortunately, previous sections show that Gaussian models are appropriate
+ distributions for both the RGBD and SfM depth values and the parameters
+ of these models are either known (see 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:RGBD_Measurement-Noise"
+
+\end_inset
+
+) or estimated continuously (see 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+S
+\end_layout
+
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Time-and-Spatial"
+
+\end_inset
+
+).
+ When both distributions are Gaussian, the posterior distribution can be
+ found analytically and is a well-known result used in pattern recognition
+ and other prediction frameworks, e.g., the Kalman filter as discussed in
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Maybeck79stochasticsmodels"
+
+\end_inset
+
+.
+ Specifically, let the Gaussian noise for RGBD depth at position 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ be represented as 
+\begin_inset Formula $\mathcal{N}(\mathbf{d}_{rgbd},\sigma_{rgbd}^{2})$
+\end_inset
+
+ and the Gaussian noise for the co-registered SfM depth image at position
+ 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ be 
+\begin_inset Formula $\mathcal{N}(\mu_{SfM},\sigma_{SfM}^{2})$
+\end_inset
+
+.
+ The posterior distribution on the unknown true depth at position 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ is also Gaussian and let 
+\begin_inset Formula $\mathcal{N}(\mu_{fused},\sigma_{fused}^{2})$
+\end_inset
+
+ denote the mean and variance parameters of this distribution.
+ Equations (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:fused_mean"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:fused_variance"
+
+\end_inset
+
+) provide optimal estimates of the mean and variance of the fused depth
+ at position 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+.
+ The best estimate of the fused depth is given by the highest probability
+ value in the posterior distribution which is the mean fused image, 
+\begin_inset Formula $\mu_{fused}(x,y)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mu_{fused}=\frac{\mathbf{d}_{rgbd}\sigma_{SfM}^{2}+\mu_{SfM}\sigma_{rgbd}^{2}}{\sigma_{SfM}^{2}+\sigma_{rgbd}^{2}}\label{eq:fused_mean}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\sigma_{fused}^{2}=\frac{\sigma_{rgbd}^{2}\sigma_{SfM}^{2}}{\sigma_{rgbd}^{2}+\sigma_{SfM}^{2}}\label{eq:fused_variance}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

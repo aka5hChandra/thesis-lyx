@@ -1,0 +1,670 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass IEEEtran
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 2
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+author{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}[t]{c@{
+\backslash
+extracolsep{8em}}c}Akash Chandrashekar, John Papadakis, Andrew Willis &
+ Jamie Gantert 
+\backslash
+
+\backslash
+ Department of Electrical and Computer Engineering & Munitions Directorate
+ 
+\backslash
+
+\backslash
+ University of North Carolina at Charlotte & Air Force Research Laboratory
+ 
+\backslash
+
+\backslash
+ Charlotte, NC 28223 & Eglin AFB, Florida 32542 
+\backslash
+
+\backslash
+ Email: achandr9@uncc.edu & Email: jamie.gantert.1@us.af.mil 
+\backslash
+end{tabular} }
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+IEEEoverridecommandlockouts 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+makeatletter 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+let
+\backslash
+ORGps@IEEEtitlepagestyle
+\backslash
+ps@IEEEtitlepagestyle 
+\backslash
+def
+\backslash
+ps@IEEEtitlepagestyle{
+\backslash
+ORGps@IEEEtitlepagestyle 
+\backslash
+def
+\backslash
+@oddfoot{
+\backslash
+hbox{}
+\backslash
+@IEEEfooterstyle
+\backslash
+footnotesize 
+\backslash
+raisebox{
+\backslash
+footskip}[0pt][0pt]{
+\backslash
+@IEEEpubid}
+\backslash
+hss
+\backslash
+hbox{}}
+\backslash
+relax 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+@evenfoot{
+\backslash
+@oddfoot}} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+makeatother 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+IEEEpubid{978-1-5386-6133-8/18/
+\backslash
+$31.00 ~
+\backslash
+copyright2018 IEEE} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+IEEEpubidadjcol
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+Structure-From-Motion and RGBD Depth Fusion
+\end_layout
+
+\begin_layout Abstract
+This article describes a technique to augment a typical RGBD sensor by integrati
+ng depth estimates obtained via Structure-from-Motion (SfM) with sensor
+ depth measurements.
+ Limitations in the RGBD depth sensing technology prevent capturing depth
+ measurements in four important contexts: (1) distant surfaces (>5m), (2)
+ dark surfaces, (3) brightly lit indoor scenes and (4) sunlit outdoor scenes.
+ SfM technology computes depth via multi-view reconstruction from the RGB
+ image sequence alone.
+ As such, SfM depth estimates do not suffer the same limitations and may
+ be computed in all four of the previously listed circumstances.
+ This work describes a novel fusion of RGBD depth data and SfM-estimated
+ depths to generate an improved depth stream that may be processed by one
+ of many important downstream applications such as robotic localization
+ and mapping, as well as object recognition and tracking.
+ 
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+RGBD sensors are a relatively new class of image sensors.
+ Their key novel feature is the ability to simultaneously capture color
+ 
+\begin_inset Quotes eld
+\end_inset
+
+RGB
+\begin_inset Quotes erd
+\end_inset
+
+ images of the scene and depth 
+\begin_inset Quotes eld
+\end_inset
+
+D
+\begin_inset Quotes erd
+\end_inset
+
+ images of scene- hence the term 
+\begin_inset Quotes eld
+\end_inset
+
+RGBD.
+\begin_inset Quotes erd
+\end_inset
+
+ RGB images are captured using a conventional visible light camera that
+ incorporates a lens to focus light rays from scene locations onto distinct
+ light-sensitive pixels of image sensor.
+ Structured light RGBD sensors consist of three integrated devices: an infrared
+ (IR) projector, an IR camera and an RGB camera in a rigid relative geometry
+ to create a single sensor that captures color-attributed 
+\begin_inset Formula $(X,Y,Z)$
+\end_inset
+
+ surface data at ranges up to ~6m with frame rates up to 30 Hz.
+ RGBD sensors have a wide range of applications which include mapping, localizat
+ion, pose estimation, and object recognition.
+ They have become popular for their ease-of-use and low cost in comparison
+ with other visual sensor technologies such as LIDAR, and have been incorporated
+ into consumer products like mobile phones, gaming consoles, and automobiles
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "litomisky2012consumer"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+RGBD Sensing Technology and Limitations
+\end_layout
+
+\begin_layout Standard
+Depth image formation is accomplished using structured light technology
+ to measure the geometric position of viewed surfaces.
+ This is accomplished by illuminating scene surfaces with an infrared (IR)
+ projector having a known pattern and then using an IR camera to capture
+ the projected pattern 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zhang:2012:MKS:2225053.2225203"
+
+\end_inset
+
+.
+ Deformation of the projected pattern over scene object is analyzed and
+ used to triangulate the depth of scene surfaces with respect to the camera's
+ optical axis.
+ The IR projector operates outside of visible light frequencies and, as
+ such, does not interfere with the captured RGB stream pixel values.
+ 
+\end_layout
+
+\begin_layout Standard
+Despite the popularity of RGBD sensors, their utility for generic depth
+ measurement is limited in several ways due to shortcomings associated with
+ structured light depth estimation.
+ One significant shortcoming is that RGBD sensors often fail to provide
+ meaningful depth values in sunlit outdoor scenes.
+ Here the infrared radiation from sunlight interferes with the projected
+ pattern, causing the depth estimation process to fail.
+ This phenomenon also occurs in sunlit indoor scenes.
+ RGBD sensors also fail to collect measurements from surfaces having specific
+ reflectance properties.
+ This includes the following three reflectance contexts: (1) 
+\begin_inset Quotes eld
+\end_inset
+
+dark
+\begin_inset Quotes erd
+\end_inset
+
+ surfaces, i.e., surfaces having a low reflectance, (2) specular, i.e., mirror-like,
+ surfaces and (3) transparent surfaces
+\series bold
+ 
+\series default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "8211432"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kadambi2014"
+
+\end_inset
+
+.
+ All of these cases represent instances where the projected IR pattern reflected
+ into the IR camera is not observable from the background due to signal
+ interference, e.g., sunlight, or weak/dim images, e.g., low reflectance, mirror-lik
+e and transparent surfaces.
+\end_layout
+
+\begin_layout Subsection
+Structure from Motion 
+\end_layout
+
+\begin_layout Standard
+The Structure from Motion (SfM) algorithm leverages ideas originally drawn
+ from photogrammetry to estimate the three-dimensional structure of a scene
+ from a time series of RGB images from a moving single camera.
+ This is achieved by calibrating the camera 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zhang:2000:FNT:357014.357025"
+
+\end_inset
+
+ to develop a highly-accurate model to describe how 3D positions are projected
+ into camera images.
+ Using this image formation model, the SfM algorithm matches together pixels
+ in separate images that correspond to projections of the same 3D location
+ as the camera moves in the scene.
+ Using the camera projection model and the assumption that matched pixels
+ are measurements of the same 3D world coordinates, the SfM algorithm solves
+ for both the pose of the camera within the global coordinate system and
+ the set of 3D surface positions provided by corresponding image pixels
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "6751290"
+
+\end_inset
+
+.
+ The SfM problem is non-linear in the unknowns and is typically solved in
+ a two-stage sequence.
+ Stage 1 solves for the relative pose of the camera at the instant the images
+ were recorded.
+ Stage 2 conditions on the estimated camera pose values and solves for the
+ 3D scene structure.
+ Both stages use correspondences between pixels from different images to
+ solve the non-linear equations in the unknown variables.
+ The camera pose tracking problem of Stage 1 is often solved by finding
+ a map that transforms pixels from the original 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ coordinate field to new coordinate positions 
+\begin_inset Formula $(x',y')$
+\end_inset
+
+ such that both locations correspond to images of the same 3D scene point.
+ The multi-view 3D surface reconstruction of Stage 2 is often solved using
+ the bundle adjustment algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Triggs:1999:BAM:646271.685629"
+
+\end_inset
+
+.
+\begin_inset Float figure
+wide true
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/teaser_rgb.png
+	lyxscale 10
+	height 1.3in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/teaser_rgbd.png
+	lyxscale 10
+	height 1.3in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/teaser_sfm.png
+	lyxscale 10
+	height 1.3in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/teaser_fused.png
+	lyxscale 10
+	height 1.3in
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:gussian fussion"
+
+\end_inset
+
+An overview of the proposed RGBD and SfM fusion algorithm (a) shows a grayscale
+ image of the scene (b) shows the sensed RGBD depth image (c) shows the
+ SfM-estimated depth image and (d) shows the fused image.
+ The fused image has been color-coded as follows: (white) denotes depth
+ locations sensed only by the RGBD sensor, (yellow) denotes depth locations
+ only sensed via SfM, (red) denotes fused (RGBD+SfM) depth locations and
+ (black) denotes depth locations without RGBD or SfM measurements.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+While scene reconstruction via SfM produces depth images in contexts where
+ depth cameras fail, this modality for depth estimation also has several
+ shortcomings.
+ Specifically, the theoretical formulation of the SfM problem shows that
+ the scale of the estimated 3D structure cannot be known without prior or
+ outside information.
+ This complicates both the mathematical and computational SfM solutions.
+ SfM also presumes that viewed surfaces are static, i.e., they do not move,
+ and when this assumption is violated reconstructed surfaces are highly
+ inaccurate.
+\end_layout
+
+\begin_layout Subsection
+Contribution
+\end_layout
+
+\begin_layout Standard
+This article seeks to leverage the strengths of structured light sensor
+ derived and SfM derived depth measurements by fusing these measurements
+ into an improved depth image that provides depth measurements in contexts
+ where at least one of the two depth estimation approaches succeeds.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:gussian fussion"
+
+\end_inset
+
+ shows an RGBD-SfM fusion result for an indoor scene and how the fusion
+ result (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:gussian fussion"
+
+\end_inset
+
+(d)) captures more scene geometry than either approach independently.
+ Our proposed method to fuse RGBD and SfM depth imagery includes consideration
+ of the RGBD sensor depth noise model, the SfM algorithm depth noise model
+ and also copes with the inherent unknown scale and scale-drift problems
+ intrinsic to SfM.
+ To our knowledge these technical issues have not been discussed elsewhere
+ in the literature.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "2018_SeCon_RGBDSfM_Fusion.21_part2.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "2018_SeCon_RGBDSfM_Fusion.21_part3.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "2018_SeCon_RGBDSfM_Fusion.21_part4.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "references_db,references_db_willis"
+options "ieeetr"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

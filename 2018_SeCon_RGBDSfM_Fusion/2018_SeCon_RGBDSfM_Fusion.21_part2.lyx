@@ -1,0 +1,1097 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass IEEEtran
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Related Work and Background Information
+\end_layout
+
+\begin_layout Standard
+This article proposes fusion of SfM-estimated depths with depths captured
+ from an RGBD image sensor.
+ This section is dedicated to discussing the relevant aspects of the SfM
+ algorithm and the sensed RGBD measurements necessary to explain the proposed
+ fusion method.
+ Specifically, this section reviews the theoretical details of the SfM algorithm
+, methods for processing depth images including computing depth images for
+ arbitrary camera poses, and details existing knowledge regarding the sensor
+ measurement noise for RGBD depth measurements.
+\end_layout
+
+\begin_layout Subsection
+SfM Depth Reconstruction
+\end_layout
+
+\begin_layout Standard
+The SfM algorithm uses a time sequence of images from a moving camera to
+ recover the 3D geometry of objects viewed by the camera.
+ While this problem can be solved without a calibrated camera, reconstruction
+ accuracy will adversely affected.
+ This work assumes that the camera calibration 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "5534797"
+
+\end_inset
+
+ parameters are known.
+ The SfM algorithm can be broken down into two key steps:
+\end_layout
+
+\begin_layout Enumerate
+Estimation of the camera pose, i.e., position and orientation, at the time
+ each image was recorded,
+\end_layout
+
+\begin_layout Enumerate
+Estimation of the 3D structure of the scene.
+\end_layout
+
+\begin_layout Standard
+As previously mentioned, typical SfM systems solve (1) by computing a map
+ that associates pixels from the original 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ coordinate field to new coordinate positions 
+\begin_inset Formula $(x',y')$
+\end_inset
+
+ such that both locations correspond to images of the same 3D scene point
+ and (2) via multi-view 3D surface reconstruction algorithm, e.g., bundle
+ adjustment 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Triggs:1999:BAM:646271.685629"
+
+\end_inset
+
+.
+ In the following sections we provide an overview of aspects of the SfM
+ algorithm necessary for the development of the proposed RGBD-SfM depth
+ fusion algorithm.
+\end_layout
+
+\begin_layout Subsubsection
+Solving for Image Pixel Correspondences
+\end_layout
+
+\begin_layout Standard
+There are generically two different approaches for finding corresponding
+ observations of the same 3D surface location in multiple images referred
+ to as 
+\emph on
+direct 
+\emph default
+and 
+\emph on
+indirect 
+\emph default
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "7898369"
+
+\end_inset
+
+
+\emph on
+.
+ 
+\emph default
+In this discussion, we refer to the correspondence problem as a source-to-target
+ matching problem.
+ Let 
+\begin_inset Formula $\mathbf{I}_{t}(x,y)$
+\end_inset
+
+ denote an image recorded at time 
+\begin_inset Formula $t$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{I}_{t+\Delta t}(x,y)$
+\end_inset
+
+ denote a subsequent image measured at time 
+\begin_inset Formula $t+\Delta t$
+\end_inset
+
+.
+ The correspondence problem seeks to find a map that transforms pixels from
+ the original 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ coordinate field of 
+\begin_inset Formula $\mathbf{I}_{t}$
+\end_inset
+
+ to new coordinate positions 
+\begin_inset Formula $(x',y')$
+\end_inset
+
+ in 
+\begin_inset Formula $\mathbf{I}_{t+\Delta t}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\mathbf{I}_{t}(x,y)$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{I}_{t+\Delta t}(x',y')$
+\end_inset
+
+ correspond to projections of the same 3D scene point.
+ 
+\end_layout
+
+\begin_layout Subsubsection*
+Indirect Methods
+\end_layout
+
+\begin_layout Standard
+Indirect methods compute this mapping by detecting special 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ locations referred to as feature locations with a purpose-built feature
+ detection algorithm, e.g., the Harris corner detector 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Harris88acombined"
+
+\end_inset
+
+.
+ A description of the image patch in the vicinity of each detected 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ location is computed using some feature descriptor algorithm, e.g., Lowe's
+ SIFT descriptor 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lowe2004"
+
+\end_inset
+
+.
+ Feature descriptors seek to provide a vector of values from the image patch
+ data that is invariant to the image variations that occur during camera
+ motion.
+ These include but are not limited to the following effects: illumination
+ variation, affine and/or projective invariance, photometric invariance
+ (brightness constancy), and scale invariance.
+ 
+\end_layout
+
+\begin_layout Standard
+Popular feature descriptors often prioritize scale and affine invariance
+ as their strengths.
+ The invariance property allows for correspondences to be computed by finding
+ the mapping from the feature descriptor set calculated from image 
+\begin_inset Formula $\mathbf{I}_{t}(x,y)$
+\end_inset
+
+ to the feature descriptor set calculated from image 
+\begin_inset Formula $\mathbf{I}_{t+\Delta t}(x,y)$
+\end_inset
+
+.
+ Solutions often assume the map solution is 1-to-1, i.e., a single 3D location
+ can only project to one location in each image, and the descriptor values
+ are invariant across the image pair.
+ As such, solving for the correspondence reduces to an assignment problem
+ where we seek to find the correspondence that minimizes the difference
+ between corresponding descriptors.
+ Let 
+\begin_inset Formula $\mathbf{d}_{i,t}$
+\end_inset
+
+ denote the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ descriptor from 
+\begin_inset Formula $\mathbf{I}_{t}(x,y)$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{d}_{j,t+1}$
+\end_inset
+
+ denote the 
+\begin_inset Formula $j^{th}$
+\end_inset
+
+ descriptor from 
+\begin_inset Formula $\mathbf{I}_{t+\Delta t}(x,y)$
+\end_inset
+
+.
+ We then specify the indirect correspondence problem as a search for the
+ correspondence set 
+\begin_inset Formula ${\cal C}$
+\end_inset
+
+ consisting of index pairs 
+\begin_inset Formula $(i,j)$
+\end_inset
+
+ that minimize the total descriptor error as shown in equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:correspondence"
+
+\end_inset
+
+) with the standard squared vector norm error function shown in equation
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:vector_sqnorm_errorfunc"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\widehat{{\cal C}}=\min\sum_{(i,j)\in{\cal C}}e(\mathbf{d}_{i,t},\mathbf{d}_{j,t+1}),\label{eq:correspondence}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+e(\mathbf{d}_{i,t},\mathbf{d}_{j,t+1})=\left\Vert \mathbf{d}_{i,t}-\mathbf{d}_{j,t+1}\right\Vert ^{2}\label{eq:vector_sqnorm_errorfunc}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection*
+Direct Methods
+\end_layout
+
+\begin_layout Standard
+Direct methods on the other hand typically iteratively solve for a set of
+ transformation parameters that best align a pair of images by the minimization
+ of pixel-wise errors.
+ An image warping function, 
+\begin_inset Formula $\omega(\mathbf{x},\xi)$
+\end_inset
+
+, maps a pixel location, 
+\begin_inset Formula $\mathbf{x}=[x,y]^{t}$
+\end_inset
+
+, in the original coordinate field to new coordinate positions, 
+\begin_inset Formula $\mathbf{x}'$
+\end_inset
+
+, such that both locations correspond to images of the same 3D scene point.
+ A classical solution to this problem is given by the Lucas-Kanade-Tomassi
+ (LKT) camera tracking algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Baker:2004:LYU:964568.964604"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+This is analogous to the process of image alignment, whose goal is to minimize
+ the sum of squared error between two images, the template image 
+\begin_inset Formula $\mathbf{T}(\mathbf{x})$
+\end_inset
+
+, and the moving image, 
+\begin_inset Formula $\mathbf{I}(\mathbf{x})$
+\end_inset
+
+.
+ In this method the moving image is mapped onto the coordinate frame of
+ the template image using a warp function, 
+\begin_inset Formula $\omega(\mathbf{x},\xi)$
+\end_inset
+
+, as in equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "image-alignment"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\widehat{\xi}=\min_{\xi}\underset{\mathbf{x}}{\sum}\left(\mathbf{I}(\omega(\mathbf{x},\xi))-\mathbf{T}(\mathbf{x})\right)^{2}\label{image-alignment}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "image-alignment"
+
+\end_inset
+
+), the warp function, 
+\begin_inset Formula $\omega(\mathbf{x},\xi)$
+\end_inset
+
+, maps pixel locations, 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+, in the template to pixel locations in the image 
+\begin_inset Formula $\mathbf{I}(\mathbf{x})$
+\end_inset
+
+ using the warp transformation parameters 
+\begin_inset Formula $\xi$
+\end_inset
+
+.
+ For direct correspondence estimation, 
+\begin_inset Formula $\xi$
+\end_inset
+
+ is a pose transformation of the viewing camera represented as a unknown
+ 6x1 vector.
+ We then seek the camera pose transformation parameters, 
+\begin_inset Formula $\widehat{\xi}$
+\end_inset
+
+, that minimize equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "image-alignment"
+
+\end_inset
+
+) which provides the camera pose change that best explain the differences
+ in these two of images of the same scene.
+ Given two images and the camera pose change between them, one can take
+ the information in one image, and through the warp function map these values
+ into the viewpoint of the other image to establish a correspondence.
+ In this case the theoretical difference between expected and observed values
+ for the image pair is zero if the camera pose change is known exactly and
+ sensor noise and other outside influences are ignored.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Solving for Scene Geometry
+\end_layout
+
+\begin_layout Standard
+There are generally two different approaches for 3D reconstruction referred
+ to as 
+\emph on
+sparse
+\emph default
+ and 
+\emph on
+dense
+\emph default
+ approaches.
+ Sparse methods reconstruct the 3D scene geometry only for a select subset
+ of the entire image data 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "klein07parallel"
+
+\end_inset
+
+.
+ This subset is often corner locations or locations marked by some type
+ of extracted feature, e.g., SIFT or SURF.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lowe2004,Bay:2008:SRF:1370312.1370556"
+
+\end_inset
+
+ This results in a sparse description of the 3D scene in terms of a sparse
+ cloud of 3D points.
+ In contrast, dense methods 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "6696650"
+
+\end_inset
+
+ reconstruct as many 3D geometric locations as possible and seek to provide
+ a more complete description of the scene.
+\end_layout
+
+\begin_layout Standard
+Sparse reconstructions often benefit from having a lower computational cost
+ but provide few 3D measurements.
+ Dense reconstructions have higher computational cost but provide a much
+ more complete description of the 3D scene.
+ Dense reconstruction techniques have seen much recent interest, although
+ a highly accurate, dense, and real-time SfM approach has remained elusive.
+ 
+\end_layout
+
+\begin_layout Standard
+A third class of algorithms, referred to as 
+\emph on
+semi-dense
+\emph default
+ algorithms 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "6751290"
+
+\end_inset
+
+, seek to strike a compromise between the sparse and dense methods.
+ The reconstruction techniques used are most similar to dense methods, however,
+ only a subset of all image pixels are reconstructed.
+ These approaches leverage the high accuracy of dense reconstruction techniques,
+ but are sparse enough to allow for real-time operation.
+\end_layout
+
+\begin_layout Standard
+Here, reconstruction is limited to those pixels which possess high intensity
+ gradient values.
+ These regions often correspond to scene geometries such as edges, corners,
+ and curves and to other areas of the scene that are highly textured.
+ The thought here is that regions of the image that possess large changes
+ in intensity convey more information than regions that possess less, thus
+ semi-dense reconstructions provide a compressed version of the total dense
+ scene structure.
+\begin_inset Float figure
+wide true
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename images/LSD SLAM.png
+	width 15cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:LSDSLAM-Overview"
+
+\end_inset
+
+ An overview of the LSD SLAM algorithm.
+ Each incoming frame is tracked against the current keyframe.
+ If it does not satisfy the critera for new keyframe creation, it is used
+ along with previous tracked frames for refinement of the estimated depth
+ values of the keyframe.
+ Otherwise, the frame is considered a new keyframe and depth estimates from
+ the previous keyframe are propagated and used for initialization of the
+ new depth estimates.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+LSD SLAM
+\end_layout
+
+\begin_layout Standard
+We leverage the SfM algorithm proposed by Engel et al.
+ dubbed LSD-SLAM.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Engel2014"
+
+\end_inset
+
+ This approach is a 
+\emph on
+semi-dense
+\emph default
+, 
+\emph on
+direct
+\emph default
+ method which optimizes the geometry directly on the image intensities.
+ LSD-SLAM provides as output a reconstruction of the observed 3D environment
+ as a pose-graph of specially designated RGB images called 
+\begin_inset Quotes eld
+\end_inset
+
+keyframes
+\begin_inset Quotes erd
+\end_inset
+
+ with associated semi-dense depth images.
+ Direct correspondences are found between every RGB frame and each RGB keyframe
+ to estimate the keyframe-to-RGB-frame relative camera pose.
+ This is achieved by Levenberg-Marquardt optimization of the photometric
+ reprojection error between the RGB image pair.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+E(\xi)=\underset{i}{\sum}(I_{ref}(P_{i})-I(\omega(p_{i},D_{ref}(p_{i}),\xi)))^{2}\label{eq:Photomatric Error}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Photomatric Error"
+
+\end_inset
+
+) shows the specific image alignment objective function and formalizes the
+ form for equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "image-alignment"
+
+\end_inset
+
+).
+ Here, the warp function relies on the current estimate of depth, 
+\begin_inset Formula $D_{ref}$
+\end_inset
+
+, to determine the relative pose change as a similarity transform: 
+\begin_inset Formula $\xi\in sim(3)$
+\end_inset
+
+.
+ The reference depth, 
+\begin_inset Formula $D_{ref}$
+\end_inset
+
+, is the depth associated with current keyframe, these depth values could
+ be initialized either with random values or with the depth measurements
+ from a RGBD sensor to initiate the process.
+ For every new frame tracked, the depths associated with the keyframe are
+ continuously refined by performing adaptive baseline stereo 3D reconstruction
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "6751290"
+
+\end_inset
+
+ using the newly tracked frame along with a stack of frames that have been
+ tracked previously.
+ When there is drastic pose change between the tracked frame and keyframe,
+ the current tracked frame is promoted to a keyframe and the depth map from
+ the previous keyframe is propagated to the new keyframe using the estimated
+ pose change and regularized.
+ All keyframes are added as nodes to a pose graph that stores the relative
+ pose between the keyframes as edges/constraints 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "5979949"
+
+\end_inset
+
+.
+ The pose graph stores the global trajectory of the camera in the 3D scene
+ and a graph optimization algorithm processes the pose graph to improve
+ the camera pose estimates as new image correspondences are found by image
+ matching and loop closures.
+ 
+\end_layout
+
+\begin_layout Subsection
+Depth Image Processing
+\end_layout
+
+\begin_layout Standard
+Depth fusion requires a significant amount of depth image processing.
+ This section details how depth images can be used to reconstruct 3D point
+ clouds and how point cloud re-projection can be used to predict the depth
+ image captured from a camera in an arbitrary target pose from a measured
+ depth image and knowledge of the relative pose between the the measured
+ image and the target pose.
+\end_layout
+
+\begin_layout Subsubsection
+Point Cloud Reconstruction
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Point-Cloud-Reconstruction"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Measured 3D 
+\begin_inset Formula $(X,Y,Z)$
+\end_inset
+
+ positions of sensed surfaces can be directly computed from the intrinsic
+ camera parameters and depth image values.
+ Here, the 
+\begin_inset Formula $Z$
+\end_inset
+
+ coordinate is directly taken as the depth value and the 3D 
+\begin_inset Formula $(X,Y)$
+\end_inset
+
+ coordinates are computed using the pinhole camera model.
+ In a typical pinhole camera model 3D 
+\begin_inset Formula $(X,Y,Z)$
+\end_inset
+
+ points are projected to 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ image locations 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ma:2003:IVI:971144"
+
+\end_inset
+
+, e.g., for the image columns the 
+\begin_inset Formula $x$
+\end_inset
+
+ image coordinate is 
+\begin_inset Formula $x=f_{x}\frac{X}{Z}+c_{x}-\delta_{x}$
+\end_inset
+
+.
+ However, for a depth image, this equation is re-organized to 
+\begin_inset Quotes eld
+\end_inset
+
+back-project
+\begin_inset Quotes erd
+\end_inset
+
+ the depth into the 3D scene and recover the 3D 
+\begin_inset Formula $(X,Y)$
+\end_inset
+
+ coordinates as shown by equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:RGBD_reconstruction"
+
+\end_inset
+
+) 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{ccc}
+X & = & (x+\delta_{x}-c_{x})Z/f_{x}\\
+Y & = & (y+\delta_{y}-c_{y})Z/f_{y}\\
+Z & = & Z
+\end{array}\label{eq:RGBD_reconstruction}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $Z$
+\end_inset
+
+ denotes the sensed depth at image position 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+, 
+\begin_inset Formula $(f_{x},f_{y})$
+\end_inset
+
+ denotes the camera focal length (in pixels), 
+\begin_inset Formula $(c_{x},c_{x})$
+\end_inset
+
+ denotes the pixel coordinate of the image center, i.e., the principal point,
+ and 
+\begin_inset Formula $(\delta_{x},\delta_{y})$
+\end_inset
+
+ denote adjustments of the projected pixel coordinate to correct for camera
+ lens distortion.
+\end_layout
+
+\begin_layout Subsubsection
+Point Cloud Re-Projection
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Point-Cloud-Re-Projection"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Depth images can be simulated for camera sensor in arbitrary poses by applying
+ back-projection, transformation on the resulting points, and projection
+ into the new coordinate frame.
+ For discussion, assume that depth image 
+\begin_inset Formula $\mathbf{d}(x,y)$
+\end_inset
+
+ has been recorded in the 
+\begin_inset Quotes eld
+\end_inset
+
+standard
+\begin_inset Quotes erd
+\end_inset
+
+ camera/optical coordinate system where the origin corresponds to the camera
+ focal point, the 
+\begin_inset Formula $z$
+\end_inset
+
+-axis corresponds to the depth/optical axis extending out into the viewed
+ scene, the 
+\begin_inset Formula $x$
+\end_inset
+
+-axis points towards the right and spans the image columns and the 
+\begin_inset Formula $y$
+\end_inset
+
+-axis points downward and spans the image rows.
+ 
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\mathbf{R}$
+\end_inset
+
+ denote the 3D rotation that rotates the coordinate axes of the standard
+ coordinate system to align with the same axes of a second camera having
+ arbitrary pose.
+ Similarly, Let 
+\begin_inset Formula $\mathbf{t}$
+\end_inset
+
+ denote the 3D translation vector describing the position of the focal point
+ of a second camera having arbitrary pose.
+ Using this notation, the depth transformation can be accomplished in the
+ following three steps:
+\end_layout
+
+\begin_layout Enumerate
+Back-project 
+\begin_inset Formula $\mathbf{d}(x,y)$
+\end_inset
+
+ to create an 
+\begin_inset Formula $(X,Y,Z)$
+\end_inset
+
+ point cloud (as described in 
+\begin_inset Formula $\S$
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Point-Cloud-Reconstruction"
+
+\end_inset
+
+), 
+\end_layout
+
+\begin_layout Enumerate
+Transform, i.e., rotate and translate, each point 
+\begin_inset Formula $\mathbf{p}_{i}=[X,Y,Z]^{t}$
+\end_inset
+
+ in the point cloud to generate a new point 
+\begin_inset Formula $\mathbf{p}_{i}^{'}=[X^{'},Y^{'},Z^{'}]^{t}$
+\end_inset
+
+ that lies in a standard optical coordinate system centered on the second
+ camera's focal point and having orientation that aligns with corresponding
+ 
+\begin_inset Formula $x,y,z$
+\end_inset
+
+-axes using equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:coordinate_system_change"
+
+\end_inset
+
+),
+\begin_inset Formula 
+\begin{equation}
+\mathbf{p}_{i}^{'}=\mathbf{R}(\mathbf{p}_{i}-\mathbf{t})\label{eq:coordinate_system_change}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Project the 
+\begin_inset Formula $(X,Y,Z)$
+\end_inset
+
+ point cloud using the pinhole camera equations to compute the new depth
+ image 
+\begin_inset Formula $\mathbf{d}^{'}(x,y)=Z$
+\end_inset
+
+ using equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:re_projection"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{ccc}
+x & = & f_{x}(\frac{X^{'}}{Z^{'}})-\delta_{x}+c_{x}\\
+y & = & f_{y}(\frac{Y^{'}}{Z^{'}})-\delta_{y}+c_{y}\\
+Z & = & Z^{'}
+\end{array}\label{eq:re_projection}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Typically, the projected point cloud measurements fall at non-integer locations
+ in the new depth image and the values of 
+\begin_inset Formula $\mathbf{d}^{'}(x,y)$
+\end_inset
+
+ must then be interpolated using some interpolation scheme such as nearest
+ neighbor or bilinear interpolation.
+ 
+\end_layout
+
+\begin_layout Subsection
+RGBD Measurement Noise
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:RGBD_Measurement-Noise"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The proposed fusion algorithm relies on experimental studies of accuracy
+ and noise for RGBD sensor measurement, e.g., the Kinect sensor.
+ Research in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "7925286"
+
+\end_inset
+
+ shows that a Gaussian noise model provides a good fit to observed measurement
+ errors on planar targets where the distribution parameters are mean 
+\begin_inset Formula $0$
+\end_inset
+
+ and standard deviation
+\begin_inset Formula $\sigma_{Z}=\frac{m}{2f_{x}b}Z^{2}$
+\end_inset
+
+ for depth measurements where 
+\begin_inset Formula $\frac{m}{f_{x}b}=-2.85e^{-3}$
+\end_inset
+
+ is the linearized slope for the normalized disparity empirically found
+ in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "7925286"
+
+\end_inset
+
+.
+ Since the 3D coordinates for 
+\begin_inset Formula $(X,Y)$
+\end_inset
+
+ are a function of both the pixel location and the depth, their distributions
+ are shown below:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{ccc}
+\sigma_{X} & = & \frac{x_{im}-c_{x}+\delta_{x}}{f_{x}}\sigma_{Z}=\frac{x_{im}-c_{x}+\delta_{x}}{f_{x}}(1.425e^{-3})Z^{2}\\
+\sigma_{Y} & = & \frac{y_{im}-c_{y}+\delta_{y}}{f_{y}}\sigma_{Z}=\frac{y_{im}-c_{y}+\delta_{y}}{f_{y}}(1.425e^{-3})Z^{2}\\
+\sigma_{Z} & = & \frac{m}{f_{x}b}Z^{2}\sigma_{d'}=(1.425e^{-3})Z^{2}
+\end{array}\label{eq:noise_models}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+These equations indicate that 3D coordinate measurement uncertainty increases
+ as a quadratic function of the depth for all three coordinate values.
+ However, the quadratic coefficient for the 
+\begin_inset Formula $(X,Y)$
+\end_inset
+
+ coordinate standard deviation is at most half that in the depth direction,
+ i.e., 
+\begin_inset Formula $(\sigma_{X},\sigma_{Y})\approx0.5\sigma_{Z}$
+\end_inset
+
+ at the image periphery where 
+\begin_inset Formula $\frac{x-c_{x}}{f}\approx0.5$
+\end_inset
+
+, and this value is significantly smaller for pixels close to the optical
+ axis.
+ Variances derived from this noise model can then be used to fuse depth
+ measurements resulting from structured light sensors with depth measurements
+ from other sources.
+\end_layout
+
+\end_body
+\end_document

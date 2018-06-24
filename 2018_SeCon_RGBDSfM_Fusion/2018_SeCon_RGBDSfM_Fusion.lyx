@@ -1,0 +1,1366 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass IEEEtran
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 2
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Structure-From-Motion and RGBD Depth Fusion for Improved SLAM Performance
+\end_layout
+
+\begin_layout Author
+Akash Chandrashekar, Andrew Willis
+\end_layout
+
+\begin_layout Abstract
+This article describes a technique to augment a typical RGBD sensor by integrati
+ng depth estimates obtained via Structure-from-Motion (SfM) with depth measureme
+nts from an RGBD sensor.
+ Limitations in the RGBD depth sensing technology prevent capturing depth
+ measurements in four important contexts: (1) distant surfaces (>5m), (2)
+ dark surfaces, (3) brightly lit indoor scenes and (4) sunlit outdoor scenes.
+ SfM technology computes depth via multi-view reconstruction from the RGB
+ image sequence alone.
+ As such, SfM depth estimates do not suffer the same limitations and may
+ be computed in all four of the previously listed circumstances.
+ This work describes a novel fusion of RGBD depth data and SfM-estimated
+ depths to generate an improved depth stream that may be processed by one
+ of many important downstream applications such as robot localization, robot
+ mapping, robot navigation, object tracking, pose estimation, and object
+ recognition.
+ Our approach is demonstrated on sequences of images that transition from
+ indoor scenes, where the RGBD depth sensor can function, to outdoor scenes,
+ where the RGBD depth sensor fails.
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+RGBD sensors are a relatively new class of image sensors.
+ Their key novel feature is the ability to simultaneously capture color
+ 
+\begin_inset Quotes eld
+\end_inset
+
+RGB
+\begin_inset Quotes erd
+\end_inset
+
+ images of the scene and depth 
+\begin_inset Quotes eld
+\end_inset
+
+D
+\begin_inset Quotes erd
+\end_inset
+
+ images of scene; hence the term 
+\begin_inset Quotes eld
+\end_inset
+
+RGBD.
+\begin_inset Quotes erd
+\end_inset
+
+ RGB images are capture using a conventional visible light camera that incorpora
+tes a lens that focuses light rays from scene locations onto distinct light-sens
+itive pixels of image sensor.
+ RGBD integrate the three devices: (1) an IR projector, (2) and IR camera
+ and (3) a RGB camera in a rigid relative geometry to create a single sensor
+ that captures color-attributed 
+\begin_inset Formula $(X,Y,Z)$
+\end_inset
+
+ surface data at ranges up to ~6m with frame rates up to 30 Hz.
+ RGBD sensors have a wide range of applications which include mapping, localizat
+ion, pose estimation, and object recognition.
+ They have become popular for their ease-of-use and low cost in comparison
+ with the other visual sensor technologies such as LIDAR, and have been
+ incorporated into consumer products like mobile phones, gaming consoles,
+ and automobiles 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "litomisky2012consumer"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+RGBD Sensing Technology and Limitations
+\end_layout
+
+\begin_layout Standard
+Depth image formation is accomplished using structured light technology
+ to measure the geometric position of viewed surfaces.
+ This is accomplished by illuminating scene surfaces with an infrared (IR)
+ projector having a known pattern and then using an IR camera to capture
+ the projected pattern 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zhang:2012:MKS:2225053.2225203"
+
+\end_inset
+
+.
+ Deformation of the projected pattern over scene object is analyzed and
+ used to triangulate the depth of scene surfaces with respect to the camera's
+ optical axis.
+ The IR projector operates outside the visible light frequencies and, as
+ such, does not interfere with the captured RGB stream pixel values.
+ 
+\end_layout
+
+\begin_layout Standard
+Despite the popularity of RGBD sensors, their utility for generic depth
+ measurement is limited in several ways due to shortcomings associated with
+ structured light depth estimation capture.
+ One significant shortcoming is that RGBD sensors often fail to provide
+ meaningful depth values in sunlit outdoor scenes.
+ Here the IR radiation from sunlight interferes with the projected pattern
+ causing the depth estimation process to fail.
+ This phenomenon also occurs in sunlit indoor scenes.
+ RGBD sensors also fail to collect measurements from surfaces having specific
+ reflectance properties.
+ This includes the following three reflectance contexts: (1) 
+\begin_inset Quotes eld
+\end_inset
+
+dark
+\begin_inset Quotes erd
+\end_inset
+
+ surfaces, i.e., surfaces having a low reflectance, (2) specular, i.e., mirror-like,
+ surfaces and (3) transparent surfaces
+\series bold
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kadambi2014"
+
+\end_inset
+
+
+\series default
+.
+\end_layout
+
+\begin_layout Subsection
+Structure from Motion Technology
+\end_layout
+
+\begin_layout Standard
+The Structure from Motion (SfM) algorithm leverages ideas originally drawn
+ from photogrammetry to estimate the three-dimensional structure of a scene
+ from a time series of RGB images from a moving single camera.
+ This is achieved by calibrating the camera to develop a highly-accurate
+ model to describe how 3D positions are projected into camera images.
+ Using this image formation model, the SfM algorithm matches together pixels
+ in separate images that correspond to projections of the same 3D location
+ as the camera moves in the scene.
+ Using the camera projection model and the assumption that matched pixels
+ are measurements of the same 3D world coordinates the SfM algorithm solves
+ for both the pose of the camera within the coordinate system and the set
+ of 3D surface positions provided by matched image pixels 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "6751290"
+
+\end_inset
+
+.
+ The SfM problem is non-linear in the unknowns and is typically solved in
+ a two-stage sequence.
+ Stage 1 solves for the relative pose of the cameras at the instant the
+ images were recorded.
+ Stage 2 conditions on the values of the camera poses to solve for the 3D
+ scene structure.
+ Both stages use correspondences between image pixels to solve the non-linear
+ equations in the unknown variables.
+ The camera pose tracking problem of Stage 1 is often solved using a version
+ of the Lucas-Kanade-Tomassi (LKT) camera tracking algorithm
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Baker:2004:LYU:964568.964604"
+
+\end_inset
+
+.
+ The multi-view 3D surface reconstruction of Stage 2 is often solved using
+ the bundle adjustment algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Triggs:1999:BAM:646271.685629"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+While scene reconstruction via SfM produces depth images in contexts where
+ depth cameras fail, this modalty for depth estimation also has several
+ shortcomings.
+ Specifically, the theoretical formulation of the SfM problem shows that
+ the scale of the estimated 3D structure cannot be known without prior or
+ outside information.
+ This complicates both the mathematical and computational SfM solutions.
+ SfM also presumes that viewed surfaces are static, i.e., they do not move,
+ and when this assumption is violated reconstructed surfaces are highly
+ inaccurate.
+\end_layout
+
+\begin_layout Subsection
+Contribution
+\end_layout
+
+\begin_layout Standard
+This article seeks to leverage the strengths of RGBD-derived and SfM-derived
+ depth measurements by fusing these measurements into an improved depth
+ image that provides depth measurements in contexts where at least one of
+ the two depth estimation approaches succeeds.
+ Fusion of the depth stream requires consideration of the SfM algorithm
+ and must also cope with the inherent unknown scale and scale-drift problems
+ intrinsic to SfM.
+\end_layout
+
+\begin_layout Section
+Related Work
+\end_layout
+
+\begin_layout Standard
+Simultaneous Localization and Mapping (SLAM) is the process of constructing
+ and updating map of an unknown environment while simultaneously keeping
+ track of an agent's location within it, it has numerous application in
+ the field of robotics and machine vision and it is been widely investigated.
+ SLAM relies on the measurements for various devices like LIDAR and RADAR
+ to achieve this.
+ A version of SLAM called DVO-SLAM 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "6696650"
+
+\end_inset
+
+ just use depth informations form RGBD sensor for measurement, the better
+ performance of DVO-SLAM necessitates the accurate depth measurements, however
+ its is not possible from RGBD sensors alone to felicitate this because
+ of its limitations mentioned earlier, we are applying our approach of SfM
+ fusion with RGBD sensor to obtain better depth estimation with in turn
+ enables better performance of DVO-SLAM.
+\end_layout
+
+\begin_layout Section
+SfM Depth Reconstruction
+\end_layout
+
+\begin_layout Standard
+The SfM algorithm uses a time sequence of images from a moving camera to
+ recover the 3D geometry of objects viewed by the camera.
+ While this problem can be solved without a calibrated camera, reconstruction
+ accuracy will adversely affected.
+ This work assumes that the camera calibration parameters are known.
+ The SfM algorithm can be broken down into two key steps:
+\end_layout
+
+\begin_layout Enumerate
+estimation of the camera pose, i.e., position and orientation, at the time
+ each image was recorded,
+\end_layout
+
+\begin_layout Enumerate
+estimation of the 3D structure of the scene.
+\end_layout
+
+\begin_layout Standard
+Both camera pose estimation and 3D structure estimation require pixels to
+ be matched from sequential images.
+ For sequential images, the subset of scene surfaces visible in both images
+ allow for the calculation of visual odometry.
+ , i.e., the relative change in camera pose.
+ Let 
+\begin_inset Formula $\mathbf{I}_{t}(x,y)$
+\end_inset
+
+ denote the RGB image recorded at time 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Using this notation, sequential images from a moving camera 
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\mathbf{x}_{i}$
+\end_inset
+
+ denote the pose, i.e., position and orientation of the camera at the time
+ the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+ image is captured by the RGB sensor.
+ Using this notation, the pose of the moving camera 
+\end_layout
+
+\begin_layout Standard
+solves a non-linear optimization problem of reducing the photometric error
+ between pair of images, to achieve we need to first establish pixel corresponde
+nces between the images.
+ Once the correspondence is established, the epiploar constraint is imposed
+ on the correspondence and the camera position to solve both camera position
+ and the 3D depth of structure, to ease the computation the estimation of
+ camera motion is carried out in the tangent space of lie group called the
+ lie algebra.
+ There are various approaches to solve this problem and broadly classified
+ as following
+\end_layout
+
+\begin_layout Subsection
+Types of SfM
+\end_layout
+
+\begin_layout Standard
+Direct vs.
+ Indirect: This differentiation is based on how the correspondence is archived
+ between images, in the direct method as the name specifies, the sensor
+ values (pixel intensity values) are used directly to minimize the photometric
+ error
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Engel2014"
+
+\end_inset
+
+.
+ This is analogous to the process of image alignment, whose goal is to minimize
+ the sum of squared error between two images, the template T and the image
+ I warped back onto the coordinate frame of the template
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Baker:2004:LYU:964568.964604"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\underset{x}{\sum}\left[I(\omega(x,p)-T(x)\right]^{2}\label{warping function}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "warping function"
+
+\end_inset
+
+ is minimized with respect p, which in case of SFM are the camera orientation.
+\end_layout
+
+\begin_layout Standard
+On the other hand, the indirect method uses the intermediate representation
+ of sensor measurements, the sensor values can be either represented as
+ sparse set feature key-points, this need a efficient feature detectors
+ like Scale Invariant Feature Transform (SIFT) to find the valid the corresponde
+nce between images
+\begin_inset CommandInset citation
+LatexCommand cite
+key "klein07parallel"
+
+\end_inset
+
+, and the methods like Random Sample Consensus algorithm (RANSAC) are applied
+ in order to avoid the outliers.
+ An alternative to using key features, is to find the dense regularized
+ optical flow, which tries to match the selected points from one image to
+ another, assuming that both images are part of a sequence and relatively
+ close to one another.
+ Both this representation tries to minimize the geometric errors.
+ 
+\end_layout
+
+\begin_layout Standard
+Dense vs.
+ Sparse: As the name suggests the sparse methods considered only selected
+ set of independent correspondence, where as dense methods attempt to use
+ and reconstruct from all correspondence in the 2D image domain
+\begin_inset CommandInset citation
+LatexCommand cite
+key "kerl13iros"
+
+\end_inset
+
+.
+ On the same line there is a intermediate approaches (semi-dense) tries
+ to use the largely connected and well-constrained subset of points if not
+ all of them.
+ The choice of this method affects the addition of geometry prior, in the
+ sparse formulation, since there is no notion of neighborhood, and geometry
+ parameters (key-point positions) are conditionally independent.
+ Dense (or semi-dense) approaches on the other hand exploit the connectedness
+ of the used image region to formulate a geometry prior, typically favoring
+ smoothness.
+\end_layout
+
+\begin_layout Standard
+Incremental vs.
+ Global:Incremental SfM
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Snavely:2006:PTE:1141911.1141964"
+
+\end_inset
+
+ begins by first estimating the 3D structure and camera poses of just two
+ cameras based on their relative pose.
+ Then additional cameras are added on incrementally and 3D structure is
+ refined as new parts of the scene are observed.
+ On the other hand global SfM
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wilson2014"
+
+\end_inset
+
+ considers the entire problem at once.
+ Here the objective is to estimate the global camera poses and 3D structure
+ by removing outliers and by applying an averaging scheme.
+ 
+\end_layout
+
+\begin_layout Subsection
+LSD SLAM
+\end_layout
+
+\begin_layout Standard
+We are using LSD SLAM 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Engel2014"
+
+\end_inset
+
+ as our SfM implementation, it is is  a semi-dense, direct method which
+ optimizes the geometry directly on the image intensities, this enables
+ using all information in the image which provides higher accuracy and robustnes
+s particularly in environments with little key-points.
+ In LSD implementation, the 3D environment is reconstructed as pose-graph
+ of keyframes with associated semi-dense depth maps.
+ Every new frame of the RGB images are aligned with the current keyframe
+ to estimate the relavtive 3D pose.
+ This is achived by Levenberg-Marquardt optimization of the photometric
+ error between them.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+E(\xi)=\underset{i}{\sum}(I_{ref}(P_{i})-I(\omega(p_{i},D_{ref}(p_{i}),\xi)))^{2}\label{eq:Photomatric Error}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $D_{ref}$
+\end_inset
+
+ is the estimated depth of reference frame which is initialized with random
+ value for each pixel,
+\begin_inset Formula $\xi\in se(3)$
+\end_inset
+
+ is Lie-algebra representation of rigid body motion and 
+\begin_inset Formula $\omega$
+\end_inset
+
+ is the affine wrap function.
+ The photometric error function 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Photomatric Error"
+
+\end_inset
+
+ gives the maximum-likelihood estimator for 
+\begin_inset Formula $\xi$
+\end_inset
+
+ assuming i.i.d.
+ Gaussian residuals.
+ 
+\begin_inset Formula $\delta\xi^{(n)}$
+\end_inset
+
+ is computed for each iteration by solving for the minimum of Gauss-Newton
+ second-order approximation .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta\xi^{(n)}=-(J^{T}J)^{-1}J^{T}r(\xi^{(n)})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+with 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+J=\frac{\partial r(\epsilon\circ\delta\xi^{(n)})}{\partial\epsilon}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The new estimate is then obtained by multiplication with the computed update
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\xi^{(n+1)}=\delta\xi^{(n)}\circ\xi^{(n)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+With this new pose estimation the depths are refined by many per-pixel,
+ small-baseline stereo comparisons coupled with interleaved spatial regularizati
+on as proposed in
+\begin_inset CommandInset citation
+LatexCommand cite
+key "6751290"
+
+\end_inset
+
+ , meaning, for every pixel the correspondence is established with suitably
+ selected reference frame based on the age of pixel and occlusions, this
+ adaptive base line maximizes the stereo accuracy and decreases the disparity
+ search range as well as the observation.Finaly, If the camera has moved
+ too far, a new keyframe is initialized by projecting points from existing,
+ close-by keyframes into it.
+\end_layout
+
+\begin_layout Section
+RGBD Depth Reconstruction
+\end_layout
+
+\begin_layout Standard
+The RGBD sensor uses the structured light to estimate the depth of the environme
+nt, the known pattern of the infrared lights emitted into environment and
+ the way these lights are deformed are studied to estimate the depth of
+ the surface.
+ 
+\end_layout
+
+\begin_layout Subsection
+Point Cloud Reconstruction
+\end_layout
+
+\begin_layout Standard
+Measured 3D 
+\begin_inset Formula $(X,Y,Z)$
+\end_inset
+
+ positions of sensed surfaces can be directly computed from the intrinsic
+ RGBD camera parameters and the measured depth image values.
+ The 
+\begin_inset Formula $Z$
+\end_inset
+
+ coordinate is directly taken as the depth value and the 
+\begin_inset Formula $(X,Y)$
+\end_inset
+
+ coordinates are computed using the pinhole camera model.
+ In a typical pinhole camera model 3D 
+\begin_inset Formula $(X,Y,Z)$
+\end_inset
+
+ points are projected to 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ image locations, e.g., for the image columns the 
+\begin_inset Formula $x$
+\end_inset
+
+ image coordinate is 
+\begin_inset Formula $x=f_{x}\frac{X}{Z}+c_{x}-\delta_{x}$
+\end_inset
+
+.
+ However, for a depth image, this equation is re-organized to 
+\begin_inset Quotes eld
+\end_inset
+
+back-project
+\begin_inset Quotes erd
+\end_inset
+
+ the depth into the 3D scene and recover the 3D 
+\begin_inset Formula $(X,Y)$
+\end_inset
+
+ coordinates as shown by equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:RGBD_reconstruction"
+
+\end_inset
+
+) 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{ccc}
+X & = & (x+\delta_{x}-c_{x})Z/f_{x}\\
+Y & = & (y+\delta_{y}-c_{y})Z/f_{y}\\
+Z & = & Z
+\end{array}\label{eq:RGBD_reconstruction}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $Z$
+\end_inset
+
+ denotes the sensed depth at image position 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+, 
+\begin_inset Formula $(f_{x},f_{y})$
+\end_inset
+
+ denotes the camera focal length (in pixels), 
+\begin_inset Formula $(c_{x},c_{x})$
+\end_inset
+
+ denotes the pixel coordinate of the image center, i.e., the principal point,
+ and 
+\begin_inset Formula $(\delta_{x},\delta_{y})$
+\end_inset
+
+ denote adjustments of the projected pixel coordinate to correct for camera
+ lens distortion.
+\end_layout
+
+\begin_layout Subsection
+Measurement Noise
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Measurement-Noise"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Studies of accuracy for the Kinect sensor show that a Gaussian noise model
+ provides a good fit to observed measurement errors on planar targets where
+ the distribution parameters are mean 
+\begin_inset Formula $0$
+\end_inset
+
+ and standard deviation
+\begin_inset Formula $\sigma_{Z}=\frac{m}{2f_{x}b}Z^{2}$
+\end_inset
+
+ for depth measurements where 
+\begin_inset Formula $\frac{m}{f_{x}b}=-2.85e^{-3}$
+\end_inset
+
+ is the linearized slope for the normalized disparity empirically found
+ in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "7925286"
+
+\end_inset
+
+.
+ Since 3D the coordinates for 
+\begin_inset Formula $(X,Y)$
+\end_inset
+
+ are a function of both the pixel location and the depth, their distributions
+ are also known as shown below:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{ccc}
+\sigma_{X} & = & \frac{x_{im}-c_{x}+\delta_{x}}{f_{x}}\sigma_{Z}=\frac{x_{im}-c_{x}+\delta_{x}}{f_{x}}(1.425e^{-3})Z^{2}\\
+\sigma_{Y} & = & \frac{y_{im}-c_{y}+\delta_{y}}{f_{y}}\sigma_{Z}=\frac{y_{im}-c_{y}+\delta_{y}}{f_{y}}(1.425e^{-3})Z^{2}\\
+\sigma_{Z} & = & \frac{m}{f_{x}b}Z^{2}\sigma_{d'}=(1.425e^{-3})Z^{2}
+\end{array}\label{eq:noise_models}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+These equations indicate that 3D coordinate measurement uncertainty increases
+ as a quadratic function of the depth for all three coordinate values.
+ However, the quadratic coefficient for the 
+\begin_inset Formula $(X,Y)$
+\end_inset
+
+ coordinate standard deviation is at most half that in the depth direction,
+ i.e., 
+\begin_inset Formula $(\sigma_{X},\sigma_{Y})\approx0.5\sigma_{Z}$
+\end_inset
+
+ at the image periphery where 
+\begin_inset Formula $\frac{x-c_{x}}{f}\approx0.5$
+\end_inset
+
+, and this value is significantly smaller for pixels close to the optical
+ axis.
+\end_layout
+
+\begin_layout Section
+Methodology
+\end_layout
+
+\begin_layout Standard
+The RGBD sensor measures the depth for every frame, we aim to fuse those
+ measurements with depth estimates from LSD SLAM for better results.
+ This process depth fusion has three main aspects.
+\end_layout
+
+\begin_layout Enumerate
+Having the SfM depth measurements for every frame.
+\end_layout
+
+\begin_layout Enumerate
+Rescaling the SfM depths.
+\end_layout
+
+\begin_layout Enumerate
+Fusing RGBD Depths with SfM Depths.
+\end_layout
+
+\begin_layout Subsection
+Having the SfM depth measurements for every frame.
+\end_layout
+
+\begin_layout Standard
+Since our goal is to fuse RGBD measurements for every frame, we need SfM
+ depth measurements for every frame, however, the primary goal of SfM is
+ to estimate the 3D structure of environment but not compute depth for every
+ frame.
+ Towards this end the LSD SLAM generates and stores the disparity only for
+ the key frames, not for every other tracked frames.
+ However, for our benefit, LSD-SLAM estimates the pose of non keyframe relative
+ to current keyframe, we can utilizing these pose estimates to extrapolate
+ the depth measurements the said keyframe.
+ This process of extrapolating the depth for pose tracked frame is done
+ three steps.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Obtain the point cloud of a environment from the current keyframe's depth
+ estimate.
+\end_layout
+
+\begin_layout Enumerate
+Apply rigid body transformations on the point cloud using the tracked frames
+ pose estimate.
+\end_layout
+
+\begin_layout Enumerate
+Re-project the point cloud to current frame.
+\end_layout
+
+\begin_layout Subsection
+Re-scaling SfM depths
+\end_layout
+
+\begin_layout Standard
+We now have the SfM depth measuments for every frame, however SfM computes
+ depth up to an unknown scale, 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, which reflects the fact that the solution for the scene structure is not
+ geometrically unique, i.e., the same scene structure can be observed at a
+ infinite number of distinct scales.
+ Therefore fusion requires the scale of the SfM depth image to fit the scale
+ of the real-world scene measured by the RGBD camera.
+\end_layout
+
+\begin_layout Standard
+RGBD sensors support hardware registration.
+ This co-locates the depth measurements with RGB appearance values, i.e.,
+ the RGB image at position 
+\begin_inset Formula $I(x,y)$
+\end_inset
+
+ indicates the appearance of the surface having depth 
+\begin_inset Formula $D(x,y)$
+\end_inset
+
+.
+ Hence if one compute SfM depth for a specific RGB image, the depth image
+ registered to this image will be registered.
+ Therefore the the SfM depth map and the RGBD depth maps for this context
+ are also registered.
+ 
+\end_layout
+
+\begin_layout Standard
+Given that the depth measurements for the RGBD depth image are registered
+ with the SfM estimated depth image the scale parameter can be directly
+ estimated by minimizing the sum of the squared depth errors between the
+ SfM depth image and the RGBD depth image.
+ Let 
+\begin_inset Formula $V$
+\end_inset
+
+ denote the set of 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ positions that have valid depth measurements for 
+\begin_inset Quotes eld
+\end_inset
+
+standard
+\begin_inset Quotes erd
+\end_inset
+
+ fusion as described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Fusing-RGBD-Depths"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The error between the valid depths from sensor and SfM measurements are
+ represented as mean square error
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+e(\alpha)=\frac{1}{n}(\sum_{(x,y)\epsilon V}(D_{rgbd}(x,y)-\alpha D_{SfM}(x,y))^{2})\label{eq:scale error}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+the optimal value of 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is determined by differentiating 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:scale error"
+
+\end_inset
+
+ with depth equating to zero
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{1}{n}*2*(\sum_{(x,y)\epsilon V}(D_{rgbd}(x,y)-\alpha\sum_{(x,y)\epsilon V}D_{SfM}(x,y))=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+-\alpha\sum_{(x,y)\epsilon V}D_{SfM}(x,y))=-(\sum_{(x,y)\epsilon V}(D_{rgbd}(x,y))
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\alpha=(\frac{\sum{}_{(x,y)\epsilon V}(D_{rgbd}(x,y)}{\sum{}_{(x,y)\epsilon V}(D_{SfM}(x,y)})\label{depth scale}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Removing Noise from LSD SLAM depths
+\end_layout
+
+\begin_layout Standard
+The SfM is a non-linear estimation problem and there will be inevitable
+ uncertainty involved in finding the of camera trajectory and the associated
+ depths.
+ Also the floating point operations of obtaining the point cloud and projecting
+ back with rigid body motion introduces more error, these errors forms veiling
+ depths of outliers as shown in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:veiling point removal "
+
+\end_inset
+
+.These error should be prevented as early as possible in-order to reduce
+ the drift in the computation of trajectory and depth values.We have implemented
+ a algorithm which detects and removes these veiling noise.This implementation
+ finds the true depth which will be the furthest point on ray of line from
+ optical center to 3d depth position, and removes all the noise along the
+ slope of the ray.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/depth_filter_collage.jpg
+	lyxscale 20
+	height 5cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:veiling point removal "
+
+\end_inset
+
+From left to right a ) Depth estimate LSD SLAM with noise, b) Noise to removed
+ are represetned in black, c) Depth after noise removal
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Fusing RGBD Depths with SfM Depths
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Fusing-RGBD-Depths"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We consider the structured-light measurement of the RGBD sensor to generate
+ a distribution for the unknown true depth of the scene surfaces at each
+ RGBD 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ pixel in the depth image.
+ These measurements are considered to be independent and identically distributed
+ to the measurements of the true unknown depth of the scene surfaces from
+ the registered SfM estimated depths 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Measurement-Noise"
+
+\end_inset
+
+.
+ Our fusion problem then seeks to estimate the distribution of the true
+ scene depth at each 
+\begin_inset Formula $(x,y)$
+\end_inset
+
+ position using these assumptions.
+ The optimal solutions is well-known as discussed in 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Maybeck79stochasticsmodels"
+
+\end_inset
+
+.
+ Specifically let the Gaussian noise for the RGBD depths is represented
+ as 
+\begin_inset Formula $\mathcal{N}(\mu_{sen},\sigma_{sen}^{2})$
+\end_inset
+
+ and the Gaussian noise for the SfM be 
+\begin_inset Formula $\mathcal{N}(\mu_{sfm},\sigma_{sfm}^{2})$
+\end_inset
+
+.
+ The resultant Gaussian nosie for the fusion of these measurements is represente
+d by 
+\begin_inset Formula $\mathcal{N}(\mu_{f},\sigma_{f}^{2})$
+\end_inset
+
+.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:gussian fussion"
+
+\end_inset
+
+ shows the depth measurements from sensor, SfM and their fusion, the fussed
+ depths are color coded for easy understanding.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:The-complete-process"
+
+\end_inset
+
+ represents the complete process of depth fusion.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mu_{f}=\frac{\mu_{sen}\sigma_{sfm}^{2}+\mu_{sfm}\sigma_{sen}^{2}}{\sigma_{sfm}^{2}+\sigma_{sen}^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\sigma_{f}^{2}=\frac{\sigma_{sen}^{2}\sigma_{sfm}^{2}}{\sigma_{sen}^{2}+\sigma_{sfm}^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/collage_2.jpg
+	lyxscale 20
+	width 8cm
+	height 8cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:gussian fussion"
+
+\end_inset
+
+From top right a) Sensor measurement b) SfM measurement c) Gray image d)
+ Color coded representation of fused depths,white represents the depths
+ from sensor measurments, yellow from SfM measurments, red are the fused
+ depths and black are the region where there are no depths measurments avilable.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide true
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/depth_union_collage.jpg
+	lyxscale 20
+	height 5cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+From left to right a ) LSD SLAM estimated depth b) Sensor measurements c)
+ Fused Depth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename images/flow_Chart_2.jpg
+	lyxscale 20
+	width 8cm
+	height 12cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:The-complete-process"
+
+\end_inset
+
+The complete process of fusing the depth measurements.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Fusion for Special Contexts
+\end_layout
+
+\begin_layout Standard
+The fusion model fails when we have corrupted measurements from the sensors,
+ the RGBD sensors generates specks of pattern for certain fails like the
+ insufficient range of measurement and outdoor measurements.
+ However, these specks are not random, they have a unique pattern with the
+ horizontal decreasing gradient.
+ we can take advantage of this pattern to pre-process the depth frame and
+ replace these corrupted measurements with the SfM measurements for better
+ result, if the SfM depth is not available we don't specify a depth at all.
+ On some cases the pre-processing might not completely remove the outliers,
+ on those case we can relay on other non Gaussian noise models to represent
+ the sensor depth measurements
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Choo2014StatisticalAE"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Results
+\end_layout
+
+\begin_layout Standard
+Data set A: RGBD depth stream
+\end_layout
+
+\begin_layout Standard
+Data set B: RGBD-SfM depth stream
+\end_layout
+
+\begin_layout Standard
+RGBD-SLAM Algorithm performance using data set A
+\end_layout
+
+\begin_layout Standard
+RGBD-SLAM Algorithm performance using data set B
+\end_layout
+
+\begin_layout Section
+Conclusions
+\end_layout
+
+\begin_layout Standard
+State the contribution of the paper.
+ Provide and overview of the important results discussed in the article.
+ Address future work and/or shortcomings of the work in the current state.
+ State how the results specifically support the claimed contribution.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "references_db"
+options "ieeetr"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
